@@ -1,0 +1,1 @@
+@extends('website.theme_website')
