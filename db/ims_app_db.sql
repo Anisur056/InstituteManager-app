@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2025 at 04:10 PM
+-- Generation Time: Aug 09, 2025 at 04:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -50,11 +50,11 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `full_name` varchar(255) DEFAULT NULL,
-  `phone_number` int(11) NOT NULL,
+  `phone_number` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL DEFAULT 'guest',
   `password` varchar(255) NOT NULL,
-  `pin` varchar(255) NOT NULL,
+  `profile_pic` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -63,8 +63,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_name`, `full_name`, `phone_number`, `email`, `role`, `password`, `pin`, `created_at`, `updated_at`) VALUES
-(1, 'anis14109', 'Anisur Rahman', 1871123427, 'anis14109@gmail.com', 'admin', '$2y$12$XZSLT0tfZbYrVfdUjUdIMeG06atzJwmo.I1izHkwkhVCv82fz7xGa', '$2y$12$EvrafNZxHSbjYG5UYr8Fku6lykS45M47W/6GLHD5ax3uwFciwsOI.', '2025-08-06 04:18:27', '2025-08-06 04:18:27');
+INSERT INTO `users` (`id`, `user_name`, `full_name`, `phone_number`, `email`, `role`, `password`, `profile_pic`, `created_at`, `updated_at`) VALUES
+(1, 'anis', 'Anisur Rahman', '01871123427', 'anis14109@gmail.com', 'admin', '$2y$12$vy/Iy88YZypXqcVKxPsmLOoo/TnmGdUZz/LmLt4mXUKc3vkvWnoa.', 'assets/img/profile_pic/anis.jpg', '2025-08-09 07:58:04', '2025-08-09 07:58:04');
 
 --
 -- Indexes for dumped tables
@@ -83,8 +83,7 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_user_name_unique` (`user_name`),
   ADD UNIQUE KEY `users_phone_number_unique` (`phone_number`),
-  ADD UNIQUE KEY `users_email_unique` (`email`),
-  ADD UNIQUE KEY `users_pin_unique` (`pin`);
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
