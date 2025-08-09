@@ -1,1 +1,1 @@
-@extends('website.theme_website')
+@extends('website.main-theme')
