@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('user_name')->unique();
             $table->string('full_name')->nullable();
-            $table->integer('phone_number')->unique();
+            $table->string('phone_number')->unique();
             $table->string('email')->unique();
             $table->string('role')->default('guest');
             $table->string('password');
-            $table->string('pin')->unique();
+            $table->string('profile_pic')->nullable();
             $table->timestamps();
         });
     }

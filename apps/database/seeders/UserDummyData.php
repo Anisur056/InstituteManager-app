@@ -15,13 +15,12 @@ class UserDummyData extends Seeder
     {
         User::create(
             [
-            'user_name' => 'anis14109',
+            'user_name' => 'anis',
             'full_name' => 'Anisur Rahman',
             'phone_number' => '01871123427',
             'email' => 'anis14109@gmail.com',
             'role' => 'admin',
             'password' => '14109',
-            'pin' => '27272',
             ]
         );
     }
