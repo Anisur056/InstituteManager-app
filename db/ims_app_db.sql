@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2025 at 04:16 PM
+-- Generation Time: Aug 10, 2025 at 05:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,7 +64,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `full_name`, `phone_number`, `email`, `role`, `password`, `profile_pic`, `created_at`, `updated_at`) VALUES
-(1, 'anis', 'Anisur Rahman', '01871123427', 'anis14109@gmail.com', 'admin', '$2y$12$vy/Iy88YZypXqcVKxPsmLOoo/TnmGdUZz/LmLt4mXUKc3vkvWnoa.', 'assets/img/profile_pic/anis.jpg', '2025-08-09 07:58:04', '2025-08-09 07:58:04');
+(1, 'anis', 'Anisur Rahman', '01871123427', 'anis14109@gmail.com', 'admin', '$2y$12$vy/Iy88YZypXqcVKxPsmLOoo/TnmGdUZz/LmLt4mXUKc3vkvWnoa.', 'assets/admin/images/profile/anis.jpg', '2025-08-09 07:58:04', '2025-08-09 07:58:04');
 
 --
 -- Indexes for dumped tables

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Institute Manager App (ima) | Login</title>
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/website/css/bootstrap.min.css') }}" rel="stylesheet">
     <style>
         body{
             width: 100vw;

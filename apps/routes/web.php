@@ -8,10 +8,8 @@ Route::get('/', function () {
     return view('website.home');
 })->name('home');
 
-Route::view('/login-sirikotia','admin.login-form')
-        ->name('login')
-        ->middleware('guest');
-
+// Authentication Routes
+Route::view('/login-sirikotia','admin.login-form')->name('login')->middleware('guest');
 Route::post('/loginAction',[LoginFormController::class,'login'])->name('loginAction');
 Route::get('/logout',[LoginFormController::class,'logout'])->name('logout');
 

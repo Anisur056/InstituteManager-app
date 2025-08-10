@@ -6,7 +6,7 @@
     <meta content="ছিরিকোটিয়া হাফেজিয়া নূরানী মডেল মাদ্রাসা । অফিসিয়াল ওয়েবসাইট" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('assets/img/favicon.PNG') }}" rel="icon">
+    <link href="{{ asset('assets/website/img/favicon.PNG') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -17,16 +17,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{{ asset('assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/lib/animate/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }} " rel="stylesheet" />
-    <link href="{{ asset('assets/lib/twentytwenty/twentytwenty.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/website/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/website/lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/website/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }} " rel="stylesheet" />
+    <link href="{{ asset('assets/website/lib/twentytwenty/twentytwenty.css') }}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/website/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/website/css/style.css') }}" rel="stylesheet">
     <style>
         tr:hover {
           background-color: #f8f9fa;
@@ -74,7 +74,7 @@
     <!-- Topbar End -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0" style="background-color:#006568 !important; color:white;">
         <a href="{{ route('home') }}" class="navbar-brand p-0">
-            <img class="m-0 text-primary logo" src="{{ asset('assets/img/banner.jpg') }}" alt="Image">
+            <img class="m-0 text-primary logo" src="{{ asset('assets/website/img/banner.jpg') }}" alt="Image">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -133,10 +133,10 @@
                 <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="w-100" src="{{ asset('assets/img/slide_photo_2.jpg') }}" alt="Slide Image">
+                            <img class="w-100" src="{{ asset('assets/website/img/slide_photo_2.jpg') }}" alt="Slide Image">
                         </div>
                         <div class="carousel-item ">
-                            <img class="w-100" src="{{ asset('assets/img/slide_photo_1.jpg') }}" alt="Slide Image">
+                            <img class="w-100" src="{{ asset('assets/website/img/slide_photo_1.jpg') }}" alt="Slide Image">
                         </div>
                     </div>
 
@@ -157,7 +157,7 @@
                     প্রতিষ্ঠান প্রধান                </div>
                 <div class="text-center" id="bangla" style="border:1px solid #96999e;">
                     <br>
-                    <img class="box" src="{{ asset('assets/img/principal_photo.jpg') }}" style="display: block; margin-left: auto; margin-right: auto; width: 300px; height: 300px; border:2px solid #006568; background: url(img/duck.png) no-repeat; -moz-box-shadow: 0px 6px 5px #ccc; -webkit-box-shadow: 0px 6px 5px #ccc; box-shadow: 0px 6px 5px #ccc; -moz-border-radius:20px; -webkit-border-radius:20px; border-radius:20px;">
+                    <img class="box" src="{{ asset('assets/website/img/principal_photo.jpg') }}" style="display: block; margin-left: auto; margin-right: auto; width: 300px; height: 300px; border:2px solid #006568; background: url(img/duck.png) no-repeat; -moz-box-shadow: 0px 6px 5px #ccc; -webkit-box-shadow: 0px 6px 5px #ccc; box-shadow: 0px 6px 5px #ccc; -moz-border-radius:20px; -webkit-border-radius:20px; border-radius:20px;">
                     <p><h5 id="bangla"><br>
                         মোঃ রফিকুল ইসলাম (রোমান)                    </h5></p>
                                         <a href="principal_msg.php"><span class="btn btn-primary" style="width:95%" id="bangla">প্রতিষ্ঠান প্রধানের বাণী</span></a>
@@ -225,7 +225,7 @@
                                     </div>
                 <div class="col-lg-5" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="{{ asset('assets/img/prospectus_photo.jpg') }}" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="{{ asset('assets/website/img/prospectus_photo.jpg') }}" style="object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -293,7 +293,7 @@
                     <div class="owl-carousel price-carousel wow zoomIn" data-wow-delay="0.9s">
                                                 <div class="price-item pb-4">
                             <div class="position-relative">
-                                <img class="img-fluid rounded-top" src="{{ asset('assets/img/package_photo_2.jpeg') }}" alt="প্যাকেজ - ১ Photo">
+                                <img class="img-fluid rounded-top" src="{{ asset('assets/website/img/package_photo_2.jpeg') }}" alt="প্যাকেজ - ১ Photo">
                                 <div class="d-flex align-items-center justify-content-center bg-light rounded pt-2 px-3 position-absolute top-100 start-50 translate-middle" style="z-index: 2;">
                                     <h2 class="text-primary m-0" id="bangla">৳ ২৫০০</h2>
                                 </div>
@@ -308,7 +308,7 @@
                         </div>
                                                 <div class="price-item pb-4">
                             <div class="position-relative">
-                                <img class="img-fluid rounded-top" src="{{ asset('assets/img/package_photo_3.jpeg') }}" alt="প্যাকেজ - ২ Photo">
+                                <img class="img-fluid rounded-top" src="{{ asset('assets/website/img/package_photo_3.jpeg') }}" alt="প্যাকেজ - ২ Photo">
                                 <div class="d-flex align-items-center justify-content-center bg-light rounded pt-2 px-3 position-absolute top-100 start-50 translate-middle" style="z-index: 2;">
                                     <h2 class="text-primary m-0" id="bangla">৳ ৩০০০</h2>
                                 </div>
@@ -703,18 +703,18 @@
   <!-- Bootstrap 5 JS Bundle (includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="{{ asset('assets/lib/wow/wow.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/tempusdominus/js/moment.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/twentytwenty/jquery.event.move.js') }}"></script>
-    <script src="{{ asset('assets/lib/twentytwenty/jquery.twentytwenty.js') }}"></script>
+    <script src="{{ asset('assets/website/lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('assets/website/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('assets/website/lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('assets/website/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/website/lib/tempusdominus/js/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/website/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+    <script src="{{ asset('assets/website/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <script src="{{ asset('assets/website/lib/twentytwenty/jquery.event.move.js') }}"></script>
+    <script src="{{ asset('assets/website/lib/twentytwenty/jquery.twentytwenty.js') }}"></script>
 
     <!-- Template Javascript -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/website/js/main.js') }}"></script>
     <!--
     <script>
         document.querySelectorAll("#noticeTable tbody tr").forEach(row => {
