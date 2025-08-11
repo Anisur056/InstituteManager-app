@@ -3,10 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Tbl_shift;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UserDummyData extends Seeder
+class DummyData extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,6 +23,14 @@ class UserDummyData extends Seeder
             'role' => 'admin',
             'password' => '27272',
             'profile_pic' => 'assets/admin/images/profile/anis.jpg',
+            ]
+        );
+
+        Tbl_shift::create(
+            [
+            'shift_name_en' => 'Day Shift',
+            'shift_name_bn' => 'দিনের শিফট/বিদা শাখা',
+            'display_order' => 1,
             ]
         );
     }

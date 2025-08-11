@@ -22,6 +22,14 @@ return new class extends Migration
             $table->string('profile_pic')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('tbl_shifts', function (Blueprint $table) {
+            $table->id();
+            $table->string('shift_name_en')->nullable();
+            $table->string('shift_name_bn')->nullable();
+            $table->integer('display_order')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,5 +38,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('tbl_shifts');
     }
 };

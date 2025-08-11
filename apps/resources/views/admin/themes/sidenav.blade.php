@@ -4,7 +4,7 @@
     <li class="nav-item nav-profile border-bottom">
         <div class="nav-link flex-column">
         <div class="nav-profile-image">
-            <img src="{{Auth::user()->profile_pic}}" alt="profile" />
+            <img src="{{ asset(Auth::user()->profile_pic) }}" alt="profile" />
             <!--change to offline or busy as needed-->
         </div>
         <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
@@ -132,6 +132,22 @@
             </li>
             <li class="nav-item">
             <a class="nav-link" href="#">Result Publish</a>
+            </li>
+        </ul>
+        </div>
+    </li>
+
+    {{-- Settings Panel --}}
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false">
+        <i class="mdi mdi-settings menu-icon"></i>
+        <span class="menu-title">Settings</span>
+        <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="settings">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+            <a class="nav-link" href="{{ route('shifts.index') }}">Shifts Management</a>
             </li>
         </ul>
         </div>

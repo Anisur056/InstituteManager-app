@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{{ asset('assets/admin/vendors/mdi/css/materialdesignicons.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/admin/vendors/flag-icon-css/css/flag-icon.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/admin/vendors/css/vendor.bundle.base.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/admin/vendors/jquery-bar-rating/css-stars.css') }}" />
+        
         <link rel="stylesheet" href="{{ asset('assets/admin/vendors/font-awesome/css/font-awesome.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/admin/css/demo_1/style.css') }}" />
         <link rel="shortcut icon" href="{{ asset('assets/admin/images/favicon.png') }}" />
@@ -37,7 +37,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
-                                    <img src="assets/admin/images/faces/face1.jpg" alt="image" class="profile-pic">
+                                    <img src="" alt="image" class="profile-pic">
                                     </div>
                                     <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
@@ -47,7 +47,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
-                                    <img src="assets/admin/images/faces/face6.jpg" alt="image" class="profile-pic">
+                                    <img src="" alt="image" class="profile-pic">
                                     </div>
                                     <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
@@ -57,7 +57,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
-                                    <img src="assets/admin/images/faces/face7.jpg" alt="image" class="profile-pic">
+                                    <img src="" alt="image" class="profile-pic">
                                     </div>
                                     <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
