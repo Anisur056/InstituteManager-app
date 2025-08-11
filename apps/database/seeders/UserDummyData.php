@@ -20,7 +20,8 @@ class UserDummyData extends Seeder
             'phone_number' => '01871123427',
             'email' => 'anis14109@gmail.com',
             'role' => 'admin',
-            'password' => '14109',
+            'password' => '27272',
+            'profile_pic' => 'assets/admin/images/profile/anis.jpg',
             ]
         );
     }
