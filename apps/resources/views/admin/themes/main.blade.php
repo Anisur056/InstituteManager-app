@@ -1,112 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <title>@yield('page-title')</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="IMA-Institute Management Application">
+    <meta name="author" content="IMA">
+    <title>@yield('page-title')</title>
+    <link rel="shortcut icon" href="{{ asset('assets/admin/img/logo/favicon.png') }}">
 
-        <link rel="stylesheet" href="{{ asset('assets/admin/vendors/mdi/css/materialdesignicons.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/admin/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/admin/vendors/css/vendor.bundle.base.css') }}">
-        
-        <link rel="stylesheet" href="{{ asset('assets/admin/vendors/font-awesome/css/font-awesome.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/admin/css/demo_1/style.css') }}" />
-        <link rel="shortcut icon" href="{{ asset('assets/admin/images/favicon.png') }}" />
+    <!-- Main Style -->
+    <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
+    <!-- Sidebar Menu -->
+    <link href="{{ asset('assets/admin/css/metisMenu.css') }}" rel="stylesheet">
 
-    </head>
-    <body>
-        <div class="container-scroller">
+    <!-- Fonts- (Text & Icons) - online -->
+    <link href="https://hrm.bdtask-demoserver.com/backend/assets/dist/css/barlow-font.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-            {{-- Side Navigation Bar --}}
-            @include('admin.themes.sidenav')
 
-            <div class="container-fluid page-body-wrapper">
-                {{-- Top Navbar --}}
-                <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-                    <div class="navbar-menu-wrapper d-flex align-items-stretch">
-                        {{-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                        <span class="mdi mdi-chevron-double-left"></span>
-                        </button> --}}
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                                <i class="mdi mdi-email-outline"></i>
+</head>
+
+<body class="fixed sidebar-mini ">
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-green">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        @include('admin.themes.sidenav')
+
+        <!-- Page Content  -->
+        <div class="content-wrapper">
+            <div class="main-content">
+                <!--Navbar-->
+                <nav class="navbar-custom-menu navbar navbar-expand-xl m-0 flex-row-reverse ">
+                    <div class="sidebar-toggle-icon" id="sidebarCollapse">sidebar toggle<span></span></div>
+                    <!--/.sidebar toggle icon-->
+                    <!-- Collapse -->
+
+                    <div class="navbar-icon">
+                        <ul class="navbar-nav flex-row gap-3 align-items-center">
+
+                            <li class="nav-item dropdown user-menu">
+                                <a class="dropdown-toggle admin-btn me-2 me-sm-3 me-xl-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img class="admin-img me-1 me-sm-2" src="{{ asset(Auth::user()->profile_pic) }}" alt="Profile picture" />
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-left navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                                <h6 class="p-3 mb-0 font-weight-semibold">Messages</h6>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                    <img src="" alt="image" class="profile-pic">
+                                <div class="dropdown-menu new-dropdown shadow">
+
+                                    <div class="user-header">
+                                        <div class="img-user">
+                                            <img src="{{ asset(Auth::user()->profile_pic) }}" alt="Profile picture" />
+                                        </div>
+                                        <!-- img-user -->
+                                        <h6>{{Auth::user()->full_name}}</h6>
+                                        <span>{{Auth::user()->email}}</span>
+                                        <span>{{Auth::user()->role}}</span>
                                     </div>
-                                    <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
-                                    <p class="text-gray mb-0"> 1 Minutes ago </p>
+                                    <!-- user-header -->
+                                    <div class="mb-3 text-center">
+                                        <a href="https://hrm.bdtask-demoserver.com/dashboard/profile" class="color_1 fs-16">Manage your account</a>
                                     </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                    <img src="" alt="image" class="profile-pic">
+                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                        <a href="{{ route('logout') }}" class="bg-smoke text-black rounded-3 px-3 py-2">Sign out</a>
+                                        <button class="btn bg-smoke text-danger rounded-3 px-3 py-2">Close</button>
                                     </div>
-                                    <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
-                                    <p class="text-gray mb-0"> 15 Minutes ago </p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                    <img src="" alt="image" class="profile-pic">
-                                    </div>
-                                    <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
-                                    <p class="text-gray mb-0"> 18 Minutes ago </p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <h6 class="p-3 mb-0 text-center text-primary font-13">4 new messages</h6>
                                 </div>
+                                <!--/.dropdown-menu -->
                             </li>
                         </ul>
-                        <ul class="navbar-nav navbar-nav-right">
-
-                        </ul>
-                        <button class="navbar-toggler navbar-toggler-right d-lg-none" type="button" data-toggle="offcanvas"><span class="mdi mdi-menu"></span></button>
+                        <!--/.navbar nav-->
                     </div>
                 </nav>
-                {{-- END Top Navbar --}}
+                <!--/.navbar-->
+                <div class="body-content">
 
-                <div class="main-panel">
-                    <div class="content-wrapper pb-0"> @yield('page-body') </div>
+                    @yield('page-body')
 
-                    <footer class="footer">
-                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © ima.sirikotiamadrasha.com 2025</span>
-                        </div>
-                        <div>
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"> Developed By: <a href="anis14109@gmail.com" target="_blank">Anisur Rahman</a></span>
-                        </div>
-                    </footer>
                 </div>
-
+                <!--/.body content-->
             </div>
 
-        </div>
+            <!--/.main content-->
+            <footer class="footer-content d-print-none">
+                <div class="footer-text d-flex align-items-center justify-content-between">
+                    <div class="copy">© 2025 IMA, All Rights Reserved.</div>
+                    <div class="credit">Developed by: <a href="mailto:anis14109@gmail.com" class="text-primary">Anisur Rahman</a></div>
+                </div>
+            </footer>
+            <!--/.footer content-->
 
-        <script src="{{ asset('assets/admin/vendors/js/vendor.bundle.base.js') }}"></script>
-        {{-- <script src="{{ asset('assets/admin/vendors/jquery-bar-rating/jquery.barrating.min.js') }}"></script> --}}
-        {{-- <script src="{{ asset('assets/admin/vendors/chart.js/Chart.min.js') }}"></script> --}}
-        {{-- <script src="{{ asset('assets/admin/vendors/flot/jquery.flot.js') }}"></script> --}}
-        {{-- <script src="{{ asset('assets/admin/vendors/flot/jquery.flot.resize.js') }}"></script> --}}
-        {{-- <script src="{{ asset('assets/admin/vendors/flot/jquery.flot.categories.js') }}"></script> --}}
-        {{-- <script src="{{ asset('assets/admin/vendors/flot/jquery.flot.fillbetween.js') }}"></script> --}}
-        {{-- <script src="{{ asset('assets/admin/vendors/flot/jquery.flot.stack.js') }}"></script> --}}
-        <script src="{{ asset('assets/admin/js/off-canvas.js') }}"></script>
-        {{-- <script src="{{ asset('assets/admin/js/hoverable-collapse.js') }}"></script> --}}
-        <script src="{{ asset('assets/admin/js/misc.js') }}"></script>
-        {{-- <script src="{{ asset('assets/admin/js/settings.js') }}"></script> --}}
-        {{-- <script src="{{ asset('assets/admin/js/todolist.js') }}"></script> --}}
-        {{-- <script src="{{ asset('assets/admin/js/dashboard.js') }}"></script> --}}
-    </body>
+        </div>
+        <!--/.wrapper-->
+    </div>
+
+    <script defer src="{{ asset('assets/admin/js/jquery.min.js') }}"></script>
+    <script defer src="{{ asset('assets/admin/js/bootstrap.bundle.min.js') }}"></script>
+    <script defer src="{{ asset('assets/admin/js/metisMenu.min.js') }}"></script>
+    <script defer src="{{ asset('assets/admin/js/sidebar.js') }}"></script>
+</body>
+
 </html>

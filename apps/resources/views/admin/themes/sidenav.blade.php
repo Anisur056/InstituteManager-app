@@ -1,158 +1,168 @@
-<!-- Nav Sidebar -->
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <ul class="nav">
-    <li class="nav-item nav-profile border-bottom">
-        <div class="nav-link flex-column">
-        <div class="nav-profile-image">
-            <img src="{{ asset(Auth::user()->profile_pic) }}" alt="profile" />
-            <!--change to offline or busy as needed-->
-        </div>
-        <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
-            <p class="font-weight-semibold mb-1 mt-2 text-center">{{Auth::user()->full_name}}</p>
-            <p class="text-secondary icon-sm text-center">{{Auth::user()->role}}</p>
-            <a href="{{ route('logout') }}" class="btn btn-danger btn-sm">
-            <i class="mdi mdi-logout-variant"></i>
-            Logout
-            </a>
-        </div>
-    </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('dashboard') }}">
-        <i class="mdi mdi-home menu-icon"></i>
-        <span class="menu-title">Dashboard</span>
+<nav class="sidebar sidebar-bunker">
+    <div class="sidebar-header">
+        <a href="{{ route('dashboard') }}" class="sidebar-brand w-100">
+            <img class="sidebar-logo sidebar_brand_icon w-100" src="{{ asset('assets/admin/img/logo/logo.png') }}" alt="Logo">
+            {{-- <img class="collapsed-logo" src="https://hrm.bdtask-demoserver.com/storage/application/1716900212sidebar-collapsed-logo.png" alt="Logo"> --}}
         </a>
-    </li>
-
-    {{-- Employee Panel --}}
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#employee" aria-expanded="false">
-        <i class="mdi mdi-account-multiple menu-icon"></i>
-        <span class="menu-title">Employees</span>
-        <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="employee">
-        <ul class="nav flex-column sub-menu">
-            <li class="nav-item">
-            <a class="nav-link" href="#">Add Employee</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Employee List</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Ex Employee</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Class Teacher</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Appointment Letter</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">ID Card</a>
-            </li>
-        </ul>
+    </div>
+    <!--/.sidebar header-->
+    <div class="sidebar-body">
+        <div class="search sidebar-form">
+            <div class="search__inner sidebar-search">
+                <input id="search" type="text" class="form-control search__text" placeholder="Menu Search..." autocomplete="off">
+            </div>
         </div>
-    </li>
+        <nav class="sidebar-nav">
+            <ul class="metismenu">
+                <li class="mm-active">
+                    <a href="{{ route('dashboard') }}">
+                        <i class="fa fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
 
-    {{-- Student Panel --}}
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#student" aria-expanded="false">
-        <i class="mdi mdi-account-network menu-icon"></i>
-        <span class="menu-title">Students</span>
-        <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="student">
-        <ul class="nav flex-column sub-menu">
-            <li class="nav-item">
-            <a class="nav-link" href="#">Student Admission</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Student List</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Ex Student</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Take Fees</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">ID Card</a>
-            </li>
-        </ul>
-        </div>
-    </li>
+                {{-- Employee Panel --}}
+                <li class="">
+                    <a class="has-arrow material-ripple" href="#">
+                        <i class="fa fa-user"></i>
+                        <span>Employees</span>
+                    </a>
+                    <ul class="nav-second-level ">
+                        <li class="">
+                            <a class="dropdown-item" href="">Add Employee</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Employee List</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Ex Employee</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Class Teacher</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Appointment Letter</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">ID Card</a>
+                        </li>
+                    </ul>
+                </li>
 
-    {{-- Attendance Panel --}}
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#attendance" aria-expanded="false">
-        <i class="mdi mdi-format-list-bulleted-type menu-icon"></i>
-        <span class="menu-title">Attendance</span>
-        <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="attendance">
-        <ul class="nav flex-column sub-menu">
+                {{-- Student Panel --}}
+                <li class="">
+                    <a class="has-arrow material-ripple" href="#">
+                        <i class="fa fa-users"></i>
+                        <span> Students</span>
+                    </a>
+                    <ul class="nav-second-level ">
+                        <li class="">
+                            <a class="dropdown-item" href="">Student Admission</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Student List</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Ex Student</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Take Fees</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">ID Card</a>
+                        </li>
+                    </ul>
+                </li>
 
-            <span class="pl-1 text-gray">Employees</span>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Take Attendance</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Attendance List</a>
-            </li>
+                {{-- Attendance Panel --}}
+                <li class="">
+                    <a class="has-arrow material-ripple" href="#">
+                        <i class="fa fa-hand-paper-o"></i>
+                        <span> Attendance</span>
+                    </a>
+                    <ul class="nav-second-level ">
+                        <span class="ms-5">Employees</span>
+                        <li class="">
+                            <a class="dropdown-item" href="">Take Attendance</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Attendance List</a>
+                        </li>
 
-            <span class="pl-1 text-gray">Students</span>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Take Attendance</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Attendance List</a>
-            </li>
+                        <span class="ms-5">Students</span>
+                        <li class="">
+                            <a class="dropdown-item" href="">Take Attendance</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Take Attendance</a>
+                        </li>
 
-        </ul>
-        </div>
-    </li>
+                    </ul>
+                </li>
 
-    {{-- Examination Panel --}}
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#examination" aria-expanded="false">
-        <i class="mdi mdi-school menu-icon"></i>
-        <span class="menu-title">Examination</span>
-        <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="examination">
-        <ul class="nav flex-column sub-menu">
-            <li class="nav-item">
-            <a class="nav-link" href="#">Download Admit Card</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Seat Sticker</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Attendance Sheet</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Result Publish</a>
-            </li>
-        </ul>
-        </div>
-    </li>
+                {{-- Examination Panel --}}
+                <li class="">
+                    <a class="has-arrow material-ripple" href="#">
+                        <i class="fa fa-graduation-cap"></i>
+                        <span> Examination</span>
+                    </a>
+                    <ul class="nav-second-level ">
+                        <li class="">
+                            <a class="dropdown-item" href="">Admit Card</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Seat Sticker</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Attendance Sheet</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Result Publish</a>
+                        </li>
+                    </ul>
+                </li>
 
-    {{-- Settings Panel --}}
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false">
-        <i class="mdi mdi-settings menu-icon"></i>
-        <span class="menu-title">Settings</span>
-        <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="settings">
-        <ul class="nav flex-column sub-menu">
-            <li class="nav-item">
-            <a class="nav-link" href="{{ route('shifts.index') }}">Shifts Management</a>
-            </li>
-        </ul>
-        </div>
-    </li>
+                {{-- Weside Panel --}}
+                <li class="">
+                    <a class="has-arrow material-ripple" href="#">
+                        <i class="fa fa-globe"></i>
+                        <span> Website Settings</span>
+                    </a>
+                    <ul class="nav-second-level ">
+                        <li class="">
+                            <a class="dropdown-item" href="">Notice</a>
+                        </li>
+                    </ul>
+                </li>
 
-    </ul>
+                {{-- Settings Panel --}}
+                <li class="">
+                    <a class="has-arrow material-ripple" href="#">
+                        <i class="fa fa-cogs"></i>
+                        <span> Settings</span>
+                    </a>
+                    <ul class="nav-second-level ">
+                        <li class="">
+                            <a class="dropdown-item" href="">Institute List</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Academic Year</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Class Management</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="{{ route('shifts.index') }}">Shift Management</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Section Management</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </nav>
+    </div>
+    <!-- sidebar-body -->
 </nav>
-<!-- END Nav Sidebar -->

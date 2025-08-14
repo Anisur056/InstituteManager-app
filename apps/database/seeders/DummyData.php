@@ -22,7 +22,7 @@ class DummyData extends Seeder
             'email' => 'anis14109@gmail.com',
             'role' => 'admin',
             'password' => '27272',
-            'profile_pic' => 'assets/admin/images/profile/anis.jpg',
+            'profile_pic' => 'assets/admin/img/users/anis.jpg',
             ]
         );
 
