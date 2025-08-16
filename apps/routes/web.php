@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\IsUserAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TblShiftController;
+use App\Http\Controllers\TblStudentController;
 use App\Http\Controllers\LoginFormController;
 
 Route::get('/', function () {
@@ -16,7 +18,10 @@ Route::get('/logout',[LoginFormController::class,'logout'])->name('logout');
 
 
 Route::middleware(["auth", IsUserAdmin::class])->group(function(){
-    Route::get('/dashboard',function () { return view('admin.dashboard'); })->name('dashboard');
-    
-    Route::resource('/shifts',TblShiftController::class);
+    Route::get('/dashboard', [DashboardController::class, 'all_counts'])->name('dashboard');
+    Route::resource('/students', TblStudentController::class);
+    Route::resource('/shifts', TblShiftController::class);
+
+    Route::get('/admit-card-list',[TblStudentController::class, 'admit_card_list'])->name('admit.card.list');
+    Route::get('/admit-card-print/{id?}',[TblStudentController::class, 'admit_card_print'])->name('admit.card.print');
 });

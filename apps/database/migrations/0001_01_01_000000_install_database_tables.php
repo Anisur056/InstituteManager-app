@@ -71,6 +71,14 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('tbl_exam_terms', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_en')->nullable();
+            $table->string('name_bn')->nullable();
+            $table->integer('display_order')->nullable();
+            $table->timestamps();
+        });
+
         Schema::create('tbl_students', function (Blueprint $table) {
             $table->id();
             $table->string('status')->nullable();
@@ -135,6 +143,8 @@ return new class extends Migration
             $table->string('previous_institute_address')->nullable();
             $table->string('previous_institute_tc_number')->nullable();
             $table->string('previous_institute_tc_date')->nullable();
+
+            $table->text('remark')->nullable();
 
             $table->timestamps();
         });
@@ -209,6 +219,8 @@ return new class extends Migration
         Schema::dropIfExists('tbl_classes');
         Schema::dropIfExists('tbl_shifts');
         Schema::dropIfExists('tbl_sections');
+        Schema::dropIfExists('tbl_exam_terms');
         Schema::dropIfExists('tbl_students');
+        Schema::dropIfExists('tbl_employees');
     }
 };

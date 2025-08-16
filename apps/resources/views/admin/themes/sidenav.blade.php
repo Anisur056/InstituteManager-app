@@ -60,7 +60,7 @@
                             <a class="dropdown-item" href="">Student Admission</a>
                         </li>
                         <li class="">
-                            <a class="dropdown-item" href="">Student List</a>
+                            <a class="dropdown-item" href="{{ route('students.index') }}">Student List</a>
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="">Ex Student</a>
@@ -108,7 +108,7 @@
                     </a>
                     <ul class="nav-second-level ">
                         <li class="">
-                            <a class="dropdown-item" href="">Admit Card</a>
+                            <a class="dropdown-item" href="{{ route('admit.card.list') }}">Admit Card</a>
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="">Seat Sticker</a>

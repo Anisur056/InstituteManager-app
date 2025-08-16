@@ -13,41 +13,51 @@
                             <div class="d-flex gap-2 align-items-center justify-content-between">
                                 <div>
                                     <p class="fs-16 fw-medium mb-1">
-                                        Total employee
-                                    </p>
-                                    <h3 class="mb-0 fw-bold">30</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card justify-content-center h-100 p-4 rounded-15">
-                            <div class="d-flex gap-2 align-items-center justify-content-between">
-                                <div>
-                                    <p class="fs-16 fw-medium mb-1">
-                                        Today presents
-                                    </p>
-                                    <h3 class="mb-0 fw-bold">2</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card justify-content-center h-100 p-4 rounded-15">
-                            <div class="d-flex gap-2 align-items-center justify-content-between">
-                                <div>
-                                    <p class="fs-16 fw-medium mb-1">
-                                        Today absents
-                                    </p>
-                                    <h3 class="mb-0 fw-bold">21</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card justify-content-center h-100 p-4 rounded-15">
-                            <div class="d-flex gap-2 align-items-center justify-content-between">
-                                <div>
-                                    <p class="fs-16 fw-medium mb-1">
-                                        Today leave
+                                        Total Active Students
                                     </p>
                                     <h3 class="mb-0 fw-bold">
-                        7
-                    </h3>
+                                        {{ $active }}
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card justify-content-center h-100 p-4 rounded-15">
+                            <div class="d-flex gap-2 align-items-center justify-content-between">
+                                <div>
+                                    <p class="fs-16 fw-medium mb-1">
+                                        Total Inactive Students
+                                    </p>
+                                    <h3 class="mb-0 fw-bold">{{ $in_active }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card justify-content-center h-100 p-4 rounded-15">
+                            <div class="d-flex gap-2 align-items-center justify-content-between">
+                                <div>
+                                    <p class="fs-16 fw-medium mb-1">
+                                        Total Leave
+                                    </p>
+                                    <h3 class="mb-0 fw-bold">{{ $leave }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card justify-content-center h-100 p-4 rounded-15">
+                            <div class="d-flex gap-2 align-items-center justify-content-between">
+                                <div>
+                                    <p class="fs-16 fw-medium mb-1">
+                                        Total Transfer
+                                    </p>
+                                    <h3 class="mb-0 fw-bold">{{ $tc }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card justify-content-center h-100 p-4 rounded-15">
+                            <div class="d-flex gap-2 align-items-center justify-content-between">
+                                <div>
+                                    <p class="fs-16 fw-medium mb-1">
+                                        Total Board Exam Completed
+                                    </p>
+                                    <h3 class="mb-0 fw-bold">{{ $board_exam_complete }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -56,21 +66,17 @@
                 {{-- <div class="col-lg-7 col-xl-5 col-xxl-6">
                     <div class="card h-100 rounded-15">
                         <div class="card-header d-flex pb-2 align-items-center justify-content-between">
-                            <h5 class="m-0 fs-18 fw-semi-bold">
-                Daily attendance statistic (department wise)
-            </h5>
+                            <h5 class="m-0 fs-18 fw-semi-bold">Daily attendance statistic (department wise)</h5>
                         </div>
                         <div class="card-body pt-2">
                             <div id="attendance"></div>
                         </div>
                     </div>
                 </div> --}}
-                <div class="col-lg-5 col-xl-4">
+                {{-- <div class="col-lg-5 col-xl-4">
                     <div class="card h-100 rounded-15">
                         <div class="card-header align-items-center">
-                            <h5 class="m-0 fs-18 fw-semi-bold text-color-1">
-                Leave Application
-            </h5>
+                            <h5 class="m-0 fs-18 fw-semi-bold text-color-1">Leave Application</h5>
                         </div>
                         <div class="card-body p-0">
                             <div class="d-flex justify-content-between align-items-center border-bottom px-4 py-3">
@@ -159,23 +165,21 @@
                             </div>
                             <div class="py-3">
                                 <a href="https://hrm.bdtask-demoserver.com/hr/leaves/index" class="d-flex gap-1 align-items-center justify-content-center lh-lg fs-14 fw-semi-bold text-color-3">
-                    See All Request
-                    <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 4H10M10 4L6.75 1M10 4L6.75 7" stroke="#00B074" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
+                                    See All Request
+                                    <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 4H10M10 4L6.75 1M10 4L6.75 7" stroke="#00B074" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-5 col-xl-4">
+                </div> --}}
+                {{-- <div class="col-lg-5 col-xl-4">
                     <div class="card h-100 rounded-15">
                         <div class="card-header align-items-center">
-                            <h5 class="m-0 fs-18 fw-semi-bold text-color-1">
-                New recruitment
-            </h5>
+                            <h5 class="m-0 fs-18 fw-semi-bold text-color-1">New recruitment</h5>
                         </div>
                         <div class="card-body p-0">
                             <div class="d-flex justify-content-between align-items-center border-bottom px-4 py-3">
@@ -243,12 +247,12 @@
                             </div>
                             <div class="py-3">
                                 <a href="https://hrm.bdtask-demoserver.com/hr/selection" class="d-flex gap-1 align-items-center justify-content-center lh-lg fs-14 fw-semi-bold">
-                    See More
-                </a>
+                                    See More
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

@@ -24,14 +24,14 @@ class TblShiftController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'shift_name_en' => 'required|string',
-            'shift_name_bn' => 'string',
+            'name_en' => 'required|string',
+            'name_bn' => 'string',
             'display_order' => 'numeric',
         ]);
 
         $data_insert = Tbl_shift::create([
-            'shift_name_en' => $request->shift_name_en,
-            'shift_name_bn' => $request->shift_name_bn,
+            'name_en' => $request->name_en,
+            'name_bn' => $request->name_bn,
             'display_order' => $request->display_order,
         ]);
 
@@ -58,15 +58,15 @@ class TblShiftController extends Controller
     public function update(Request $request, String $id)
     {
         $request->validate([
-            'shift_name_en' => 'required|string',
-            'shift_name_bn' => 'string',
+            'name_en' => 'required|string',
+            'name_bn' => 'string',
             'display_order' => 'numeric',
         ]);
 
         $data_update = Tbl_shift::where('id',$id)
                 ->update([
-            'shift_name_en' => $request->shift_name_en,
-            'shift_name_bn' => $request->shift_name_bn,
+            'name_en' => $request->name_en,
+            'name_bn' => $request->name_bn,
             'display_order' => $request->display_order,
         ]);
 

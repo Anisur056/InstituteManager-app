@@ -12,7 +12,8 @@ class TblStudentController extends Controller
      */
     public function index()
     {
-        //
+        $records = Tbl_student::orderBy('id','desc')->paginate(10);
+        return view('admin.students_views.student-all',compact('records'));
     }
 
     /**
@@ -62,4 +63,17 @@ class TblStudentController extends Controller
     {
         //
     }
+
+    public function admit_card_list()
+    {
+        $records = Tbl_student::orderBy('id','desc')->paginate(10);
+        return view('admin.admit_card.admit-card-list',compact('records'));
+    }
+
+    public function admit_card_print(string $id)
+    {
+        $record = Tbl_student::find($id);
+        return view('admin.admit_card.admit-card-print',compact('record'));
+    }
+
 }
