@@ -19,9 +19,15 @@ Route::get('/logout',[LoginFormController::class,'logout'])->name('logout');
 
 Route::middleware(["auth", IsUserAdmin::class])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'all_counts'])->name('dashboard');
+
     Route::resource('/students', TblStudentController::class);
+    Route::get('/students/class/{class?}', [TblStudentController::class, 'short_by_class'])->name('class');
+
+
+    Route::get('/students/id-card/print/{id?}',[TblStudentController::class, 'id_card_print'])->name('id.card.print');
+    Route::get('/students/admit-card/print/{id?}',[TblStudentController::class, 'admit_card_print'])->name('admit.card.print');
+    Route::get('/students/seat-sticker/print/{id?}',[TblStudentController::class, 'seat_sticker_print'])->name('seat.sticker.print');
+
     Route::resource('/shifts', TblShiftController::class);
 
-    Route::get('/admit-card-list',[TblStudentController::class, 'admit_card_list'])->name('admit.card.list');
-    Route::get('/admit-card-print/{id?}',[TblStudentController::class, 'admit_card_print'])->name('admit.card.print');
 });

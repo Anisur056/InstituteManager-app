@@ -7,73 +7,98 @@ use Illuminate\Http\Request;
 
 class TblStudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        $records = Tbl_student::orderBy('id','desc')->paginate(10);
-        return view('admin.students_views.student-all',compact('records'));
+        $records = Tbl_student::limit(10)->orderBy('id','desc')->get();
+        return view('admin.students-views.student-all',compact('records'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.students-views.student-add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name_en' => 'required|string',
+        ]);
+
+        $data_insert = Tbl_student::create([
+            'name_en' => $request->name_en,
+        ]);
+
+        if($data_insert){
+            return redirect()->route('students.index');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Tbl_student $tbl_student)
+
+    public function show(String $tbl_shift)
     {
-        //
+        // $user = User::find($user);
+        // return view('users-show',compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Tbl_student $tbl_student)
+
+    public function edit(String $id)
     {
-        //
+        $data = Tbl_student::find($id);
+        // return view('admin.shifts_views.shifts-edit',compact('data'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Tbl_student $tbl_student)
+
+    public function update(Request $request, String $id)
     {
-        //
+        $request->validate([
+            'name_en' => 'required|string',
+            'name_bn' => 'string',
+            'display_order' => 'numeric',
+        ]);
+
+        $data_update = Tbl_student::where('id',$id)
+                ->update([
+            'name_en' => $request->name_en,
+            'name_bn' => $request->name_bn,
+            'display_order' => $request->display_order,
+        ]);
+
+        // return redirect()->route('shifts.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Tbl_student $tbl_student)
-    {
-        //
-    }
 
-    public function admit_card_list()
+    public function destroy(String $id)
     {
-        $records = Tbl_student::orderBy('id','desc')->paginate(10);
-        return view('admin.admit_card.admit-card-list',compact('records'));
+        $data_delete = Tbl_student::destroy($id);
+
+        if($data_delete){
+            return redirect()->route('students.index');
+        }
+    }
+    
+    public function short_by_class(string $class)
+    {
+        $records = Tbl_student::where('class', $class)->get();
+        return view('admin.students-views.student-all',compact('records'));
     }
 
     public function admit_card_print(string $id)
     {
         $record = Tbl_student::find($id);
-        return view('admin.admit_card.admit-card-print',compact('record'));
+        return view('admin.students-views.admit-card.print',compact('record'));
     }
 
+    public function seat_sticker_print(string $id)
+    {
+        $record = Tbl_student::find($id);
+        return view('admin.students-views.seat-sticker.print',compact('record'));
+    }
+
+    public function id_card_print(string $id)
+    {
+        $record = Tbl_student::find($id);
+        return view('admin.students-views.id-card.print',compact('record'));
+    }
 }

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tbl_student extends Model
 {
-    //
+    protected $guarded = [];
 }

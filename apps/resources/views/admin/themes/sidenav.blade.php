@@ -57,7 +57,7 @@
                     </a>
                     <ul class="nav-second-level ">
                         <li class="">
-                            <a class="dropdown-item" href="">Student Admission</a>
+                            <a class="dropdown-item" href="">New Admission</a>
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="{{ route('students.index') }}">Student List</a>
@@ -70,6 +70,9 @@
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="">ID Card</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Seat Sticker</a>
                         </li>
                     </ul>
                 </li>
@@ -107,12 +110,6 @@
                         <span> Examination</span>
                     </a>
                     <ul class="nav-second-level ">
-                        <li class="">
-                            <a class="dropdown-item" href="{{ route('admit.card.list') }}">Admit Card</a>
-                        </li>
-                        <li class="">
-                            <a class="dropdown-item" href="">Seat Sticker</a>
-                        </li>
                         <li class="">
                             <a class="dropdown-item" href="">Attendance Sheet</a>
                         </li>
