@@ -1,6 +1,17 @@
 @extends('admin.themes.main')
 
-@section('page-title') Shifts Management @endsection
+@section('page-title') Students Management @endsection
+
+@section('css')
+    <!-- Datatable -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/dataTables.dataTables.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/buttons.dataTables.css') }}" />
+
+
+
+    <!-- Datatable -->
+@endsection
+
 
 @section('page-body')
 
@@ -62,43 +73,63 @@
                     Students Records
                 </h5>
             </div>
-            <div class="card-body p-0">
+            <div class="card-body p-3">
 
-                @foreach ($records as $data)
-                    <div class="d-flex justify-content-between align-items-center border-bottom px-4 py-3">
-                        <div class="d-flex align-items-start gap-3">
-                            <img class="rounded-3 dashboard-user-img" src="{{ asset($data->profile_pic) }}" alt="">
-                            <div>
-                                <p class="mb-2 lh-1 fs-18 fw-semi-bold text-color-1">
-                                    {{$data->name_en}}
-                                </p>
-                                <p class="mb-2 lh-1 fs-14 fw-normal">
+                <table id="studentTable" class="table table-sm table-striped table-bordered mobileResponsiveTable">
+                <thead>
+                    <tr>
+                    <th>Pic</th>
+                    <th>Roll</th>
+                    <th>Class</th>
+                    <th>Name</th>
+                    <th>নাম</th>
+                    <th>Institute Name</th>
+                    <th>Father Contact</th>
+                    <th>Mother Contact</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
 
-                                </p>
-                                <p class="mb-0 lh-1 fs-14 fw-medium">
-                                    {{$data->name_bn}}
-                                </p>
-                                <p class="mb-0 lh-1 fs-12 fw-medium">
-                                    {{$data->institute_name}}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row">
-                            <a target="_blank" href="{{ route('id.card.print',$data->id) }}" class="btn btn-primary rounded-3 mb-2 ms-2"><i class="fa fa-print me-2"></i>ID Card</a>
-                            <a target="_blank" href="{{ route('admit.card.print',$data->id) }}" class="btn btn-primary rounded-3 mb-2 ms-2"><i class="fa fa-print me-2"></i>Admit Card</a>
-                            <a target="_blank" href="{{ route('seat.sticker.print',$data->id) }}" class="btn btn-primary rounded-3 mb-2 ms-2"><i class="fa fa-print me-2"></i>Seat Sticker</a>
-                            <a href="{{ route('students.show',$data->id) }}" class="btn btn-primary rounded-3 mb-2 ms-2"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                            <a href="{{ route('students.edit',$data->id) }}" class="btn btn-success rounded-3 mb-2 ms-2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                            <form action="{{ route('students.destroy',$data->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger rounded-3 mb-2 ms-2">
-                                    <i class="fa fa-arrows"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                @endforeach
+                <tbody>
+                    @foreach ($records as $data)
+                        <tr>
+                        <td data-label="Pic: ">
+                            <img class="rounded-3" style="width: 100px;" src="{{ asset($data->profile_pic) }}">
+                        </td>
+                        <td data-label="Roll: " class="text-start">{{$data->roll}}</td>
+                        <td data-label="Class: ">{{$data->class}}</td>
+                        <td data-label="Name: " >{{$data->name_en}}</td>
+                        <td data-label="নাম: " >{{$data->name_bn}}</td>
+                        <td data-label="Institute Name: ">{{$data->institute_name}}</td>
+                        <td data-label="Father Contact: ">
+                            <a class="text-decoration-none text-success font-weight-bold" href="tel:{{$data->father_contact}}">
+                                {{$data->father_contact}}
+                            </a>
+                        </td>
+                        <td data-label="Father Contact: ">
+                            <a class="text-decoration-none text-success font-weight-bold" href="tel:{{$data->mother_contact}}">
+                                {{$data->mother_contact}}
+                            </a>
+                        </td>
+                        <td data-label="Action: ">
+                            <a class="btn btn-success mb-1" href="{{ route('students.show',$data->id) }}">
+                                <i class="fa fa-user me-1"></i>
+                                Profile
+                            </a>
+                            <a class="btn btn-warning mb-1" href="{{ route('students.edit',$data->id) }}">
+                                <i class="fa fa-pencil-square-o  me-1"></i>
+                                Update
+                            </a>
+                            <a class="btn btn-danger mb-1" href="{{ route('students.destroy',$data->id) }}">
+                                <i class="fa fa-exchange me-1"></i>
+                                Move
+                            </a>
+                        </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+
+                </table>
 
                 <div class="p-4">
                     {{-- {{ $records->links('pagination::bootstrap-5') }} --}}
@@ -107,5 +138,51 @@
         </div>
     </div>
 
+@endsection
+
+@section('js')
+
+    <!-- Datatable -->
+    <script >
+      const table = new DataTable('#studentTable', {
+          lengthMenu: [
+              [-1, 10, 25, 50],
+              ['All',10, 25, 50]
+          ],
+          order: [[0, 'asc']],
+          scrollX: true,
+          layout: {
+            topStart: {
+                buttons: ['copy', 'csv', 'excel', 'pdf',
+                {
+                    text: 'JSON',
+                    action: function (e, dt, button, config) {
+                        var data = dt.buttons.exportData();
+
+                        DataTable.fileSave(new Blob([JSON.stringify(data)]), 'Export.json');
+                    }
+                },
+                {
+                  extend: 'print',
+                  exportOptions: {
+                    columns: ':visible'
+                  },
+                  autoPrint: false
+                },
+                {
+                    extend: 'colvis',
+                    collectionLayout: 'fixed columns',
+                    popoverTitle: 'Column visibility control',
+                    postfixButtons: ['colvisRestore']
+                },
+                ]
+            },
+            topEnd: 'search',
+            bottomStart: 'pageLength',
+            bottomEnd: 'info'
+          }
+      });
+    </script>
+    <!-- Datatable -->
 @endsection
 

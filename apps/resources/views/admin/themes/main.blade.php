@@ -20,6 +20,8 @@
         integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    @yield('css')
+
 
 </head>
 
@@ -111,10 +113,26 @@
         <!--/.wrapper-->
     </div>
 
-    <script defer src="{{ asset('assets/admin/js/jquery.min.js') }}"></script>
-    <script defer src="{{ asset('assets/admin/js/bootstrap.bundle.min.js') }}"></script>
-    <script defer src="{{ asset('assets/admin/js/metisMenu.min.js') }}"></script>
-    <script defer src="{{ asset('assets/admin/js/sidebar.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/sidebar.js') }}"></script>
+
+
+    <!-- Datatable -->
+    <script src="{{ asset('assets/admin/js/datatable/dataTables.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatable/dataTables.buttons.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatable/buttons.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatable/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatable/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatable/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatable/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatable/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatable/buttons.print.min.js') }}"></script>
+    <!-- Datatable -->
+
+    @yield('js')
+
 </body>
 
 </html>

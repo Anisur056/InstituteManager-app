@@ -71,13 +71,13 @@ class TblStudentController extends Controller
 
     public function destroy(String $id)
     {
-        $data_delete = Tbl_student::destroy($id);
+        // $data_delete = Tbl_student::destroy($id);
 
-        if($data_delete){
-            return redirect()->route('students.index');
-        }
+        // if($data_delete){
+        //     return redirect()->route('students.index');
+        // }
     }
-    
+
     public function short_by_class(string $class)
     {
         $records = Tbl_student::where('class', $class)->get();

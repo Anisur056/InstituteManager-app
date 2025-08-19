@@ -153,9 +153,20 @@ body {
     font-size: 15px !important;
 }
 
-@font-face {
-    font-family: DS-DIGI;
-    src: url(../fonts/ds_digital/DS-DIGI.TTF);
+
+@media (max-width: 650px){
+    .mobileResponsiveTable thead{
+        display: none;
+    }
+    .mobileResponsiveTable td{
+        display: grid;
+        gap: 5px;
+    }
+    
+    .mobileResponsiveTable td:before{
+        content: attr(data-label);
+        text-align: left;
+    }
 }
 
 ::-moz-selection {
