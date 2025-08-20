@@ -184,7 +184,7 @@ class DummyData extends Seeder
         $data = collect([
             [
             'name_en' => 'Day Shift',
-            'name_bn' => 'দিনের শিফট/বিদা শাখা',
+            'name_bn' => 'দিনের শিফট/ দিবা শাখা',
             'display_order' => 1,
             'created_at' => now(),
             'updated_at' => now(),

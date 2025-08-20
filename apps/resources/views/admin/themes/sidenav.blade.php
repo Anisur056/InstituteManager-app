@@ -140,7 +140,7 @@
                     </a>
                     <ul class="nav-second-level ">
                         <li class="">
-                            <a class="dropdown-item" href="">Institute List</a>
+                            <a class="dropdown-item" href="{{ route('institutes.index') }}">Institute List</a>
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="">Academic Year</a>
@@ -153,6 +153,9 @@
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="">Section Management</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Exam Terms</a>
                         </li>
                     </ul>
                 </li>

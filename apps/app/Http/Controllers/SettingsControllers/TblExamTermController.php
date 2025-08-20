@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+// important! if conterller in subfolder.
+namespace App\Http\Controllers\SettingsControllers;
+use App\Http\Controllers\Controller;
+//
 
-use App\Models\Tbl_institute;
+use App\Models\Tbl_exam_term;
 use Illuminate\Http\Request;
 
-class TblInstituteController extends Controller
+class TblExamTermController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +37,7 @@ class TblInstituteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tbl_institute $tbl_institute)
+    public function show(Tbl_exam_term $tbl_exam_term)
     {
         //
     }
@@ -42,7 +45,7 @@ class TblInstituteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tbl_institute $tbl_institute)
+    public function edit(Tbl_exam_term $tbl_exam_term)
     {
         //
     }
@@ -50,7 +53,7 @@ class TblInstituteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tbl_institute $tbl_institute)
+    public function update(Request $request, Tbl_exam_term $tbl_exam_term)
     {
         //
     }
@@ -58,7 +61,7 @@ class TblInstituteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tbl_institute $tbl_institute)
+    public function destroy(Tbl_exam_term $tbl_exam_term)
     {
         //
     }

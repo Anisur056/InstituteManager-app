@@ -4,14 +4,6 @@
     font-family: 'SolaimanLipi', Arial, sans-serif !important;
 }
 
-/* @font-face {
-    font-family: 'LiSirajeeSheikhUnicode';
-    src: url('{{ asset('assets/fonts/LiSirajeeSheikhPlainUnicode-Regular.ttf') }}');
-
-}
-h1 {
-    font-family: 'LiSirajeeSheikhUnicode', serif;
-} */
 @media screen and (min-width: 921px) {
     .logo{
         height:80px;width:500px;

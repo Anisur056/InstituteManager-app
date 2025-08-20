@@ -1,21 +1,29 @@
 @extends('admin.themes.main')
 
-@section('page-title') IMA | Dashboard @endsection
+@section('page-title') Add Shifts @endsection
 
 @section('page-body')
 
-    <div class="card p-3 mb-3">
-        <span>Update Shifts</span>
-    </div>
+    @include('admin.settings.links')
 
-    <div class="card">
-        <div class="card-body">
-            <form action="{{ route('shifts.update',$data->id) }}" method="post" enctype="multipart/form-data">
+    <div class="col-12">
+        <div class="card h-100 rounded-15">
+            <div class="card-header d-flex gap-3 align-items-center justify-content-between">
+                <h5 class="m-0 fs-18 fw-semi-bold">
+                    Add Shift
+                </h5>
+                <a href="{{ route('shifts.index') }}"
+                    class="btn btn-success d-flex align-items-center fs-15 gap-2 px-3 py-2 rounded-3">
+                    <i class="fa fa-chevron-left"></i>
+                    <span>Back</span>
+                </a>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('shifts.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
                 <div class="mb-3">
                     <label class="form-label">Shift Name</label>
-                    <input  value="{{ $data->name_en }}"
+                    <input  value="{{ old('name_en') }}"
                             type="text"
                             class="form-control @error('name_en') is-invalid @enderror"
                             name="name_en">
@@ -23,7 +31,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">শিফটের নাম</label>
-                    <input  value="{{ $data->name_bn }}"
+                    <input  value="{{ old('name_bn') }}"
                             type="text"
                             class="form-control @error('name_bn') is-invalid @enderror"
                             name="name_bn">
@@ -31,7 +39,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Display Order</label>
-                    <input  value="{{ $data->display_order }}"
+                    <input  value="{{ old('display_order') }}"
                             type="number"
                             class="form-control @error('display_order') is-invalid @enderror"
                             name="display_order">
@@ -42,7 +50,7 @@
                     <button type="submit" class="btn btn-success">Save</button>
                 </div>
             </form>
-            <a href="{{ route('shifts.index') }}" class="btn btn-warning">< Back</a>
+            </div>
         </div>
     </div>
 

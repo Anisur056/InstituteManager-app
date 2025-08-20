@@ -6,9 +6,6 @@
     <!-- Datatable -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/dataTables.dataTables.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/buttons.dataTables.css') }}" />
-
-
-
     <!-- Datatable -->
 @endsection
 
@@ -73,9 +70,9 @@
                     Students Records
                 </h5>
             </div>
-            <div class="card-body p-3">
+            <div class="card-body">
 
-                <table id="studentTable" class="table table-sm table-striped table-bordered mobileResponsiveTable">
+                <table id="studentTable" class="table table-striped table-bordered mobileResponsiveTable">
                 <thead>
                     <tr>
                     <th>Pic</th>
@@ -141,7 +138,6 @@
 @endsection
 
 @section('js')
-
     <!-- Datatable -->
     <script >
       const table = new DataTable('#studentTable', {

@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+// important! if conterller in subfolder.
+namespace App\Http\Controllers\SettingsControllers;
+use App\Http\Controllers\Controller;
+//
 
-use App\Models\Tbl_academic_year;
+use App\Models\Tbl_classe;
 use Illuminate\Http\Request;
 
-class TblAcademicYearController extends Controller
+class TblClasseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +37,7 @@ class TblAcademicYearController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tbl_academic_year $tbl_academic_year)
+    public function show(Tbl_classe $tbl_classe)
     {
         //
     }
@@ -42,7 +45,7 @@ class TblAcademicYearController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tbl_academic_year $tbl_academic_year)
+    public function edit(Tbl_classe $tbl_classe)
     {
         //
     }
@@ -50,7 +53,7 @@ class TblAcademicYearController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tbl_academic_year $tbl_academic_year)
+    public function update(Request $request, Tbl_classe $tbl_classe)
     {
         //
     }
@@ -58,7 +61,7 @@ class TblAcademicYearController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tbl_academic_year $tbl_academic_year)
+    public function destroy(Tbl_classe $tbl_classe)
     {
         //
     }

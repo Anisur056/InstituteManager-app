@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+// important! if conterller in subfolder.
+namespace App\Http\Controllers\SettingsControllers;
+use App\Http\Controllers\Controller;
+//
 
-use App\Models\Tbl_classe;
+use App\Models\Tbl_section;
 use Illuminate\Http\Request;
 
-class TblClasseController extends Controller
+class TblSectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +37,7 @@ class TblClasseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tbl_classe $tbl_classe)
+    public function show(Tbl_section $tbl_section)
     {
         //
     }
@@ -42,7 +45,7 @@ class TblClasseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tbl_classe $tbl_classe)
+    public function edit(Tbl_section $tbl_section)
     {
         //
     }
@@ -50,7 +53,7 @@ class TblClasseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tbl_classe $tbl_classe)
+    public function update(Request $request, Tbl_section $tbl_section)
     {
         //
     }
@@ -58,7 +61,7 @@ class TblClasseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tbl_classe $tbl_classe)
+    public function destroy(Tbl_section $tbl_section)
     {
         //
     }

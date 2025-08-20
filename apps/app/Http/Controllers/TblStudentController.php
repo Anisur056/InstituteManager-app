@@ -11,12 +11,12 @@ class TblStudentController extends Controller
     public function index()
     {
         $records = Tbl_student::limit(10)->orderBy('id','desc')->get();
-        return view('admin.students-views.student-all',compact('records'));
+        return view('admin/students-views/students/student-all',compact('records'));
     }
 
     public function create()
     {
-        return view('admin.students-views.student-add');
+        return view('admin/students-views/students/student-add');
     }
 
 
@@ -46,7 +46,7 @@ class TblStudentController extends Controller
     public function edit(String $id)
     {
         $data = Tbl_student::find($id);
-        // return view('admin.shifts_views.shifts-edit',compact('data'));
+        // return view('admin/students-views/students/...',compact('data'));
     }
 
 
@@ -81,24 +81,24 @@ class TblStudentController extends Controller
     public function short_by_class(string $class)
     {
         $records = Tbl_student::where('class', $class)->get();
-        return view('admin.students-views.student-all',compact('records'));
+        return view('admin/students-views/students/student-all',compact('records'));
     }
 
     public function admit_card_print(string $id)
     {
         $record = Tbl_student::find($id);
-        return view('admin.students-views.admit-card.print',compact('record'));
+        return view('admin/students-views/admit-card/print',compact('record'));
     }
 
     public function seat_sticker_print(string $id)
     {
         $record = Tbl_student::find($id);
-        return view('admin.students-views.seat-sticker.print',compact('record'));
+        return view('admin/students-views/seat-sticker/print',compact('record'));
     }
 
     public function id_card_print(string $id)
     {
         $record = Tbl_student::find($id);
-        return view('admin.students-views.id-card.print',compact('record'));
+        return view('admin/students-views/id-card/print',compact('record'));
     }
 }

@@ -1,6 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+// important! if conterller in subfolder.
+namespace App\Http\Controllers\SettingsControllers;
+use App\Http\Controllers\Controller;
+//
 
 use App\Models\Tbl_shift;
 use Illuminate\Http\Request;
@@ -11,13 +14,13 @@ class TblShiftController extends Controller
     public function index()
     {
         $records = Tbl_shift::orderBy('id','asc')->get();
-        return view('admin.shifts_views.shifts-all',compact('records'));
+        return view('admin/settings/shifts-views/index',compact('records'));
     }
 
 
     public function create()
     {
-        return view('admin.shifts_views.shifts-add');
+        return view('admin/settings/shifts-views/create');
     }
 
 
@@ -41,17 +44,16 @@ class TblShiftController extends Controller
     }
 
 
-    // public function show(String $tbl_shift)
-    // {
-    //     // $user = User::find($user);
-    //     // return view('users-show',compact('user'));
-    // }
+    public function show(String $tbl_shift)
+    {
+
+    }
 
 
     public function edit(String $id)
     {
         $data = Tbl_shift::find($id);
-        return view('admin.shifts_views.shifts-edit',compact('data'));
+        return view('admin/settings/shifts-views/edit',compact('data'));
     }
 
 
@@ -70,7 +72,9 @@ class TblShiftController extends Controller
             'display_order' => $request->display_order,
         ]);
 
-        return redirect()->route('shifts.index');
+        if($data_update){
+            return redirect()->route('shifts.index');
+        }
     }
 
 
