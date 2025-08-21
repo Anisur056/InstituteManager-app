@@ -143,19 +143,19 @@
                             <a class="dropdown-item" href="{{ route('institutes.index') }}">Institute List</a>
                         </li>
                         <li class="">
-                            <a class="dropdown-item" href="">Academic Year</a>
+                            <a class="dropdown-item" href="{{ route('academic-years.index') }}">Academic Year</a>
                         </li>
                         <li class="">
-                            <a class="dropdown-item" href="">Class Management</a>
+                            <a class="dropdown-item" href="{{ route('class.index') }}">Class Management</a>
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="{{ route('shifts.index') }}">Shift Management</a>
                         </li>
                         <li class="">
-                            <a class="dropdown-item" href="">Section Management</a>
+                            <a class="dropdown-item" href="{{ route('sections.index') }}">Section Management</a>
                         </li>
                         <li class="">
-                            <a class="dropdown-item" href="">Exam Terms</a>
+                            <a class="dropdown-item" href="{{ route('exam-terms.index') }}">Exam Terms</a>
                         </li>
                     </ul>
                 </li>

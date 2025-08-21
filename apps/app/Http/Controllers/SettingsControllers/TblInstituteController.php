@@ -22,32 +22,46 @@ class TblInstituteController extends Controller
         return view('admin/settings/institutes-views/create');
     }
 
-
     public function store(Request $request)
     {
         $request->validate([
             'name_en' => 'required|string',
-            'name_bn' => 'string',
-            'display_order' => 'numeric',
+            'name_bn' => 'required|string',
+            'address_en' => 'nullable|string',
+            'address_bn' => 'required|string',
+            'eiin_number' => 'nullable|numeric',
+            'mobile' => 'required|numeric|digits:11',
+            'email' => 'nullable|email',
+            'website' => 'nullable|string',
+            'logo' => 'nullable|string',
+            'map' => 'nullable|string',
+            'display_order' => 'nullable|numeric',
         ]);
 
         $data_insert = Tbl_institute::create([
             'name_en' => $request->name_en,
             'name_bn' => $request->name_bn,
+            'address_en' => $request->address_en,
+            'address_bn' => $request->address_bn,
+            'eiin_number' => $request->eiin_number,
+            'mobile' => $request->mobile,
+            'email' => $request->email,
+            'website' => $request->website,
+            'logo' => $request->logo,
+            'map' => $request->map,
             'display_order' => $request->display_order,
+            'created_at' => now(),
         ]);
 
         if($data_insert){
-            return redirect()->route('shifts.index');
+            return redirect()->route('institutes.index');
         }
     }
-
 
     public function show(String $Tbl_institute)
     {
 
     }
-
 
     public function edit(String $id)
     {
@@ -60,29 +74,45 @@ class TblInstituteController extends Controller
     {
         $request->validate([
             'name_en' => 'required|string',
-            'name_bn' => 'string',
-            'display_order' => 'numeric',
+            'name_bn' => 'required|string',
+            'address_en' => 'nullable|string',
+            'address_bn' => 'required|string',
+            'eiin_number' => 'nullable|numeric',
+            'mobile' => 'required|numeric|digits:11',
+            'email' => 'nullable|email',
+            'website' => 'nullable|string',
+            'logo' => 'nullable|string',
+            'map' => 'nullable|string',
+            'display_order' => 'nullable|numeric',
         ]);
 
         $data_update = Tbl_institute::where('id',$id)
                 ->update([
             'name_en' => $request->name_en,
             'name_bn' => $request->name_bn,
+            'address_en' => $request->address_en,
+            'address_bn' => $request->address_bn,
+            'eiin_number' => $request->eiin_number,
+            'mobile' => $request->mobile,
+            'email' => $request->email,
+            'website' => $request->website,
+            'logo' => $request->logo,
+            'map' => $request->map,
             'display_order' => $request->display_order,
+            'updated_at' => now(),
         ]);
 
         if($data_update){
-            return redirect()->route('shifts.index');
+            return redirect()->route('institutes.index');
         }
     }
-
 
     public function destroy(String $id)
     {
         $data_delete = Tbl_institute::destroy($id);
 
         if($data_delete){
-            return redirect()->route('shifts.index');
+            return redirect()->route('institutes.index');
         }
     }
 }

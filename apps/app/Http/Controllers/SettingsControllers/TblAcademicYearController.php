@@ -10,59 +10,77 @@ use Illuminate\Http\Request;
 
 class TblAcademicYearController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $records = Tbl_academic_year::orderBy('id','asc')->get();
+        return view('admin/settings/academic-years-views/index',compact('records'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin/settings/academic-years-views/create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'year_en' => 'required|string',
+            'year_bn' => 'required|string',
+            'display_order' => 'nullable|numeric',
+        ]);
+
+        $data_insert = Tbl_academic_year::create([
+            'year_en' => $request->year_en,
+            'year_bn' => $request->year_bn,
+            'display_order' => $request->display_order,
+            'created_at' => now(),
+        ]);
+
+        if($data_insert){
+            return redirect()->route('academic-years.index');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Tbl_academic_year $tbl_academic_year)
+    public function show(String $Tbl_academic_year)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Tbl_academic_year $tbl_academic_year)
+    public function edit(String $id)
     {
-        //
+        $data = Tbl_academic_year::find($id);
+        return view('admin/settings/academic-years-views/edit',compact('data'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Tbl_academic_year $tbl_academic_year)
+
+    public function update(Request $request, String $id)
     {
-        //
+        $request->validate([
+            'year_en' => 'required|string',
+            'year_bn' => 'required|string',
+            'display_order' => 'nullable|numeric',
+        ]);
+
+        $data_update = Tbl_academic_year::where('id',$id)
+                ->update([
+            'year_en' => $request->year_en,
+            'year_bn' => $request->year_bn,
+            'display_order' => $request->display_order,
+            'updated_at' => now(),
+        ]);
+
+        if($data_update){
+            return redirect()->route('academic-years.index');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Tbl_academic_year $tbl_academic_year)
+    public function destroy(String $id)
     {
-        //
+        $data_delete = Tbl_academic_year::destroy($id);
+
+        if($data_delete){
+            return redirect()->route('academic-years.index');
+        }
     }
 }

@@ -22,7 +22,7 @@
                 <form action="{{ route('institutes.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label class="form-label">Institute Name</label>
+                    <label class="form-label">প্রতিষ্ঠানের নাম (English) <span class="text-danger ms-2">(*)</span></label>
                     <input  value="{{ old('name_en') }}"
                             type="text"
                             class="form-control @error('name_en') is-invalid @enderror"
@@ -30,7 +30,7 @@
                     <span class="text-danger"> @error('name_en') {{$message}} @enderror </span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">প্রতিষ্ঠানের নাম</label>
+                    <label class="form-label">প্রতিষ্ঠানের নাম (বাংলা) <span class="text-danger ms-2">(*)</span></label>
                     <input  value="{{ old('name_bn') }}"
                             type="text"
                             class="form-control @error('name_bn') is-invalid @enderror"
@@ -38,7 +38,7 @@
                     <span class="text-danger"> @error('name_bn') {{$message}} @enderror </span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Address</label>
+                    <label class="form-label">ঠিকানা (English)</label>
                     <input  value="{{ old('address_en') }}"
                             type="text"
                             class="form-control @error('address_en') is-invalid @enderror"
@@ -46,7 +46,7 @@
                     <span class="text-danger"> @error('address_en') {{$message}} @enderror </span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">address_bn</label>
+                    <label class="form-label">ঠিকানা (বাংলা) <span class="text-danger ms-2">(*)</span></label>
                     <input  value="{{ old('address_bn') }}"
                             type="text"
                             class="form-control @error('address_bn') is-invalid @enderror"
@@ -54,7 +54,7 @@
                     <span class="text-danger"> @error('address_bn') {{$message}} @enderror </span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">eiin_number</label>
+                    <label class="form-label">EIIN নাম্বার</label>
                     <input  value="{{ old('eiin_number') }}"
                             type="text"
                             class="form-control @error('eiin_number') is-invalid @enderror"
@@ -62,15 +62,15 @@
                     <span class="text-danger"> @error('eiin_number') {{$message}} @enderror </span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">mobile</label>
+                    <label class="form-label">মোবাইল <span class="text-danger ms-2">(*)</span></label>
                     <input  value="{{ old('mobile') }}"
-                            type="text"
+                            type="number"
                             class="form-control @error('mobile') is-invalid @enderror"
                             name="mobile">
                     <span class="text-danger"> @error('mobile') {{$message}} @enderror </span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">email</label>
+                    <label class="form-label">ই-মেইল</label>
                     <input  value="{{ old('email') }}"
                             type="text"
                             class="form-control @error('email') is-invalid @enderror"
@@ -78,7 +78,7 @@
                     <span class="text-danger"> @error('email') {{$message}} @enderror </span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">website</label>
+                    <label class="form-label">ওয়েবসাইট</label>
                     <input  value="{{ old('website') }}"
                             type="text"
                             class="form-control @error('website') is-invalid @enderror"
@@ -86,7 +86,7 @@
                     <span class="text-danger"> @error('website') {{$message}} @enderror </span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">logo</label>
+                    <label class="form-label">লগো</label>
                     <input  value="{{ old('logo') }}"
                             type="text"
                             class="form-control @error('logo') is-invalid @enderror"
@@ -94,7 +94,7 @@
                     <span class="text-danger"> @error('logo') {{$message}} @enderror </span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">map</label>
+                    <label class="form-label">ম্যাপ লোকেশন</label>
                     <input  value="{{ old('map') }}"
                             type="text"
                             class="form-control @error('map') is-invalid @enderror"
@@ -102,7 +102,7 @@
                     <span class="text-danger"> @error('map') {{$message}} @enderror </span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">display_order</label>
+                    <label class="form-label">ক্রমিক তালিকা</label>
                     <input  value="{{ old('display_order') }}"
                             type="number"
                             class="form-control @error('display_order') is-invalid @enderror"

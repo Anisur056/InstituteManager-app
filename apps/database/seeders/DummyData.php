@@ -3,16 +3,16 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Tbl_institute;
+use App\Models\Tbl_academic_year;
 use App\Models\Tbl_shift;
 use App\Models\Tbl_classe;
 use App\Models\Tbl_section;
 use App\Models\Tbl_exam_term;
 use App\Models\Tbl_student;
 use App\Models\Tbl_employee;
-use App\Models\Tbl_institute;
 use Illuminate\Database\Seeder;
 
-use App\Models\Tbl_academic_year;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -59,14 +59,14 @@ class DummyData extends Seeder
             [
             'name_en' => 'Sirikotia Hafezia Nurani Model Madrasha',
             'name_bn' => 'ছিরিকোটিয়া হাফেজিয়া নূরানী মডেল মাদ্রাসা',
-            'address_en' => 'Biswash Para, kattoli, Akborsha, CTG',
-            'address_bn' => 'বিশ্বাসপাড়া আগ্রাবাদ চট্টগ্রাম',
-            'eiin_number' => '',
-            'mobile' => '',
-            'email' => '',
-            'website' => '',
-            'logo' => '',
-            'map' => '',
+            'address_en' => 'Hazi Dorbesh Ali Chowdhury Bari, Biswash para, Uttor Kattoli, Akborsha, Chattogram',
+            'address_bn' => 'হাজী দরবেশ আলী চৌধুরী বাড়ী, বিশ্বাস পাড়া, উত্তর কাট্টলী, আকবরশাহ, চট্টগ্রাম',
+            'eiin_number' => null,
+            'mobile' => '01892178778',
+            'email' => 'sirikotiamadrasha@gmail.com',
+            'website' => 'www.sirikotiamadrasha.com',
+            'logo' => 'assets/website/img/favicon.PNG',
+            'map' => 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d922.4142985164051!2d91.76706526956704!3d22.366569238938805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDIxJzU5LjYiTiA5McKwNDYnMDMuOCJF!5e0!3m2!1sen!2sbd!4v1750559986344!5m2!1sen!2sbd',
             'display_order' => 1,
             'created_at' => now(),
             'updated_at' => now(),

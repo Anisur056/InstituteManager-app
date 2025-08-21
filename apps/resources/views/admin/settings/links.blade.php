@@ -6,8 +6,8 @@
                     href="{{ route('institutes.index') }}">Institute List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if(Route::is('academic-year.index') ) {{ 'active' }} @endif "
-                href="{{ route('academic-year.index') }}">Academic Year</a>
+                <a class="nav-link @if(Route::is('academic-years.index') ) {{ 'active' }} @endif "
+                href="{{ route('academic-years.index') }}">Academic Year</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link @if(Route::is('class.index') ) {{ 'active' }} @endif "

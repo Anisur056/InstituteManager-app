@@ -1,6 +1,6 @@
 @extends('admin.themes.main')
 
-@section('page-title') Shifts Management @endsection
+@section('page-title') Exam Terms @endsection
 
 @section('css')
     <!-- Datatable -->
@@ -17,12 +17,12 @@
         <div class="card h-100 rounded-15">
             <div class="card-header d-flex gap-3 align-items-center justify-content-between">
                 <h5 class="m-0 fs-18 fw-semi-bold">
-                    Shift Management
+                    Exam Terms
                 </h5>
-                <a href="{{ route('shifts.create') }}"
+                <a href="{{ route('exam-terms.create') }}"
                     class="btn btn-success d-flex align-items-center fs-15 gap-2 px-3 py-2 rounded-3">
                     <i class="fa fa-plus"></i>
-                    <span>Add Shifts</span>
+                    <span>Add Exam Terms</span>
                 </a>
             </div>
             <div class="card-body">
@@ -30,8 +30,8 @@
                 <table id="shiftTable" class="table table-striped table-bordered mobileResponsiveTable">
                 <thead>
                     <tr>
-                        <th>Shift Name</th>
-                        <th>শিফট বাংলা</th>
+                        <th>Exam Terms Name</th>
+                        <th>পরিক্ষার বাংলা</th>
                         <th>Display Order</th>
                         <th>Action</th>
                     </tr>
@@ -40,14 +40,14 @@
                 <tbody>
                     @foreach ($records as $data)
                         <tr>
-                            <td data-label="Shift Name: ">{{$data->name_en}}</td>
-                            <td data-label="শিফট বাংলা: ">{{$data->name_bn}}</td>
+                            <td data-label="Exam Terms Name: ">{{$data->name_en}}</td>
+                            <td data-label="পরিক্ষার বাংলা: ">{{$data->name_bn}}</td>
                             <td data-label="Display Order: " class="text-start">{{$data->display_order}}
                             <td class="d-flex">
-                                <a href="{{ route('shifts.edit',$data->id) }}" class="btn btn-success rounded-3 m-1">
+                                <a href="{{ route('exam-terms.edit',$data->id) }}" class="btn btn-success rounded-3 m-1">
                                     <i class="fa fa-pencil-square-o"></i>
                                 </a>
-                                <form action="{{ route('shifts.destroy',$data->id) }}" method="post">
+                                <form action="{{ route('exam-terms.destroy',$data->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger rounded-3 m-1"><i class="fa fa-trash" aria-hidden="true"></i></button>
@@ -76,7 +76,7 @@
               [-1, 10, 25, 50],
               ['All',10, 25, 50]
           ],
-          order: [[0, 'asc']],
+          order: [],
           scrollX: true,
           layout: {
             topStart: {

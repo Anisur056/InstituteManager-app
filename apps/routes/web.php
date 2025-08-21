@@ -34,7 +34,7 @@ Route::middleware(["auth", IsUserAdmin::class])->group(function(){
 
     // Settings/Shift-Management
     Route::resource('/institutes', TblInstituteController::class);
-    Route::resource('/academic-year', TblAcademicYearController::class);
+    Route::resource('/academic-years', TblAcademicYearController::class);
     Route::resource('/class', TblClasseController::class);
     Route::resource('/shifts', TblShiftController::class);
     Route::resource('/sections', TblSectionController::class);

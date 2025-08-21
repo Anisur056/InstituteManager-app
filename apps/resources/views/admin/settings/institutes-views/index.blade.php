@@ -59,7 +59,8 @@
                             <td data-label="Email:">{{$data->email}}</td>
                             <td data-label="Website:">{{$data->website}}</td>
                             <td data-label="Logo:">{{$data->logo}}</td>
-                            <td data-label="Map Location:">{{$data->map}}</td>
+                            <td data-label="Map Location:">{{ Str::limit($data->map, 20, '...') }}</td>
+                            
                             <td data-label="Display Order:" class="text-start">{{$data->display_order}}</td>
                             <td class="">
                                 <a href="{{ route('institutes.edit',$data->id) }}" class="btn btn-success rounded-3 m-1 w-100">

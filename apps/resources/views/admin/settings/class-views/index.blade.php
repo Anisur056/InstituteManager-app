@@ -1,6 +1,6 @@
 @extends('admin.themes.main')
 
-@section('page-title') Shifts Management @endsection
+@section('page-title') class Management @endsection
 
 @section('css')
     <!-- Datatable -->
@@ -17,21 +17,21 @@
         <div class="card h-100 rounded-15">
             <div class="card-header d-flex gap-3 align-items-center justify-content-between">
                 <h5 class="m-0 fs-18 fw-semi-bold">
-                    Shift Management
+                    Class Management
                 </h5>
-                <a href="{{ route('shifts.create') }}"
+                <a href="{{ route('class.create') }}"
                     class="btn btn-success d-flex align-items-center fs-15 gap-2 px-3 py-2 rounded-3">
                     <i class="fa fa-plus"></i>
-                    <span>Add Shifts</span>
+                    <span>Add class</span>
                 </a>
             </div>
             <div class="card-body">
 
-                <table id="shiftTable" class="table table-striped table-bordered mobileResponsiveTable">
+                <table id="DataTable" class="table table-striped table-bordered mobileResponsiveTable">
                 <thead>
                     <tr>
-                        <th>Shift Name</th>
-                        <th>শিফট বাংলা</th>
+                        <th>Class Name</th>
+                        <th>শ্রেনীর বাংলা</th>
                         <th>Display Order</th>
                         <th>Action</th>
                     </tr>
@@ -40,14 +40,14 @@
                 <tbody>
                     @foreach ($records as $data)
                         <tr>
-                            <td data-label="Shift Name: ">{{$data->name_en}}</td>
-                            <td data-label="শিফট বাংলা: ">{{$data->name_bn}}</td>
+                            <td data-label="Class Name: ">{{$data->name_en}}</td>
+                            <td data-label="শ্রেনীর বাংলা: ">{{$data->name_bn}}</td>
                             <td data-label="Display Order: " class="text-start">{{$data->display_order}}
                             <td class="d-flex">
-                                <a href="{{ route('shifts.edit',$data->id) }}" class="btn btn-success rounded-3 m-1">
+                                <a href="{{ route('class.edit',$data->id) }}" class="btn btn-success rounded-3 m-1">
                                     <i class="fa fa-pencil-square-o"></i>
                                 </a>
-                                <form action="{{ route('shifts.destroy',$data->id) }}" method="post">
+                                <form action="{{ route('class.destroy',$data->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger rounded-3 m-1"><i class="fa fa-trash" aria-hidden="true"></i></button>
@@ -58,10 +58,6 @@
                 </tbody>
 
                 </table>
-
-                <div class="p-4">
-                    {{-- {{ $records->links('pagination::bootstrap-5') }} --}}
-                </div>
             </div>
         </div>
     </div>
@@ -71,12 +67,12 @@
 @section('js')
     <!-- Datatable -->
     <script >
-      const table = new DataTable('#shiftTable', {
+      const table = new DataTable('#DataTable', {
           lengthMenu: [
               [-1, 10, 25, 50],
               ['All',10, 25, 50]
           ],
-          order: [[0, 'asc']],
+          order: [],
           scrollX: true,
           layout: {
             topStart: {
