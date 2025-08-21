@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tbl_exam_term extends Model
 {
-    //
+    protected $guarded = [];
 }

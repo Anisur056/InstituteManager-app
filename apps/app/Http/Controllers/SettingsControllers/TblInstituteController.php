@@ -17,18 +17,6 @@ class TblInstituteController extends Controller
         return view('admin/settings/institutes-views/index',compact('records'));
     }
 
-// $table->string('name_en')->nullable();
-// $table->string('name_bn')->nullable();
-// $table->string('address_en')->nullable();
-// $table->string('address_bn')->nullable();
-// $table->string('eiin_number')->nullable();
-// $table->string('mobile')->nullable();
-// $table->string('email')->nullable();
-// $table->string('website')->nullable();
-// $table->string('logo')->nullable();
-// $table->string('map')->nullable();
-// $table->integer('display_order')->nullable();
-
     public function create()
     {
         return view('admin/settings/institutes-views/create');
