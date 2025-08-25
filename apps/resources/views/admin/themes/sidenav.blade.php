@@ -155,6 +155,9 @@
                             <a class="dropdown-item" href="{{ route('sections.index') }}">Section Management</a>
                         </li>
                         <li class="">
+                            <a class="dropdown-item" href="{{ route('groups.index') }}">Group Management</a>
+                        </li>
+                        <li class="">
                             <a class="dropdown-item" href="{{ route('exam-terms.index') }}">Exam Terms</a>
                         </li>
                     </ul>

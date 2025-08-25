@@ -79,9 +79,17 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('tbl_groups', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_en')->nullable();
+            $table->string('name_bn')->nullable();
+            $table->integer('display_order')->nullable();
+            $table->timestamps();
+        });
+
         Schema::create('tbl_students', function (Blueprint $table) {
             $table->id();
-            $table->string('status')->nullable();
+            $table->string('status')->default('active');
             $table->string('enrolled_date')->nullable();
             $table->string('profile_pic')->nullable();
 
@@ -106,6 +114,7 @@ return new class extends Migration
             $table->string('nationality')->default('Bangladeshi');
 
             $table->string('contact_sms')->nullable();
+            $table->string('sms_status')->nullable();
             $table->string('contact_whatsapp')->nullable();
             $table->string('contact_email')->nullable();
             $table->string('present_address')->nullable();
@@ -220,6 +229,7 @@ return new class extends Migration
         Schema::dropIfExists('tbl_shifts');
         Schema::dropIfExists('tbl_sections');
         Schema::dropIfExists('tbl_exam_terms');
+        Schema::dropIfExists('tbl_groups');
         Schema::dropIfExists('tbl_students');
         Schema::dropIfExists('tbl_employees');
     }

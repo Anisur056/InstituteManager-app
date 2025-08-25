@@ -1,27 +1,36 @@
 @extends('admin.themes.main')
 
-@section('page-title') Add Shifts @endsection
+@section('page-title') Add Groups @endsection
 
 @section('page-body')
 
-    <div class="card p-3 mb-3">
-        <span>Add Shifts</span>
-    </div>
+    @include('admin.settings.links')
 
-    <div class="card">
-        <div class="card-body">
-            <form action="{{ route('students.store') }}" method="post" enctype="multipart/form-data">
+    <div class="col-12">
+        <div class="card h-100 rounded-15">
+            <div class="card-header d-flex gap-3 align-items-center justify-content-between">
+                <h5 class="m-0 fs-18 fw-semi-bold">
+                    Add Groups
+                </h5>
+                <a href="{{ route('groups.index') }}"
+                    class="btn btn-success d-flex align-items-center fs-15 gap-2 px-3 py-2 rounded-3">
+                    <i class="fa fa-chevron-left"></i>
+                    <span>Back</span>
+                </a>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('groups.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label class="form-label">Students Name</label>
+                    <label class="form-label">Group Name</label>
                     <input  value="{{ old('name_en') }}"
                             type="text"
                             class="form-control @error('name_en') is-invalid @enderror"
                             name="name_en">
                     <span class="text-danger"> @error('name_en') {{$message}} @enderror </span>
                 </div>
-                {{-- <div class="mb-3">
-                    <label class="form-label">শিফটের নাম</label>
+                <div class="mb-3">
+                    <label class="form-label">গ্রুপ বাংলা</label>
                     <input  value="{{ old('name_bn') }}"
                             type="text"
                             class="form-control @error('name_bn') is-invalid @enderror"
@@ -35,13 +44,13 @@
                             class="form-control @error('display_order') is-invalid @enderror"
                             name="display_order">
                     <span class="text-danger"> @error('display_order') {{$message}} @enderror </span>
-                </div> --}}
+                </div>
 
                 <div class="mb-3">
                     <button type="submit" class="btn btn-success">Save</button>
                 </div>
             </form>
-            <a href="{{ route('students.index') }}" class="btn btn-warning">< Back</a>
+            </div>
         </div>
     </div>
 

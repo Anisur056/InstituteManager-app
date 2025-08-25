@@ -9,6 +9,7 @@ use App\Models\Tbl_shift;
 use App\Models\Tbl_classe;
 use App\Models\Tbl_section;
 use App\Models\Tbl_exam_term;
+use App\Models\Tbl_group;
 use App\Models\Tbl_student;
 use App\Models\Tbl_employee;
 use Illuminate\Database\Seeder;
@@ -154,21 +155,21 @@ class DummyData extends Seeder
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'HIFZ NAZERA',
+            'name_en' => 'HIFZ-NAZERA',
             'name_bn' => 'হিফজ নাজেরা',
             'display_order' => 7,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'HIFZ INTERNATIONAL',
+            'name_en' => 'HIFZ-INTERNATIONAL',
             'name_bn' => 'হিফজ আন্তর্জাতিক',
             'display_order' => 8,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'HIFZ RIVISION',
+            'name_en' => 'HIFZ-RIVISION',
             'name_bn' => 'হিফজ রিভিশন',
             'display_order' => 9,
             'created_at' => now(),
@@ -328,6 +329,36 @@ class DummyData extends Seeder
 
         $data->each(function($single){
             Tbl_exam_term::insert($single);
+        });
+
+        // `Tbl_group` Data
+        $data = collect([
+            [
+            'name_en' => 'ALIF GROUP',
+            'name_bn' => 'আলিফ গ্রুপ',
+            'display_order' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+            [
+            'name_en' => 'BAA GROUP',
+            'name_bn' => 'বা গ্রুপ',
+            'display_order' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+            [
+            'name_en' => 'TAA GROUP',
+            'name_bn' => 'তা গ্রুপ',
+            'display_order' => 3,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+
+        ]);
+
+        $data->each(function($single){
+            Tbl_group::insert($single);
         });
 
     }

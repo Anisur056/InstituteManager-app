@@ -12,53 +12,17 @@
 
 @section('page-body')
 
-    <div class="row  dashboard_heading mb-3">
-        <div class="card fixed-tab col-12 col-md-12">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('students.create') }}">New Admission</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('students.index') }}">Student List</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mt-0 " href="">Ex Student</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mt-0 " href="">Take Fees</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mt-0 " href="">ID Card</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mt-0 " href="">Seat Sticker</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    @include('admin.students-views.links')
 
-    <div class="row  dashboard_heading mb-3">
+    <div class="row dashboard_heading mb-3">
         <div class="card fixed-tab col-12 col-md-12">
-            <span class="pt-2 fs-5">Class List</span>
+            <p class="fs-5 m-0 text-center border-bottom">Class List</p>
             <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('class','play') }}">Play</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('class','nursery') }}">Nursery</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('class','one') }}">One</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('class','two') }}">Two</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('class','three') }}">Three</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('class','four') }}">Four</a>
-                </li>
+                @foreach ($class_list as $class)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('class',$class->name_en) }}">{{ $class->name_en }}</a>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -67,8 +31,13 @@
         <div class="card h-100 rounded-15">
             <div class="card-header d-flex gap-3 align-items-center justify-content-between">
                 <h5 class="m-0 fs-18 fw-semi-bold">
-                    Students Records
+                    Students Records | <span class="ms-3 text-success">{{ $records->count() }} Records </span>
                 </h5>
+                <a href="{{ route('students.create') }}"
+                    class="btn btn-success d-flex align-items-center fs-15 gap-2 px-3 py-2 rounded-3">
+                    <i class="fa fa-plus"></i>
+                    <span>New Admission</span>
+                </a>
             </div>
             <div class="card-body">
 
@@ -117,10 +86,12 @@
                                 <i class="fa fa-pencil-square-o  me-1"></i>
                                 Update
                             </a>
-                            <a class="btn btn-danger mb-1" href="{{ route('students.destroy',$data->id) }}">
-                                <i class="fa fa-exchange me-1"></i>
-                                Move
-                            </a>
+
+                            <form action="{{ route('students.destroy',$data->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger rounded-3 m-1"><i class="fa fa-trash" aria-hidden="true"></i>Move</button>
+                            </form>
                         </td>
                         </tr>
                     @endforeach
@@ -145,7 +116,7 @@
               [-1, 10, 25, 50],
               ['All',10, 25, 50]
           ],
-          order: [[0, 'asc']],
+          order: [],
           scrollX: true,
           layout: {
             topStart: {

@@ -12,6 +12,7 @@ use App\Http\Controllers\SettingsControllers\TblAcademicYearController;
 use App\Http\Controllers\SettingsControllers\TblClasseController;
 use App\Http\Controllers\SettingsControllers\TblShiftController;
 use App\Http\Controllers\SettingsControllers\TblSectionController;
+use App\Http\Controllers\SettingsControllers\TblGroupController;
 use App\Http\Controllers\SettingsControllers\TblExamTermController;
 
 Route::get('/', function () { return view('website.home'); })->name('home');
@@ -38,6 +39,7 @@ Route::middleware(["auth", IsUserAdmin::class])->group(function(){
     Route::resource('/class', TblClasseController::class);
     Route::resource('/shifts', TblShiftController::class);
     Route::resource('/sections', TblSectionController::class);
+    Route::resource('/groups', TblGroupController::class);
     Route::resource('/exam-terms', TblExamTermController::class);
 
 });

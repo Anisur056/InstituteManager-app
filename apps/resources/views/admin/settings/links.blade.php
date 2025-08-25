@@ -22,6 +22,10 @@
                 href="{{ route('sections.index') }}">Section Management</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link @if(Route::is('groups.index') ) {{ 'active' }} @endif "
+                href="{{ route('groups.index') }}">Group Management</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link @if(Route::is('exam-terms.index') ) {{ 'active' }} @endif "
                 href="{{ route('exam-terms.index') }}">Exam Terms</a>
             </li>
