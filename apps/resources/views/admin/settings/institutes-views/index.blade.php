@@ -1,6 +1,6 @@
 @extends('admin.themes.main')
 
-@section('page-title') Shifts Management @endsection
+@section('page-title') Institute Management @endsection
 
 @section('css')
     <!-- Datatable -->
@@ -30,17 +30,10 @@
                 <table id="dataTable" class="table table-striped table-bordered mobileResponsiveTable">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Logo</th>
                         <th>Institute Name</th>
                         <th>প্রতিষ্ঠান বাংলা</th>
-                        <th>Address</th>
                         <th>ঠিকানা</th>
-                        <th>EIIN Number</th>
-                        <th>Mobile</th>
-                        <th>Email</th>
-                        <th>Website</th>
-                        <th>Logo</th>
-                        <th>Map Location</th>
                         <th>Display Order</th>
                         <th>Action</th>
                     </tr>
@@ -49,21 +42,18 @@
                 <tbody>
                     @foreach ($records as $data)
                         <tr>
-                            <td data-label="SL:" class="text-start">{{$data->id}}</td>
+                            <td data-label="Logo:">
+                                <img src="{{ asset('apps/storage/app/public/' . $data->logo) }}" width="100px">
+                            </td>
                             <td data-label="Institute Name:">{{$data->name_en}}</td>
                             <td data-label="প্রতিষ্ঠান বাংলা:">{{$data->name_bn}}</td>
-                            <td data-label="Address:">{{$data->address_en}}</td>
                             <td data-label="ঠিকানা:">{{$data->address_bn}}</td>
-                            <td data-label="EIIN Number:">{{$data->eiin_number}}</td>
-                            <td data-label="Mobile:">{{$data->mobile}}</td>
-                            <td data-label="Email:">{{$data->email}}</td>
-                            <td data-label="Website:">{{$data->website}}</td>
-                            <td data-label="Logo:">{{$data->logo}}</td>
-                            <td data-label="Map Location:">{{ Str::limit($data->map, 20, '...') }}</td>
-                            
                             <td data-label="Display Order:" class="text-start">{{$data->display_order}}</td>
                             <td class="">
-                                <a href="{{ route('institutes.edit',$data->id) }}" class="btn btn-success rounded-3 m-1 w-100">
+                                <a href="{{ route('institutes.show',$data->id) }}" class="btn btn-success rounded-3 m-1 w-100">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                                <a href="{{ route('institutes.edit',$data->id) }}" class="btn btn-warning rounded-3 m-1 w-100">
                                     <i class="fa fa-pencil-square-o"></i>
                                 </a>
                                 <form action="{{ route('institutes.destroy',$data->id) }}" method="post">
@@ -92,7 +82,7 @@
               [-1, 10, 25, 50],
               ['All',10, 25, 50]
           ],
-          order: [[0, 'asc']],
+          order: [],
           scrollX: true,
           layout: {
             topStart: {

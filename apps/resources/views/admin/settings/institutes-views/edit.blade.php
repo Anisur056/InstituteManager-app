@@ -65,7 +65,7 @@
                     <div class="mb-3">
                         <label class="form-label">মোবাইল <span class="text-danger ms-2">(*)</span></label>
                         <input  value="{{ $data->mobile }}"
-                                type="number"
+                                type="text"
                                 class="form-control @error('mobile') is-invalid @enderror"
                                 name="mobile">
                         <span class="text-danger"> @error('mobile') {{$message}} @enderror </span>
@@ -87,20 +87,96 @@
                         <span class="text-danger"> @error('website') {{$message}} @enderror </span>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">লগো</label>
-                        <input  value="{{ $data->logo }}"
-                                type="text"
+                        <label class="form-label">লগো</label><br>
+                        <img src="{{ asset('apps/storage/app/public/' . $data->logo) }}"
+                            class="my-3"
+                            width="100px"
+                            id="logo">
+                        <input  type="file"
                                 class="form-control @error('logo') is-invalid @enderror"
-                                name="logo">
+                                name="logo"
+                                onchange="document.querySelector('#logo').src=window.URL.createObjectURL(this.files[0])">
                         <span class="text-danger"> @error('logo') {{$message}} @enderror </span>
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">অফিস পেড</label><br>
+                        <img src="{{ asset('apps/storage/app/public/' . $data->office_pad) }}"
+                            class="my-3"
+                            width="200px"
+                            id="office_pad">
+                        <input  type="file"
+                                class="form-control @error('office_pad') is-invalid @enderror"
+                                name="office_pad"
+                                onchange="document.querySelector('#office_pad').src=window.URL.createObjectURL(this.files[0])">
+                        <span class="text-danger"> @error('office_pad') {{$message}} @enderror </span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">আইডি কার্ড (কর্মচারী) </label><br>
+                        <img src="{{ asset('apps/storage/app/public/' . $data->id_card_front_employee) }}"
+                            class="my-3"
+                            width="200px"
+                            id="id_card_front_employee">
+                        <input  type="file"
+                                class="form-control @error('id_card_front_employee') is-invalid @enderror"
+                                name="id_card_front_employee"
+                                onchange="document.querySelector('#id_card_front_employee').src=window.URL.createObjectURL(this.files[0])">
+                        <span class="text-danger"> @error('id_card_front_employee') {{$message}} @enderror </span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">আইডি কার্ড (শিক্ষার্থী) </label><br>
+                        <img src="{{ asset('apps/storage/app/public/' . $data->id_card_front_student) }}"
+                            class="my-3"
+                            width="200px"
+                            id="id_card_front_student">
+                        <input  type="file"
+                                class="form-control @error('id_card_front_student') is-invalid @enderror"
+                                name="id_card_front_student"
+                                onchange="document.querySelector('#id_card_front_student').src=window.URL.createObjectURL(this.files[0])">
+                        <span class="text-danger"> @error('id_card_front_student') {{$message}} @enderror </span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">আইডি কার্ড পিছনের পার্ট </label><br>
+                        <img src="{{ asset('apps/storage/app/public/' . $data->id_card_back) }}"
+                            class="my-3"
+                            width="200px"
+                            id="id_card_back">
+                        <input  type="file"
+                                class="form-control @error('id_card_back') is-invalid @enderror"
+                                name="id_card_back"
+                                onchange="document.querySelector('#id_card_back').src=window.URL.createObjectURL(this.files[0])">
+                        <span class="text-danger"> @error('id_card_back') {{$message}} @enderror </span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">এডমিট কার্ড </label><br>
+                        <img src="{{ asset('apps/storage/app/public/' . $data->exam_admit_card) }}"
+                            class="my-3"
+                            width="50%"
+                            id="exam_admit_card">
+                        <input  type="file"
+                                class="form-control @error('exam_admit_card') is-invalid @enderror"
+                                name="exam_admit_card"
+                                onchange="document.querySelector('#exam_admit_card').src=window.URL.createObjectURL(this.files[0])">
+                        <span class="text-danger"> @error('exam_admit_card') {{$message}} @enderror </span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">পরিক্ষার সিট স্টিকার </label><br>
+                        <img src="{{ asset('apps/storage/app/public/' . $data->exam_seat_sticker) }}"
+                            class="my-3"
+                            width="200px"
+                            id="exam_seat_sticker">
+                        <input  type="file"
+                                class="form-control @error('exam_seat_sticker') is-invalid @enderror"
+                                name="exam_seat_sticker"
+                                onchange="document.querySelector('#exam_seat_sticker').src=window.URL.createObjectURL(this.files[0])">
+                        <span class="text-danger"> @error('exam_seat_sticker') {{$message}} @enderror </span>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">ম্যাপ লোকেশন</label>
-                        <input  value="{{ $data->map }}"
+                        <input  value="{{ $data->google_map }}"
                                 type="text"
-                                class="form-control @error('map') is-invalid @enderror"
-                                name="map">
-                        <span class="text-danger"> @error('map') {{$message}} @enderror </span>
+                                class="form-control @error('google_map') is-invalid @enderror"
+                                name="google_map">
+                        <span class="text-danger"> @error('google_map') {{$message}} @enderror </span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">ক্রমিক তালিকা</label>

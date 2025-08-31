@@ -3,7 +3,7 @@
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link @if(Route::is('institutes.index') ) {{ 'active' }} @endif "
-                    href="{{ route('institutes.index') }}">Institute List</a>
+                    href="{{ route('institutes.index') }}">Institute Management</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link @if(Route::is('academic-years.index') ) {{ 'active' }} @endif "

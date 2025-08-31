@@ -23,70 +23,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('tbl_institutes', function (Blueprint $table) {
-            $table->id();
-            $table->string('name_en')->nullable();
-            $table->string('name_bn')->nullable();
-            $table->string('address_en')->nullable();
-            $table->string('address_bn')->nullable();
-            $table->string('eiin_number')->nullable();
-            $table->string('mobile')->nullable();
-            $table->string('email')->nullable();
-            $table->string('website')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('map')->nullable();
-            $table->integer('display_order')->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('tbl_academic_years', function (Blueprint $table) {
-            $table->id();
-            $table->string('year_en')->nullable();
-            $table->string('year_bn')->nullable();
-            $table->integer('display_order')->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('tbl_classes', function (Blueprint $table) {
-            $table->id();
-            $table->string('name_en')->nullable();
-            $table->string('name_bn')->nullable();
-            $table->integer('display_order')->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('tbl_shifts', function (Blueprint $table) {
-            $table->id();
-            $table->string('name_en')->nullable();
-            $table->string('name_bn')->nullable();
-            $table->integer('display_order')->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('tbl_sections', function (Blueprint $table) {
-            $table->id();
-            $table->string('name_en')->nullable();
-            $table->string('name_bn')->nullable();
-            $table->integer('display_order')->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('tbl_exam_terms', function (Blueprint $table) {
-            $table->id();
-            $table->string('name_en')->nullable();
-            $table->string('name_bn')->nullable();
-            $table->integer('display_order')->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('tbl_groups', function (Blueprint $table) {
-            $table->id();
-            $table->string('name_en')->nullable();
-            $table->string('name_bn')->nullable();
-            $table->integer('display_order')->nullable();
-            $table->timestamps();
-        });
-
         Schema::create('tbl_students', function (Blueprint $table) {
             $table->id();
             $table->string('status')->default('active');
@@ -215,6 +151,78 @@ return new class extends Migration
 
             $table->timestamps();
         });
+
+        Schema::create('tbl_institutes', function (Blueprint $table) {
+            // 16 table coloumn
+            $table->id();
+            $table->string('name_en');
+            $table->string('name_bn');
+            $table->string('address_en');
+            $table->string('address_bn');
+            $table->string('eiin_number')->nullable();
+            $table->string('mobile');
+            $table->string('email');
+            $table->string('website');
+            $table->string('logo');
+            $table->string('office_pad');
+            $table->string('id_card_front_employee');
+            $table->string('id_card_front_student');
+            $table->string('id_card_back');
+            $table->string('exam_admit_card');
+            $table->string('exam_seat_sticker');
+            $table->string('google_map');
+            $table->integer('display_order');
+            $table->timestamps();
+        });
+
+        Schema::create('tbl_academic_years', function (Blueprint $table) {
+            $table->id();
+            $table->string('year_en')->nullable();
+            $table->string('year_bn')->nullable();
+            $table->integer('display_order')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('tbl_classes', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_en')->nullable();
+            $table->string('name_bn')->nullable();
+            $table->integer('display_order')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('tbl_shifts', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_en')->nullable();
+            $table->string('name_bn')->nullable();
+            $table->integer('display_order')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('tbl_sections', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_en')->nullable();
+            $table->string('name_bn')->nullable();
+            $table->integer('display_order')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('tbl_exam_terms', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_en')->nullable();
+            $table->string('name_bn')->nullable();
+            $table->integer('display_order')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('tbl_groups', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_en')->nullable();
+            $table->string('name_bn')->nullable();
+            $table->integer('display_order')->nullable();
+            $table->timestamps();
+        });
+
     }
 
     /**

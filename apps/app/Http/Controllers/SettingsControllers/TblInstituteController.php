@@ -13,7 +13,7 @@ class TblInstituteController extends Controller
 
     public function index()
     {
-        $records = Tbl_institute::orderBy('id','asc')->get();
+        $records = Tbl_institute::orderBy('display_order','asc')->get();
         return view('admin/settings/institutes-views/index',compact('records'));
     }
 
@@ -27,7 +27,7 @@ class TblInstituteController extends Controller
         $request->validate([
             'name_en' => 'required|string',
             'name_bn' => 'required|string',
-            'address_en' => 'nullable|string',
+            'address_en' => 'required|string',
             'address_bn' => 'required|string',
             'eiin_number' => 'nullable|numeric',
             'mobile' => 'required|numeric|digits:11',
@@ -81,10 +81,12 @@ class TblInstituteController extends Controller
             'mobile' => 'required|numeric|digits:11',
             'email' => 'nullable|email',
             'website' => 'nullable|string',
-            'logo' => 'nullable|string',
-            'map' => 'nullable|string',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'google_map' => 'nullable|string',
             'display_order' => 'nullable|numeric',
         ]);
+
+        $logoPath = $request->logo->store('img/logo','public');
 
         $data_update = Tbl_institute::where('id',$id)
                 ->update([
@@ -96,8 +98,8 @@ class TblInstituteController extends Controller
             'mobile' => $request->mobile,
             'email' => $request->email,
             'website' => $request->website,
-            'logo' => $request->logo,
-            'map' => $request->map,
+            'logo' => $logoPath,
+            'google_map' => $request->google_map,
             'display_order' => $request->display_order,
             'updated_at' => now(),
         ]);
