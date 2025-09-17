@@ -19,7 +19,7 @@ use App\Http\Controllers\SettingsControllers\TblExamTermController;
 Route::get('/', function () { return view('website.home'); })->name('home');
 
 // Authentication Routes
-Route::view('/sirikotia','admin.login-form')->name('login')->middleware('guest');
+Route::view('/login1','admin/login')->name('login')->middleware('guest');
 Route::post('/loginAction',[LoginFormController::class,'login'])->name('loginAction');
 Route::get('/logout',[LoginFormController::class,'logout'])->name('logout');
 
@@ -33,9 +33,11 @@ Route::middleware(["auth", IsUserAdmin::class])->group(function(){
     Route::get('/students/id-card/print/{id?}',[TblStudentController::class, 'id_card_print'])->name('id.card.print');
     Route::get('/students/admit-card/print/{id?}',[TblStudentController::class, 'admit_card_print'])->name('admit.card.print');
     Route::get('/students/seat-sticker/print/{id?}',[TblStudentController::class, 'seat_sticker_print'])->name('seat.sticker.print');
-    
+
     // Attendance Routes
-    Route::get('/attendance-sheet',[TblAttendanceLogController::class, 'showMonthlySheet'])->name('attendance-sheet');
+    Route::get('/attendance/sheet',[TblAttendanceLogController::class, 'showMonthlySheet'])->name('attendance.sheet');
+    Route::get('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendance'])->name('attendance.upload');
+    Route::post('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendanceStore'])->name('attendance.store');
 
     // Settings/Shift-Management
     Route::resource('/institutes', TblInstituteController::class);

@@ -93,11 +93,16 @@
                         </li>
 
                         <span class="ms-5">Students</span>
-                        <li class="">
+                        <li>
                             <a class="dropdown-item" href="">Take Attendance</a>
                         </li>
-                        <li class="">
-                            <a class="dropdown-item" href="{{ route('attendance-sheet') }}">Attendance Sheet</a>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('attendance.sheet') }}">Attendance Sheet</a>
+                        </li>
+
+                        <span class="ms-5">Upload Data</span>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('attendance.upload') }}">Upload Log</a>
                         </li>
 
                     </ul>

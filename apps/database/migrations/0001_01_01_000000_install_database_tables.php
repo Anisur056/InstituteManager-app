@@ -155,7 +155,11 @@ return new class extends Migration
         Schema::create('tbl_attendance_logs', function (Blueprint $table) {
             $table->id();
             $table->string('uid'); // unique ID of Device Log.
-            $table->string('user_id'); // user ID of Device.
+            $table->string('user_id');
+            // $table->foreignId('user_id')
+            //         ->references('id')
+            //         ->on('tbl_students')
+            //         ->cascadeOnDelete(); // user ID of Device.
             $table->string('state'); // the authentication type, 1 for Fingerprint, 4 for RF Card etc
             $table->string('timestamp'); // time of attendance
             $table->string('type'); // attendance type, like check-in, check-out, overtime-in, overtime-out, break-in & break-out etc. if attendance type is none of them, it gives  255
