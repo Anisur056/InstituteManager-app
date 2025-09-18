@@ -20,7 +20,7 @@
                 <a href="{{ route('academic-years.create') }}"
                     class="btn btn-success d-flex align-items-center fs-15 gap-2 px-3 py-2 rounded-3">
                     <i class="fa fa-plus"></i>
-                    <span>Pull From ZKTeco Device</span>
+                    <span>Pull From Device</span>
                 </a>
             </div>
             <div class="card-body">
@@ -29,9 +29,9 @@
                     @csrf
                     <div>
                         <label for="json_file">Choose JSON File</label>
-                        <input type="file" name="json_file" id="json_file">
+                        <input class="form-control my-3" type="file" name="json_file" id="json_file">
                     </div>
-                    <button type="submit">Upload</button>
+                    <button class="btn btn-success" type="submit">Upload</button>
                 </form>
 
                 @if(session('success'))

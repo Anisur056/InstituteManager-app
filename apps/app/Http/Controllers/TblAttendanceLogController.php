@@ -66,17 +66,21 @@ class TblAttendanceLogController extends Controller
         $startDate = Carbon::createFromDate($year, $month, 1)->startOfMonth();
         $endDate = Carbon::createFromDate($year, $month, 1)->endOfMonth();
 
+        // Use Eloquent to fetch all users
         $users = Tbl_student::all();
+
+        return $attendanceLogs = Tbl_attendance_log::whereBetween('timestamp', [$startDate, $endDate])
+            ->get();
+
         $attendanceData = [];
 
         foreach ($users as $user) {
             $userAttendance = [
-                'name' => $user->name,
+                'name' => $user->name_en,
                 'days' => [],
             ];
 
-            $attendanceLogs = $user->attendanceLogs()
-                ->whereBetween('date', [$startDate, $endDate])
+            return $attendanceLogs = Tbl_attendance_log::whereBetween('timestamp', [$startDate, $endDate])
                 ->get()
                 ->keyBy('date');
 
@@ -92,6 +96,8 @@ class TblAttendanceLogController extends Controller
 
             $attendanceData[] = $userAttendance;
         }
+
+
 
         $daysInMonth = $startDate->daysInMonth;
 

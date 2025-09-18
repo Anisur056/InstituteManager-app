@@ -27,7 +27,7 @@
             </div>
             <div class="card-body">
 
-            <form action="{{ route('attendance-sheet') }}" method="GET">
+            <form action="{{ route('attendance.sheet') }}" method="GET">
                 <label for="month">Month:</label>
                 <div class="col-md-4 input-group text-left" style="display:flex;">
                     <select class="form-control" name="month" required="">
