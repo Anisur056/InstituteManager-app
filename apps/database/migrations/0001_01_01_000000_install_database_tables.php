@@ -161,7 +161,7 @@ return new class extends Migration
             //         ->on('tbl_students')
             //         ->cascadeOnDelete(); // user ID of Device.
             $table->string('state'); // the authentication type, 1 for Fingerprint, 4 for RF Card etc
-            $table->string('timestamp'); // time of attendance
+            $table->date('timestamp'); // time of attendance
             $table->string('type'); // attendance type, like check-in, check-out, overtime-in, overtime-out, break-in & break-out etc. if attendance type is none of them, it gives  255
             $table->timestamps();
         });

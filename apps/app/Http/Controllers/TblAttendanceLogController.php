@@ -60,53 +60,55 @@ class TblAttendanceLogController extends Controller
 
     public function showMonthlySheet(Request $request)
     {
-        $year = $request->input('year', Carbon::now()->year);
-        $month = $request->input('month', Carbon::now()->month);
+        // Get the requested year and month from the request, or default to the current month.
+        // $year = $request->input('year', Carbon::now()->year);
+        // $month = $request->input('month', Carbon::now()->month);
 
-        $startDate = Carbon::createFromDate($year, $month, 1)->startOfMonth();
-        $endDate = Carbon::createFromDate($year, $month, 1)->endOfMonth();
+        $year = 2025;
+        $month = 8;
 
-        // Use Eloquent to fetch all users
+        $startOfMonth = Carbon::createFromDate($year, $month, 1)->startOfMonth();
+        $endOfMonth = Carbon::createFromDate($year, $month, 1)->endOfMonth();
+
+        // Get all users. We do this separately since we are not using relationships.
         $users = Tbl_student::all();
 
-        return $attendanceLogs = Tbl_attendance_log::whereBetween('timestamp', [$startDate, $endDate])
-            ->get();
+        // Fetch attendance records for the selected month.
+        // We use a separate query and handle the data in the controller.
+        $attendanceRecords = Tbl_attendance_log::whereBetween('timestamp', [$startOfMonth, $endOfMonth])
+                                    ->get()
+                                    ->groupBy('user_id');
 
+        // Create a structured data array for the view.
+        // This is where we manually map attendance data to each user.
         $attendanceData = [];
-
         foreach ($users as $user) {
-            $userAttendance = [
-                'name' => $user->name_en,
-                'days' => [],
-            ];
+            $userAttendance = $attendanceRecords[$user->id] ?? collect();
+            $dailyRecords = [];
 
-            return $attendanceLogs = Tbl_attendance_log::whereBetween('timestamp', [$startDate, $endDate])
-                ->get()
-                ->keyBy('date');
+            // Loop through each day of the month to build the sheet.
+            for ($day = 1; $day <= $endOfMonth->day; $day++) {
+                $date = Carbon::createFromDate($year, $month, $day);
+                // $record = $userAttendance->whereDate('timestamp', $date)->first();
+                $record = $userAttendance->firstWhere('timestamp', $date->toDateString());
 
-            $currentDate = clone $startDate;
-            while ($currentDate->lte($endDate)) {
-                $status = 'N/A';
-                if ($attendanceLogs->has($currentDate->toDateString())) {
-                    $status = $attendanceLogs[$currentDate->toDateString()]->status;
-                }
-                $userAttendance['days'][$currentDate->format('j')] = $status;
-                $currentDate->addDay();
+                $dailyRecords[$day] = $record ? $record->state : 'N';
             }
 
-            $attendanceData[] = $userAttendance;
+            $attendanceData[] = [
+                'id' => $user->id,
+                'user_name' => $user->name_en,
+                'records' => $dailyRecords,
+            ];
         }
 
-
-
-        $daysInMonth = $startDate->daysInMonth;
-
-        return view('admin/attendance/sheet', [
+        // Pass the data to the view.
+        return view('admin.attendance.sheet', [
             'attendanceData' => $attendanceData,
-            'daysInMonth' => $daysInMonth,
-            'month' => $month,
-            'year' => $year,
+            'daysInMonth' => $endOfMonth->day,
+            'month' => $startOfMonth->format('F Y'),
         ]);
+
     }
 
     public function UploadAttendance(Request $request)
