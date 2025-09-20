@@ -35,7 +35,7 @@ Route::middleware(["auth", IsUserAdmin::class])->group(function(){
     Route::get('/students/seat-sticker/print/{id?}',[TblStudentController::class, 'seat_sticker_print'])->name('seat.sticker.print');
 
     // Attendance Routes
-    Route::get('/attendance/sheet',[TblAttendanceLogController::class, 'showMonthlySheet'])->name('attendance.sheet');
+    Route::get('/attendance/sheet/{year?}/{month?}/{class?}',[TblAttendanceLogController::class, 'showMonthlySheet'])->name('attendance.sheet');
     Route::get('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendance'])->name('attendance.upload');
     Route::post('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendanceStore'])->name('attendance.store');
 
