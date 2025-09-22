@@ -12,6 +12,7 @@ use App\Models\Tbl_exam_term;
 use App\Models\Tbl_group;
 use App\Models\Tbl_student;
 use App\Models\Tbl_employee;
+use App\Models\Tbl_finger_Device;
 use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Facades\File;
@@ -371,6 +372,20 @@ class DummyData extends Seeder
 
         $data->each(function($single){
             Tbl_group::insert($single);
+        });
+
+        // Finger Device Info
+        $data = collect([
+            [
+            'name' => 'Zkteco K40',
+            'ip' => '192.168.1.105',
+            'port' => 4370,
+            'serialNumber' => '',
+            ]
+        ]);
+
+        $data->each(function($single){
+            Tbl_finger_Device::insert($single);
         });
 
     }

@@ -41,9 +41,10 @@ Route::middleware(["auth", IsUserAdmin::class])->group(function(){
     Route::post('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendanceStore'])->name('attendance.store');
 
     // Finger Device Routes
+    Route::get('/device/info',[TblFingerDevice::class, 'getDeviceInfo'])->name('device.info');
     Route::get('/device/user',[TblFingerDevice::class, 'getDeviceUser'])->name('device.user');
     Route::get('/device/log',[TblFingerDevice::class, 'getDeviceAttendanceLog'])->name('device.log');
-    Route::get('/device/attendance/syne',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.sync');
+    Route::get('/device/syne',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.sync');
 
     // Settings/Shift-Management
     Route::resource('/institutes', TblInstituteController::class);

@@ -145,7 +145,7 @@
                     </a>
                     <ul class="nav-second-level ">
                         <li class="">
-                            <a class="dropdown-item" href="">Device</a>
+                            <a class="dropdown-item" href="{{ route('device.info') }}">Device</a>
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="{{ route('device.user') }}">Users</a>

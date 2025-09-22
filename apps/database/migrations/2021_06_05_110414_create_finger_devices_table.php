@@ -13,10 +13,10 @@ class CreateFingerDevicesTable extends Migration
 
             $table->string('name');
             $table->ipAddress('ip');
+            $table->integer('port');
             $table->string('serialNumber')->unique();
 
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
