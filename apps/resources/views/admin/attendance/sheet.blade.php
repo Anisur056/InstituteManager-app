@@ -44,10 +44,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-auto">
-                <label for="section" class="col-form-label">Section:</label>
-                <input type="text" class="form-control" id="section" name="section" value="{{ $section }}" placeholder="e.g., A">
-            </div>
+
             <div class="col-md-auto">
                 <button type="submit" class="btn btn-primary mt-4">Filter</button>
             </div>
@@ -56,8 +53,8 @@
 
     <!-- Navigation Buttons -->
     <div class="d-flex justify-content-between mb-3">
-        <a href="{{ url('/attendance/sheet?year=' . $prevMonthYear . '&month=' . $prevMonth . '&class=' . $class . '&section=' . $section) }}" class="btn btn-outline-secondary">Previous Month</a>
-        <a href="{{ url('/attendance/sheet?year=' . $nextMonthYear . '&month=' . $nextMonth . '&class=' . $class . '&section=' . $section) }}" class="btn btn-outline-secondary">Next Month</a>
+        <a href="{{ url('/attendance/sheet?year=' . $prevMonthYear . '&month=' . $prevMonth . '&class=' . $class) }}" class="btn btn-outline-secondary">Previous Month</a>
+        <a href="{{ url('/attendance/sheet?year=' . $nextMonthYear . '&month=' . $nextMonth . '&class=' . $class) }}" class="btn btn-outline-secondary">Next Month</a>
     </div>
 
     <div class="table-responsive">

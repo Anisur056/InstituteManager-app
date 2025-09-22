@@ -137,6 +137,25 @@
                     </ul>
                 </li>
 
+                {{-- Zkteco Device Panel --}}
+                <li class="">
+                    <a class="has-arrow material-ripple" href="#">
+                        <i class="fa fa-microchip"></i>
+                        <span> Zkteco Device</span>
+                    </a>
+                    <ul class="nav-second-level ">
+                        <li class="">
+                            <a class="dropdown-item" href="">Device</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Users</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Attendance Log</a>
+                        </li>
+                    </ul>
+                </li>
+
                 {{-- Settings Panel --}}
                 <li class="">
                     <a class="has-arrow material-ripple" href="#">

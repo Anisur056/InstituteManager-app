@@ -52,26 +52,20 @@ class TblAttendanceLogController extends Controller
         $month = $request->input('month', Carbon::now()->month);
 
         $class = $request->input('class', 'PLAY');
-        $section = $request->input('section' ,'');
+        // $section = $request->input('section' ,'');
 
         // Define the start and end of the specified month.
         $startOfMonth = Carbon::createFromDate($year, $month, 1)->startOfMonth();
         $endOfMonth = Carbon::createFromDate($year, $month, 1)->endOfMonth();
 
         // Query for users, applying filters if they exist.
-        $userQuery = Tbl_student::query();
+        $users = Tbl_student::query()->where('class', $class)->get();
         $tbl_classe = Tbl_classe::select('name_en')->get();
-        if ($class) {
-            $userQuery->where('class', $class);
-        }
-        if ($section) {
-            $userQuery->where('section', $section);
-        }
-        $users = $userQuery->get();
+
+
 
         // Fetch attendance records for the selected month and users.
         $attendanceRecords = Tbl_attendance_log::whereBetween('timestamp', [$startOfMonth, $endOfMonth])
-                                    ->whereIn('user_id', $users->pluck('id'))
                                     ->get()
                                     ->groupBy('user_id');
 
@@ -135,7 +129,6 @@ class TblAttendanceLogController extends Controller
             'nextMonth' => $nextMonth->month,
             'class' => $class,
             'tbl_classe' => $tbl_classe,
-            'section' => $section,
         ]);
     }
 
