@@ -153,6 +153,9 @@
                         <li class="">
                             <a class="dropdown-item" href="{{ route('device.log') }}">Attendance Log</a>
                         </li>
+                        <li class="">
+                            <a class="dropdown-item" href="{{ route('device.sync') }}">Sync Attendance</a>
+                        </li>
                     </ul>
                 </li>
 

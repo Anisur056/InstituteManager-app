@@ -43,6 +43,7 @@ Route::middleware(["auth", IsUserAdmin::class])->group(function(){
     // Finger Device Routes
     Route::get('/device/user',[TblFingerDevice::class, 'getDeviceUser'])->name('device.user');
     Route::get('/device/log',[TblFingerDevice::class, 'getDeviceAttendanceLog'])->name('device.log');
+    Route::get('/device/attendance/syne',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.sync');
 
     // Settings/Shift-Management
     Route::resource('/institutes', TblInstituteController::class);
