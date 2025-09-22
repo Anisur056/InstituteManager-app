@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginFormController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TblStudentController;
 use App\Http\Controllers\TblAttendanceLogController;
+use App\Http\Controllers\TblFingerDevice;
 
 use App\Http\Controllers\SettingsControllers\TblInstituteController;
 use App\Http\Controllers\SettingsControllers\TblAcademicYearController;
@@ -38,6 +39,10 @@ Route::middleware(["auth", IsUserAdmin::class])->group(function(){
     Route::get('/attendance/sheet/{year?}/{month?}/{class?}',[TblAttendanceLogController::class, 'showMonthlySheet'])->name('attendance.sheet');
     Route::get('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendance'])->name('attendance.upload');
     Route::post('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendanceStore'])->name('attendance.store');
+
+    // Finger Device Routes
+    Route::get('/device/user',[TblFingerDevice::class, 'getDeviceUser'])->name('device.user');
+    Route::get('/device/log',[TblFingerDevice::class, 'getDeviceAttendanceLog'])->name('device.log');
 
     // Settings/Shift-Management
     Route::resource('/institutes', TblInstituteController::class);

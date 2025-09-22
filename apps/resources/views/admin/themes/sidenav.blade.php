@@ -148,10 +148,10 @@
                             <a class="dropdown-item" href="">Device</a>
                         </li>
                         <li class="">
-                            <a class="dropdown-item" href="">Users</a>
+                            <a class="dropdown-item" href="{{ route('device.user') }}">Users</a>
                         </li>
                         <li class="">
-                            <a class="dropdown-item" href="">Attendance Log</a>
+                            <a class="dropdown-item" href="{{ route('device.log') }}">Attendance Log</a>
                         </li>
                     </ul>
                 </li>
