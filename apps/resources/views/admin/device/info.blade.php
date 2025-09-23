@@ -11,6 +11,11 @@
 
 @section('page-body')
 
+@if (isset($error))
+    <div class="alert alert-danger">
+        {{ $error }}
+    </div>
+@endif
 
 <div class="card shadow-lg p-4 w-100" style="max-width: 96rem;">
     <h1 class="text-center text-dark mb-4">Attendance Device Info</h1>

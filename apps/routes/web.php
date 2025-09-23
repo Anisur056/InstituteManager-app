@@ -18,6 +18,8 @@ use App\Http\Controllers\SettingsControllers\TblGroupController;
 use App\Http\Controllers\SettingsControllers\TblExamTermController;
 
 Route::get('/', function () { return view('website.home'); })->name('home');
+Route::get('/device/syne',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.sync');
+
 
 // Authentication Routes
 Route::view('/login1','admin/login')->name('login')->middleware('guest');
@@ -44,7 +46,6 @@ Route::middleware(["auth", IsUserAdmin::class])->group(function(){
     Route::get('/device/info',[TblFingerDevice::class, 'getDeviceInfo'])->name('device.info');
     Route::get('/device/user',[TblFingerDevice::class, 'getDeviceUser'])->name('device.user');
     Route::get('/device/log',[TblFingerDevice::class, 'getDeviceAttendanceLog'])->name('device.log');
-    Route::get('/device/syne',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.sync');
 
     // Settings/Shift-Management
     Route::resource('/institutes', TblInstituteController::class);

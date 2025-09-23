@@ -89,12 +89,9 @@ class TblFingerDevice extends Controller
             $zk->enableDevice();
             if (isset($zk) && $zk->connect()) {
                 $zk->disconnect();
-            } else {
-                echo("The ZKTeco device is not available. Please check the device power, network connection, or IP and port settings") ;
-                die();
             }
         } else {
-            echo("The ZKTeco device is not available. Please check the device power, network connection, or IP and port settings") ;
+            return view('admin.device.user')->with('error', 'The ZKTeco device is not available. Please check the device power, network connection, or IP and port settings');
             die();
         }
 
@@ -118,12 +115,28 @@ class TblFingerDevice extends Controller
             if ($attendance_logs && count($attendance_logs) > 0) {
                 $synced_count = 0;
 
-                // --- 5. Save Logs to JSON File ---
-                // Generate a unique filename with a timestamp
-                $filename = 'attendance_logs_' . date('Y-m-d_H-i-s') . '.json';
+                // Get the current hour in 24-hour format
+                $current_hour = (int)date('H');
 
-                // Save the data to the storage/app/zkteco directory
-                Storage::disk('local')->put('zkteco/' . $filename, json_encode($attendance_logs, JSON_PRETTY_PRINT));
+                // Check if the current hour is 23 (11 PM)
+                if ($current_hour === 23) {
+                    // Generate a filename for the daily attendance logs
+                    // The filename will be in the format attendance_logs_YYYY-MM-DD.json
+                    $filename = 'attendance_logs_' . date('Y-m-d') . '.json';
+
+                    // Specify the path to the directory where the file will be saved
+                    $path = 'zkteco/' . $filename;
+
+                    // Save the attendance logs to the JSON file
+                    // json_encode() is used to convert the PHP array to a JSON string
+                    // JSON_PRETTY_PRINT makes the JSON output human-readable with proper indentation
+                    Storage::disk('local')->put($path, json_encode($attendance_logs, JSON_PRETTY_PRINT));
+
+                    // --- 6. Clear Attendance Logs (Optional but Recommended) ---
+                    // After successful sync, clear the logs on the device to free up memory
+                    // $zk->clearAttendance();
+
+                }
 
                 // Loop through each attendance log
                 foreach ($attendance_logs as $log) {
@@ -158,10 +171,6 @@ class TblFingerDevice extends Controller
 
                 }
 
-                // --- 6. Clear Attendance Logs (Optional but Recommended) ---
-                // After successful sync, clear the logs on the device to free up memory
-                $zk->clearAttendance();
-
                 // --- 7. Re-enable the Device ---
                 $zk->enableDevice();
 
@@ -186,8 +195,7 @@ class TblFingerDevice extends Controller
                 return back()->with('message','No new attendance records found on the device.');
             }
         } else {
-            // Return a clear error message if the device connection fails.
-            echo("The ZKTeco device is not available. Please check the device power, network connection, or IP and port settings") ;
+            return view('admin.device.user')->with('error', 'The ZKTeco device is not available. Please check the device power, network connection, or IP and port settings');
             die();
         }
 

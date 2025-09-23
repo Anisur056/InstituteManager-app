@@ -11,6 +11,12 @@
 
 @section('page-body')
 
+@if (isset($error))
+    <div class="alert alert-danger">
+        {{ $error }}
+    </div>
+@endif
+
 <a href="{{ route('device.sync') }}" class="btn btn-primary m-3">Sync</a>
 <a href="{{ route('device.log') }}" class="btn btn-primary m-3">Refresh</a>
 <div class="card shadow-lg p-4 w-100" style="max-width: 96rem;">
