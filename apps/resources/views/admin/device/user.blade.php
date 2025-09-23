@@ -11,37 +11,46 @@
 
 @section('page-body')
 
-
-<div class="card shadow-lg p-4 w-100" style="max-width: 96rem;">
-    <h1 class="text-center text-dark mb-4">Attendance Device Users</h1>
-
-    <div class="table-responsive">
-        <table class="table table-bordered text-center table-sm" id="dataTable">
-            <thead class="bg-light">
-                <tr>
-                    <th class="">uid</th>
-                    <th class="">userid</th>
-                    <th class="">name</th>
-                    <th class="">role</th>
-                    <th class="">password</th>
-                    <th class="">cardno</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $u)
-                    <tr>
-                        <td class="">{{ $u['uid'] }}</td>
-                        <td class="">{{ $u['userid'] }}</td>
-                        <td class="">{{ $u['name'] }}</td>
-                        <td class="">{{ $u['role'] }}</td>
-                        <td class="">{{ $u['password'] }}</td>
-                        <td class="">{{ $u['cardno'] }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+@if (isset($error))
+    <div class="alert alert-danger">
+        {{ $error }}
     </div>
-</div>
+@endif
+
+@isset($users)
+    <div class="card shadow-lg p-4 w-100" style="max-width: 96rem;">
+        <h1 class="text-center text-dark mb-4">Attendance Device Users</h1>
+
+        <div class="table-responsive">
+            <table class="table table-bordered text-center table-sm" id="dataTable">
+                <thead class="bg-light">
+                    <tr>
+                        <th class="">uid</th>
+                        <th class="">userid</th>
+                        <th class="">name</th>
+                        <th class="">role</th>
+                        <th class="">password</th>
+                        <th class="">cardno</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                        @foreach ($users as $u)
+                            <tr>
+                                <td class="">{{ $u['uid'] }}</td>
+                                <td class="">{{ $u['userid'] }}</td>
+                                <td class="">{{ $u['name'] }}</td>
+                                <td class="">{{ $u['role'] }}</td>
+                                <td class="">{{ $u['password'] }}</td>
+                                <td class="">{{ $u['cardno'] }}</td>
+                            </tr>
+                        @endforeach
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endisset
 
 @endsection
 

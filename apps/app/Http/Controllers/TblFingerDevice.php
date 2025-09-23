@@ -63,21 +63,21 @@ class TblFingerDevice extends Controller
             $zk->disableDevice();
 
             $users = $zk->getUser();
-            
+
             $zk->enableDevice();
             if (isset($zk) && $zk->connect()) {
                 $zk->disconnect();
             }
         } else {
-            echo("The ZKTeco device is not available. Please check the device power, network connection, or IP and port settings") ;
+            return view('admin.device.user')->with('error', 'The ZKTeco device is not available. Please check the device power, network connection, or IP and port settings');
             die();
         }
-        
+
         return view('admin.device.user', compact('users'));
     }
 
     public function getDeviceAttendanceLog(Tbl_finger_Device $device)
-    { 
+    {
         $device = Tbl_finger_Device::find(1);
         $zk = new ZKTeco($device->ip, $device->port);
 
@@ -85,7 +85,7 @@ class TblFingerDevice extends Controller
             $zk->disableDevice();
 
             $attendance_logs = $zk->getAttendance();
-            
+
             $zk->enableDevice();
             if (isset($zk) && $zk->connect()) {
                 $zk->disconnect();
@@ -93,24 +93,27 @@ class TblFingerDevice extends Controller
                 echo("The ZKTeco device is not available. Please check the device power, network connection, or IP and port settings") ;
                 die();
             }
+        } else {
+            echo("The ZKTeco device is not available. Please check the device power, network connection, or IP and port settings") ;
+            die();
         }
-        
+
         return view('admin.device.log', compact('attendance_logs'));
 
     }
 
     public function syncDeviceAttendanceLog()
-    { 
+    {
         $device = Tbl_finger_Device::find(1);
         $zk = new ZKTeco($device->ip, $device->port);
 
         if ($zk->connect()) {
-            
+
             $zk->disableDevice();
-            
+
             // Get all attendance logs
             $attendance_logs = $zk->getAttendance();
-            
+
             // Check if there are any logs to process
             if ($attendance_logs && count($attendance_logs) > 0) {
                 $synced_count = 0;
@@ -118,10 +121,10 @@ class TblFingerDevice extends Controller
                 // --- 5. Save Logs to JSON File ---
                 // Generate a unique filename with a timestamp
                 $filename = 'attendance_logs_' . date('Y-m-d_H-i-s') . '.json';
-                
+
                 // Save the data to the storage/app/zkteco directory
                 Storage::disk('local')->put('zkteco/' . $filename, json_encode($attendance_logs, JSON_PRETTY_PRINT));
-            
+
                 // Loop through each attendance log
                 foreach ($attendance_logs as $log) {
                     // The `getAttendance()` method returns an array for each log
@@ -130,9 +133,9 @@ class TblFingerDevice extends Controller
                     // "id" => "1"     /* user id of the application */
                     // "state" => 1    /* the authentication type, 1 for Fingerprint, 4 for RF Card etc */
                     // "timestamp" => "2020-05-27 21:21:06" /* time of attendance */
-                    // "type" => 255   /* attendance type, like check-in, check-out, overtime-in, overtime-out, break-in & break-out etc. 
+                    // "type" => 255   /* attendance type, like check-in, check-out, overtime-in, overtime-out, break-in & break-out etc.
                     // if attendance type is none of them, it  gives  255. */
-                                            
+
                     // Check if the log already exists in the database to prevent duplicates
                     // $existing_log = Tbl_attendance_log::where('user_id', $log['id'])
                     //     ->where('timestamp', $log['timestamp'])
@@ -154,11 +157,11 @@ class TblFingerDevice extends Controller
 
 
                 }
-                
+
                 // --- 6. Clear Attendance Logs (Optional but Recommended) ---
                 // After successful sync, clear the logs on the device to free up memory
-                $zk->clearAttendance(); 
-                
+                $zk->clearAttendance();
+
                 // --- 7. Re-enable the Device ---
                 $zk->enableDevice();
 
