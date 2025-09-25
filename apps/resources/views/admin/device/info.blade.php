@@ -1,6 +1,6 @@
 @extends('admin.themes.main')
 
-@section('page-title') Attendance Device Info @endsection
+@section('page-title') Device Info @endsection
 
 @section('css')
     <!-- Datatable -->
@@ -18,7 +18,7 @@
 @endif
 
 <div class="card shadow-lg p-4 w-100" style="max-width: 96rem;">
-    <h1 class="text-center text-dark mb-4">Attendance Device Info</h1>
+    <h1 class="text-center text-dark mb-4">Device Info</h1>
 
     <div class="table-responsive">
         <table class="table table-bordered text-center table-sm" id="dataTable">

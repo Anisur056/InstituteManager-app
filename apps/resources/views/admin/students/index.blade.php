@@ -94,6 +94,11 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger rounded-3 m-1"><i class="fa fa-trash" aria-hidden="true"></i>Move</button>
                             </form>
+
+                            <a class="btn btn-warning mb-1" href="{{ route('device.user.add',$data->id) }}">
+                                <i class="fa fa-microchip  me-1"></i>
+                                Device Add
+                            </a>
                         </td>
                         </tr>
                     @endforeach

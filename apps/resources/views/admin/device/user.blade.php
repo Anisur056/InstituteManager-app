@@ -11,13 +11,18 @@
 
 @section('page-body')
 
-@if (isset($error))
-    <div class="alert alert-danger">
-        {{ $error }}
+
+@if (session('message'))
+    <div class="alert alert-primary">
+        {{ session('message') }}
     </div>
 @endif
 
 @isset($users)
+
+<a href="{{ route('device.user') }}" class="btn btn-success m-3">Refresh</a>
+<a href="{{ route('device.user.destroy') }}" class="btn btn-danger m-3">Destroy All User</a>
+
     <div class="card shadow-lg p-4 w-100" style="max-width: 96rem;">
         <h1 class="text-center text-dark mb-4">Attendance Device Users</h1>
 
@@ -31,6 +36,7 @@
                         <th class="">role</th>
                         <th class="">password</th>
                         <th class="">cardno</th>
+                        <th class="">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +49,9 @@
                                 <td class="">{{ $u['role'] }}</td>
                                 <td class="">{{ $u['password'] }}</td>
                                 <td class="">{{ $u['cardno'] }}</td>
+                                <td class="">
+                                    <a href="{{ route('device.user.remove',$u['uid']) }}" class="btn btn-sm btn-danger">x</a>
+                                </td>
                             </tr>
                         @endforeach
 

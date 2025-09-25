@@ -44,8 +44,16 @@ Route::middleware(["auth", IsUserAdmin::class])->group(function(){
 
     // Finger Device Routes
     Route::get('/device/info',[TblFingerDevice::class, 'getDeviceInfo'])->name('device.info');
+
     Route::get('/device/user',[TblFingerDevice::class, 'getDeviceUser'])->name('device.user');
+    Route::get('/device/user/create/{id?}',[TblFingerDevice::class, 'createSingleUser'])->name('device.user.add');
+    Route::get('/device/user/remove/{id?}',[TblFingerDevice::class, 'removeSingleUser'])->name('device.user.remove');
+    Route::get('/device/user/destroy',[TblFingerDevice::class, 'destroyAllUser'])->name('device.user.destroy');
+
+    
     Route::get('/device/log',[TblFingerDevice::class, 'getDeviceAttendanceLog'])->name('device.log');
+    Route::get('/device/log/sync',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');
+    Route::get('/device/log/destroy',[TblFingerDevice::class, 'destroyLogs'])->name('device.log.destroy');
 
     // Settings/Shift-Management
     Route::resource('/institutes', TblInstituteController::class);

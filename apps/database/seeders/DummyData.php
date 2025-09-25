@@ -378,7 +378,7 @@ class DummyData extends Seeder
         $data = collect([
             [
             'name' => 'Zkteco K40',
-            'ip' => '192.168.1.105',
+            'ip' => '192.168.1.201',
             'port' => 4370,
             'serialNumber' => '',
             ]

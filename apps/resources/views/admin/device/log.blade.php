@@ -11,14 +11,18 @@
 
 @section('page-body')
 
-@if (isset($error))
+@if (isset($message))
     <div class="alert alert-danger">
-        {{ $error }}
+        {{ $message }}
     </div>
 @endif
 
-<a href="{{ route('device.sync') }}" class="btn btn-primary m-3">Sync</a>
-<a href="{{ route('device.log') }}" class="btn btn-primary m-3">Refresh</a>
+
+<a href="{{ route('device.log') }}" class="btn btn-success m-3">Refresh</a>
+<a href="{{ route('device.log.sync') }}" class="btn btn-primary m-3">Sync</a>
+<a href="{{ route('device.log.destroy') }}" class="btn btn-danger m-3">Destroy All Logs</a>
+
+
 <div class="card shadow-lg p-4 w-100" style="max-width: 96rem;">
     <h1 class="text-center text-dark mb-4">Attendance Device Log</h1>
 
