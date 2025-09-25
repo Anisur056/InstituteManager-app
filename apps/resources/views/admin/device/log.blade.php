@@ -61,7 +61,10 @@
           order: [],
           scrollX: true,
           layout: {
-            topStart: {
+            topStart:'info',
+            topEnd: 'search',
+            bottomStart: 'pageLength',
+            bottomEnd:  {
                 buttons: ['copy', 'csv', 'excel', 'pdf',
                 {
                     text: 'JSON',
@@ -86,9 +89,6 @@
                 },
                 ]
             },
-            topEnd: 'search',
-            bottomStart: 'pageLength',
-            bottomEnd: 'info'
           }
       });
     </script>
