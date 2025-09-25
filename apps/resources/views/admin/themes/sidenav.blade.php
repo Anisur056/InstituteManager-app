@@ -57,7 +57,7 @@
                     </a>
                     <ul class="nav-second-level ">
                         <li class="">
-                            <a class="dropdown-item" href="">New Admission</a>
+                            <a class="dropdown-item" href="{{ route('students.create') }}">New Admission</a>
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="{{ route('students.index') }}">Student List</a>

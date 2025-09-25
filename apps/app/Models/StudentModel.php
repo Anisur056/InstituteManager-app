@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tbl_student extends Model
+class StudentModel extends Model
 {
     protected $table = 'tbl_students';
 

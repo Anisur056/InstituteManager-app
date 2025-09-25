@@ -10,7 +10,7 @@
 
 @section('page-body')
 
-    @include('admin.students-views.links')
+    @include('admin.students.links')
 
     <div class="card my-3 p-3 text-danger">
         <ul>
@@ -20,6 +20,16 @@
             <li> বিস্তারিত জানার জন্য প্রতিষ্ঠানের মোবাইলে যোগাযোগ করুন। </li>
         </ul>
     </div>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <div class="card rounded-15">
         <div class="card-body">
@@ -168,9 +178,14 @@
                                 <label class="col-md-4 mb-2"> Group: </label>
                                 <div class="col-md-8 ">
                                     <select name="group" class="form-control select2">
-                                        @foreach ($Tbl_group as $data)
-                                            <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
-                                        @endforeach
+                                        <option value=""><- None Selected -></option>
+                                        @if ($Tbl_group->count())
+                                            @foreach ($Tbl_group as $data)
+                                                <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                                            @endforeach
+                                        @else
+                                            <option value="">No Data found!</option>
+                                        @endif
                                     </select>
                                 </div>
                             </div>
@@ -181,6 +196,15 @@
                                 <label class="col-md-4 mb-2"> Class Roll: </label>
                                 <div class="col-md-8 ">
                                     <input name="roll" type="number" class="form-control" placeholder="001">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> RFID Card No: </label>
+                                <div class="col-md-8 ">
+                                    <input name="rfid_card" type="number" class="form-control" placeholder="0001111111">
                                 </div>
                             </div>
                         </div>

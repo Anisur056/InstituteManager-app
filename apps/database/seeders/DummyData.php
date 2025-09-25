@@ -10,7 +10,7 @@ use App\Models\Tbl_classe;
 use App\Models\Tbl_section;
 use App\Models\Tbl_exam_term;
 use App\Models\Tbl_group;
-use App\Models\Tbl_student;
+use App\Models\StudentModel;
 use App\Models\Tbl_employee;
 use App\Models\Tbl_finger_Device;
 use Illuminate\Database\Seeder;
@@ -227,12 +227,12 @@ class DummyData extends Seeder
         //     Tbl_section::insert($single);
         // });
 
-        // `Tbl_student` Data
-        $json = File::get('database/json/Tbl_students.json');
+        // `StudentModel` Data
+        $json = File::get('database/json/StudentModel.json');
         $data = collect(json_decode($json));
 
         $data->each(function($single){
-            Tbl_student::create([
+            StudentModel::create([
                 "status" => $single->status,
                 "enrolled_date"=> $single->enrolled_date,
                 "profile_pic"=> $single->profile_pic,

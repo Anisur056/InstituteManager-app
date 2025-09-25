@@ -12,7 +12,7 @@
 
 @section('page-body')
 
-    @include('admin.students-views.links')
+    @include('admin.students.links')
 
     <div class="row dashboard_heading mb-3">
         <div class="card fixed-tab col-12 col-md-12">
@@ -46,6 +46,7 @@
                     <tr>
                     <th>Pic</th>
                     <th>Roll</th>
+                    <th>RFID Card</th>
                     <th>Class</th>
                     <th>Name</th>
                     <th>নাম</th>
@@ -63,6 +64,7 @@
                             <img class="rounded-3" style="width: 100px;" src="{{ asset($data->profile_pic) }}">
                         </td>
                         <td data-label="Roll: " class="text-start">{{$data->roll}}</td>
+                        <td data-label="RFID Card: " class="text-start">{{$data->rfid_card}}</td>
                         <td data-label="Class: ">{{$data->class}}</td>
                         <td data-label="Name: " >{{$data->name_en}}</td>
                         <td data-label="নাম: " >{{$data->name_bn}}</td>

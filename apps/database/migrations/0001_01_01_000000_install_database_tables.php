@@ -25,7 +25,11 @@ return new class extends Migration
 
         Schema::create('tbl_students', function (Blueprint $table) {
             $table->id();
-            $table->string('status')->default('active');
+            $table->string('name_en')->nullable();
+            $table->string('name_bn')->nullable();
+            $table->string('rfid_card')->nullable();
+
+            $table->string('status')->default('active')->nullable();;
             $table->string('enrolled_date')->nullable();
             $table->string('profile_pic')->nullable();
 
@@ -36,8 +40,6 @@ return new class extends Migration
             $table->string('section')->nullable();
             $table->string('group')->nullable();
             $table->string('roll')->nullable();
-            $table->string('name_bn')->nullable();
-            $table->string('name_en')->nullable();
             $table->string('date_of_birth')->nullable();
             $table->string('birth_reg')->nullable();
             $table->string('nid')->nullable();
@@ -47,7 +49,7 @@ return new class extends Migration
             $table->string('health_issues')->nullable();
             $table->string('height')->nullable();
             $table->string('weight')->nullable();
-            $table->string('nationality')->default('Bangladeshi');
+            $table->string('nationality')->default('Bangladeshi')->nullable();;
 
             $table->string('contact_sms')->nullable();
             $table->string('sms_status')->nullable();
@@ -96,7 +98,11 @@ return new class extends Migration
 
         Schema::create('tbl_employees', function (Blueprint $table) {
             $table->id();
-            $table->string('status')->nullable();
+            $table->string('name_en')->nullable();
+            $table->string('name_bn')->nullable();
+            $table->string('rfid_card')->nullable();
+
+            $table->string('status')->default('active');
             $table->string('enrolled_date')->nullable();
             $table->string('profile_pic')->nullable();
             $table->string('signature')->nullable();
@@ -104,8 +110,6 @@ return new class extends Migration
             $table->string('institute_name')->nullable();
             $table->string('shift')->nullable();
             $table->string('designation')->nullable();
-            $table->string('name_en')->nullable();
-            $table->string('name_bn')->nullable();
             $table->string('date_of_birth')->nullable();
             $table->string('birth_reg')->nullable();
             $table->string('nid')->nullable();
@@ -119,6 +123,7 @@ return new class extends Migration
             $table->string('nationality')->default('Bangladeshi');
 
             $table->string('contact_sms')->nullable();
+            $table->string('sms_status')->nullable();
             $table->string('contact_whatsapp')->nullable();
             $table->string('contact_email')->nullable();
             $table->string('present_address')->nullable();
