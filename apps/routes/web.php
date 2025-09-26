@@ -3,22 +3,23 @@
 use App\Http\Middleware\IsUserAdmin;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\LoginFormController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\TblAttendanceLogController;
+use App\Http\Controllers\SmsController;
 use App\Http\Controllers\TblFingerDevice;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginFormController;
 
+use App\Http\Controllers\TblAttendanceLogController;
+use App\Http\Controllers\SettingsControllers\TblGroupController;
+use App\Http\Controllers\SettingsControllers\TblShiftController;
+use App\Http\Controllers\SettingsControllers\TblClasseController;
+use App\Http\Controllers\SettingsControllers\TblSectionController;
+use App\Http\Controllers\SettingsControllers\TblExamTermController;
 use App\Http\Controllers\SettingsControllers\TblInstituteController;
 use App\Http\Controllers\SettingsControllers\TblAcademicYearController;
-use App\Http\Controllers\SettingsControllers\TblClasseController;
-use App\Http\Controllers\SettingsControllers\TblShiftController;
-use App\Http\Controllers\SettingsControllers\TblSectionController;
-use App\Http\Controllers\SettingsControllers\TblGroupController;
-use App\Http\Controllers\SettingsControllers\TblExamTermController;
 
 Route::get('/', function () { return view('website.home'); })->name('home');
-Route::get('/device/syne',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.sync');
+Route::get('/device/log/sync',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');
 
 
 // Authentication Routes
@@ -50,10 +51,14 @@ Route::middleware(["auth", IsUserAdmin::class])->group(function(){
     Route::get('/device/user/remove/{id?}',[TblFingerDevice::class, 'removeSingleUser'])->name('device.user.remove');
     Route::get('/device/user/destroy',[TblFingerDevice::class, 'destroyAllUser'])->name('device.user.destroy');
 
-    
+
     Route::get('/device/log',[TblFingerDevice::class, 'getDeviceAttendanceLog'])->name('device.log');
-    Route::get('/device/log/sync',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');
-    Route::get('/device/log/destroy',[TblFingerDevice::class, 'destroyLogs'])->name('device.log.destroy');
+    // AT THE TOP--- Route::get('/device/log/sync',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');
+    Route::get('/device/log/destroy',[TblFingerDevice::class, 'exportDestroyLogs'])->name('device.log.destroy');
+
+
+    // Test SMS Routes
+    Route::get('/test-sms/{number?}',[SmsController::class, 'testSMS'])->name('sms.test');
 
     // Settings/Shift-Management
     Route::resource('/institutes', TblInstituteController::class);

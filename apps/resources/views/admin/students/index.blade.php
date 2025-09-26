@@ -45,15 +45,16 @@
                 <thead>
                     <tr>
                     <th>Pic</th>
-                    <th>Roll</th>
+                    <th>Class/ Roll</th>
                     <th>RFID Card</th>
-                    <th>Class</th>
-                    <th>Name</th>
                     <th>নাম</th>
-                    <th>Institute Name</th>
-                    <th>Father Contact</th>
-                    <th>Mother Contact</th>
-                    <th>Action</th>
+                    {{-- <th>Institute Name</th> --}}
+                    <th>Contact (SMS)</th>
+                    <th>Profile</th>
+                    <th>Update</th>
+                    {{-- <th>Transfer</th> --}}
+                    <th>Device Add</th>
+                    <th>Test SMS</th>
                     </tr>
                 </thead>
 
@@ -63,43 +64,58 @@
                         <td data-label="Pic: ">
                             <img class="rounded-3" style="width: 100px;" src="{{ asset($data->profile_pic) }}">
                         </td>
-                        <td data-label="Roll: " class="text-start">{{$data->roll}}</td>
+                        <td data-label="Class/ Roll: " class="text-start">
+                            {{$data->class}}<br>
+                            {{$data->roll}}
+                        </td>
                         <td data-label="RFID Card: " class="text-start">{{$data->rfid_card}}</td>
-                        <td data-label="Class: ">{{$data->class}}</td>
-                        <td data-label="Name: " >{{$data->name_en}}</td>
-                        <td data-label="নাম: " >{{$data->name_bn}}</td>
-                        <td data-label="Institute Name: ">{{$data->institute_name}}</td>
-                        <td data-label="Father Contact: ">
-                            <a class="text-decoration-none text-success font-weight-bold" href="tel:{{$data->father_contact}}">
-                                {{$data->father_contact}}
+                        <td data-label="নাম: " >
+                            {{$data->name_bn}}<br>
+                            {{$data->name_en}}
+                        </td>
+                        {{-- <td data-label="Institute Name: ">{{$data->institute_name}}</td> --}}
+                        <td data-label="Contact (SMS) ">
+                            <a class="text-decoration-none text-success font-weight-bold" href="tel:{{$data->contact_sms}}">
+                                {{$data->contact_sms}}
                             </a>
                         </td>
-                        <td data-label="Father Contact: ">
-                            <a class="text-decoration-none text-success font-weight-bold" href="tel:{{$data->mother_contact}}">
-                                {{$data->mother_contact}}
-                            </a>
-                        </td>
-                        <td data-label="Action: ">
+
+                        <td data-label="Profile: ">
                             <a class="btn btn-success mb-1" href="{{ route('students.show',$data->id) }}">
                                 <i class="fa fa-user me-1"></i>
-                                Profile
-                            </a>
-                            <a class="btn btn-warning mb-1" href="{{ route('students.edit',$data->id) }}">
-                                <i class="fa fa-pencil-square-o  me-1"></i>
-                                Update
-                            </a>
 
-                            <form action="{{ route('students.destroy',$data->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger rounded-3 m-1"><i class="fa fa-trash" aria-hidden="true"></i>Move</button>
-                            </form>
-
-                            <a class="btn btn-warning mb-1" href="{{ route('device.user.add',$data->id) }}">
-                                <i class="fa fa-microchip  me-1"></i>
-                                Device Add
                             </a>
                         </td>
+
+                        <td data-label="Update: ">
+                            <a class="btn btn-warning mb-1" href="{{ route('students.edit',$data->id) }}">
+                                <i class="fa fa-pencil-square-o  me-1"></i>
+
+                            </a>
+                        </td>
+
+                        {{-- <td data-label="Transfer: ">
+                            <form class="form-control" action="{{ route('students.destroy',$data->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger rounded-3 m-1"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </form>
+                        </td> --}}
+
+                        <td data-label="Device Add: ">
+                            <a class="btn btn-success mb-1" href="{{ route('device.user.add',$data->id) }}">
+                                <i class="fa fa-microchip  me-1"></i>
+
+                            </a>
+                        </td>
+
+                        <td data-label="Test SMS: ">
+                            <a class="btn btn-warning mb-1" href="{{ route('sms.test',$data->contact_sms) }}">
+                                <i class="fa fa-comments  me-1"></i>
+
+                            </a>
+                        </td>
+
                         </tr>
                     @endforeach
                 </tbody>
