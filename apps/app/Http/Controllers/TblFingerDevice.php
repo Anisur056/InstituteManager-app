@@ -236,7 +236,27 @@ class TblFingerDevice extends Controller
                         ]);
 
                         // Send SMS
-                        $this->smsService->sendLogSMS( $log['id'], $log['timestamp'] );
+                        // $this->smsService->sendLogSMS( $log['id'], $log['timestamp'] );
+
+                        // --- Determine if it's ARRIVAL or LEAVE ---
+                        $logDate = date('Y-m-d', strtotime($log['timestamp']));
+
+                        // Count how many logs already exist for this student on this date
+                        $countForDay = Tbl_attendance_log::where('user_id', $log['id'])
+                            ->whereDate('timestamp', $logDate)
+                            ->count();
+
+                        if ($countForDay == 1) {
+                            // First log of the day → Arrival
+                            $this->smsService->sendArrivalSMS($log['id'], $log['timestamp']);
+                        } elseif ($countForDay == 2) {
+                            // Second log of the day → Leave
+                            $this->smsService->sendLeaveSMS($log['id'], $log['timestamp']);
+                        } //else {
+                            // Extra punches (optional handling)
+                            // Example: multiple leaves or late entries
+                            // $this->smsService->sendLogSMS($log['id'], $log['timestamp']);
+                        // }
 
                         $synced_count++;
                     }
@@ -246,7 +266,7 @@ class TblFingerDevice extends Controller
                 $zk->enableDevice();
                 $zk->disconnect();
 
-                return back();
+                return back()->with('message', "$synced_count attendance records synced.");
 
             } else {
                 $zk->enableDevice();

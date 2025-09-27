@@ -53,16 +53,31 @@ class SmsService
         }
     }
 
-    // Send SMS For Attendance Log
-    public function sendLogSMS(String $id, String $timestamp)
+    // Send SMS For Arrival Log
+    public function sendArrivalSMS(String $id, String $timestamp)
     {
         $carbonInstance = Carbon::parse($timestamp);
         $date = $carbonInstance->toDateString();
         $time = $carbonInstance->format('H:i:s');
 
-        $studentData = StudentModel::select('name_bn','contact_sms')->find($id);
+        $studentData = StudentModel::select('contact_sms')->find($id);
         $number = $studentData->contact_sms;
         $message = "আপনার সন্তান মাদ্রাসায় উপস্থিত। তারিখ: $date, সময়: $time";
+
+        // Send Message method inside this Service Class
+        $this->sendSMS($number, $message, $timestamp);
+    }
+
+    // Send SMS For Leave Log
+    public function sendLeaveSMS(String $id, String $timestamp)
+    {
+        $carbonInstance = Carbon::parse($timestamp);
+        $date = $carbonInstance->toDateString();
+        $time = $carbonInstance->format('H:i:s');
+
+        $studentData = StudentModel::select('contact_sms')->find($id);
+        $number = $studentData->contact_sms;
+        $message = "আপনার সন্তান মাদ্রাসা ত্যাগ করেছেন। তারিখ: $date, সময়: $time";
 
         // Send Message method inside this Service Class
         $this->sendSMS($number, $message, $timestamp);
