@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFingerDevicesTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
-        Schema::create('tbl_finger_devices', function (Blueprint $table) {
+        Schema::create('attendance_devices', function (Blueprint $table) {
             $table->id();
 
             $table->string('name');
@@ -22,6 +22,6 @@ class CreateFingerDevicesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('tbl_finger_devices');
+        Schema::dropIfExists('attendance_devices');
     }
-}
+};

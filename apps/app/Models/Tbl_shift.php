@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tbl_shift extends Model
 {
+    protected $table = 'sms_logs';
     protected $guarded = [];
 }

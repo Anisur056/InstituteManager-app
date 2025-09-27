@@ -9,12 +9,6 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    protected $table = 'users';
+    protected $table = 'user_info';
     protected $guarded = [];
-    protected function casts(): array
-    {
-        return [
-            'password' => 'hashed',
-        ];
-    }
 }
