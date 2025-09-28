@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class UserFileUploadModel extends Authenticatable
 {
     protected $table = 'user_file_uploads';
     protected $guarded = [];

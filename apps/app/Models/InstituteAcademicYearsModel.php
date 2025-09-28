@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tbl_employee extends Model
+class InstituteAcademicYearsModel extends Model
 {
-    protected $table = 'sms_logs';
+    protected $table = 'institute_academic_years';
     protected $guarded = [];
 }

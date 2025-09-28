@@ -3,18 +3,23 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Tbl_institute;
-use App\Models\Tbl_academic_year;
-use App\Models\Tbl_shift;
-use App\Models\Tbl_classe;
-use App\Models\Tbl_section;
-use App\Models\Tbl_exam_term;
-use App\Models\Tbl_group;
-use App\Models\StudentModel;
-use App\Models\Tbl_employee;
-use App\Models\Tbl_finger_Device;
-use Illuminate\Database\Seeder;
+use App\Models\UserInfoModel;
+use App\Models\UserFileUploadModel;
+use App\Models\UserAttendanceLogModel;
 
+use App\Models\InstituteInfoModel;
+use App\Models\InstituteAcademicYearsModel;
+use App\Models\InstituteClassesModel;
+use App\Models\InstituteShiftsModel;
+use App\Models\InstituteSectionsModel;
+use App\Models\InstituteSubjectModel;
+use App\Models\InstituteGroupsModel;
+use App\Models\InstituteExamTermsModel;
+
+use App\Models\AttendanceDevicesModel;
+use App\Models\SmsLogsModel;
+
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -26,96 +31,138 @@ class DummyData extends Seeder
      */
     public function run(): void
     {
-        // `users` records
+        // User
         $records = collect([
             [
-            'user_name' => 'anis',
-            'full_name' => 'Anisur Rahman',
-            'phone_number' => '01871123427',
-            'email' => 'anis14109@gmail.com',
-            'role' => 'admin',
-            'password' => Hash::make('27272'),
-            'profile_pic' => 'assets/admin/img/users/anis.jpg',
-            'created_at' => now(),
-            'updated_at' => now(),
+                'name_en' => 'Anisur Rahman',
+                'name_bn' => 'আনিসুর রহমান',
+                'user_name' => 'anis',
+                'password' => Hash::make('123'),
+                'email' => 'anis14109@gmail.com',
+                'role' => 'admin',
+                'contact_sms' => '01871123427',
+                'contact_whatsapp' => '01871123427',
+                'sms_status' => 'active',
+                'nid' => '4202555860',
+                'birth_reg' => '',
+                'date_of_birth' => '1997-12-01',
+                'gender' => 'male',
+                'blood_group' => 'A+',
+                'health_issues' => '',
+                'height' => '',
+                'weight' => '',
+                'marital_status' => '',
+                'nationality' => '',
+                'religion' => '',
+                'present_address' => '',
+                'permanent_address' => '',
+                'rfid_card' => '',
+                'profile_pic' => '',
+                'signature' => '',
+                'status' => 'active',
+                'joined_at' => '2025-01-01',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
-            'user_name' => 'rofiq',
-            'full_name' => 'Rofiqul Islam',
-            'phone_number' => '',
-            'email' => '',
-            'role' => 'admin',
-            'password' => Hash::make('123'),
-            'profile_pic' => '',
-            'created_at' => now(),
-            'updated_at' => now(),
+                'name_en' => 'Rofiqual Islam',
+                'name_bn' => 'রফিকুল ইসলাম',
+                'user_name' => 'rofiq',
+                'password' => Hash::make('123'),
+                'email' => '',
+                'role' => 'admin',
+                'contact_sms' => '',
+                'contact_whatsapp' => '',
+                'sms_status' => 'active',
+                'nid' => '',
+                'birth_reg' => '',
+                'date_of_birth' => '',
+                'gender' => 'male',
+                'blood_group' => '',
+                'health_issues' => '',
+                'height' => '',
+                'weight' => '',
+                'marital_status' => '',
+                'nationality' => '',
+                'religion' => '',
+                'present_address' => '',
+                'permanent_address' => '',
+                'rfid_card' => '',
+                'profile_pic' => '',
+                'signature' => '',
+                'status' => 'active',
+                'joined_at' => '',
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ]);
 
-        $records->each(function($data){
-            User::insert($data);
-        });
+            $records->each(function($data){
+                User::insert($data);
+            });
 
-        // `tbl_classes` records
+        
+
+        // InstituteClassesModel
         $records = collect([
             [
-            'name_en' => 'PLAY',
+            'name_en' => 'Play',
             'name_bn' => 'প্লে',
             'display_order' => 1,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'NURSERY',
+            'name_en' => 'Nursery',
             'name_bn' => 'নার্সারী',
             'display_order' => 2,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'ONE',
+            'name_en' => 'One',
             'name_bn' => 'প্রথম',
             'display_order' => 3,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'TWO',
+            'name_en' => 'Two',
             'name_bn' => 'দ্বিতীয়',
             'display_order' => 4,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'THREE',
+            'name_en' => 'Three',
             'name_bn' => 'তৃতীয়',
             'display_order' => 5,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'FOUR',
+            'name_en' => 'Four',
             'name_bn' => 'চতুর্থ',
             'display_order' => 6,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'HIFZ-NAZERA',
+            'name_en' => 'Hifz Nazera',
             'name_bn' => 'হিফজ নাজেরা',
             'display_order' => 7,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'HIFZ-INTERNATIONAL',
+            'name_en' => 'Hifz International',
             'name_bn' => 'হিফজ আন্তর্জাতিক',
             'display_order' => 8,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'HIFZ-RIVISION',
+            'name_en' => 'Hifz Rivision',
             'name_bn' => 'হিফজ রিভিশন',
             'display_order' => 9,
             'created_at' => now(),
@@ -123,11 +170,11 @@ class DummyData extends Seeder
             ],
         ]);
 
-        $records->each(function($data){
-            Tbl_classe::insert($data);
-        });
+            $records->each(function($data){
+                InstituteClassesModel::insert($data);
+            });
 
-        // Tbl_shift records
+        // InstituteShiftsModel
         $records = collect([
             [
             'name_en' => 'Day Shift',
@@ -145,102 +192,53 @@ class DummyData extends Seeder
             ]
         ]);
 
-        $records->each(function($data){
-            Tbl_shift::insert($data);
-        });
+            $records->each(function($data){
+                InstituteShiftsModel::insert($data);
+            });
 
-        // Tbl_section records
-        // $records = collect([
-        //     [
-
-        //     ],
-        // ]);
+        // $json = File::get('recordsbase/json/StudentModel.json');
+        // $records = collect(json_decode($json));
 
         // $records->each(function($data){
-        //     Tbl_section::insert($data);
+        //     StudentModel::create([
+        //         "0000" => $000->000,
+        //     ]);
         // });
 
-        // `StudentModel` records
-        $json = File::get('recordsbase/json/StudentModel.json');
-        $records = collect(json_decode($json));
-
-        $records->each(function($data){
-            StudentModel::create([
-                "status" => $data->status,
-                "enrolled_date"=> $data->enrolled_date,
-                "profile_pic"=> $data->profile_pic,
-                "academic_year"=> $data->academic_year,
-                "institute_name"=> $data->institute_name,
-                "shift"=> $data->shift,
-                "class"=> $data->class,
-                "section"=> $data->section,
-                "group"=> $data->group,
-                "roll"=> $data->roll,
-                "name_bn"=> $data->name_bn,
-                "name_en"=> $data->name_en,
-                "date_of_birth"=> $data->date_of_birth,
-                "birth_reg"=> $data->birth_reg,
-                "nid"=> $data->nid,
-                "gender"=> $data->gender,
-                "religion"=> $data->religion,
-                "blood_group"=> $data->blood_group,
-                "health_issues"=> $data->health_issues,
-                "height"=> $data->height,
-                "weight"=> $data->weight,
-                "nationality"=> $data->nationality,
-                "contact_sms"=> $data->contact_sms,
-                "contact_whatsapp"=> $data->contact_whatsapp,
-                "contact_email"=> $data->contact_email,
-                "present_address"=> $data->present_address,
-                "permanent_address"=> $data->permanent_address,
-                "father_name_en"=> $data->father_name_en,
-                "father_name_bn"=> $data->father_name_bn,
-                "father_contact"=> $data->father_contact,
-                "father_occupation"=> $data->father_occupation,
-                "father_birth_reg"=> $data->father_birth_reg,
-                "father_nid"=> $data->father_nid,
-                "father_income"=> $data->father_income,
-                "mother_name_en"=> $data->mother_name_en,
-                "mother_name_bn"=> $data->mother_name_bn,
-                "mother_contact"=> $data->mother_contact,
-                "mother_occupation"=> $data->mother_occupation,
-                "mother_birth_reg"=> $data->mother_birth_reg,
-                "mother_nid"=> $data->mother_nid,
-                "mother_income"=> $data->mother_income,
-                "local_guardian_name_en"=> $data->local_guardian_name_en,
-                "local_guardian_name_bn"=> $data->local_guardian_name_bn,
-                "local_guardian_relation"=> $data->local_guardian_relation,
-                "local_guardian_contact"=> $data->local_guardian_contact,
-                "local_guardian_nid"=> $data->local_guardian_nid,
-                "local_guardian_address"=> $data->local_guardian_address,
-                "emergency_contact_name"=> $data->emergency_contact_name,
-                "emergency_contact_relation"=> $data->emergency_contact_relation,
-                "emergency_contact_contact"=> $data->emergency_contact_contact,
-                "emergency_contact_address"=> $data->emergency_contact_address,
-                "previous_institute"=> $data->previous_institute,
-                "previous_institute_address"=> $data->previous_institute_address,
-                "previous_institute_tc_number"=> $data->previous_institute_tc_number,
-                "previous_institute_tc_date"=> $data->previous_institute_tc_date,
-                "remark"=> $data->remark,
-                "created_at"=> $data->created_at,
-                "updated_at"=> $data->updated_at,
-            ]);
-        });
-
-        // `Tbl_employee` records
+        // InstituteSubjectModel
         $records = collect([
             [
-            // 'name_en' => '',
-            // 'created_at' => now(),
-            // 'updated_at' => now(),
+            'name_en' => 'Bangla- 1st Paper',
+            'name_bn' => 'বাংলা- ১ম পত্র',
+            'display_order' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
             ],
+
         ]);
 
-        $records->each(function($data){
-            Tbl_employee::insert($data);
-        });
+            $records->each(function($data){
+                InstituteSubjectModel::insert($data);
+            });
 
-        // `Tbl_exam_term` records
+        // InstituteAcademicYearsModel
+        $records = collect([
+            [
+            'year_en' => '2024',
+            'year_bn' => '২০২৪',
+            'display_order' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+
+        ]);
+
+            $records->each(function($data){
+                InstituteAcademicYearsModel::insert($data);
+            });
+
+
+        // InstituteExamTermsModel
         $records = collect([
             [
             'name_en' => '1st Term Examination',
@@ -273,11 +271,11 @@ class DummyData extends Seeder
 
         ]);
 
-        $records->each(function($data){
-            Tbl_exam_term::insert($data);
-        });
+            $records->each(function($data){
+                InstituteExamTermsModel::insert($data);
+            });
 
-        // `Tbl_group` records
+        // InstituteGroupsModel
         $records = collect([
             [
             'name_en' => 'ALIF GROUP',
@@ -303,23 +301,31 @@ class DummyData extends Seeder
 
         ]);
 
-        $records->each(function($data){
-            Tbl_group::insert($data);
-        });
+            $records->each(function($data){
+                InstituteGroupsModel::insert($data);
+            });
 
-        // Finger Device Info
+        // AttendanceDevicesModel
         $records = collect([
             [
             'name' => 'Zkteco K40',
             'ip' => '192.168.1.201',
             'port' => 4370,
+            'version' => '',
+            'osVersion' => '',
+            'platform' => '',
+            'fmVersion' => '',
+            'workCode' => '',
+            'ssr' => '',
+            'pinWidth' => '',
             'serialNumber' => '',
+            'deviceName' => '',
             ]
         ]);
 
-        $records->each(function($data){
-            Tbl_finger_Device::insert($data);
-        });
+            $records->each(function($data){
+                AttendanceDevicesModel::insert($data);
+            });
 
     }
 }

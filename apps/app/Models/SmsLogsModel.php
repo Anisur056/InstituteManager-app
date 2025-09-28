@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tbl_finger_Device extends Model
+class SmsLogsModel extends Model
 {
-    protected $table = 'tbl_finger_Devices';
+    protected $table = 'sms_logs';
     protected $guarded = [];
 }

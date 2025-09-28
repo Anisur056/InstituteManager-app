@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tbl_exam_term extends Model
+class InstituteShiftsModel extends Model
 {
-    protected $table = 'sms_logs';
+    protected $table = 'Institute_shifts';
     protected $guarded = [];
 }

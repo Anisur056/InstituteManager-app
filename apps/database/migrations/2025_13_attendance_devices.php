@@ -10,12 +10,18 @@ return new class extends Migration
     {
         Schema::create('attendance_devices', function (Blueprint $table) {
             $table->id();
-
-            $table->string('name');
-            $table->ipAddress('ip');
-            $table->integer('port');
-            $table->string('serialNumber')->unique();
-
+            $table->string('name')->nullable();
+            $table->ipAddress('ip')->nullable();
+            $table->integer('port')->nullable();
+            $table->string('version')->nullable();
+            $table->string('osVersion')->nullable();
+            $table->string('platform')->nullable();
+            $table->string('fmVersion')->nullable();
+            $table->string('workCode')->nullable();
+            $table->string('ssr')->nullable();
+            $table->string('pinWidth')->nullable();
+            $table->string('serialNumber')->nullable();
+            $table->string('deviceName')->nullable();
             $table->timestamps();
         });
     }
