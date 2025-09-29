@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             // For Login
-            $table->string('name_en')->nullable(); 
-            $table->string('name_bn');//*
-            $table->string('user_name')->unique();//*
-            $table->string('password');//*
-            $table->string('email')->unique();//*
+            $table->string('name')->nullable();//* Full Name
+            $table->string('name_bn')->nullable();
+            $table->string('user_name')->unique()->nullable();
+            $table->string('email')->unique();//* Email for Login
+            $table->string('password');//* Password for Login
             $table->enum('role',['admin', 'teacher', 'student','accountant', 'librarian', 'security', 'guest'])->default('guest');
 
             // For Contact
-            $table->string('contact_sms');//*
+            $table->string('contact_sms');//* Contact For SMS
             $table->string('contact_whatsapp')->nullable();
             $table->enum('sms_status',['active','disable'])->default('active');
 
@@ -59,6 +59,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
 
-        
+
     }
 };

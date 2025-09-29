@@ -4,10 +4,9 @@ use App\Http\Middleware\IsUserAdmin;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SmsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TblFingerDevice;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LoginFormController;
 
 use App\Http\Controllers\TblAttendanceLogController;
 use App\Http\Controllers\SettingsControllers\TblGroupController;
@@ -18,18 +17,19 @@ use App\Http\Controllers\SettingsControllers\TblExamTermController;
 use App\Http\Controllers\SettingsControllers\TblInstituteController;
 use App\Http\Controllers\SettingsControllers\TblAcademicYearController;
 
+Auth::routes();
+
 Route::get('/', function () { return view('website.home'); })->name('home');
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'all_counts'])->name('home');
+
 Route::get('/device/log/sync',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');
 
 
-// Authentication Routes
-Route::view('/login1','admin/login')->name('login')->middleware('guest');
-Route::post('/loginAction',[LoginFormController::class,'login'])->name('loginAction');
-Route::get('/logout',[LoginFormController::class,'logout'])->name('logout');
-
 
 Route::middleware(["auth", IsUserAdmin::class])->group(function(){
-    Route::get('/dashboard', [DashboardController::class, 'all_counts'])->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'all_counts'])->name('dashboard');
 
     // Students Routes
     Route::resource('/students', StudentController::class);
@@ -70,3 +70,6 @@ Route::middleware(["auth", IsUserAdmin::class])->group(function(){
     Route::resource('/exam-terms', TblExamTermController::class);
 
 });
+
+
+

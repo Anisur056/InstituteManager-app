@@ -34,7 +34,7 @@ class DummyData extends Seeder
         // User
         $records = collect([
             [
-                'name_en' => 'Anisur Rahman',
+                'name' => 'Anisur Rahman',
                 'name_bn' => 'আনিসুর রহমান',
                 'user_name' => 'anis',
                 'password' => Hash::make('123'),
@@ -65,7 +65,7 @@ class DummyData extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name_en' => 'Rofiqual Islam',
+                'name' => 'Rofiqual Islam',
                 'name_bn' => 'রফিকুল ইসলাম',
                 'user_name' => 'rofiq',
                 'password' => Hash::make('123'),
@@ -101,7 +101,7 @@ class DummyData extends Seeder
                 User::insert($data);
             });
 
-        
+
 
         // InstituteClassesModel
         $records = collect([
