@@ -22,82 +22,124 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            // 'name' => ['required', 'string', 'max:255'],
-            // 'description' => ['nullable', 'string'],
-            // 'price' => ['required', 'numeric', 'min:0'],
-            'name_en' => '',
+            // `Users` 29 field total, 26 fillable, 4 required- (name, email, password, contact_sms)
+            'joined_at' => '',
+            'name' => 'required|string|max:255',
             'name_bn' => '',
-            'rfid_card' => '',
-            'status' => '',
-            'enrolled_date' => '',
-            'profile_pic' => 'nullable|file|image|mimes:jpg,jpeg,png|max:150',
-            'academic_year' => 'nullable|date_format:Y',
-
-            'institute_name' => '',
-            'shift' => '',
-            'class' => '',
-            'section' => '',
-            'group' => '',
-            'roll' => '',
-            'date_of_birth' => '',
-            'birth_reg' => '',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+            'role' => '',
+            'contact_sms' => 'required',
+            'contact_whatsapp' => '',
+            'sms_status' => '',
             'nid' => '',
+            'birth_reg' => '',
+            'date_of_birth' => '',
             'gender' => '',
-            'religion' => '',
             'blood_group' => '',
             'health_issues' => '',
             'height' => '',
             'weight' => '',
+            'marital_status' => '',
             'nationality' => '',
-
-            'contact_sms' => '',
-            'sms_status' => '',
-            'contact_whatsapp' => '',
-            'contact_email' => '',
+            'religion' => '',
             'present_address' => '',
             'permanent_address' => '',
+            'rfid_card' => 'nullable|max:10',
+            'profile_pic' => 'nullable|file|image|mimes:jpg,jpeg,png|max:1000',
+            'signature' => 'nullable|file|image|mimes:jpg,jpeg,png|max:1000',
+            'status' => '',
+            'role' => [],
+            'status' => [],
 
-            'father_name_en' => '',
-            'father_name_bn' => '',
-            'father_contact' => '',
-            'father_occupation' => '',
-            'father_birth_reg' => '',
-            'father_nid' => '',
-            'father_income' => '',
+            // 'name_en' => '',
+            // 'name_bn' => '',
+            // 'rfid_card' => '',
+            // 'status' => '',
+            // 'enrolled_date' => '',
+            // 'academic_year' => 'nullable|date_format:Y',
 
-            'mother_name_en' => '',
-            'mother_name_bn' => '',
-            'mother_contact' => '',
-            'mother_occupation' => '',
-            'mother_birth_reg' => '',
-            'mother_nid' => '',
-            'mother_income' => '',
+            // 'institute_name' => '',
+            // 'shift' => '',
+            // 'class' => '',
+            // 'section' => '',
+            // 'group' => '',
+            // 'roll' => '',
+            // 'date_of_birth' => '',
+            // 'birth_reg' => '',
+            // 'nid' => '',
+            // 'gender' => '',
+            // 'religion' => '',
+            // 'blood_group' => '',
+            // 'health_issues' => '',
+            // 'height' => '',
+            // 'weight' => '',
+            // 'nationality' => '',
 
-            'local_guardian_name_en' => '',
-            'local_guardian_name_bn' => '',
-            'local_guardian_relation' => '',
-            'local_guardian_contact' => '',
-            'local_guardian_nid' => '',
-            'local_guardian_address' => '',
+            // 'contact_sms' => '',
+            // 'sms_status' => '',
+            // 'contact_whatsapp' => '',
+            // 'contact_email' => '',
+            // 'present_address' => '',
+            // 'permanent_address' => '',
 
-            'emergency_contact_name' => '',
-            'emergency_contact_relation' => '',
-            'emergency_contact_contact' => '',
-            'emergency_contact_address' => '',
+            // 'father_name_en' => '',
+            // 'father_name_bn' => '',
+            // 'father_contact' => '',
+            // 'father_occupation' => '',
+            // 'father_birth_reg' => '',
+            // 'father_nid' => '',
+            // 'father_income' => '',
 
-            'previous_institute' => '',
-            'previous_institute_address' => '',
-            'previous_institute_tc_number' => '',
-            'previous_institute_tc_date' => '',
+            // 'mother_name_en' => '',
+            // 'mother_name_bn' => '',
+            // 'mother_contact' => '',
+            // 'mother_occupation' => '',
+            // 'mother_birth_reg' => '',
+            // 'mother_nid' => '',
+            // 'mother_income' => '',
 
-            'remark' => '',
+            // 'local_guardian_name_en' => '',
+            // 'local_guardian_name_bn' => '',
+            // 'local_guardian_relation' => '',
+            // 'local_guardian_contact' => '',
+            // 'local_guardian_nid' => '',
+            // 'local_guardian_address' => '',
+
+            // 'emergency_contact_name' => '',
+            // 'emergency_contact_relation' => '',
+            // 'emergency_contact_contact' => '',
+            // 'emergency_contact_address' => '',
+
+            // 'previous_institute' => '',
+            // 'previous_institute_address' => '',
+            // 'previous_institute_tc_number' => '',
+            // 'previous_institute_tc_date' => '',
+
+            // 'remark' => '',
         ];
+
+        // if ($this->method() === 'POST') {
+        //     'role' => 'student',
+        // }
 
         // if ($this->method() === 'PUT' || $this->method() === 'PATCH') {
         //     echo "ok";
         // }
 
         return $rules;
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'role' => 'student',
+            'status' => 'active',
+        ]);
+
+        $this->mergeIfMissing([
+            'sms_status' => 'off',
+        ]);
     }
 
 }

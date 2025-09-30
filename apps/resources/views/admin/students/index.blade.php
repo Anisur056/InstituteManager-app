@@ -53,8 +53,7 @@
                     <th>Profile</th>
                     <th>Update</th>
                     {{-- <th>Transfer</th> --}}
-                    <th>Device Add</th>
-                    <th>Test SMS</th>
+                    {{-- <th>Test SMS</th> --}}
                     </tr>
                 </thead>
 
@@ -101,7 +100,7 @@
                                 <button type="submit" class="btn btn-danger rounded-3 m-1"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </form>
                         </td> --}}
-
+{{-- 
                         <td data-label="Device Add: ">
                             <a class="btn btn-success mb-1" href="{{ route('device.user.add',$data->id) }}">
                                 <i class="fa fa-microchip  me-1"></i>
@@ -114,7 +113,7 @@
                                 <i class="fa fa-comments  me-1"></i>
 
                             </a>
-                        </td>
+                        </td> --}}
 
                         </tr>
                     @endforeach

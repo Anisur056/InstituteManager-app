@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         // $records = User::limit(5)->orderBy('id','desc')->get();
-        $records = User::where('class', 'Play')->get();
+        $records = User::where('status', 'active')->get();
         $class_list = InstituteClassesModel::all();
         return view('admin/students/index',compact('records','class_list'));
     }
@@ -42,18 +42,27 @@ class UserController extends Controller
         ));
     }
 
-    // public function store(UserRequest $request)
-    public function store(Request $request)
+    public function store(UserRequest $request)
+    // public function store(Request $request)
     {
         // Used for Mass Validation `apps/app/Http/Requests/UserRequest.php`
-        return $request;
         $validatedData = $request->validated();
 
-        $store = User::create($validatedData);
+        $user = User::create($validatedData);
 
-        if($store){
-            return redirect()->route('students.index');
+        if($request->hasFile('profile_pic'))
+        {
+            $path = $request->file('profile_pic')->store('img/users','public');
+            $user->update(['profile_pic' => $path]);
         }
+
+        if($request->hasFile('signature'))
+        {
+            $path = $request->file('signature')->store('img/signature','public');
+            $user->update(['signature' => $path]);
+        }
+
+        return redirect()->route('students.index');
     }
 
 

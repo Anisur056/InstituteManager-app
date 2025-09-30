@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             // For Login
-            $table->string('name')->nullable();//* Full Name
+            $table->string('name');//* Full Name
             $table->string('name_bn')->nullable();
             $table->string('email')->unique();//* Email for Login
             $table->string('password');//* Password for Login
@@ -23,7 +23,7 @@ return new class extends Migration
             // For Contact
             $table->string('contact_sms');//* Contact For SMS
             $table->string('contact_whatsapp')->nullable();
-            $table->enum('sms_status',['active','disable'])->default('active');
+            $table->enum('sms_status',['on','off'])->default('on');
 
             // Personal Info
             $table->string('nid')->nullable();
@@ -34,11 +34,11 @@ return new class extends Migration
             $table->string('health_issues')->nullable();
             $table->string('height')->nullable();
             $table->string('weight')->nullable();
-            $table->string('marital_status')->nullable();
+            $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed'])->default('single');
             $table->string('nationality')->default('Bangladeshi');
             $table->string('religion')->nullable();
-            $table->string('present_address')->nullable();
-            $table->string('permanent_address')->nullable();
+            $table->text('present_address')->nullable();
+            $table->text('permanent_address')->nullable();
 
             // For Attendance
             $table->string('rfid_card')->nullable();

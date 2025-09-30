@@ -42,7 +42,7 @@ Route::middleware(["auth"])->group(function(){
 
     // Students Routes
     Route::resource('/students', UserController::class);
-    // Route::get('/students/class/{class?}', [StudentController::class, 'short_by_class'])->name('class');
+    Route::get('/students/class/{class?}', [UserController::class, 'short_by_class'])->name('class');
     // Route::get('/students/id-card/print/{id?}',[StudentController::class, 'id_card_print'])->name('id.card.print');
     // Route::get('/students/admit-card/print/{id?}',[StudentController::class, 'admit_card_print'])->name('admit.card.print');
     // Route::get('/students/seat-sticker/print/{id?}',[StudentController::class, 'seat_sticker_print'])->name('seat.sticker.print');
