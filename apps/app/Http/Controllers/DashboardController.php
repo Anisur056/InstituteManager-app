@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\StudentModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function all_counts()
+    public function getUsersCount()
     {
-        $active = StudentModel::where('status','ACTIVE')->count();
-        $in_active = StudentModel::where('status','IN-ACTIVE')->count();
-        $leave = StudentModel::where('status','LEAVE')->count();
-        $tc = StudentModel::where('status','TC')->count();
-        $board_exam_complete = StudentModel::where('status','BOARD-EXAM-COMPLETE')->count();
+        $active = User::where('status','ACTIVE')->count();
+        $in_active = User::where('status','IN-ACTIVE')->count();
+        $leave = User::where('status','LEAVE')->count();
+        $tc = User::where('status','TC')->count();
+        $board_exam_complete = User::where('status','BOARD-EXAM-COMPLETE')->count();
 
 
         return view('admin.dashboard',compact(

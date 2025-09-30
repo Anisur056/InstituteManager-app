@@ -13,7 +13,7 @@
                             <div class="d-flex gap-2 align-items-center justify-content-between">
                                 <div>
                                     <p class="fs-16 fw-medium mb-1">
-                                        Total Active Students
+                                        Total Students
                                     </p>
                                     <h3 class="mb-0 fw-bold">
                                         {{ $active }}
@@ -25,7 +25,7 @@
                             <div class="d-flex gap-2 align-items-center justify-content-between">
                                 <div>
                                     <p class="fs-16 fw-medium mb-1">
-                                        Total Inactive Students
+                                        Total Employee
                                     </p>
                                     <h3 class="mb-0 fw-bold">{{ $in_active }}</h3>
                                 </div>
@@ -35,29 +35,9 @@
                             <div class="d-flex gap-2 align-items-center justify-content-between">
                                 <div>
                                     <p class="fs-16 fw-medium mb-1">
-                                        Total Leave
+                                        Total Ex Students
                                     </p>
                                     <h3 class="mb-0 fw-bold">{{ $leave }}</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card justify-content-center h-100 p-4 rounded-15">
-                            <div class="d-flex gap-2 align-items-center justify-content-between">
-                                <div>
-                                    <p class="fs-16 fw-medium mb-1">
-                                        Total Transfer
-                                    </p>
-                                    <h3 class="mb-0 fw-bold">{{ $tc }}</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card justify-content-center h-100 p-4 rounded-15">
-                            <div class="d-flex gap-2 align-items-center justify-content-between">
-                                <div>
-                                    <p class="fs-16 fw-medium mb-1">
-                                        Total Board Exam Completed
-                                    </p>
-                                    <h3 class="mb-0 fw-bold">{{ $board_exam_complete }}</h3>
                                 </div>
                             </div>
                         </div>

@@ -16,7 +16,6 @@ return new class extends Migration
             // For Login
             $table->string('name')->nullable();//* Full Name
             $table->string('name_bn')->nullable();
-            $table->string('user_name')->unique()->nullable();
             $table->string('email')->unique();//* Email for Login
             $table->string('password');//* Password for Login
             $table->enum('role',['admin', 'teacher', 'student','accountant', 'librarian', 'security', 'guest'])->default('guest');

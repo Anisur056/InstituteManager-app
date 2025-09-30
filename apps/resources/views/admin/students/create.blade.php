@@ -1,11 +1,10 @@
 @extends('admin.themes.main')
 
-@section('page-title') Add Student @endsection
+@section('page-title') New Admission @endsection
 
 @section('css')
     <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/select2/select2.min.css') }}" />
-    <!-- /Select2 -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/select2/select2.min.css') }}" /><!-- /Select2 -->
 @endsection
 
 @section('page-body')
@@ -67,151 +66,6 @@
                     </div>
                 </div>{{-- /Application Header & Profile Pic --}}
 
-                {{-- Academic Information --}}
-                <div class="card p-2 mb-3 border border-success">
-                    <header class="card-header p-1">
-                        <h3>Academic Information</h3>
-                    </header>
-                    <div class="card-body row">
-
-                        <div class="col-sm-12 col-lg-6 mb-3">
-                            <div class="row">
-                                <label class="col-md-4 mb-2"> Admission Date: <span class="text-danger fs-5"> *</span> </label>
-                                <div class="col-md-8 ">
-                                    <input name="enrolled_date"
-                                        type="date"
-                                        class="form-control @error('enrolled_date') is-invalid @enderror"
-                                        value="{{ now()->format('Y-m-d'); }}">
-                                    <span class="text-danger"> @error('enrolled_date') {{$message}} @enderror </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-6 mb-3">
-                            <div class="row">
-                                <label class="col-md-4 mb-2"> Academic Year: </label>
-                                <div class="col-md-8 ">
-                                    <select name="academic_year" class="form-control select2 @error('enrolled_date') is-invalid @enderror">
-                                        @if ($Tbl_academic_year->count())
-                                            @foreach ($Tbl_academic_year as $data)
-                                                <option value="{{ $data->year_en }}">{{ $data->year_en }}</option>
-                                            @endforeach
-                                        @else
-                                            <option value="">No Data found!</option>
-                                        @endif
-                                    </select>
-                                    <span class="text-danger"> @error('academic_year') {{$message}} @enderror </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-6 mb-3">
-                            <div class="row">
-                                <label class="col-md-4 mb-2"> Institute Name: </label>
-                                <div class="col-md-8 ">
-                                    <select name="institute_name" class="form-control select2">
-                                        @if ($Tbl_institute->count())
-                                            @foreach ($Tbl_institute as $data)
-                                                <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
-                                            @endforeach
-                                        @else
-                                            <option value="">No Data found!</option>
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-6 mb-3">
-                            <div class="row">
-                                <label class="col-md-4 mb-2"> Shift: </label>
-                                <div class="col-md-8 ">
-                                    <select name="shift" class="form-control select2">
-                                        @if ($Tbl_shift->count())
-                                            @foreach ($Tbl_shift as $data)
-                                                <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
-                                            @endforeach
-                                        @else
-                                            <option value="">No Data found!</option>
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-6 mb-3">
-                            <div class="row">
-                                <label class="col-md-4 mb-2"> Class: </label>
-                                <div class="col-md-8 ">
-                                    <select name="class" class="form-control select2">
-                                        @if ($Tbl_classe->count())
-                                            @foreach ($Tbl_classe as $data)
-                                                <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
-                                            @endforeach
-                                        @else
-                                            <option value="">No Data found!</option>
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-6 mb-3">
-                            <div class="row">
-                                <label class="col-md-4 mb-2"> Section: </label>
-                                <div class="col-md-8 ">
-                                    <select name="section" class="form-control select2">
-                                        @if ($Tbl_section->count())
-                                            @foreach ($Tbl_section as $data)
-                                                <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
-                                            @endforeach
-                                        @else
-                                            <option value="">No Data found!</option>
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-6 mb-3">
-                            <div class="row">
-                                <label class="col-md-4 mb-2"> Group: </label>
-                                <div class="col-md-8 ">
-                                    <select name="group" class="form-control select2">
-                                        <option value=""><- None Selected -></option>
-                                        @if ($Tbl_group->count())
-                                            @foreach ($Tbl_group as $data)
-                                                <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
-                                            @endforeach
-                                        @else
-                                            <option value="">No Data found!</option>
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-6 mb-3">
-                            <div class="row">
-                                <label class="col-md-4 mb-2"> Class Roll: </label>
-                                <div class="col-md-8 ">
-                                    <input name="roll" type="number" class="form-control" placeholder="001">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-6 mb-3">
-                            <div class="row">
-                                <label class="col-md-4 mb-2"> RFID Card No: </label>
-                                <div class="col-md-8 ">
-                                    <input name="rfid_card" type="number" class="form-control" placeholder="0001111111">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>{{-- /Academic Information --}}
-
                 {{-- Student Information --}}
                 <div class="card p-2 mb-3 border border-success">
                     <header class="card-header p-1">
@@ -221,14 +75,14 @@
 
                         <div class="col-sm-12 col-lg-6 mb-3">
                             <div class="row">
-                                <label class="col-md-4 mb-2"> Student Name: </label>
+                                <label class="col-md-4 mb-2"> Student Name: * </label>
                                 <div class="col-md-8 ">
-                                    <input  value="{{ old('name_en') }}"
+                                    <input  value="{{ old('name') }}"
                                             type="text"
-                                            class="form-control @error('name_en') is-invalid @enderror"
+                                            class="form-control @error('name') is-invalid @enderror"
                                             placeholder="In English"
-                                            name="name_en">
-                                    <span class="text-danger"> @error('name_en') {{$message}} @enderror </span>
+                                            name="name">
+                                    <span class="text-danger"> @error('name') {{$message}} @enderror </span>
                                 </div>
                             </div>
                         </div>
@@ -243,6 +97,34 @@
                                             placeholder="In Bangla"
                                             name="name_bn">
                                     <span class="text-danger"> @error('name_bn') {{$message}} @enderror </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Email: <br> (For Login & Recovery) *</label>
+                                <div class="col-md-8 ">
+                                    <input  value="{{ old('email') }}"
+                                            type="text"
+                                            class="form-control @error('email') is-invalid @enderror"
+                                            placeholder="Ex- aaaa@gmail.com"
+                                            name="email">
+                                    <span class="text-danger"> @error('email') {{$message}} @enderror </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Password: <br> (For Login) *</label>
+                                <div class="col-md-8 ">
+                                    <input  value="{{ old('password') }}"
+                                            type="text"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            placeholder="****"
+                                            name="password">
+                                    <span class="text-danger"> @error('password') {{$message}} @enderror </span>
                                 </div>
                             </div>
                         </div>
@@ -389,6 +271,156 @@
 
                     </div>
                 </div>{{-- /Student Information --}}
+
+                {{-- Academic Information --}}
+                <div class="card p-2 mb-3 border border-success">
+                    <header class="card-header p-1">
+                        <h3>Academic Information</h3>
+                    </header>
+                    <div class="card-body row">
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Admission Date: <span class="text-danger fs-5"> *</span> </label>
+                                <div class="col-md-8 ">
+                                    <input name="enrolled_date"
+                                        type="date"
+                                        class="form-control @error('enrolled_date') is-invalid @enderror"
+                                        value="{{ now()->format('Y-m-d'); }}">
+                                    <span class="text-danger"> @error('enrolled_date') {{$message}} @enderror </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Academic Year: </label>
+                                <div class="col-md-8 ">
+                                    <select name="academic_year" class="form-control select2 @error('enrolled_date') is-invalid @enderror">
+                                        @if ($years->count())
+                                            <option value="null">Select...</option>
+                                            @foreach ($years as $data)
+                                                <option value="{{ $data->year_en }}">{{ $data->year_en }}</option>
+                                            @endforeach
+                                        @else
+                                            <option value="">No Data found!</option>
+                                        @endif
+                                    </select>
+                                    <span class="text-danger"> @error('academic_year') {{$message}} @enderror </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Institute Name: </label>
+                                <div class="col-md-8 ">
+                                    <select name="institute_name" class="form-control select2">
+                                        @if ($institutes->count())
+                                            <option value="null">Select...</option>
+                                            @foreach ($institutes as $data)
+                                                <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                                            @endforeach
+                                        @else
+                                            <option value="">No Data found!</option>
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Shift: </label>
+                                <div class="col-md-8 ">
+                                    <select name="shift" class="form-control select2">
+                                        @if ($shifs->count())
+                                            <option value="null">Select...</option>
+                                            @foreach ($shifs as $data)
+                                                <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                                            @endforeach
+                                        @else
+                                            <option value="">No Data found!</option>
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Class: </label>
+                                <div class="col-md-8 ">
+                                    <select name="class" class="form-control select2">
+                                        @if ($classes->count())
+                                            <option value="null">Select...</option>
+                                            @foreach ($classes as $data)
+                                                <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                                            @endforeach
+                                        @else
+                                            <option value="">No Data found!</option>
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Section: </label>
+                                <div class="col-md-8 ">
+                                    <select name="section" class="form-control select2">
+                                        @if ($sections->count())
+                                            <option value="null">Select...</option>
+                                            @foreach ($sections as $data)
+                                                <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                                            @endforeach
+                                        @else
+                                            <option value="">No Data found!</option>
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Group: </label>
+                                <div class="col-md-8 ">
+                                    <select name="group" class="form-control select2">
+                                        @if ($groups->count())
+                                            <option value="null">Select...</option>
+                                            @foreach ($groups as $data)
+                                                <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                                            @endforeach
+                                        @else
+                                            <option value="">No Data found!</option>
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Class Roll: </label>
+                                <div class="col-md-8 ">
+                                    <input name="roll" type="number" class="form-control" placeholder="001">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> RFID Card No: </label>
+                                <div class="col-md-8 ">
+                                    <input name="rfid_card" type="number" class="form-control" placeholder="0001111111">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>{{-- /Academic Information --}}
 
                 {{-- Contact Information --}}
                 <div class="row">

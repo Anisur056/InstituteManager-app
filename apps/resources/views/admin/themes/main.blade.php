@@ -81,7 +81,16 @@
                                         <a href="https://hrm.bdtask-demoserver.com/dashboard/profile" class="color_1 fs-16">Manage your account</a>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-2">
-                                        <a href="{{ route('logout') }}" class="bg-smoke text-black rounded-3 px-3 py-2">Sign out</a>
+
+                                        <a class="bg-smoke text-black rounded-3 px-3 py-2" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+
                                         <button class="btn bg-smoke text-danger rounded-3 px-3 py-2">Close</button>
                                     </div>
                                 </div>

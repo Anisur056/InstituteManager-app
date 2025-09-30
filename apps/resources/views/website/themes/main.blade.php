@@ -10,7 +10,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -166,7 +166,7 @@
         </div>
     </div>
     <!-- Carousel End -->
-    
+
     <!-- Notice Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
@@ -192,13 +192,13 @@
                     <div class="float-end">
                         <a href="notice.php" class="btn btn-primary btn-sm wow zoomIn" data-wow-delay="0.6s" id="bangla">সকল নটিস</a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
     </div>
     <!-- Notice End -->
-    
+
     <!-- About Start -->
         <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
@@ -232,7 +232,7 @@
         </div>
     </div>
     <!-- About End -->
-    
+
     <!-- Group Start -->
     <div class="container-fluid bg-primary bg-appointment my-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
@@ -561,19 +561,19 @@
                   <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
-                        
+
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel">Message</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                
+
                         <div class="modal-body">
                                                   </div>
-                
+
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
-                
+
                       </div>
                     </div>
                   </div>
@@ -729,9 +729,9 @@
         e.preventDefault();
       });
       document.onkeydown = function(e) {
-        if (e.keyCode == 123 || 
-            (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || 
-            (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) || 
+        if (e.keyCode == 123 ||
+            (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) ||
+            (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) ||
             (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
           return false;
         }

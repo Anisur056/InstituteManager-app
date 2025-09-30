@@ -22,7 +22,7 @@
                 </li>
 
                 {{-- Employee Panel --}}
-                <li class="">
+                {{-- <li class="">
                     <a class="has-arrow material-ripple" href="#">
                         <i class="fa fa-user"></i>
                         <span>Employees</span>
@@ -47,7 +47,7 @@
                             <a class="dropdown-item" href="">ID Card</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
                 {{-- Student Panel --}}
                 <li class="">
@@ -78,7 +78,7 @@
                 </li>
 
                 {{-- Attendance Panel --}}
-                <li class="">
+                {{-- <li class="">
                     <a class="has-arrow material-ripple" href="#">
                         <i class="fa fa-hand-paper-o"></i>
                         <span> Attendance</span>
@@ -106,10 +106,10 @@
                         </li>
 
                     </ul>
-                </li>
+                </li> --}}
 
                 {{-- Examination Panel --}}
-                <li class="">
+                {{-- <li class="">
                     <a class="has-arrow material-ripple" href="#">
                         <i class="fa fa-graduation-cap"></i>
                         <span> Examination</span>
@@ -122,7 +122,7 @@
                             <a class="dropdown-item" href="">Result Publish</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
                 {{-- Weside Panel --}}
                 <li class="">
@@ -132,13 +132,16 @@
                     </a>
                     <ul class="nav-second-level ">
                         <li class="">
+                            <a class="dropdown-item" href="{{ route('home') }}">Visit</a>
+                        </li>
+                        <li class="">
                             <a class="dropdown-item" href="">Notice</a>
                         </li>
                     </ul>
                 </li>
 
                 {{-- Zkteco Device Panel --}}
-                <li class="">
+                {{-- <li class="">
                     <a class="has-arrow material-ripple" href="#">
                         <i class="fa fa-microchip"></i>
                         <span> Zkteco Device</span>
@@ -154,17 +157,17 @@
                             <a class="dropdown-item" href="{{ route('device.log') }}">Attendance Log</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
                 {{-- Settings Panel --}}
                 <li class="">
                     <a class="has-arrow material-ripple" href="#">
                         <i class="fa fa-cogs"></i>
-                        <span> Settings</span>
+                        <span>Institute Settings</span>
                     </a>
                     <ul class="nav-second-level ">
                         <li class="">
-                            <a class="dropdown-item" href="{{ route('institutes.index') }}">Institute Management</a>
+                            <a class="dropdown-item" href="{{ route('institutes.index') }}">Institute Info's</a>
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="{{ route('academic-years.index') }}">Academic Year</a>
@@ -177,6 +180,9 @@
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="{{ route('sections.index') }}">Section Management</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="{{ route('subject.index') }}">Subject Management</a>
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="{{ route('groups.index') }}">Group Management</a>
