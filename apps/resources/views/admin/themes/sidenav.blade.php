@@ -32,7 +32,7 @@
                             <a class="dropdown-item" href="{{ route('employee.create'); }}">Add Employee</a>
                         </li>
                         <li class="">
-                            <a class="dropdown-item" href="">Employee List</a>
+                            <a class="dropdown-item" href="{{ route('employee.index'); }}">Employee List</a>
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="">Ex Employee</a>
@@ -123,6 +123,20 @@
                         </li>
                     </ul>
                 </li> --}}
+
+                {{-- SMS Logs Panel --}}
+                <li class="">
+                    <a class="has-arrow material-ripple" href="#">
+                        <i class="fa fa-comments"></i>
+                        <span> SMS</span>
+                    </a>
+                    <ul class="nav-second-level ">
+                        <li class="">
+                            <a class="dropdown-item" href="{{ route('sms.logs') }}">SMS Logs</a>
+                        </li>
+
+                    </ul>
+                </li>
 
                 {{-- Weside Panel --}}
                 <li class="">

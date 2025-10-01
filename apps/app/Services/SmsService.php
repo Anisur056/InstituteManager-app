@@ -4,8 +4,8 @@ namespace App\Services;
 
 use Carbon\Carbon;
 
-use App\Models\SmsModel;
-use App\Models\StudentModel;
+use App\Models\SmsLogsModel;
+use App\Models\User;
 
 class SmsService
 {
@@ -35,7 +35,7 @@ class SmsService
 
         if($responseArray->response_code === 202)
         {
-            SmsModel::create([
+            SmsLogsModel::create([
                 'send_to' => $number,
                 'send_sms' => $message,
                 'timestamps' => $timestamp,
@@ -45,7 +45,7 @@ class SmsService
                 'error_message' => $responseArray->error_message,
             ]);
         }else{
-            SmsModel::create([
+            SmsLogsModel::create([
                 'response_code' => $responseArray->response_code,
                 'success_message' => $responseArray->success_message,
                 'error_message' => $responseArray->error_message,
@@ -60,7 +60,7 @@ class SmsService
         $date = $carbonInstance->toDateString();
         $time = $carbonInstance->format('H:i:s');
 
-        $studentData = StudentModel::select('contact_sms')->find($id);
+        $studentData = User::select('contact_sms')->find($id);
         $number = $studentData->contact_sms;
         $message = "আপনার সন্তান মাদ্রাসায় উপস্থিত। তারিখ: $date, সময়: $time";
 
@@ -75,7 +75,7 @@ class SmsService
         $date = $carbonInstance->toDateString();
         $time = $carbonInstance->format('H:i:s');
 
-        $studentData = StudentModel::select('contact_sms')->find($id);
+        $studentData = User::select('contact_sms')->find($id);
         $number = $studentData->contact_sms;
         $message = "আপনার সন্তান মাদ্রাসা ত্যাগ করেছেন। তারিখ: $date, সময়: $time";
 

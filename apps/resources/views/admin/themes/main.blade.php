@@ -63,13 +63,13 @@
 
                             <li class="nav-item dropdown user-menu">
                                 <a class="dropdown-toggle admin-btn me-2 me-sm-3 me-xl-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img class="admin-img me-1 me-sm-2" src="{{ asset(Auth::user()->profile_pic) }}" alt="Profile picture" />
+                                    <img class="admin-img me-1 me-sm-2" src="{{ asset("assets/admin/".Auth::user()->profile_pic) }}" alt="Profile picture" />
                                 </a>
                                 <div class="dropdown-menu new-dropdown shadow">
 
                                     <div class="user-header">
                                         <div class="img-user">
-                                            <img src="{{ asset(Auth::user()->profile_pic) }}" alt="Profile picture" />
+                                            <img src="{{ asset("assets/admin/".Auth::user()->profile_pic) }}" alt="Profile picture" />
                                         </div>
                                         <!-- img-user -->
                                         <h6>{{Auth::user()->full_name}}</h6>

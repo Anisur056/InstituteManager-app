@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\SmsService;
+
 use App\Models\User;
+
 use App\Models\InstituteInfoModel;
 use App\Models\InstituteAcademicYearsModel;
 use App\Models\InstituteClassesModel;
@@ -11,17 +14,23 @@ use App\Models\InstituteSectionsModel;
 use App\Models\InstituteGroupsModel;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest; // Form Submit Request goes & Validated
+use App\Http\Requests\UserEmployeeFormRequest; // Form Submit Request goes & Validated
 
 class UserEmployeeController extends Controller
 {
 
+    // For SMS Service to Work
+    protected $smsService;
+    public function __construct(SmsService $smsService)
+    {
+        $this->smsService = $smsService;
+    }
+
     public function index()
     {
-        // $records = User::limit(5)->orderBy('id','desc')->get();
-        $records = User::where('status', 'active')->get();
-        $classes = InstituteClassesModel::all();
-        return view('admin/students/index',compact('records','classes'));
+        $employees = User::where('status', 'active')
+                ->whereIn('role', ['teacher', 'accountant', 'librarian', 'security', 'guest','admin'])->get();
+        return view('admin/employee/index', compact('employees'));
     }
 
     public function create()
@@ -32,7 +41,7 @@ class UserEmployeeController extends Controller
         $classes = InstituteClassesModel::all();
         $sections = InstituteSectionsModel::all();
         $groups = InstituteGroupsModel::all();
-        return view('admin.students.create',compact(
+        return view('admin/employee/create',compact(
             'years',
             'institutes',
             'shifs',
@@ -42,7 +51,7 @@ class UserEmployeeController extends Controller
         ));
     }
 
-    public function store(UserRequest $request)
+    public function store(UserEmployeeFormRequest $request)
     // public function store(Request $request)
     {
         // Used for Mass Validation `apps/app/Http/Requests/UserRequest.php`
@@ -62,7 +71,7 @@ class UserEmployeeController extends Controller
             $user->update(['signature' => $path]);
         }
 
-        return redirect()->route('students.index');
+        return redirect()->route('employee.index');
     }
 
 
@@ -75,10 +84,10 @@ class UserEmployeeController extends Controller
     public function edit(String $id)
     {
         $data = User::find($id);
-        return view('admin.students.edit', compact('data'));
+        return view('admin.employee.edit', compact('data'));
     }
 
-    public function update(UserRequest $request, String $id)
+    public function update(UserEmployeeFormRequest $request, String $id)
     {
         // The request is already validated by the UserRequest.php
         $validatedData = $request->validated();
@@ -89,7 +98,7 @@ class UserEmployeeController extends Controller
         // $update = $User->update($validatedData);
 
         if($update){
-            return redirect()->route('students.index');
+            return redirect()->route('employee.index');
         }
 
     }
@@ -99,32 +108,50 @@ class UserEmployeeController extends Controller
         $destroy = User::destroy($id);
 
         if($destroy){
-            return redirect()->route('students.index');
+            return redirect()->route('employee.index');
         }
+    }
+
+    // Create User SMS Form
+    public function createUserSMS(String $id)
+    {
+        $data = User::find($id);
+        return view('admin.employee.sms', compact('data'));
+    }
+
+    // Send User SMS
+    public function sendUserSMS(Request $request)
+    {
+        $number = $request->contact_sms;
+        $message = $request->message;
+
+        $this->smsService->sendSMS( $number, $message, now() );
+
+        return back();
     }
 
     public function short_by_class(string $class)
     {
         $records = User::where('class', $class)->get();
         $class_list = InstituteClassesModel::orderBy('id','asc')->get();
-        return view('admin.students.index',compact('records','class_list'));
+        return view('admin.employee.index',compact('records','class_list'));
     }
 
     public function admit_card_print(string $id)
     {
         $record = User::find($id);
-        return view('admin.students.print-admit-card.',compact('record'));
+        return view('admin.employee.print-admit-card.',compact('record'));
     }
 
     public function seat_sticker_print(string $id)
     {
         $record = User::find($id);
-        return view('admin.students',compact('record'));
+        return view('admin.employee',compact('record'));
     }
 
     public function id_card_print(string $id)
     {
         $record = User::find($id);
-        return view('admin.students',compact('record'));
+        return view('admin.employee',compact('record'));
     }
 }

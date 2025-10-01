@@ -16,13 +16,8 @@ class DashboardController extends Controller
             ])->count();
 
         $employee = User::where('status', 'active')
-                ->whereIn('role', ['teacher', 'accountant', 'librarian', 'security', 'guest'])
+                ->whereIn('role', ['teacher', 'accountant', 'librarian', 'security', 'guest','admin'])
                 ->count();
-
-        $admin = User::where([
-                ['status','=','active'],
-                ['role','=','admin'],
-            ])->count();
 
         $smsResponse = Http::get('https://bulksmsbd.net/api/getBalanceApi?api_key=Kdan9bcjkwFAPLHNyaBR');
 
@@ -36,7 +31,6 @@ class DashboardController extends Controller
         return view('admin.dashboard',compact(
             'students',
             'employee',
-            'admin',
             'smsBalance',
         ));
 

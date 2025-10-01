@@ -1,9 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserEmployeeController;
+use App\Http\Controllers\UserStudentController;
+
 use App\Http\Controllers\InstituteInfoController;
 use App\Http\Controllers\InstituteAcademicYearsController;
 use App\Http\Controllers\InstituteClassesController;
@@ -13,11 +16,8 @@ use App\Http\Controllers\InstituteSubjectController;
 use App\Http\Controllers\InstituteGroupsController;
 use App\Http\Controllers\InstituteExamTermsController;
 
-use App\Http\Controllers\UserStudentController;
-
-use App\Http\Controllers\SmsController;
+use App\Http\Controllers\SmsLogsController;
 use App\Http\Controllers\TblFingerDevice;
-
 
 Auth::routes();
 
@@ -30,7 +30,16 @@ Route::get('/', function () { return view('website.home'); })->name('home');
 Route::middleware(["auth"])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'getUsersCount'])->name('dashboard');
 
-    // All Institute Settings Route
+    // Employee Routes
+    Route::resource('/employee', UserEmployeeController::class);
+    Route::get('/employee/sms/{id?}', [UserEmployeeController::class, 'createUserSMS'])->name('sms.create');
+    Route::post('/employee/sms/{id?}', [UserEmployeeController::class, 'sendUserSMS'])->name('sms.store');
+
+    // Student Routes
+    Route::resource('/students', UserStudentController::class);
+    Route::get('/students/class/{class?}', [UserStudentController::class, 'short_by_class'])->name('class');
+
+    // All Institute Settings Routes
     Route::resource('/institutes', InstituteInfoController::class);
     Route::resource('/academic-years', InstituteAcademicYearsController::class);
     Route::resource('/class', InstituteClassesController::class);
@@ -40,12 +49,8 @@ Route::middleware(["auth"])->group(function(){
     Route::resource('/groups', InstituteGroupsController::class);
     Route::resource('/exam-terms', InstituteExamTermsController::class);
 
-    // Employee Routes
-    Route::resource('/employee', UserEmployeeController::class);
-
-    // Student Routes
-    Route::resource('/students', UserStudentController::class);
-    Route::get('/students/class/{class?}', [UserStudentController::class, 'short_by_class'])->name('class');
+    // SMS Logs Routes
+    Route::get('/sms/logs',[SmsLogsController::class, 'showLogs'])->name('sms.logs');
 
 
 
@@ -73,8 +78,7 @@ Route::middleware(["auth"])->group(function(){
     // Route::get('/device/log/destroy',[TblFingerDevice::class, 'exportDestroyLogs'])->name('device.log.destroy');
 
 
-    // Test SMS Routes
-    // Route::get('/test-sms/{number?}',[SmsController::class, 'testSMS'])->name('sms.test');
+
 
 
 

@@ -79,7 +79,7 @@ class UserStudentController extends Controller
         return view('admin.students.edit', compact('data'));
     }
 
-    public function update(UserRequest $request, String $id)
+    public function update(UserStudentFormRequest $request, String $id)
     {
         // The request is already validated by the UserRequest.php
         $validatedData = $request->validated();
