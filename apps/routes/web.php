@@ -40,9 +40,16 @@ Route::middleware(["auth"])->group(function(){
     Route::resource('/groups', InstituteGroupsController::class);
     Route::resource('/exam-terms', InstituteExamTermsController::class);
 
-    // Students Routes
+    // Employee Routes
+    Route::resource('/employee', UserEmployeeController::class);
+
+    // Student Routes
     Route::resource('/students', UserStudentController::class);
     Route::get('/students/class/{class?}', [UserStudentController::class, 'short_by_class'])->name('class');
+
+
+
+
     // Route::get('/students/id-card/print/{id?}',[UserStudentController::class, 'id_card_print'])->name('id.card.print');
     // Route::get('/students/admit-card/print/{id?}',[UserStudentController::class, 'admit_card_print'])->name('admit.card.print');
     // Route::get('/students/seat-sticker/print/{id?}',[UserStudentController::class, 'seat_sticker_print'])->name('seat.sticker.print');

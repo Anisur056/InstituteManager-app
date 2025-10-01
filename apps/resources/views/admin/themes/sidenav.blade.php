@@ -22,14 +22,14 @@
                 </li>
 
                 {{-- Employee Panel --}}
-                {{-- <li class="">
+                <li class="">
                     <a class="has-arrow material-ripple" href="#">
                         <i class="fa fa-user"></i>
                         <span>Employees</span>
                     </a>
                     <ul class="nav-second-level ">
                         <li class="">
-                            <a class="dropdown-item" href="">Add Employee</a>
+                            <a class="dropdown-item" href="{{ route('employee.create'); }}">Add Employee</a>
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="">Employee List</a>
@@ -47,7 +47,7 @@
                             <a class="dropdown-item" href="">ID Card</a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
 
                 {{-- Student Panel --}}
                 <li class="">

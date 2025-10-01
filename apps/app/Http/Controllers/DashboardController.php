@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class DashboardController extends Controller
 {
@@ -23,16 +24,20 @@ class DashboardController extends Controller
                 ['role','=','admin'],
             ])->count();
 
+        $smsResponse = Http::get('https://bulksmsbd.net/api/getBalanceApi?api_key=Kdan9bcjkwFAPLHNyaBR');
 
-        // $leave = User::where('status','LEAVE')->count();
-        // $tc = User::where('status','TC')->count();
-        // $board_exam_complete = User::where('status','BOARD-EXAM-COMPLETE')->count();
-
+        $data = $smsResponse->json();
+        if (isset($data['balance'])) {
+            $smsBalance = $data['balance'];
+        } else {
+            $smsBalance = 'Failed';
+        }
 
         return view('admin.dashboard',compact(
             'students',
             'employee',
             'admin',
+            'smsBalance',
         ));
 
     }

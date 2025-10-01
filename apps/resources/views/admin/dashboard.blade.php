@@ -9,38 +9,58 @@
             <div class="row g-4">
                 <div class="col-lg-5 col-xl-3 col-xxl-2">
                     <div class="d-flex gap-3 flex-column justify-content-between h-100">
-                        <div class="card justify-content-center h-100 p-4 rounded-15">
-                            <div class="d-flex gap-2 align-items-center justify-content-between">
-                                <div>
-                                    <p class="fs-16 fw-medium mb-1">
-                                        Total Students
-                                    </p>
-                                    <h3 class="mb-0 fw-bold">
-                                        {{ $students }}
-                                    </h3>
+                        <a href="{{ route('students.index'); }}" class="link-success">
+                            <div class="card justify-content-center h-100 p-4 rounded-15">
+                                <div class="d-flex gap-2 align-items-center justify-content-between">
+                                    <div>
+                                        <p class="fs-16 fw-medium mb-1">
+                                            Total Students
+                                        </p>
+                                        <h3 class="mb-0 fw-bold">
+                                            {{ $students }}
+                                        </h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card justify-content-center h-100 p-4 rounded-15">
-                            <div class="d-flex gap-2 align-items-center justify-content-between">
-                                <div>
-                                    <p class="fs-16 fw-medium mb-1">
-                                        Total Employee
-                                    </p>
-                                    <h3 class="mb-0 fw-bold">{{ $employee }}</h3>
+                        </a>
+                        <a href="{{ route('employee.index'); }}" class="link-success">
+                            <div class="card justify-content-center h-100 p-4 rounded-15">
+                                <div class="d-flex gap-2 align-items-center justify-content-between">
+                                    <div>
+                                        <p class="fs-16 fw-medium mb-1">
+                                            Total Employee
+                                        </p>
+                                        <h3 class="mb-0 fw-bold">{{ $employee }}</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card justify-content-center h-100 p-4 rounded-15">
-                            <div class="d-flex gap-2 align-items-center justify-content-between">
-                                <div>
-                                    <p class="fs-16 fw-medium mb-1">
-                                        Total Admin
-                                    </p>
-                                    <h3 class="mb-0 fw-bold">{{ $admin }}</h3>
+                        </a>
+                        <a href="{{ route('dashboard'); }}" class="link-success">
+                            <div class="card justify-content-center h-100 p-4 rounded-15">
+                                <div class="d-flex gap-2 align-items-center justify-content-between">
+                                    <div>
+                                        <p class="fs-16 fw-medium mb-1">
+                                            Total Admin
+                                        </p>
+                                        <h3 class="mb-0 fw-bold">{{ $admin }}</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                        <a href="{{ route('dashboard'); }}" class="link-success">
+                            <div class="card justify-content-center h-100 p-4 rounded-15">
+                                <div class="d-flex gap-2 align-items-center justify-content-between">
+                                    <div>
+                                        <p class="fs-16 fw-medium mb-1">
+                                            SMS Balance
+                                        </p>
+                                        <h3 class="mb-0 fw-bold">
+                                            {{ $smsBalance }}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 {{-- <div class="col-lg-7 col-xl-5 col-xxl-6">
