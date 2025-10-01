@@ -13,15 +13,15 @@ use App\Models\InstituteGroupsModel;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest; // Form Submit Request goes & Validated
 
-class UserController extends Controller
+class UserEmployeeController extends Controller
 {
 
     public function index()
     {
         // $records = User::limit(5)->orderBy('id','desc')->get();
         $records = User::where('status', 'active')->get();
-        $class_list = InstituteClassesModel::all();
-        return view('admin/students/index',compact('records','class_list'));
+        $classes = InstituteClassesModel::all();
+        return view('admin/students/index',compact('records','classes'));
     }
 
     public function create()

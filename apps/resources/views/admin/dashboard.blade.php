@@ -16,7 +16,7 @@
                                         Total Students
                                     </p>
                                     <h3 class="mb-0 fw-bold">
-                                        {{ $active }}
+                                        {{ $students }}
                                     </h3>
                                 </div>
                             </div>
@@ -27,7 +27,7 @@
                                     <p class="fs-16 fw-medium mb-1">
                                         Total Employee
                                     </p>
-                                    <h3 class="mb-0 fw-bold">{{ $in_active }}</h3>
+                                    <h3 class="mb-0 fw-bold">{{ $employee }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -35,9 +35,9 @@
                             <div class="d-flex gap-2 align-items-center justify-content-between">
                                 <div>
                                     <p class="fs-16 fw-medium mb-1">
-                                        Total Ex Students
+                                        Total Admin
                                     </p>
-                                    <h3 class="mb-0 fw-bold">{{ $leave }}</h3>
+                                    <h3 class="mb-0 fw-bold">{{ $admin }}</h3>
                                 </div>
                             </div>
                         </div>

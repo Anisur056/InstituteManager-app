@@ -13,7 +13,7 @@ use App\Http\Controllers\InstituteSubjectController;
 use App\Http\Controllers\InstituteGroupsController;
 use App\Http\Controllers\InstituteExamTermsController;
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserStudentController;
 
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\TblFingerDevice;
@@ -41,11 +41,11 @@ Route::middleware(["auth"])->group(function(){
     Route::resource('/exam-terms', InstituteExamTermsController::class);
 
     // Students Routes
-    Route::resource('/students', UserController::class);
-    Route::get('/students/class/{class?}', [UserController::class, 'short_by_class'])->name('class');
-    // Route::get('/students/id-card/print/{id?}',[StudentController::class, 'id_card_print'])->name('id.card.print');
-    // Route::get('/students/admit-card/print/{id?}',[StudentController::class, 'admit_card_print'])->name('admit.card.print');
-    // Route::get('/students/seat-sticker/print/{id?}',[StudentController::class, 'seat_sticker_print'])->name('seat.sticker.print');
+    Route::resource('/students', UserStudentController::class);
+    Route::get('/students/class/{class?}', [UserStudentController::class, 'short_by_class'])->name('class');
+    // Route::get('/students/id-card/print/{id?}',[UserStudentController::class, 'id_card_print'])->name('id.card.print');
+    // Route::get('/students/admit-card/print/{id?}',[UserStudentController::class, 'admit_card_print'])->name('admit.card.print');
+    // Route::get('/students/seat-sticker/print/{id?}',[UserStudentController::class, 'seat_sticker_print'])->name('seat.sticker.print');
 
     // Attendance Routes
     // Route::get('/attendance/sheet/{year?}/{month?}/{class?}',[TblAttendanceLogController::class, 'showMonthlySheet'])->name('attendance.sheet');
