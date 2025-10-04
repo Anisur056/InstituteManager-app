@@ -14,11 +14,8 @@
     <!-- Sidebar Menu -->
     <link href="{{ asset('assets/admin/css/metisMenu.css') }}" rel="stylesheet">
 
-    <!-- Fonts- (Text & Icons) - online -->
-    <link href="https://hrm.bdtask-demoserver.com/backend/assets/dist/css/barlow-font.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awsome 4 -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/font-awesome.css') }}">
 
     @yield('css')
 

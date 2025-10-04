@@ -32,7 +32,44 @@ class DummyData extends Seeder
     public function run(): void
     {
         // User
+        $json = File::get('database/json/StudentModel.json');
+        $data = collect(json_decode($json, true));
+
+        $data->each(function($single){
+            User::insert($single);
+        });
+
         $records = collect([
+            [
+                'name' => 'Rofiqual Islam',
+                'name_bn' => 'রফিকুল ইসলাম',
+                'password' => Hash::make('123'),
+                'email' => 'sirikotiamadrasha@gmail.com',
+                'role' => 'admin',
+                'contact_sms' => '01892178778',
+                'contact_whatsapp' => '',
+                'sms_status' => 'on',
+                'nid' => '',
+                'birth_reg' => '',
+                'date_of_birth' => '',
+                'gender' => 'male',
+                'blood_group' => '',
+                'health_issues' => '',
+                'height' => '',
+                'weight' => '',
+                'marital_status' => 'married',
+                'nationality' => '',
+                'religion' => '',
+                'present_address' => '',
+                'permanent_address' => '',
+                'rfid_card' => '',
+                'profile_pic' => 'img/users/rofiq.png',
+                'signature' => '',
+                'status' => 'active',
+                'joined_at' => '',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
             [
                 'name' => 'Anisur Rahman',
                 'name_bn' => 'আনিসুর রহমান',
@@ -64,19 +101,19 @@ class DummyData extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'Rofiqual Islam',
-                'name_bn' => 'রফিকুল ইসলাম',
+                'name' => 'Nur Nabi',
+                'name_bn' => 'নুর নবী',
                 'password' => Hash::make('123'),
-                'email' => '',
+                'email' => 'nurnabi@gmail.com',
                 'role' => 'admin',
-                'contact_sms' => '01892178778',
-                'contact_whatsapp' => '',
+                'contact_sms' => '01871123427',
+                'contact_whatsapp' => '01871123427',
                 'sms_status' => 'on',
-                'nid' => '',
+                'nid' => '4202555860',
                 'birth_reg' => '',
-                'date_of_birth' => '',
+                'date_of_birth' => '1997-12-01',
                 'gender' => 'male',
-                'blood_group' => '',
+                'blood_group' => 'A+',
                 'health_issues' => '',
                 'height' => '',
                 'weight' => '',
@@ -86,18 +123,19 @@ class DummyData extends Seeder
                 'present_address' => '',
                 'permanent_address' => '',
                 'rfid_card' => '',
-                'profile_pic' => 'img/users/rofiq.png',
+                'profile_pic' => 'img/users/anis.jpg',
                 'signature' => '',
                 'status' => 'active',
-                'joined_at' => '',
+                'joined_at' => '2025-01-01',
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
         ]);
 
-            $records->each(function($data){
+         $records->each(function($data){
                 User::insert($data);
             });
+
 
         // `tbl_institutes` Data
         $records = collect([
@@ -195,21 +233,21 @@ class DummyData extends Seeder
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'Hifz Nazera',
+            'name_en' => 'Hifz-Nazera',
             'name_bn' => 'হিফজ নাজেরা',
             'display_order' => 7,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'Hifz International',
+            'name_en' => 'Hifz-International',
             'name_bn' => 'হিফজ আন্তর্জাতিক',
             'display_order' => 8,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'Hifz Rivision',
+            'name_en' => 'Hifz-Rivision',
             'name_bn' => 'হিফজ রিভিশন',
             'display_order' => 9,
             'created_at' => now(),

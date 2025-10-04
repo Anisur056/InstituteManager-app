@@ -11,15 +11,6 @@
 
     @include('admin.students.links')
 
-    <div class="card my-3 p-3 text-danger">
-        <ul>
-            <li>অবশ্যই লাল স্টার মার্ক এর সকল তথ্য পূরণ করা আবশ্যিক। </li>
-            <li>ছবি আপলোডের ক্ষেত্রে অবশ্যই ছবির সাইজ (২২৫ প্রস্থ, ২৮৫ উচ্চতা) এবং ১৫০ কিলোবাইটের নিচে হতে হবে। </li>
-            <li>সকল তথ্য যথাযথভাবে যাচাই করে সাবমিট করুন।  </li>
-            <li> বিস্তারিত জানার জন্য প্রতিষ্ঠানের মোবাইলে যোগাযোগ করুন। </li>
-        </ul>
-    </div>
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -31,42 +22,19 @@
     @endif
 
     <div class="card rounded-15">
+        <div class="card-header d-flex gap-3 align-items-center justify-content-between">
+            <h5 class="m-0 fs-18 fw-semi-bold text-success">
+                New Admission
+            </h5>
+            <a href="{{ route('students.index') }}"
+                class="btn btn-success d-flex align-items-center fs-15 gap-2 px-3 py-2 rounded-3">
+                <i class="fa fa-chevron-left"></i>
+                <span>Students List</span>
+            </a>
+        </div>
         <div class="card-body">
             <form action="{{ route('students.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-
-                {{-- Application Header & Profile Pic --}}
-                <div class="row">
-                    <div class="w-p100 mx-15 d-md-flex align-items-center">
-                        <div class="text-center" style="flex: 1">
-                            <div class="text-center">
-                            <img src="{{ asset('assets/admin/img/logo/favicon.png') }}" alt="Logo" width="75" height="75">
-                            <div class="text-center mt-15">
-                                <div class="title-en">Institute Management Application</div>
-                            </div>
-                            </div>
-                            <h2 class="heading"> Online Admission Form </h2>
-                        </div>
-                        <div class="preview-image text-center">
-                            <img id="update_pic_file"
-                                src="{{ asset('assets/admin/img/users/user.png') }}"
-                                class="mb-3"
-                                width="112px" height="140px">
-
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label">Select Profile Pic</label>
-                                <input class="form-control"
-                                    type="file"
-                                    name="profile_pic"
-                                    style="width:112px;"
-                                    onchange="document.querySelector('#update_pic_file').src=window.URL.createObjectURL(this.files[0])">
-                                <span class="text-danger"> @error('profile_pic') {{$message}} @enderror </span>
-                            </div>
-                            <span>112px x 140px</span>
-
-                        </div>
-                    </div>
-                </div>{{-- /Application Header & Profile Pic --}}
 
                 {{-- Student Information --}}
                 <div class="card p-2 mb-3 border border-success">
@@ -77,7 +45,7 @@
 
                         <div class="col-sm-12 col-lg-6 mb-3">
                             <div class="row">
-                                <label class="col-md-4 mb-2"> Joining Date:</label>
+                                <label class="col-md-4 mb-2"> Enrollment Date:</label>
                                 <div class="col-md-8 ">
                                     <input name="joined_at"
                                         type="date"
@@ -118,7 +86,45 @@
 
                         <div class="col-sm-12 col-lg-6 mb-3">
                             <div class="row">
-                                <label class="col-md-4 mb-2"> Email: <br> <span class="text-danger">(For Login & Recovery) *</span> </label>
+                                <label class="col-md-4 mb-2"> Designation: </label>
+                                <div class="col-md-8">
+                                    <select name="role" class="form-control select2">
+                                        <option value="student">Student</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Class: </label>
+                                <div class="col-md-8 ">
+                                    <select name="class" class="form-control select2">
+                                        @foreach ($classes as $data)
+                                            <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Class Roll: </label>
+                                <div class="col-md-8 ">
+                                    <input  value="{{ old('roll') }}"
+                                            type="text"
+                                            class="form-control @error('roll') is-invalid @enderror"
+                                            placeholder="Class Roll"
+                                            name="roll">
+                                    <span class="text-danger"> @error('roll') {{$message}} @enderror </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> Email: </label>
                                 <div class="col-md-8 ">
                                     <input  value="{{ old('email') }}"
                                             type="email"
@@ -126,20 +132,27 @@
                                             placeholder="aaaa@gmail.com"
                                             name="email">
                                     <span class="text-danger"> @error('email') {{$message}} @enderror </span>
+                                    <span class="text-success"> For Login & Recovery </span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-12 col-lg-6 mb-3">
                             <div class="row">
-                                <label class="col-md-4 mb-2"> Password: <br> <span class="text-danger">(For Login) *</span></label>
+                                <label class="col-md-4 mb-2">
+                                    Password:
+                                    <span onclick="togglePasswordVisibility()">
+                                        <i class="fa fa-eye" aria-hidden="true"></i></span>
+                                </label>
                                 <div class="col-md-8 ">
                                     <input  value="{{ old('password') }}"
                                             type="password"
+                                            id="password"
                                             class="form-control @error('password') is-invalid @enderror"
                                             placeholder="****"
                                             name="password">
                                     <span class="text-danger"> @error('password') {{$message}} @enderror </span>
+                                    <span class="text-success"> For Login </span>
                                 </div>
                             </div>
                         </div>
@@ -149,7 +162,7 @@
                                 <label class="col-md-4 mb-2"> Contact No: <br> <span class="text-danger">(for sms) *</span>   </label>
                                 <div class="col-md-8 mb-3">
                                     <input  value="{{ old('contact_sms') }}"
-                                            type="number"
+                                            type="text"
                                             class="form-control @error('contact_sms') is-invalid @enderror"
                                             placeholder="01xxxxxxxxx 11 Digit Only"
                                             name="contact_sms">
@@ -160,24 +173,12 @@
 
                         <div class="col-sm-12 col-lg-6 mb-3">
                             <div class="row">
-                                <label class="col-md-4 mb-2"> Enable SMS:</label>
-                                <div class="col-md-8 mb-3">
-                                    <div class="form-check form-switch">
-                                        <input name="sms_status" value="on" class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" checked>
-                                        <label class="form-check-label" for="switchCheckChecked">On/ Off SMS Feature</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-6 mb-3">
-                            <div class="row">
                                 <label class="col-md-4 mb-2"> Whatsapp No: </label>
                                 <div class="col-md-8 mb-3 ">
                                     <input  value="{{ old('contact_whatsapp') }}"
-                                            type="number"
+                                            type="text"
                                             class="form-control @error('contact_whatsapp') is-invalid @enderror"
-                                            placeholder="01xxxxxxxxx"
+                                            placeholder="01xxxxxxxxx 11 Digit Only"
                                             name="contact_whatsapp">
                                     <span class="text-danger"> @error('contact_whatsapp') {{$message}} @enderror </span>
                                 </div>
@@ -186,10 +187,22 @@
 
                         <div class="col-sm-12 col-lg-6 mb-3">
                             <div class="row">
-                                <label class="col-md-4 mb-2"> NID: (If Applicable) </label>
+                                <label class="col-md-4 mb-2"> Enable SMS: </label>
+                                <div class="col-md-8">
+                                    <select name="sms_status" class="form-control select2">
+                                        <option value="on">On</option>
+                                        <option value="off">Off</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                            <div class="row">
+                                <label class="col-md-4 mb-2"> NID: </label>
                                 <div class="col-md-8 ">
                                     <input  value="{{ old('nid') }}"
-                                            type="number"
+                                            type="text"
                                             class="form-control @error('nid') is-invalid @enderror"
                                             placeholder="10/17-Digit number"
                                             name="nid">
@@ -203,7 +216,7 @@
                                 <label class="col-md-4 mb-2"> Birth Registration: </label>
                                 <div class="col-md-8 ">
                                     <input  value="{{ old('birth_reg') }}"
-                                            type="number"
+                                            type="text"
                                             class="form-control @error('birth_reg') is-invalid @enderror"
                                             placeholder="17-Digits Number"
                                             name="birth_reg">
@@ -230,7 +243,6 @@
                                 <label class="col-md-4 mb-2"> Gender: </label>
                                 <div class="col-md-8 ">
                                     <select name="gender" class="form-control select2">
-                                        <option value="">Select...</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
@@ -290,7 +302,7 @@
                                 <label class="col-md-4 mb-2"> Weight: </label>
                                 <div class="col-md-8 ">
                                     <input  value="{{ old('weight') }}"
-                                            type="number"
+                                            type="text"
                                             class="form-control @error('weight') is-invalid @enderror"
                                             placeholder="Kilograms"
                                             name="weight">
@@ -346,7 +358,7 @@
                                 <div class="col-md-8 mb-3">
                                     <textarea value="{{ old('present_address') }}"
                                             class="form-control @error('present_address') is-invalid @enderror"
-                                            placeholder="C/O:..., Road:..., P.O:..., P.S:..., Dist:..."
+                                            placeholder="C/O:           Vill:           P.O:            P.S:            Dist:"
                                             name="present_address"></textarea>
                                     <span class="text-danger"> @error('present_address') {{$message}} @enderror </span>
                                 </div>
@@ -359,7 +371,7 @@
                                 <div class="col-md-8 mb-3">
                                     <textarea value="{{ old('permanent_address') }}"
                                             class="form-control @error('permanent_address') is-invalid @enderror"
-                                            placeholder="C/O:..., Vill:..., P.O:..., P.S:..., Dist:..."
+                                            placeholder="C/O:           Vill:           P.O:            P.S:            Dist:"
                                             name="permanent_address"></textarea>
                                     <span class="text-danger"> @error('permanent_address') {{$message}} @enderror </span>
                                 </div>
@@ -371,9 +383,9 @@
                                 <label class="col-md-4 mb-2"> RFID Card: </label>
                                 <div class="col-md-8 ">
                                     <input  value="{{ old('rfid_card') }}"
-                                            type="number"
+                                            type="text"
                                             class="form-control @error('rfid_card') is-invalid @enderror"
-                                            placeholder="10 Digit Number"
+                                            placeholder="0002500000"
                                             name="rfid_card">
                                     <span class="text-danger"> @error('rfid_card') {{$message}} @enderror </span>
                                 </div>
@@ -382,26 +394,34 @@
 
                         <div class="col-sm-12 col-lg-6 mb-3">
                             <div class="row">
-
-                                <label class="col-md-4 mb-2"> Signature Uploads: </label>
-
-                                <img id="signature"
-                                    src="{{ asset('assets/admin/img/signature/01.jpg') }}"
-                                    class="mb-3"
-                                    width="100%" height="70px">
-                                
-                                <span>300px x 70px</span>
-
-                                <div class="col-md-8 ">
-                                    <input class="form-control"
-                                        type="file"
-                                        name="signature"
-                                        style="width:112px;"
-                                        onchange="document.querySelector('#signature').src=window.URL.createObjectURL(this.files[0])">
-                                    <span class="text-danger"> @error('signature') {{$message}} @enderror </span>
+                                <label class="col-md-4 mb-2"> Active Status: </label>
+                                <div class="col-md-8">
+                                    <select name="status" class="form-control select2">
+                                        <option value="active">Active</option>
+                                        <option value="disable">disable</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
+
+                        {{-- Profile Pic & Signature Uploads --}}
+                        <div class="row">
+
+                                <div class="col-md-6 col-lg-6 col-sm-12 mb-3">
+                                    <label for="formFile" class="form-label">Select Profile Pic</label><br>
+                                    <img id="update_pic_file"
+                                        src="{{ asset('assets/admin/img/users/user.png') }}"
+                                        class="mb-3"
+                                        width="112px" height="140px"><br>
+
+                                    <span>112px x 140px</span>
+                                    <input class="form-control"
+                                        type="file"
+                                        name="profile_pic"
+                                        onchange="document.querySelector('#update_pic_file').src=window.URL.createObjectURL(this.files[0])">
+                                    <span class="text-danger"> @error('profile_pic') {{$message}} @enderror </span>
+                                </div>
+                        </div>{{-- Profile Pic & Signature Uploads --}}
 
                     </div>
                 </div>{{-- /Student Information --}}

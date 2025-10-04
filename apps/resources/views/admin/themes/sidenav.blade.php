@@ -21,34 +21,6 @@
                     </a>
                 </li>
 
-                {{-- Employee Panel --}}
-                <li class="">
-                    <a class="has-arrow material-ripple" href="#">
-                        <i class="fa fa-user"></i>
-                        <span>Employees</span>
-                    </a>
-                    <ul class="nav-second-level ">
-                        <li class="">
-                            <a class="dropdown-item" href="{{ route('employee.create'); }}">Add Employee</a>
-                        </li>
-                        <li class="">
-                            <a class="dropdown-item" href="{{ route('employee.index'); }}">Employee List</a>
-                        </li>
-                        <li class="">
-                            <a class="dropdown-item" href="">Ex Employee</a>
-                        </li>
-                        <li class="">
-                            <a class="dropdown-item" href="">Class Teacher</a>
-                        </li>
-                        <li class="">
-                            <a class="dropdown-item" href="">Appointment Letter</a>
-                        </li>
-                        <li class="">
-                            <a class="dropdown-item" href="">ID Card</a>
-                        </li>
-                    </ul>
-                </li>
-
                 {{-- Student Panel --}}
                 <li class="">
                     <a class="has-arrow material-ripple" href="#">
@@ -73,6 +45,34 @@
                         </li>
                         <li class="">
                             <a class="dropdown-item" href="">Seat Sticker</a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- Employee Panel --}}
+                <li class="">
+                    <a class="has-arrow material-ripple" href="#">
+                        <i class="fa fa-user"></i>
+                        <span>Employees</span>
+                    </a>
+                    <ul class="nav-second-level ">
+                        <li class="">
+                            <a class="dropdown-item" href="{{ route('employee.create'); }}">Add Employee</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="{{ route('employee.index'); }}">Employee List</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Ex Employee</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Class Teacher</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">Appointment Letter</a>
+                        </li>
+                        <li class="">
+                            <a class="dropdown-item" href="">ID Card</a>
                         </li>
                     </ul>
                 </li>

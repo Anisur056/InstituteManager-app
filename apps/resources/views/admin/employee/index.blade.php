@@ -12,11 +12,13 @@
 
 @section('page-body')
 
+    @include('admin.employee.links')
+
     <div class="col-12">
         <div class="card h-100 rounded-15">
             <div class="card-header d-flex gap-3 align-items-center justify-content-between">
                 <h5 class="m-0 fs-18 fw-semi-bold text-success">
-                    Employees  | <span class="ms-2 ">{{ $employees->count() }} Records </span>
+                    Employees  | <span class="ms-2 ">{{ $records->count() }} Records </span>
                 </h5>
                 <a href="{{ route('employee.create') }}"
                     class="btn btn-success d-flex align-items-center fs-15 gap-2 px-3 py-2 rounded-3">
@@ -30,7 +32,6 @@
                         <tr>
                             <th>Pic</th>
                             <th>Name <br>বাংলা</th>
-                            <th>Designation</th>
                             <th>RFID Card</th>
                             <th>Contact <br>(Call)</th>
                             <th>Contact <br>(Whatsapp)</th>
@@ -40,38 +41,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($employees as $data)
+                        @foreach ($records as $data)
                             <tr>
                             <td data-label="Pic: ">
                                 <img class="rounded-3" width="100px" src="{{ asset( "assets/admin/$data->profile_pic" ) }}">
                             </td>
-                            <td data-label="Name/ বাংলা " >
+                            <td data-label="Name/ বাংলা: " >
                                 {{$data->name}}<br>
-                                {{$data->name_bn}}
-                            </td>
-                            <td data-label="Designation: " class="text-start">
-                                {{$data->role}}
+                                {{$data->name_bn}} <br>
+                                Designation: {{$data->role}} <br>
+                                SMS: {{$data->sms_status}}
                             </td>
                             <td data-label="RFID Card: " class="text-start">
                                 {{$data->rfid_card}}
                             </td>
-                            <td data-label="Contact (Call) ">
+                            <td data-label="Contact (Call): ">
                                 <a class="text-decoration-none text-success font-weight-bold" target="_blank" href="tel:{{$data->contact_sms}}">
                                     {{$data->contact_sms}}
                                 </a>
                             </td>
-                            <td data-label="Contact (Whatsapp) ">
-                                <a class="text-decoration-none text-success font-weight-bold" target="_blank" href="https://wa.me/+88{{$data->contact_sms}}">
-                                    {{$data->contact_sms}}
+                            <td data-label="Contact (Whatsapp): ">
+                                <a class="text-decoration-none text-success font-weight-bold" target="_blank" href="https://wa.me/+88{{$data->contact_whatsapp}}">
+                                    {{$data->contact_whatsapp}}
                                 </a>
                             </td>
                             <td data-label="Profile: ">
-                                <a class="btn btn-primary mb-1" href="{{ route('students.show',$data->id) }}">
+                                <a class="btn btn-primary mb-1" href="{{ route('employee.show',$data->id) }}">
                                     <i class="fa fa-user me-1"></i>
                                 </a>
                             </td>
                             <td data-label="Update: ">
-                                <a class="btn btn-warning mb-1" href="{{ route('students.edit',$data->id) }}">
+                                <a class="btn btn-warning mb-1" href="{{ route('employee.edit',$data->id) }}">
                                     <i class="fa fa-pencil-square-o  me-1"></i>
                                 </a>
                             </td>

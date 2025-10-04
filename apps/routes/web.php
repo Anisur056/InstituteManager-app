@@ -30,14 +30,17 @@ Route::get('/', function () { return view('website.home'); })->name('home');
 Route::middleware(["auth"])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'getUsersCount'])->name('dashboard');
 
-    // Employee Routes
-    Route::resource('/employee', UserEmployeeController::class);
-    Route::get('/employee/sms/{id?}', [UserEmployeeController::class, 'createUserSMS'])->name('sms.create');
-    Route::post('/employee/sms/{id?}', [UserEmployeeController::class, 'sendUserSMS'])->name('sms.store');
-
     // Student Routes
     Route::resource('/students', UserStudentController::class);
-    Route::get('/students/class/{class?}', [UserStudentController::class, 'short_by_class'])->name('class');
+    Route::get('/students/class/{class?}', [UserStudentController::class, 'shortByClass'])->name('class');
+
+    // Employee Routes
+    Route::resource('/employee', UserEmployeeController::class);
+    Route::get('/employee-ex', [UserEmployeeController::class, 'exEmployee'])->name('employee.ex');
+
+    // SMS Routes
+    Route::get('/sms/{id?}', [SmsLogsController::class, 'createUserSMS'])->name('sms.create');
+    Route::post('/sms/{id?}', [SmsLogsController::class, 'sendUserSMS'])->name('sms.store');
 
     // All Institute Settings Routes
     Route::resource('/institutes', InstituteInfoController::class);

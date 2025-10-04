@@ -26,12 +26,14 @@ class UserStudentFormRequest extends FormRequest
             'joined_at' => '',
             'name' => 'required|string|max:255',
             'name_bn' => '',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-            'role' => '',
+            'email' => 'nullable|string|email|max:255',
+            'password' => 'nullable',
+            'role' => 'required',
+            'class' => 'nullable',
+            'roll' => 'nullable',
             'contact_sms' => 'required',
             'contact_whatsapp' => '',
-            'sms_status' => '',
+            'sms_status' => 'nullable|in:on,off',
             'nid' => '',
             'birth_reg' => '',
             'date_of_birth' => '',
@@ -46,11 +48,11 @@ class UserStudentFormRequest extends FormRequest
             'present_address' => '',
             'permanent_address' => '',
             'rfid_card' => 'nullable|max:10',
+            'status' => '',
             'profile_pic' => 'nullable|file|image|mimes:jpg,jpeg,png|max:1000',
             'signature' => 'nullable|file|image|mimes:jpg,jpeg,png|max:1000',
             'status' => '',
-            'role' => [],
-            'status' => [],
+            'role' => '',
 
             // 'name_en' => '',
             // 'name_bn' => '',
@@ -130,16 +132,5 @@ class UserStudentFormRequest extends FormRequest
         return $rules;
     }
 
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'role' => 'student',
-            'status' => 'active',
-        ]);
-
-        $this->mergeIfMissing([
-            'sms_status' => 'off',
-        ]);
-    }
 
 }

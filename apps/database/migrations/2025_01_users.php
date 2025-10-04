@@ -16,8 +16,8 @@ return new class extends Migration
             // For Login
             $table->string('name');//* Full Name
             $table->string('name_bn')->nullable();
-            $table->string('email')->unique();//* Email for Login
-            $table->string('password');//* Password for Login
+            $table->string('email')->nullable();
+            $table->string('password')->nullable();
             $table->enum('role',['admin', 'teacher', 'student','accountant', 'librarian', 'security', 'guest'])->default('guest');
 
             // For Contact
@@ -42,6 +42,8 @@ return new class extends Migration
 
             // For Attendance
             $table->string('rfid_card')->nullable();
+            $table->string('class')->nullable();
+            $table->string('roll')->nullable();
             $table->string('profile_pic')->nullable();
             $table->string('signature')->nullable();
             $table->enum('status',['active','disable','tc','exam-complete','exit'])->default('active');

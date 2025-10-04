@@ -21,6 +21,24 @@ body {
     font-family: 'bangla';
 } */
 
+
+@font-face {
+  /* This is the name you will use in your CSS 'font-family' property */
+  font-family: 'Barlow'; 
+  
+  /* Regular weight */
+  /* font-weight: 400;  */
+  
+  /* Normal style (not italic) */
+  /* font-style: normal;  */
+  
+  /* Path to your local font files (use WOFF2 and WOFF for best support) */
+  src: url('fonts/barlow.woff2') format('woff2');
+       
+  /* (Optional) This tells the browser to use a system font first while the custom font loads */
+  /* font-display: swap;  */
+}
+
 .wp-2 {
     width: 2% !important;
 }

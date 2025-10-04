@@ -1,6 +1,6 @@
 @extends('admin.themes.main')
 
-@section('page-title') SMS @endsection
+@section('page-title') Send Single SMS @endsection
 
 @section('css')
     <!-- Datatable -->
@@ -16,12 +16,12 @@
         <div class="card h-100 rounded-15">
             <div class="card-header d-flex gap-3 align-items-center justify-content-between">
                 <h5 class="m-0 fs-18 fw-semi-bold text-success">
-                    Send SMS
+                    Send Single SMS
                 </h5>
-                <a href="{{ route('employee.index') }}"
+                <a href="{{ route('dashboard') }}"
                     class="btn btn-success d-flex align-items-center fs-15 gap-2 px-3 py-2 rounded-3">
                     <i class="fa fa-chevron-left"></i>
-                    <span>Back</span>
+                    <span>Home</span>
                 </a>
             </div>
             <div class="card-body">
