@@ -78,7 +78,7 @@
                 </li>
 
                 {{-- Attendance Panel --}}
-                {{-- <li class="">
+                <li class="">
                     <a class="has-arrow material-ripple" href="#">
                         <i class="fa fa-hand-paper-o"></i>
                         <span> Attendance</span>
@@ -106,7 +106,7 @@
                         </li>
 
                     </ul>
-                </li> --}}
+                </li>
 
                 {{-- Examination Panel --}}
                 {{-- <li class="">

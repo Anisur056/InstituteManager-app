@@ -16,6 +16,8 @@ use App\Http\Controllers\InstituteSubjectController;
 use App\Http\Controllers\InstituteGroupsController;
 use App\Http\Controllers\InstituteExamTermsController;
 
+use App\Http\Controllers\TblAttendanceLogController;
+
 use App\Http\Controllers\SmsLogsController;
 use App\Http\Controllers\TblFingerDevice;
 
@@ -33,39 +35,27 @@ Route::middleware(["auth"])->group(function(){
     // Student Routes
     Route::resource('/students', UserStudentController::class);
     Route::get('/students/class/{class?}', [UserStudentController::class, 'shortByClass'])->name('class');
+    // Route::get('/students/id-card/print/{id?}',[UserStudentController::class, 'id_card_print'])->name('id.card.print');
+    // Route::get('/students/admit-card/print/{id?}',[UserStudentController::class, 'admit_card_print'])->name('admit.card.print');
+    // Route::get('/students/seat-sticker/print/{id?}',[UserStudentController::class, 'seat_sticker_print'])->name('seat.sticker.print');
 
     // Employee Routes
     Route::resource('/employee', UserEmployeeController::class);
     Route::get('/employee-ex', [UserEmployeeController::class, 'exEmployee'])->name('employee.ex');
 
     // SMS Routes
-    Route::get('/sms/{id?}', [SmsLogsController::class, 'createUserSMS'])->name('sms.create');
-    Route::post('/sms/{id?}', [SmsLogsController::class, 'sendUserSMS'])->name('sms.store');
+    Route::get('/sendsms/{id?}', [SmsLogsController::class, 'createUserSMS'])->name('sms.create');
+    Route::post('/sendsms/{id?}', [SmsLogsController::class, 'sendUserSMS'])->name('sms.store');
 
-    // All Institute Settings Routes
-    Route::resource('/institutes', InstituteInfoController::class);
-    Route::resource('/academic-years', InstituteAcademicYearsController::class);
-    Route::resource('/class', InstituteClassesController::class);
-    Route::resource('/shifts', InstituteShiftsController::class);
-    Route::resource('/sections', InstituteSectionsController::class);
-    Route::resource('/subject', InstituteSubjectController::class);
-    Route::resource('/groups', InstituteGroupsController::class);
-    Route::resource('/exam-terms', InstituteExamTermsController::class);
 
     // SMS Logs Routes
-    Route::get('/sms/logs',[SmsLogsController::class, 'showLogs'])->name('sms.logs');
+    Route::get('/smslog',[SmsLogsController::class, 'showLogs'])->name('sms.logs');
 
-
-
-
-    // Route::get('/students/id-card/print/{id?}',[UserStudentController::class, 'id_card_print'])->name('id.card.print');
-    // Route::get('/students/admit-card/print/{id?}',[UserStudentController::class, 'admit_card_print'])->name('admit.card.print');
-    // Route::get('/students/seat-sticker/print/{id?}',[UserStudentController::class, 'seat_sticker_print'])->name('seat.sticker.print');
 
     // Attendance Routes
-    // Route::get('/attendance/sheet/{year?}/{month?}/{class?}',[TblAttendanceLogController::class, 'showMonthlySheet'])->name('attendance.sheet');
-    // Route::get('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendance'])->name('attendance.upload');
-    // Route::post('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendanceStore'])->name('attendance.store');
+    Route::get('/attendance/sheet/{year?}/{month?}/{class?}',[TblAttendanceLogController::class, 'showMonthlySheet'])->name('attendance.sheet');
+    Route::get('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendance'])->name('attendance.upload');
+    Route::post('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendanceStore'])->name('attendance.store');
 
     // Finger Device Routes
     // Route::get('/device/info',[TblFingerDevice::class, 'getDeviceInfo'])->name('device.info');
@@ -82,7 +72,15 @@ Route::middleware(["auth"])->group(function(){
 
 
 
-
+    // All Institute Settings Routes
+    Route::resource('/institutes', InstituteInfoController::class);
+    Route::resource('/academic-years', InstituteAcademicYearsController::class);
+    Route::resource('/class', InstituteClassesController::class);
+    Route::resource('/shifts', InstituteShiftsController::class);
+    Route::resource('/sections', InstituteSectionsController::class);
+    Route::resource('/subject', InstituteSubjectController::class);
+    Route::resource('/groups', InstituteGroupsController::class);
+    Route::resource('/exam-terms', InstituteExamTermsController::class);
 
 
 });

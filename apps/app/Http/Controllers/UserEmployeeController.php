@@ -30,6 +30,7 @@ class UserEmployeeController extends Controller
     {
         $records = User::where('status', 'active')
                 ->whereIn('role', ['teacher', 'accountant', 'librarian', 'security', 'guest','admin'])->get();
+
         return view('admin/employee/index', compact('records'));
     }
 

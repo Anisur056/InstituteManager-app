@@ -50,7 +50,11 @@
                                 {{$data->name}}<br>
                                 {{$data->name_bn}} <br>
                                 Designation: {{$data->role}} <br>
-                                SMS: {{$data->sms_status}}
+                                @if ($data->sms_status === 'on')
+                                    <span class="badge bg-success text-bg-success">SMS On</span>
+                                @else
+                                    <span class="badge bg-danger text-bg-danger">SMS Off</span>
+                                @endif
                             </td>
                             <td data-label="RFID Card: " class="text-start">
                                 {{$data->rfid_card}}

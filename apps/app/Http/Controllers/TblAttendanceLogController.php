@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\Tbl_attendance_log;
-use App\Models\Tbl_student;
-use App\Models\Tbl_classe;
+use App\Models\UserAttendanceLogsModel;
+
+use App\Models\User;
+use App\Models\InstituteClassesModel;
 
 class TblAttendanceLogController extends Controller
 {
@@ -25,22 +26,22 @@ class TblAttendanceLogController extends Controller
     {
     }
 
-    public function show(Tbl_attendance_log $tbl_attendance_log)
+    public function show(UserAttendanceLogsModel $log)
     {
 
     }
 
-    public function edit(Tbl_attendance_log $tbl_attendance_log)
+    public function edit(UserAttendanceLogsModel $log)
     {
 
     }
 
-    public function update(Request $request, Tbl_attendance_log $tbl_attendance_log)
+    public function update(Request $request, UserAttendanceLogsModel $log)
     {
 
     }
 
-    public function destroy(Tbl_attendance_log $tbl_attendance_log)
+    public function destroy(UserAttendanceLogsModel $log)
     {
 
     }
@@ -58,14 +59,17 @@ class TblAttendanceLogController extends Controller
         $startOfMonth = Carbon::createFromDate($year, $month, 1)->startOfMonth();
         $endOfMonth = Carbon::createFromDate($year, $month, 1)->endOfMonth();
 
+        $startOfDate = $startOfMonth->toDateString();
+        $endOfDate = $endOfMonth->toDateString();
+
         // Query for users, applying filters if they exist.
-        $users = Tbl_student::query()->where('class', $class)->get();
-        $tbl_classe = Tbl_classe::select('name_en')->get();
+        $users = User::query()->where('class', $class)->get();
+        $tbl_classe = InstituteClassesModel::select('name_en')->get();
 
 
 
         // Fetch attendance records for the selected month and users.
-        $attendanceRecords = Tbl_attendance_log::whereBetween('timestamp', [$startOfMonth, $endOfMonth])
+        $attendanceRecords = UserAttendanceLogsModel::whereBetween('timestamp', [$startOfDate, $endOfDate])
                                     ->get()
                                     ->groupBy('user_id');
 
@@ -104,7 +108,7 @@ class TblAttendanceLogController extends Controller
 
             $attendanceData[] = [
                 'id' => $user->id,
-                'user_name' => $user->name_en,
+                'user_name' => $user->name,
                 'records' => $dailyRecords,
                 'total_present' => $totalPresent,
                 'total_absent' => $totalAbsent,
@@ -153,7 +157,7 @@ class TblAttendanceLogController extends Controller
 
         // 5. Loop through the data and insert into the database
         foreach ($data as $entry) {
-            Tbl_attendance_log::create([
+            UserAttendanceLogsModel::create([
                 'uid' => $entry['uid'],
                 'user_id' => $entry['id'],
                 'state' => $entry['state'],
