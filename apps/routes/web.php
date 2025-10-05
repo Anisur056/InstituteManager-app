@@ -16,17 +16,17 @@ use App\Http\Controllers\InstituteSubjectController;
 use App\Http\Controllers\InstituteGroupsController;
 use App\Http\Controllers\InstituteExamTermsController;
 
-use App\Http\Controllers\TblAttendanceLogController;
+use App\Http\Controllers\AttendanceSheetController;
 
 use App\Http\Controllers\SmsLogsController;
-use App\Http\Controllers\TblFingerDevice;
+use App\Http\Controllers\AttendanceDevicesController;
 
 Auth::routes();
 
 Route::get('/', function () { return view('website.home'); })->name('home');
 
 // Auto Sync For Attendance log & Send SMS. Python Script Automate it.
-// Route::get('/device/log/sync',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');
+Route::get('/device/log/sync',[AttendanceDevicesController::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');
 
 // All Authenticated Route
 Route::middleware(["auth"])->group(function(){
@@ -53,22 +53,22 @@ Route::middleware(["auth"])->group(function(){
 
 
     // Attendance Routes
-    Route::get('/attendance/sheet/{year?}/{month?}/{class?}',[TblAttendanceLogController::class, 'showMonthlySheet'])->name('attendance.sheet');
-    Route::get('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendance'])->name('attendance.upload');
-    Route::post('/attendance/upload',[TblAttendanceLogController::class, 'UploadAttendanceStore'])->name('attendance.store');
+    Route::get('/attendance/sheet/{year?}/{month?}/{class?}',[AttendanceSheetController::class, 'showMonthlySheet'])->name('attendance.sheet');
+    Route::get('/attendance/upload',[AttendanceSheetController::class, 'UploadAttendance'])->name('attendance.upload');
+    Route::post('/attendance/upload',[AttendanceSheetController::class, 'UploadAttendanceStore'])->name('attendance.store');
 
     // Finger Device Routes
-    // Route::get('/device/info',[TblFingerDevice::class, 'getDeviceInfo'])->name('device.info');
+    Route::get('/device/info',[AttendanceDevicesController::class, 'getDeviceInfo'])->name('device.info');
 
-    // Route::get('/device/user',[TblFingerDevice::class, 'getDeviceUser'])->name('device.user');
-    // Route::get('/device/user/create/{id?}',[TblFingerDevice::class, 'createSingleUser'])->name('device.user.add');
-    // Route::get('/device/user/remove/{id?}',[TblFingerDevice::class, 'removeSingleUser'])->name('device.user.remove');
-    // Route::get('/device/user/destroy',[TblFingerDevice::class, 'destroyAllUser'])->name('device.user.destroy');
+    Route::get('/device/user',[AttendanceDevicesController::class, 'getDeviceUser'])->name('device.user');
+    Route::get('/device/user/create/{id?}',[AttendanceDevicesController::class, 'createSingleUser'])->name('device.user.add');
+    Route::get('/device/user/remove/{id?}',[AttendanceDevicesController::class, 'removeSingleUser'])->name('device.user.remove');
+    Route::get('/device/user/destroy',[AttendanceDevicesController::class, 'destroyAllUser'])->name('device.user.destroy');
 
 
-    // Route::get('/device/log',[TblFingerDevice::class, 'getDeviceAttendanceLog'])->name('device.log');
-    // AT THE TOP--- Route::get('/device/log/sync',[TblFingerDevice::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');
-    // Route::get('/device/log/destroy',[TblFingerDevice::class, 'exportDestroyLogs'])->name('device.log.destroy');
+    Route::get('/device/log',[AttendanceDevicesController::class, 'getDeviceAttendanceLog'])->name('device.log');
+    // AT THE TOP--- Route::get('/device/log/sync',[AttendanceDevicesController::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');
+    Route::get('/device/log/destroy',[AttendanceDevicesController::class, 'exportDestroyLogs'])->name('device.log.destroy');
 
 
 

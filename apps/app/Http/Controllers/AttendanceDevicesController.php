@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Tbl_classe;
 use App\Models\StudentModel;
-use App\Models\Tbl_attendance_log;
-use App\Models\Tbl_finger_Device;
+use App\Models\UserAttendanceLogsModel;
+use App\Models\AttendanceDevicesModel;
 
 use Rats\Zkteco\Lib\ZKTeco;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Services\SmsService;
 
-class TblFingerDevice extends Controller
+class AttendanceDevicesController extends Controller
 {
     protected $smsService;
 
@@ -37,22 +37,22 @@ class TblFingerDevice extends Controller
     {
     }
 
-    public function show(Tbl_attendance_log $tbl_attendance_log)
+    public function show(UserAttendanceLogsModel $UserAttendanceLogsModel)
     {
 
     }
 
-    public function edit(Tbl_attendance_log $tbl_attendance_log)
+    public function edit(UserAttendanceLogsModel $UserAttendanceLogsModel)
     {
 
     }
 
-    public function update(Request $request, Tbl_attendance_log $tbl_attendance_log)
+    public function update(Request $request, UserAttendanceLogsModel $UserAttendanceLogsModel)
     {
 
     }
 
-    public function destroy(Tbl_attendance_log $tbl_attendance_log)
+    public function destroy(UserAttendanceLogsModel $UserAttendanceLogsModel)
     {
 
     }
@@ -60,14 +60,14 @@ class TblFingerDevice extends Controller
     // Get All Device Information
     public function getDeviceInfo()
     {
-        $device = Tbl_finger_Device::all();
+        $device = AttendanceDevicesModel::all();
         return view('admin.device.info', compact('device'));
     }
 
     // All User Related ====================>
     public function getDeviceUser()
     {
-        $device = Tbl_finger_Device::find(1);
+        $device = AttendanceDevicesModel::find(1);
         $zk = new ZKTeco($device->ip, $device->port);
 
         if ($zk->connect()) {
@@ -90,7 +90,7 @@ class TblFingerDevice extends Controller
     public function createSingleUser(String $id)
     {
 
-        $device = Tbl_finger_Device::find(1);
+        $device = AttendanceDevicesModel::find(1);
         $studentID = StudentModel::find($id);
         $zk = new ZKTeco($device->ip, $device->port);
 
@@ -109,7 +109,7 @@ class TblFingerDevice extends Controller
             );
 
 
-            // Tbl_attendance_log::chunk(100, function ($students) use ($zk) {
+            // UserAttendanceLogsModel::chunk(100, function ($students) use ($zk) {
             //     foreach ($students as $s) {
             //         $zk->setUser(
             //             (int) $s->id,          // Unique ID for the device (max 65535)
@@ -134,7 +134,7 @@ class TblFingerDevice extends Controller
     public function removeSingleUser(String $id)
     {
 
-        $device = Tbl_finger_Device::find(1);
+        $device = AttendanceDevicesModel::find(1);
         $zk = new ZKTeco($device->ip, $device->port);
 
         if ($zk->connect()) {
@@ -154,7 +154,7 @@ class TblFingerDevice extends Controller
     public function destroyAllUser()
     {
 
-        $device = Tbl_finger_Device::find(1);
+        $device = AttendanceDevicesModel::find(1);
         $zk = new ZKTeco($device->ip, $device->port);
 
         if ($zk->connect()) {
@@ -178,7 +178,7 @@ class TblFingerDevice extends Controller
     // All Attendance Log Related ====================>
     public function getDeviceAttendanceLog()
     {
-        $device = Tbl_finger_Device::find(1);
+        $device = AttendanceDevicesModel::find(1);
         $zk = new ZKTeco($device->ip, $device->port);
 
         if ($zk->connect()) {
@@ -204,7 +204,7 @@ class TblFingerDevice extends Controller
 
     public function syncDeviceAttendanceLog()
     {
-        $device = Tbl_finger_Device::find(1);
+        $device = AttendanceDevicesModel::find(1);
         $zk = new ZKTeco($device->ip, $device->port);
 
         if ($zk->connect()) {
@@ -220,14 +220,14 @@ class TblFingerDevice extends Controller
                 foreach ($attendance_logs as $log) {
 
                     // Check if the log already exists in the database to prevent duplicates
-                    $existing_log = Tbl_attendance_log::where('user_id', $log['id'])
+                    $existing_log = UserAttendanceLogsModel::where('user_id', $log['id'])
                         ->where('timestamp', $log['timestamp'])
                         ->first();
 
                     if (!$existing_log) {
                         // --- 5. Save Data to Database ---
                         // Create a new record in the attendance table
-                        Tbl_attendance_log::create([
+                        UserAttendanceLogsModel::create([
                             'uid' => $log['uid'],
                             'user_id' => $log['id'],
                             'state' => $log['state'],
@@ -242,7 +242,7 @@ class TblFingerDevice extends Controller
                         $logDate = date('Y-m-d', strtotime($log['timestamp']));
 
                         // Count how many logs already exist for this student on this date
-                        $countForDay = Tbl_attendance_log::where('user_id', $log['id'])
+                        $countForDay = UserAttendanceLogsModel::where('user_id', $log['id'])
                             ->whereDate('timestamp', $logDate)
                             ->count();
 
@@ -283,7 +283,7 @@ class TblFingerDevice extends Controller
 
     public function exportDestroyLogs()
     {
-        $device = Tbl_finger_Device::find(1);
+        $device = AttendanceDevicesModel::find(1);
         $zk = new ZKTeco($device->ip, $device->port);
 
         if ($zk->connect()) {

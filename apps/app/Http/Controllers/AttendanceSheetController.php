@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\UserAttendanceLogsModel;
 use App\Models\InstituteClassesModel;
 
-class TblAttendanceLogController extends Controller
+class AttendanceSheetController extends Controller
 {
 
     public function index()

@@ -155,7 +155,7 @@
                 </li>
 
                 {{-- Zkteco Device Panel --}}
-                {{-- <li class="">
+                <li class="">
                     <a class="has-arrow material-ripple" href="#">
                         <i class="fa fa-microchip"></i>
                         <span> Zkteco Device</span>
@@ -171,7 +171,7 @@
                             <a class="dropdown-item" href="{{ route('device.log') }}">Attendance Log</a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
 
                 {{-- Settings Panel --}}
                 <li class="">

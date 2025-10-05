@@ -60,7 +60,7 @@ class SmsService
         $date = $carbonInstance->toDateString();
         $time = $carbonInstance->format('H:i:s');
 
-        $studentData = User::select('contact_sms')->find($id);
+        $studentData = User::select('contact_sms','sms_status')->where('sms_status','on')->find($id);
         $number = $studentData->contact_sms;
         $message = "আপনার সন্তান মাদ্রাসায় উপস্থিত। তারিখ: $date, সময়: $time";
 
@@ -75,7 +75,7 @@ class SmsService
         $date = $carbonInstance->toDateString();
         $time = $carbonInstance->format('H:i:s');
 
-        $studentData = User::select('contact_sms')->find($id);
+        $studentData = User::select('contact_sms','sms_status')->where('sms_status','on')->find($id);
         $number = $studentData->contact_sms;
         $message = "আপনার সন্তান মাদ্রাসা ত্যাগ করেছেন। তারিখ: $date, সময়: $time";
 
