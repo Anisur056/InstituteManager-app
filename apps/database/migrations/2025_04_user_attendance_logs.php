@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('user_attendance_logs', function (Blueprint $table) {
@@ -16,15 +13,28 @@ return new class extends Migration
             $table->string('uid'); // unique ID of Device Log.
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('state'); // the authentication type, 1 for Fingerprint, 4 for RF Card etc
-            $table->string('timestamp'); // time of attendance
+            $table->timestamp('timestamp'); // time of attendance
             $table->string('type'); // attendance type, like check-in, check-out, overtime-in, overtime-out, break-in & break-out etc. if attendance type is none of them, it gives  255
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    // public function up()
+    // {
+    //     Schema::create('attendance_logs', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->foreignId('user_id')->constrained();
+    //         $table->date('date');
+    //         $table->time('check_in')->nullable();
+    //         $table->time('check_out')->nullable();
+    //         $table->enum('status', ['present', 'absent', 'late', 'leave'])->default('absent');
+    //         $table->text('notes')->nullable();
+    //         $table->timestamps();
+
+    //         $table->unique(['user_id', 'date']);
+    //     });
+    // }
+
     public function down(): void
     {
         Schema::dropIfExists('user_attendance_logs');

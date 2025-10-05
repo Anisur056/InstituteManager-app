@@ -48,6 +48,7 @@ return new class extends Migration
             $table->string('signature')->nullable();
             $table->enum('status',['active','disable','tc','exam-complete','exit'])->default('active');
             $table->string('joined_at')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
 

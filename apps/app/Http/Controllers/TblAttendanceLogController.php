@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\UserAttendanceLogsModel;
 
 use App\Models\User;
+use App\Models\UserAttendanceLogsModel;
 use App\Models\InstituteClassesModel;
 
 class TblAttendanceLogController extends Controller
@@ -52,26 +52,27 @@ class TblAttendanceLogController extends Controller
         $year = $request->input('year', Carbon::now()->year);
         $month = $request->input('month', Carbon::now()->month);
 
-        $class = $request->input('class', 'PLAY');
+        $class = $request->input('class', 'Play');
         // $section = $request->input('section' ,'');
 
         // Define the start and end of the specified month.
         $startOfMonth = Carbon::createFromDate($year, $month, 1)->startOfMonth();
         $endOfMonth = Carbon::createFromDate($year, $month, 1)->endOfMonth();
 
-        $startOfDate = $startOfMonth->toDateString();
-        $endOfDate = $endOfMonth->toDateString();
+        // $startOfDate = $startOfMonth->toDateString();
+        // $endOfDate = $endOfMonth->toDateString();
 
         // Query for users, applying filters if they exist.
-        $users = User::query()->where('class', $class)->get();
+        $users = User::select('id', 'name')->where('class', $class)->get();
         $tbl_classe = InstituteClassesModel::select('name_en')->get();
 
 
 
         // Fetch attendance records for the selected month and users.
-        $attendanceRecords = UserAttendanceLogsModel::whereBetween('timestamp', [$startOfDate, $endOfDate])
-                                    ->get()
-                                    ->groupBy('user_id');
+        $attendanceRecords = UserAttendanceLogsModel::whereBetween('timestamp', [$startOfMonth, $endOfMonth])
+                        ->whereIn('user_id', $users->pluck('id'))
+                        ->get()
+                        ->groupBy('user_id');
 
         // Create a structured data array for the view.
         $attendanceData = [];
@@ -87,7 +88,11 @@ class TblAttendanceLogController extends Controller
             // Loop through each day of the month.
             for ($day = 1; $day <= $endOfMonth->day; $day++) {
                 $date = Carbon::createFromDate($year, $month, $day);
-                $record = $userAttendance->firstWhere('timestamp', $date->toDateString());
+
+                $record = $userAttendance->first(function ($r) use ($date) {
+                    return Carbon::parse($r->timestamp)->isSameDay($date);
+                });
+
                 $status = $record ? $record->state : 'N';
 
                 // Increment the counters based on the status
