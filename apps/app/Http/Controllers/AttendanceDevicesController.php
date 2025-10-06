@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\Tbl_classe;
-use App\Models\StudentModel;
-use App\Models\UserAttendanceLogsModel;
-use App\Models\AttendanceDevicesModel;
-
+use Illuminate\Support\Str;
 use Rats\Zkteco\Lib\ZKTeco;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-
 use App\Services\SmsService;
+use Illuminate\Http\Request;
+
+use App\Models\User;
+use App\Models\AttendanceDevicesModel;
+use App\Models\UserAttendanceLogsModel;
+use Illuminate\Support\Facades\Storage;
 
 class AttendanceDevicesController extends Controller
 {
@@ -121,6 +120,38 @@ class AttendanceDevicesController extends Controller
             //         );
             //     }
             // });
+
+            $zk->enableDevice();
+            $zk->disconnect();
+            return back()->with('message','Users successfully synchronized to ZKTeco device.');
+        } else {
+            return back()->with('message','Failed to connect to ZKTeco device.');
+            die();
+        }
+    }
+
+    public function BulkUser()
+    {
+
+        $device = AttendanceDevicesModel::find(1);
+        $zk = new ZKTeco($device->ip, $device->port);
+
+        if ($zk->connect()) {
+            $zk->disableDevice();
+
+            User::where('status', 'active')
+                ->chunk(30, function ($students) use ($zk) { // Pass $uid_counter by reference
+                    foreach ($students as $s) {
+                        $uid = (int) $s->id; // Assign the current counter value and then increment it
+                        $userid = (int) $s->id; // Employee ID for the device
+                        $name = (string) Str::limit($s->name, '15'); // Name
+                        $password = (int) 0; // Password (optional)
+                        $role = (int) 0; // User level
+                        $cardno = (int) $s->rfid_card; // Card number (optional)
+
+                        $zk->setUser($uid, $userid, $name, $password, $role, $cardno);
+                    }
+                });
 
             $zk->enableDevice();
             $zk->disconnect();

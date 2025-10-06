@@ -60,12 +60,34 @@ class SmsService
         $date = $carbonInstance->toDateString();
         $time = $carbonInstance->format('H:i:s');
 
-        $studentData = User::select('contact_sms','sms_status')->where('sms_status','on')->find($id);
-        $number = $studentData->contact_sms;
-        $message = "আপনার সন্তান মাদ্রাসায় উপস্থিত। তারিখ: $date, সময়: $time";
+        $studentData = User::select('role','contact_sms','sms_status')->find($id);
 
-        // Send Message method inside this Service Class
-        $this->sendSMS($number, $message, $timestamp);
+        if ($studentData->sms_status == 'on') {
+            
+            $number = $studentData->contact_sms;
+
+            switch ($studentData->role) {
+                case 'student':
+                    $message = "আপনার সন্তান মাদ্রাসায় উপস্থিত। তারিখ: $date, সময়: $time";
+                    break;
+
+                case 'teacher':
+                    $message = "আপনি মাদ্রাসায় উপস্থিত হয়েছেন। তারিখ: $date, সময়: $time";
+                    break;
+
+                case 'admin':
+                    $message = "আপনি মাদ্রাসায় উপস্থিত হয়েছেন। তারিখ: $date, সময়: $time";
+                    break;
+                
+                case 'security':
+                    $message = "আপনি মাদ্রাসায় উপস্থিত হয়েছেন। তারিখ: $date, সময়: $time";
+                    break;
+            }
+    
+            // Send Message method inside this Service Class
+            $this->sendSMS($number, $message, $timestamp);
+        }
+
     }
 
     // Send SMS For Leave Log

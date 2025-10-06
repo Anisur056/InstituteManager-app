@@ -89,7 +89,7 @@
                             <a class="dropdown-item" href="">Take Attendance</a>
                         </li>
                         <li class="">
-                            <a class="dropdown-item" href="">Attendance Sheet</a>
+                            <a class="dropdown-item" href="{{ route('attendance.sheet.employee') }}">Attendance Sheet</a>
                         </li>
 
                         <span class="ms-5">Students</span>
@@ -97,7 +97,7 @@
                             <a class="dropdown-item" href="">Take Attendance</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('attendance.sheet') }}">Attendance Sheet</a>
+                            <a class="dropdown-item" href="{{ route('attendance.sheet.student') }}">Attendance Sheet</a>
                         </li>
 
                         <span class="ms-5">Upload Data</span>

@@ -46,7 +46,7 @@ class AttendanceSheetController extends Controller
 
     }
 
-    public function showMonthlySheet(Request $request)
+    public function showMonthlySheetStudent(Request $request)
     {
         // Get the requested year, month, class, and section from the request.
         $year = $request->input('year', Carbon::now()->year);
@@ -126,7 +126,7 @@ class AttendanceSheetController extends Controller
         $nextMonth = Carbon::createFromDate($year, $month, 1)->addMonth();
 
         // Pass all data and filters to the view.
-        return view('admin.attendance.sheet', [
+        return view('admin.attendance.sheetStudent', [
             'attendanceData' => $attendanceData,
             'daysInMonth' => $endOfMonth->day,
             'month' => $startOfMonth->format('F Y'),
@@ -138,6 +138,94 @@ class AttendanceSheetController extends Controller
             'nextMonth' => $nextMonth->month,
             'class' => $class,
             'tbl_classe' => $tbl_classe,
+        ]);
+    }
+
+    public function showMonthlySheetEmployee(Request $request)
+    {
+        // Get the requested year, month, class, and section from the request.
+        $year = $request->input('year', Carbon::now()->year);
+        $month = $request->input('month', Carbon::now()->month);
+
+        // Define the start and end of the specified month.
+        $startOfMonth = Carbon::createFromDate($year, $month, 1)->startOfMonth();
+        $endOfMonth = Carbon::createFromDate($year, $month, 1)->endOfMonth();
+
+        // $startOfDate = $startOfMonth->toDateString();
+        // $endOfDate = $endOfMonth->toDateString();
+
+        // Query for users, applying filters if they exist.
+        $users = User::select('id', 'name','role')->where('status', 'active')
+                ->whereIn('role', ['teacher', 'accountant', 'librarian', 'security', 'guest','admin'])->get();
+
+        // Fetch attendance records for the selected month and users.
+        $attendanceRecords = UserAttendanceLogsModel::whereBetween('timestamp', [$startOfMonth, $endOfMonth])
+                        ->whereIn('user_id', $users->pluck('id'))
+                        ->get()
+                        ->groupBy('user_id');
+
+        // Create a structured data array for the view.
+        $attendanceData = [];
+        foreach ($users as $user) {
+            $userAttendance = $attendanceRecords[$user->id] ?? collect();
+            $dailyRecords = [];
+
+            // Initialize counters for total attendance statuses
+            $totalPresent = 0;
+            $totalAbsent = 0;
+            $totalLeave = 0;
+
+            // Loop through each day of the month.
+            for ($day = 1; $day <= $endOfMonth->day; $day++) {
+                $date = Carbon::createFromDate($year, $month, $day);
+
+                $record = $userAttendance->first(function ($r) use ($date) {
+                    return Carbon::parse($r->timestamp)->isSameDay($date);
+                });
+
+                $status = $record ? $record->state : 'N';
+
+                // Increment the counters based on the status
+                switch ($status) {
+                    case '4':
+                        $totalPresent++;
+                        break;
+                    case 'N':
+                        $totalAbsent++;
+                        break;
+                    case 'leave':
+                        $totalLeave++;
+                        break;
+                }
+
+                $dailyRecords[$day] = $status;
+            }
+
+            $attendanceData[] = [
+                'id' => $user->id,
+                'user_name' => $user->name,
+                'records' => $dailyRecords,
+                'total_present' => $totalPresent,
+                'total_absent' => $totalAbsent,
+                'total_leave' => $totalLeave,
+            ];
+        }
+
+        // Calculate the previous and next month and year for navigation.
+        $prevMonth = Carbon::createFromDate($year, $month, 1)->subMonth();
+        $nextMonth = Carbon::createFromDate($year, $month, 1)->addMonth();
+
+        // Pass all data and filters to the view.
+        return view('admin.attendance.sheetEmployee', [
+            'attendanceData' => $attendanceData,
+            'daysInMonth' => $endOfMonth->day,
+            'month' => $startOfMonth->format('F Y'),
+            'year' => $year,
+            'currentMonth' => $month,
+            'prevMonthYear' => $prevMonth->year,
+            'prevMonth' => $prevMonth->month,
+            'nextMonthYear' => $nextMonth->year,
+            'nextMonth' => $nextMonth->month,
         ]);
     }
 

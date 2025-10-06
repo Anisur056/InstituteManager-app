@@ -17,7 +17,7 @@
     <h2 class="text-center text-secondary mb-4">{{ $month }}</h2>
 
     <!-- Filter Form -->
-    <form class="mb-4" action="{{ url('/attendance/sheet') }}" method="GET">
+    <form class="mb-4" action="{{ route('attendance.sheet.student') }}" method="GET">
         <div class="row g-3 align-items-center justify-content-center">
             <div class="col-md-auto">
                 <label for="year" class="col-form-label">Year:</label>
@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-auto">
                 <label for="class" class="col-form-label">Class:</label>
-                <select class="form-select" name="class">
+                <select class="form-select" name="class" onchange="this.form.submit()">
                     @foreach ($tbl_classe as $c)
                         <option value="{{ $c->name_en }}" {{ $c->name_en == $class ? 'selected' : '' }}>{{ $c->name_en }}</option>
                     @endforeach
@@ -46,7 +46,7 @@
             </div>
 
             <div class="col-md-auto">
-                <button type="submit" class="btn btn-primary mt-4">Filter</button>
+                <button type="submit" class="btn btn-primary mt-4">Search</button>
             </div>
         </div>
     </form>

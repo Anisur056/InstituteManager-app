@@ -21,6 +21,7 @@
 @isset($users)
 
 <a href="{{ route('device.user') }}" class="btn btn-success m-3">Refresh</a>
+<a href="{{ route('device.user.bulk') }}" class="btn btn-success m-3">All User Upload</a>
 <a href="{{ route('device.user.destroy') }}" class="btn btn-danger m-3">Destroy All User</a>
 
     <div class="card shadow-lg p-4 w-100" style="max-width: 96rem;">

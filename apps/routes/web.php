@@ -53,7 +53,8 @@ Route::middleware(["auth"])->group(function(){
 
 
     // Attendance Routes
-    Route::get('/attendance/sheet/{year?}/{month?}/{class?}',[AttendanceSheetController::class, 'showMonthlySheet'])->name('attendance.sheet');
+    Route::get('/attendance/sheet/student/{year?}/{month?}/{class?}',[AttendanceSheetController::class, 'showMonthlySheetStudent'])->name('attendance.sheet.student');
+    Route::get('/attendance/sheet/employee/{year?}/{month?}',[AttendanceSheetController::class, 'showMonthlySheetEmployee'])->name('attendance.sheet.employee');
     Route::get('/attendance/upload',[AttendanceSheetController::class, 'UploadAttendance'])->name('attendance.upload');
     Route::post('/attendance/upload',[AttendanceSheetController::class, 'UploadAttendanceStore'])->name('attendance.store');
 
@@ -62,6 +63,7 @@ Route::middleware(["auth"])->group(function(){
 
     Route::get('/device/user',[AttendanceDevicesController::class, 'getDeviceUser'])->name('device.user');
     Route::get('/device/user/create/{id?}',[AttendanceDevicesController::class, 'createSingleUser'])->name('device.user.add');
+    Route::get('/device/user/bulk',[AttendanceDevicesController::class, 'BulkUser'])->name('device.user.bulk');
     Route::get('/device/user/remove/{id?}',[AttendanceDevicesController::class, 'removeSingleUser'])->name('device.user.remove');
     Route::get('/device/user/destroy',[AttendanceDevicesController::class, 'destroyAllUser'])->name('device.user.destroy');
 
