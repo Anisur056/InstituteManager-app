@@ -1,6 +1,6 @@
 @extends('admin.themes.main')
 
-@section('page-title') Upload Attendance Logs @endsection
+@section('page-title') Student Attendance Sheet @endsection
 
 @section('css')
     <!-- Datatable -->
@@ -11,12 +11,12 @@
 
 @section('page-body')
 
-
 <div class="card shadow-lg p-4 w-100" style="max-width: 96rem;">
-    <h1 class="text-center text-dark mb-4">Monthly Attendance Sheet</h1>
-    <h2 class="text-center text-secondary mb-4">{{ $month }}</h2>
+    <h1 class="text-center text-dark mb-4">Student Attendance Sheet</h1>
+    <h2 class="text-center text-success mb-4">{{ $month }}</h2>
 
     <!-- Filter Form -->
+    
     <form class="mb-4" action="{{ route('attendance.sheet.student') }}" method="GET">
         <div class="row g-3 align-items-center justify-content-center">
             <div class="col-md-auto">
@@ -44,17 +44,14 @@
                     @endforeach
                 </select>
             </div>
-
-            <div class="col-md-auto">
-                <button type="submit" class="btn btn-primary mt-4">Search</button>
-            </div>
         </div>
     </form>
 
     <!-- Navigation Buttons -->
     <div class="d-flex justify-content-between mb-3">
-        <a href="{{ url('/attendance/sheet?year=' . $prevMonthYear . '&month=' . $prevMonth . '&class=' . $class) }}" class="btn btn-outline-secondary">Previous Month</a>
-        <a href="{{ url('/attendance/sheet?year=' . $nextMonthYear . '&month=' . $nextMonth . '&class=' . $class) }}" class="btn btn-outline-secondary">Next Month</a>
+        <a href="{{ url('/attendance/sheet/student?year=' . $prevMonthYear . '&month=' . $prevMonth . '&class=' . $class) }}" class="btn btn-outline-secondary">Previous Month</a>
+        <a href="{{ route('attendance.sheet.student') }}" class="btn btn-success">Refresh</a>
+        <a href="{{ url('/attendance/sheet/student?year=' . $nextMonthYear . '&month=' . $nextMonth . '&class=' . $class) }}" class="btn btn-outline-secondary">Next Month</a>
     </div>
 
     <div class="table-responsive">

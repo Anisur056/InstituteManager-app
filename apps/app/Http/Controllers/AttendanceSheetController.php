@@ -143,16 +143,14 @@ class AttendanceSheetController extends Controller
 
     public function showMonthlySheetEmployee(Request $request)
     {
-        // Get the requested year, month, class, and section from the request.
+        // Get the requested year, month, from the request.
         $year = $request->input('year', Carbon::now()->year);
         $month = $request->input('month', Carbon::now()->month);
 
         // Define the start and end of the specified month.
+        // Return[example]- "2025-10-01T00:00:00.000000Z"
         $startOfMonth = Carbon::createFromDate($year, $month, 1)->startOfMonth();
         $endOfMonth = Carbon::createFromDate($year, $month, 1)->endOfMonth();
-
-        // $startOfDate = $startOfMonth->toDateString();
-        // $endOfDate = $endOfMonth->toDateString();
 
         // Query for users, applying filters if they exist.
         $users = User::select('id', 'name','role')->where('status', 'active')
@@ -188,6 +186,9 @@ class AttendanceSheetController extends Controller
                 // Increment the counters based on the status
                 switch ($status) {
                     case '4':
+                        $totalPresent++;
+                        break;
+                    case '1':
                         $totalPresent++;
                         break;
                     case 'N':

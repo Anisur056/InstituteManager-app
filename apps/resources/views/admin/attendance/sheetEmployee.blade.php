@@ -1,6 +1,6 @@
 @extends('admin.themes.main')
 
-@section('page-title') Upload Attendance Logs @endsection
+@section('page-title') Employee Attendance Sheet @endsection
 
 @section('css')
     <!-- Datatable -->
@@ -13,11 +13,11 @@
 
 
 <div class="card shadow-lg p-4 w-100" style="max-width: 96rem;">
-    <h1 class="text-center text-dark mb-4">Monthly Attendance Sheet</h1>
-    <h2 class="text-center text-secondary mb-4">{{ $month }}</h2>
+    <h1 class="text-center text-dark mb-4">Employee Attendance Sheet</h1>
+    <h2 class="text-center text-success mb-4">{{ $month }}</h2>
 
     <!-- Filter Form -->
-    <form class="mb-4" action="{{ url('/attendance/sheet') }}" method="GET">
+    <form class="mb-4" action="{{ route('attendance.sheet.employee') }}" method="GET">
         <div class="row g-3 align-items-center justify-content-center">
             <div class="col-md-auto">
                 <label for="year" class="col-form-label">Year:</label>
@@ -36,16 +36,13 @@
                     @endforeach
                 </select>
             </div>
-
-            <div class="col-md-auto">
-                <button type="submit" class="btn btn-primary mt-4">Search</button>
-            </div>
         </div>
     </form>
 
     <!-- Navigation Buttons -->
     <div class="d-flex justify-content-between mb-3">
         <a href="{{ url('/attendance/sheet/employee?year=' . $prevMonthYear . '&month=' . $prevMonth) }}" class="btn btn-outline-secondary">Previous Month</a>
+        <a href="{{ route('attendance.sheet.employee') }}" class="btn btn-success">Refresh</a>
         <a href="{{ url('/attendance/sheet/employee?year=' . $nextMonthYear . '&month=' . $nextMonth) }}" class="btn btn-outline-secondary">Next Month</a>
     </div>
 
@@ -81,6 +78,10 @@
                                 $txt = '';
                                 switch ($status) {
                                     case '4':
+                                        $colorClass = 'bg-success text-white';
+                                        $txt = 'P';
+                                        break;
+                                    case '1':
                                         $colorClass = 'bg-success text-white';
                                         $txt = 'P';
                                         break;
