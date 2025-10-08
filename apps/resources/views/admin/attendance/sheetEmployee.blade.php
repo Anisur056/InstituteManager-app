@@ -42,7 +42,7 @@
     <!-- Navigation Buttons -->
     <div class="d-flex justify-content-between mb-3">
         <a href="{{ url('/attendance/sheet/employee?year=' . $prevMonthYear . '&month=' . $prevMonth) }}" class="btn btn-outline-secondary">Previous Month</a>
-        <a href="{{ route('attendance.sheet.employee') }}" class="btn btn-success">Refresh</a>
+        <a onclick="window.location.reload();" class="btn btn-success">Refresh</a>
         <a href="{{ url('/attendance/sheet/employee?year=' . $nextMonthYear . '&month=' . $nextMonth) }}" class="btn btn-outline-secondary">Next Month</a>
     </div>
 

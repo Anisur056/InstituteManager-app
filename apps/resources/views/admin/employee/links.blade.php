@@ -14,6 +14,10 @@
                     href="{{ route('employee.index') }}">Employee List</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link"
+                    href="{{ route('attendance.sheet.employee') }}">Attendance</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link  @if(Route::is('employee.ex') ) {{ 'active' }} @endif "
                     href="{{ route('employee.ex') }}">Ex Employee</a>
             </li>

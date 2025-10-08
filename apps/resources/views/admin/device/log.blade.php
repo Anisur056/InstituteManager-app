@@ -62,7 +62,7 @@
               [-1, 10, 25, 50],
               ['All',10, 25, 50]
           ],
-          order: [],
+          order: [0, 'desc'],
           scrollX: true,
           layout: {
             topStart:'info',

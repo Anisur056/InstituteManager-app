@@ -14,6 +14,10 @@
                     href="{{ route('students.index') }}">Student List</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link"
+                    href="{{ route('attendance.sheet.student') }}">Attendance</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link mt-0 " href="">Ex Student</a>
             </li>
             <li class="nav-item">
