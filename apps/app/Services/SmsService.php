@@ -99,7 +99,6 @@ class SmsService
 
         $studentData = User::select('contact_sms','sms_status')->where('sms_status','on')->find($id);
         $number = $studentData->contact_sms;
-        $message = " তারিখ: $date, সময়: $time";
 
         switch ($studentData->role) {
             case 'student':
