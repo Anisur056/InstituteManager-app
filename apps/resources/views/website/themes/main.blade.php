@@ -136,6 +136,7 @@
                         <a href="index.html" class="nav-item nav-link"><span class="bangla">নোটিশ</span></a>
                         <a href="index.html" class="nav-item nav-link"><span class="bangla">গ্যালারী</span></a>
                         <a href="contact.html" class="nav-item nav-link"><span class="bangla">যোগাযোগ</span></a>
+                        <a href="{{ route('login') }}" class="nav-item nav-link"><span class="bangla">লগইন</span></a>
                     </div>
                     <a href="#" class="btn btn-success rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0"><span class="bangla">ভর্তি আবেদন</span></a>
                 </div>
@@ -437,7 +438,6 @@
             <div class="modal-dialog">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
