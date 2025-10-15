@@ -9,47 +9,51 @@ use App\Models\User;
 
 class SmsService
 {
+    protected $sms_enable = true;
+
     // SMS Getway Bulksmsbd.com. 1st parameter Receive Number, 2nd Message Body, 3rd Sending Time.
     public function sendSMS(String $number, String $message, String $timestamp)
     {
-        $url = "http://bulksmsbd.net/api/smsapi";
-        $api_key = "Kdan9bcjkwFAPLHNyaBR";
-        $senderid = "8809617624990";
-
-        $data = [
-            "api_key" => $api_key,
-            "senderid" => $senderid,
-            "number" => $number,
-            "message" => $message
-        ];
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $response = curl_exec($ch);
-        curl_close($ch);
-        $responseArray = json_decode($response);
-
-        if($responseArray->response_code === 202)
-        {
-            SmsLogsModel::create([
-                'send_to' => $number,
-                'send_sms' => $message,
-                'timestamps' => $timestamp,
-                'response_code' => $responseArray->response_code,
-                'message_id' => $responseArray->message_id,
-                'success_message' => $responseArray->success_message,
-                'error_message' => $responseArray->error_message,
-            ]);
-        }else{
-            SmsLogsModel::create([
-                'response_code' => $responseArray->response_code,
-                'success_message' => $responseArray->success_message,
-                'error_message' => $responseArray->error_message,
-            ]);
+        if ($this->sms_enable === true) {
+            $url = "http://bulksmsbd.net/api/smsapi";
+            $api_key = "Kdan9bcjkwFAPLHNyaBR";
+            $senderid = "8809617624990";
+    
+            $data = [
+                "api_key" => $api_key,
+                "senderid" => $senderid,
+                "number" => $number,
+                "message" => $message
+            ];
+    
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            $response = curl_exec($ch);
+            curl_close($ch);
+            $responseArray = json_decode($response);
+    
+            if($responseArray->response_code === 202)
+            {
+                SmsLogsModel::create([
+                    'send_to' => $number,
+                    'send_sms' => $message,
+                    'timestamps' => $timestamp,
+                    'response_code' => $responseArray->response_code,
+                    'message_id' => $responseArray->message_id,
+                    'success_message' => $responseArray->success_message,
+                    'error_message' => $responseArray->error_message,
+                ]);
+            }else{
+                SmsLogsModel::create([
+                    'response_code' => $responseArray->response_code,
+                    'success_message' => $responseArray->success_message,
+                    'error_message' => $responseArray->error_message,
+                ]);
+            }
         }
     }
 
