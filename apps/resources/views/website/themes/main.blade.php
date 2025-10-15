@@ -148,13 +148,13 @@
         <!-- Home Gallery Carousel Start -->
         <div class="header-carousel owl-carousel">
             <div class="header-carousel-item">
-                <img src="{{ asset('assets/website/img/carousel-1.jpg') }}" class="img-fluid w-100" alt="Image">
+                <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid w-100" alt="Image">
             </div>
             <div class="header-carousel-item">
-                <img src="{{ asset('assets/website/img/carousel-2.jpg') }}" class="img-fluid w-100" alt="Image">
+                <img src="{{ asset('assets/website/img/gallery/02.jpg') }}" class="img-fluid w-100" alt="Image">
             </div>
             <div class="header-carousel-item">
-                <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid w-100" alt="Image">
+                <img src="{{ asset('assets/website/img/gallery/03.jpg') }}" class="img-fluid w-100" alt="Image">
             </div>
         </div>
         <!-- Home Gallery Carousel End -->
@@ -207,7 +207,7 @@
 
                     <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="rounded-bottom border border-top-0 p-4">
                             <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
@@ -217,7 +217,7 @@
 
                     <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="rounded-bottom border border-top-0 p-4">
                             <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
@@ -226,7 +226,7 @@
                     </div>
                     <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="rounded-bottom border border-top-0 p-4">
                             <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
@@ -235,7 +235,7 @@
                     </div>
                     <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="rounded-bottom border border-top-0 p-4">
                             <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
@@ -244,7 +244,7 @@
                     </div>
                     <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="rounded-bottom border border-top-0 p-4">
                             <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
@@ -272,7 +272,7 @@
 
                     <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="rounded-bottom border border-top-0 p-4">
                             <p class="mb-3">গ্যালারী-১</p>
@@ -282,7 +282,7 @@
 
                     <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/website/img/gallery/02.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="rounded-bottom border border-top-0 p-4">
                             <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
@@ -291,7 +291,7 @@
                     </div>
                     <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/website/img/gallery/03.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="rounded-bottom border border-top-0 p-4">
                             <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
@@ -300,7 +300,7 @@
                     </div>
                     <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="rounded-bottom border border-top-0 p-4">
                             <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
@@ -309,7 +309,7 @@
                     </div>
                     <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/website/img/gallery/02.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="rounded-bottom border border-top-0 p-4">
                             <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
@@ -324,110 +324,99 @@
         <div class="container-fluid gallery pb-5">
             <div class="container pb-5">
                 <div class="pb-5">
-                    <h4 class="text-success sub-title fw-bold bangla">ভিডিও গ্যালারী</h4><br>
-                </div>
-                <div class="tab-class wow fadeInUp" data-wow-delay="0.1s">
-                    <div id="GalleryTab-1" class="tab-pane fade show p-0">
-                        {{-- <div class="row g-2">
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="video h-100">
-                                    <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/YTR5jkyTPBo" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="video h-100">
-                                    <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 wow fadeInUp" data-wow-delay="0.5s">
-                                <div class="video h-100">
-                                    <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                                <div class="video h-100">
-                                    <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 wow fadeInUp" data-wow-delay="0.9s">
-                                <div class="video h-100">
-                                    <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="video h-100">
-                                    <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="video h-100">
-                                    <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2 wow fadeInUp" data-wow-delay="0.5s">
-                                <div class="video h-100">
-                                    <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                                <div class="video h-100">
-                                    <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2 wow fadeInUp" data-wow-delay="0.9s">
-                                <div class="video h-100">
-                                    <img src="{{ asset('assets/website/img/carousel-3.jpg') }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div> --}}
-
-                        <div class="row g-2">
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="video h-100">
-                                    <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                                        data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                        style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                                    <button type="button" class="btn btn-play"
-                                            data-bs-toggle="modal"
-                                            data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                            data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
+                    <div class="row g-4 align-items-end">
+                        <div class="col-xl-8">
+                            <h4 class="text-success sub-title fw-bold bangla">ভিডিও গ্যালারী</h4><br>
                         </div>
+                        <div class="col-xl-4 text-xl-end wow fadeInUp" data-wow-delay="0.3s">
+                            <a class="btn btn-success rounded-pill text-white py-3 px-5" href="#">সকল ভিডিও</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="video h-100">
+                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
+                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
+                                style="object-fit: cover;" alt="YouTube Thumbnail">
 
+                            <button type="button" class="btn btn-play"
+                                    data-bs-toggle="modal"
+                                    data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
+                                    data-bs-target="#videoModal">
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="video h-100">
+                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
+                                data-src="https://www.youtube.com/embed/-1CVMSGU2mQ"
+                                style="object-fit: cover;" alt="YouTube Thumbnail">
+
+                            <button type="button" class="btn btn-play"
+                                    data-bs-toggle="modal"
+                                    data-src="https://www.youtube.com/embed/-1CVMSGU2mQ"
+                                    data-bs-target="#videoModal">
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="video h-100">
+                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
+                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
+                                style="object-fit: cover;" alt="YouTube Thumbnail">
+
+                            <button type="button" class="btn btn-play"
+                                    data-bs-toggle="modal"
+                                    data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
+                                    data-bs-target="#videoModal">
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="video h-100">
+                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
+                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
+                                style="object-fit: cover;" alt="YouTube Thumbnail">
+
+                            <button type="button" class="btn btn-play"
+                                    data-bs-toggle="modal"
+                                    data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
+                                    data-bs-target="#videoModal">
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="video h-100">
+                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
+                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
+                                style="object-fit: cover;" alt="YouTube Thumbnail">
+
+                            <button type="button" class="btn btn-play"
+                                    data-bs-toggle="modal"
+                                    data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
+                                    data-bs-target="#videoModal">
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="video h-100">
+                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
+                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
+                                style="object-fit: cover;" alt="YouTube Thumbnail">
+
+                            <button type="button" class="btn btn-play"
+                                    data-bs-toggle="modal"
+                                    data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
+                                    data-bs-target="#videoModal">
+                                <span></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -455,85 +444,62 @@
         <div class="container-fluid team pb-5">
             <div class="container pb-5">
                 <div class="pb-5">
-                    <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Dance Teachers</h4>
-                    <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Our Professional Instructor</h1>
+                    <div class="row g-4 align-items-end">
+                        <div class="col-xl-8">
+                            <h4 class="text-success sub-title fw-bold bangla">শিক্ষক মন্ডলী</h4><br>
+                        </div>
+                    </div>
                 </div>
                 <div class="team-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-img bg-secondary rounded-top">
-                            <img src="img/team-1.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                            <div class="team-icon">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
+                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="team-content text-center p-4">
-                            <a href="#" class="h4">Emily Ava</a>
-                            <p class="mb-0 text-primary">Instructor</p>
+                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
                         </div>
                     </div>
-                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-img bg-secondary rounded-top">
-                            <img src="img/team-2.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                            <div class="team-icon">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
+                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="team-content text-center p-4">
-                            <a href="#" class="h4">Emily Ava</a>
-                            <p class="mb-0 text-primary">Instructor</p>
+                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
                         </div>
                     </div>
-                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-img bg-secondary rounded-top">
-                            <img src="img/team-3.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                            <div class="team-icon">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
+                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="team-content text-center p-4">
-                            <a href="#" class="h4">Emily Ava</a>
-                            <p class="mb-0 text-primary">Instructor</p>
+                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
                         </div>
                     </div>
-                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-img bg-secondary rounded-top">
-                            <img src="img/team-4.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                            <div class="team-icon">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
+                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="team-content text-center p-4">
-                            <a href="#" class="h4">Emily Ava</a>
-                            <p class="mb-0 text-primary">Instructor</p>
+                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
                         </div>
                     </div>
-                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.9s">
+                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-img bg-secondary rounded-top">
-                            <img src="img/team-4.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                            <div class="team-icon">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
+                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
                         </div>
                         <div class="team-content text-center p-4">
-                            <a href="#" class="h4">Emily Ava</a>
-                            <p class="mb-0 text-primary">Instructor</p>
+                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
                         </div>
                     </div>
+                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-img bg-secondary rounded-top">
+                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                        </div>
+                        <div class="team-content text-center p-4">
+                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div><!-- Team End -->
