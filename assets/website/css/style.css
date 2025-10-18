@@ -367,11 +367,10 @@
 .bg-breadcrumb {
 	position: relative;
 	padding: 145px 0 50px 0;
-    background: linear-gradient(rgba(242, 139, 0, 0.2), rgba(242, 139, 0, 0.3)), url(../img/breadcrumb.jpg);
+    background: var(--bs-success);
     background-position: center top;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    
 }
 
 @media (max-width: 992px) {

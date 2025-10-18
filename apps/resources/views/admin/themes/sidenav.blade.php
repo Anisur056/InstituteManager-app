@@ -142,12 +142,9 @@
                 <li class="">
                     <a class="has-arrow material-ripple" href="#">
                         <i class="fa fa-globe"></i>
-                        <span> Website Settings</span>
+                        <span> Website</span>
                     </a>
                     <ul class="nav-second-level ">
-                        <li class="">
-                            <a class="dropdown-item" href="{{ route('home') }}">Visit</a>
-                        </li>
                         <li class="">
                             <a class="dropdown-item" href="">Notice</a>
                         </li>

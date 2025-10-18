@@ -3,27 +3,39 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\UserEmployeeController;
-use App\Http\Controllers\UserStudentController;
-
-use App\Http\Controllers\InstituteInfoController;
-use App\Http\Controllers\InstituteAcademicYearsController;
-use App\Http\Controllers\InstituteClassesController;
-use App\Http\Controllers\InstituteShiftsController;
-use App\Http\Controllers\InstituteSectionsController;
-use App\Http\Controllers\InstituteSubjectController;
-use App\Http\Controllers\InstituteGroupsController;
-use App\Http\Controllers\InstituteExamTermsController;
-
-use App\Http\Controllers\AttendanceSheetController;
+use App\Http\Controllers\Website\HomeController;
 
 use App\Http\Controllers\SmsLogsController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserStudentController;
+
+use App\Http\Controllers\UserEmployeeController;
+use App\Http\Controllers\InstituteInfoController;
+use App\Http\Controllers\AttendanceSheetController;
+use App\Http\Controllers\InstituteGroupsController;
+use App\Http\Controllers\InstituteShiftsController;
+use App\Http\Controllers\InstituteClassesController;
+use App\Http\Controllers\InstituteSubjectController;
+
 use App\Http\Controllers\AttendanceDevicesController;
+
+use App\Http\Controllers\InstituteSectionsController;
+use App\Http\Controllers\InstituteExamTermsController;
+use App\Http\Controllers\InstituteAcademicYearsController;
 
 Auth::routes();
 
-Route::get('/', function () { return view('website.home'); })->name('home');
+// Website Frontend Route
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/notice', [HomeController::class, 'noticeIndex'])->name('notice.index');
+Route::get('/notice/{id?}', [HomeController::class, 'noticeShow'])->name('notice.show');
+
+
+
+
+
+
+
 
 // Auto Sync For Attendance log & Send SMS. Python Script Automate it.
 Route::get('/device/log/sync',[AttendanceDevicesController::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');

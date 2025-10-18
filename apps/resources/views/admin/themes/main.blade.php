@@ -58,11 +58,14 @@
                     <div class="navbar-icon">
                         <ul class="navbar-nav flex-row gap-3 align-items-center">
 
+                            <a class="btn btn-outline-success rounded" target="_blank" href="{{ route('home') }}"><i class="fa fa-globe fs-3" aria-hidden="true"></i></a>
+
                             <li class="nav-item dropdown user-menu">
                                 <a class="dropdown-toggle admin-btn me-2 me-sm-3 me-xl-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img class="admin-img me-1 me-sm-2" src="{{ asset("assets/admin/".Auth::user()->profile_pic) }}" alt="Profile picture" />
                                 </a>
                                 <div class="dropdown-menu new-dropdown shadow">
+
 
                                     <div class="user-header">
                                         <div class="img-user">

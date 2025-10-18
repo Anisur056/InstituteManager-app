@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>ছিরিকোটিয়া হাফেজিয়া নূরানী মডেল মাদ্রাসা । অফিসিয়াল ওয়েবসাইট</title>
+        <title>@yield('page-title')</title>
+
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="ছিরিকোটিয়া মাদ্রাসা" name="keywords">
         <meta content="ছিরিকোটিয়া হাফেজিয়া নূরানী মডেল মাদ্রাসা । অফিসিয়াল ওয়েবসাইট" name="description">
@@ -44,6 +45,8 @@
         <!-- Template Stylesheet -->
         <link href="{{ asset('assets/website/css/style.css') }}" rel="stylesheet">
 
+        @yield('css')
+
     </head>
 
     <body class="bangla">
@@ -76,7 +79,7 @@
                             </span>
                             <span class="col-12 col-md-6 py-2 text-white ">
                             <i class="bi bi-telephone-fill me-2"></i>
-                            +880 1892-178778
+                            +880 1892-178778, +880 1621-986417
                             </span>
                         </div>
                     </div>
@@ -89,9 +92,10 @@
                 <tbody>
                     <tr>
                         <td class="bg-success text-white" style="font-weight: bold; width: 130px; padding-left:10px;">সর্বশেষ নোটিশ -</td>
-                        <td class="bg-light text-success" style="font-weight: bold; padding-top:5px;">
+                        <td class="bg-light text-danger" style="font-weight: bold; padding-top:5px;">
                             <marquee behavior="scroll" direction="left">
-                                ছিরিকোটিয়া হাফেজিয়া নূরানী মডেল মাদ্রাসার ওয়েবসাইটে আপনাকে স্বাগতম। &nbsp; <i class='fas fa-chess-board'></i>  &nbsp;১৮/০৬/২৫ ইং মাদ্রাসার সকল কার্যক্রম যথারীতি চালু হবে, ইনশাআল্লাহ।&nbsp; <i class='fas fa-chess-board'></i>  &nbsp;এখন থেকে শিক্ষার্থীদের সকল তথ্য ওয়েবসাইটের মাধ্যমে জানা যাবে।
+                                ছিরিকোটিয়া হাফেজিয়া নূরানী মডেল মাদ্রাসার ওয়েবসাইটে আপনাকে স্বাগতম। &nbsp; <i class='fas fa-chess-board'></i>  &nbsp;
+                                @foreach($notice as $row){{ $row->title }} &nbsp; <i class='fas fa-chess-board'></i>  &nbsp; @endforeach
                             </marquee>
                         </td>
                     </tr>
@@ -99,411 +103,12 @@
             </table>
         <!-- Announcement End -->
 
+        <!-- Top Navbar Start -->
+        @include('website.themes.topNav')
 
-        <!-- Navbar & Hero Start -->
-        <div class="container-fluid position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
-                <a href="{{ route('home') }}" class="navbar-brand p-0">
-                    {{-- <h1 class="text-primary m-0"><i class="fas fa-biohazard me-3"></i>JustDance</h1> --}}
-                    <img src="{{ asset('assets/website/img/logo-banner.png') }}" alt="Logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="{{ route('home') }}" class="nav-item nav-link active"><span class="bangla">প্রচ্ছদ</span></a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><span class="bangla">আমাদের সম্পর্কে</span></a>
-                            <div class="dropdown-menu m-0">
-                                <a href="classes.html" class="dropdown-item"><span class="bangla">প্রিন্সিপালের বার্তা</span></a>
-                                <a href="training.html" class="dropdown-item"><span class="bangla">নূরানী বিভাগ</span></a>
-                                <a href="team.html" class="dropdown-item"><span class="bangla">হিফজ বিভাগ</span></a>
-                                <a href="testimonial.html" class="dropdown-item"><span class="bangla">মক্তব বিভাগ</span></a>
-                                <a href="gallery.html" class="dropdown-item"><span class="bangla">শিক্ষক মন্ডলী</span></a>
-                                <a href="404.html" class="dropdown-item"><span class="bangla">সুযোগ-সুবিধা</span></a>
-                            </div>
-                        </div>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><span class="bangla">ভর্তি</span></a>
-                            <div class="dropdown-menu m-0">
-                                <a href="classes.html" class="dropdown-item"><span class="bangla">ভর্তির নিয়মাবলী</span></a>
-                                <a href="training.html" class="dropdown-item"><span class="bangla">বেতন ও অন্যান্য ফি</span></a>
-                                <a href="team.html" class="dropdown-item"><span class="bangla">ইউনির্ফম</span></a>
-                                <a href="testimonial.html" class="dropdown-item"><span class="bangla">ভর্তি ফরম</span></a>
-                            </div>
-                        </div>
-                        <a href="index.html" class="nav-item nav-link"><span class="bangla">নোটিশ</span></a>
-                        <a href="index.html" class="nav-item nav-link"><span class="bangla">গ্যালারী</span></a>
-                        <a href="contact.html" class="nav-item nav-link"><span class="bangla">যোগাযোগ</span></a>
-                        <a href="{{ route('login') }}" class="nav-item nav-link"><span class="bangla">লগইন</span></a>
-                    </div>
-                    <a href="#" class="btn btn-success rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0"><span class="bangla">ভর্তি আবেদন</span></a>
-                </div>
-            </nav>
-        </div>
-        <!-- Navbar & Hero End -->
-
-
-        <!-- Home Gallery Carousel Start -->
-        <div class="header-carousel owl-carousel">
-            <div class="header-carousel-item">
-                <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid w-100" alt="Image">
-            </div>
-            <div class="header-carousel-item">
-                <img src="{{ asset('assets/website/img/gallery/02.jpg') }}" class="img-fluid w-100" alt="Image">
-            </div>
-            <div class="header-carousel-item">
-                <img src="{{ asset('assets/website/img/gallery/03.jpg') }}" class="img-fluid w-100" alt="Image">
-            </div>
-        </div>
-        <!-- Home Gallery Carousel End -->
-
-        <!-- Banner Start -->
-        <div class="container-fluid bg-success wow zoomInDown" data-wow-delay="0.1s">
-            <div class="container">
-                <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center text-center p-5">
-                    <h1 class="me-4 text-white"><span class="bangla"> আধুনিক শিক্ষার প্রতিষ্ঠান</span></h1>
-                    {{-- <a href="#" class="text-white fw-bold fs-2"> <i class="fa fa-phone me-1"></i> 714-783-2205</a> --}}
-                </div>
-            </div>
-        </div>
-        <!-- Banner End -->
-
-        <!-- About Start -->
-        <div class="container-fluid py-5">
-            <div class="container py-5">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.1s">
-                        <div class="border bg-secondary rounded">
-                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid w-100 rounded" alt="Image">
-                        </div>
-                    </div>
-                    <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.3s">
-                        <h4 class="text-success sub-title fw-bold bangla">প্রিন্সিপালের বার্তা</h4><br>
-                        <h5 class="text-success bangla">মোঃ রফিকুল ইসলাম (রোমান)</h5>
-                        <p class="bangla">আপনার সন্তানের ভবিষ্যৎ গড়তে আমরা আছি প্রতিশ্রুতি বদ্ধ।আপনার সন্তানের ভবিষ্যৎ গড়তে আমরা আছি প্রতিশ্রুতি বদ্ধ।আপনার সন্তানের ভবিষ্যৎ গড়তে আমরা আছি প্রতিশ্রুতি বদ্ধ।আপনার সন্তানের ভবিষ্যৎ গড়তে আমরা আছি প্রতিশ্রুতি বদ্ধ।</p>
-                        <a class="btn btn-success rounded-pill text-white py-3 px-5" href="#">+880 1892-178778</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- About End -->
-
-        <!-- Notice Board Start -->
-        <div class="container-fluid training bg-light py-5">
-            <div class="container py-5">
-                <div class="pb-5">
-                    <div class="row g-4 align-items-end">
-                        <div class="col-xl-8">
-                            <h4 class="text-success sub-title fw-bold bangla">নোটিশ বোর্ড</h4><br>
-                        </div>
-                        <div class="col-xl-4 text-xl-end wow fadeInUp" data-wow-delay="0.3s">
-                            <a class="btn btn-success rounded-pill text-white py-3 px-5" href="#">সকল নোটিশ</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="training-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
-
-                    <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom border border-top-0 p-4">
-                            <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                            <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                        </div>
-                    </div>
-
-                    <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom border border-top-0 p-4">
-                            <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                            <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                        </div>
-                    </div>
-                    <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom border border-top-0 p-4">
-                            <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                            <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                        </div>
-                    </div>
-                    <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom border border-top-0 p-4">
-                            <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                            <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                        </div>
-                    </div>
-                    <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom border border-top-0 p-4">
-                            <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                            <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- Notice Board End -->
-
-        <!-- Gallery Start -->
-        <div class="container-fluid training py-5">
-            <div class="container py-5">
-                <div class="pb-5">
-                    <div class="row g-4 align-items-end">
-                        <div class="col-xl-8">
-                            <h4 class="text-success sub-title fw-bold bangla">গ্যালারী</h4><br>
-                        </div>
-                        <div class="col-xl-4 text-xl-end wow fadeInUp" data-wow-delay="0.3s">
-                            <a class="btn btn-success rounded-pill text-white py-3 px-5" href="#">সকল গ্যালারী</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="training-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
-
-                    <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom border border-top-0 p-4">
-                            <p class="mb-3">গ্যালারী-১</p>
-                            <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                        </div>
-                    </div>
-
-                    <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/gallery/02.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom border border-top-0 p-4">
-                            <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                            <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                        </div>
-                    </div>
-                    <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/gallery/03.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom border border-top-0 p-4">
-                            <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                            <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                        </div>
-                    </div>
-                    <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom border border-top-0 p-4">
-                            <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                            <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                        </div>
-                    </div>
-                    <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="training-img rounded-top">
-                            <img src="{{ asset('assets/website/img/gallery/02.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom border border-top-0 p-4">
-                            <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                            <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- Gallery End -->
-
-        <!-- Video Gallery Start -->
-        <div class="container-fluid gallery pb-5">
-            <div class="container pb-5">
-                <div class="pb-5">
-                    <div class="row g-4 align-items-end">
-                        <div class="col-xl-8">
-                            <h4 class="text-success sub-title fw-bold bangla">ভিডিও গ্যালারী</h4><br>
-                        </div>
-                        <div class="col-xl-4 text-xl-end wow fadeInUp" data-wow-delay="0.3s">
-                            <a class="btn btn-success rounded-pill text-white py-3 px-5" href="#">সকল ভিডিও</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="video h-100">
-                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                            <button type="button" class="btn btn-play"
-                                    data-bs-toggle="modal"
-                                    data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                    data-bs-target="#videoModal">
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="video h-100">
-                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                                data-src="https://www.youtube.com/embed/-1CVMSGU2mQ"
-                                style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                            <button type="button" class="btn btn-play"
-                                    data-bs-toggle="modal"
-                                    data-src="https://www.youtube.com/embed/-1CVMSGU2mQ"
-                                    data-bs-target="#videoModal">
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="video h-100">
-                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                            <button type="button" class="btn btn-play"
-                                    data-bs-toggle="modal"
-                                    data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                    data-bs-target="#videoModal">
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="video h-100">
-                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                            <button type="button" class="btn btn-play"
-                                    data-bs-toggle="modal"
-                                    data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                    data-bs-target="#videoModal">
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="video h-100">
-                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                            <button type="button" class="btn btn-play"
-                                    data-bs-toggle="modal"
-                                    data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                    data-bs-target="#videoModal">
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="video h-100">
-                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                            <button type="button" class="btn btn-play"
-                                    data-bs-toggle="modal"
-                                    data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                    data-bs-target="#videoModal">
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal Video -->
-        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content rounded-0">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- 16:9 aspect ratio -->
-                        <div class="ratio ratio-16x9">
-                            <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
-                                allow="autoplay"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- Modal Video End -->
-
-        <!-- Team Start -->
-        <div class="container-fluid team pb-5">
-            <div class="container pb-5">
-                <div class="pb-5">
-                    <div class="row g-4 align-items-end">
-                        <div class="col-xl-8">
-                            <h4 class="text-success sub-title fw-bold bangla">শিক্ষক মন্ডলী</h4><br>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-img bg-secondary rounded-top">
-                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="team-content text-center p-4">
-                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                        </div>
-                    </div>
-                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-img bg-secondary rounded-top">
-                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="team-content text-center p-4">
-                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                        </div>
-                    </div>
-                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-img bg-secondary rounded-top">
-                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="team-content text-center p-4">
-                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                        </div>
-                    </div>
-                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-img bg-secondary rounded-top">
-                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="team-content text-center p-4">
-                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                        </div>
-                    </div>
-                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-img bg-secondary rounded-top">
-                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="team-content text-center p-4">
-                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                        </div>
-                    </div>
-                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-img bg-secondary rounded-top">
-                            <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="team-content text-center p-4">
-                            <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div><!-- Team End -->
-
+        <!-- Body Content -->
+        @yield('page-body')
+        
         <!-- Footer Start -->
         <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
@@ -648,6 +253,8 @@
         });
     });
     </script>
+
+    @yield('js')
 
 
 </html>
