@@ -10,20 +10,20 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $notice = WebsiteNoticeModel::where([
-                ['enable_status','=','on'],
-            ])->orderByDesc('id')->get();
+        $notices = WebsiteNoticeModel::where([
+            ['enable_status','=','on'],
+        ])->orderByDesc('id')->get();
 
-        return view('website.home',compact('notice',));
+        return view('website.home',compact('notices'));
     }
 
     public function noticeIndex()
     {
-        $notice = WebsiteNoticeModel::where([
+        $notices = WebsiteNoticeModel::where([
             ['enable_status','=','on'],
         ])->orderByDesc('id')->get();
 
-        return view('website.noticeIndex',compact('notice'));
+        return view('website.noticeIndex',compact('notices'));
     }
 
     public function noticeShow($id)

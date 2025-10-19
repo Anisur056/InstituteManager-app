@@ -146,7 +146,7 @@
                     </a>
                     <ul class="nav-second-level ">
                         <li class="">
-                            <a class="dropdown-item" href="">Notice</a>
+                            <a class="dropdown-item" href="{{ route('notices.index') }}">Notices</a>
                         </li>
                     </ul>
                 </li>

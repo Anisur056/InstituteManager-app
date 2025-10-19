@@ -17,6 +17,8 @@ use App\Http\Controllers\InstituteShiftsController;
 use App\Http\Controllers\InstituteClassesController;
 use App\Http\Controllers\InstituteSubjectController;
 
+use App\Http\Controllers\WebsiteNoticeController;
+
 use App\Http\Controllers\AttendanceDevicesController;
 
 use App\Http\Controllers\InstituteSectionsController;
@@ -43,6 +45,7 @@ Route::get('/device/log/sync',[AttendanceDevicesController::class, 'syncDeviceAt
 // All Authenticated Route
 Route::middleware(["auth"])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'getUsersCount'])->name('dashboard');
+    Route::resource('/notices', WebsiteNoticeController::class);
 
     // Student Routes
     Route::resource('/students', UserStudentController::class);

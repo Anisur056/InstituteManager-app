@@ -40,7 +40,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => public_path('../../assets/admin'),
+            'root' => public_path('../../assets'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,

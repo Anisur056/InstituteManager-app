@@ -60,7 +60,7 @@
         <!-- Spinner End -->
 
         <!-- Contact Top Header -->
-        <div class="contact-top-header">
+        <div class="contact-top-header d-none d-lg-block">
             <div class="container-fluid bg-danger">
                 <div class="row">
                     <div class="col-md-6 text-center bg-info">
@@ -91,11 +91,10 @@
             <table class="w-100 border-bottom">
                 <tbody>
                     <tr>
-                        <td class="bg-success text-white" style="font-weight: bold; width: 130px; padding-left:10px;">সর্বশেষ নোটিশ -</td>
+                        <td class="bg-success text-white" style="font-weight: bold; width: 130px; padding-left:10px;">সর্বশেষ নোটিশ-</td>
                         <td class="bg-light text-danger" style="font-weight: bold; padding-top:5px;">
                             <marquee behavior="scroll" direction="left">
-                                ছিরিকোটিয়া হাফেজিয়া নূরানী মডেল মাদ্রাসার ওয়েবসাইটে আপনাকে স্বাগতম। &nbsp; <i class='fas fa-chess-board'></i>  &nbsp;
-                                @foreach($notice as $row){{ $row->title }} &nbsp; <i class='fas fa-chess-board'></i>  &nbsp; @endforeach
+                                @foreach($notices as $row){{ $row->title }} &nbsp; <i class='fas fa-chess-board'></i>  &nbsp; @endforeach
                             </marquee>
                         </td>
                     </tr>

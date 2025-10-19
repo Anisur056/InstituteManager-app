@@ -64,11 +64,11 @@
             </div>
             <div class="training-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
 
-                @foreach($notice as $row)
+                @foreach($notices as $row)
 
                     <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                         <div class="training-img rounded-top">
-                            <img src="{{ asset("assets/website/$row->image") }}" width="100%" class="object-fit-fill rounded-top" alt="Image">
+                            <img src="{{ asset("assets/$row->image") }}" width="100%" class="object-fit-fill rounded-top" alt="Image">
                         </div>
                         <div class="rounded-bottom border border-top-0 p-4">
                             <p class="mb-3 text-dark">{{ $row->title }}</p>

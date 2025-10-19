@@ -19,7 +19,7 @@
 
 
 <!-- Notice Details Start -->
-    <img src="{{ asset("assets/website/$notice->image") }}" width="100%" class="rounded-top" alt="Image">
+    <img src="{{ asset("assets/$notice->image") }}" width="100%" class="rounded-top" alt="Image">
 <!-- Notice Details End -->
 
 @endsection
