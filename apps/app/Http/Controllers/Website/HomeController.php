@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 
 use App\Models\WebsiteNoticeModel;
+use App\Models\WebsiteGalleryModel;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -14,7 +16,14 @@ class HomeController extends Controller
             ['enable_status','=','on'],
         ])->orderByDesc('id')->get();
 
-        return view('website.home',compact('notices'));
+        $gallery = WebsiteGalleryModel::where([
+            ['enable_status','=','on'],
+        ])->orderByDesc('id')->get();
+
+        $teachers = User::where('status', 'active')
+                ->whereIn('role', ['teacher','admin'])->orderByDesc('id')->get();
+
+        return view('website.home',compact('notices','gallery','teachers'));
     }
 
     public function noticeIndex()
@@ -34,4 +43,14 @@ class HomeController extends Controller
 
         return view('website.noticeShow',compact('notice'));
     }
+
+    public function galleryIndex()
+    {
+        $notices = WebsiteNoticeModel::where([
+            ['enable_status','=','on'],
+        ])->orderByDesc('id')->get();
+
+        return view('website.noticeIndex',compact('notices'));
+    }
+
 }

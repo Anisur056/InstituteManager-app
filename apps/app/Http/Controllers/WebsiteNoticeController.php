@@ -45,93 +45,55 @@ class WebsiteNoticeController extends Controller
     }
 
 
-    public function show(String $id)
+    public function show(WebsiteNoticeModel $notice)
     {
-        $data = User::findOrFail($id);
-        return view('admin/students/show',compact('data'));
+        return view('admin/notice/show', compact('notice'));
     }
 
-    public function edit(String $id)
+    public function edit(WebsiteNoticeModel $notice)
     {
-
-        $data = User::find($id);
-        $classes = InstituteClassesModel::all();
-        return view('admin/students/edit', compact('data','classes'));
+        return view('admin/notice/edit', compact('notice'));
     }
 
-    public function update(UserStudentFormRequest $request, String $id)
+    public function update(WebsiteNoticeModel $notice, Request $request)
     {
-        // The request is already validated by the UserRequest.php
-        $validatedData = $request->validated();
-
-        // Check if password is filled, then change. Empty For Unchange
-        if ($request->filled('password')) {
-            $validatedData['password'] = Hash::make($request->password);
-        }else{
-            unset($validatedData['password']);
-        }
-
-        $user = User::findOrFail($id);
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'date' => 'required|date',
+            'enable_status' => 'required|in:on,off',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1048',
+        ]);
 
         // If Profile Pic set then upload image & Update path
-        if($request->hasFile('profile_pic'))
+        if($request->hasFile('image'))
         {
-            if ($user->profile_pic) {
-                Storage::disk('public')->delete($user->profile_pic);
+            if ($notice->image) {
+                Storage::disk('public')->delete($notice->image);
             }
 
-            $path = $request->file('profile_pic')->store('img/users','public');
-            $validatedData['profile_pic'] = $path;
+            $path = $request->file('image')->store('website/img/notice','public');
+            $validatedData['image'] = $path;
         }
-
 
         // Update Validated Data
-        $user->update($validatedData);
+        $notice->update($validatedData);
 
-        if($user){
-            return redirect()->route('students.index');
+        if($notice){
+            return redirect()->route('notices.index');
         }
     }
 
-    public function destroy(String $id)
+    public function destroy(WebsiteNoticeModel $notice)
     {
-        $destroy = User::destroy($id);
+        if ($notice->image) {
+            Storage::disk('public')->delete($notice->image);
+        }
+
+        $destroy = $notice->delete();
 
         if($destroy){
-            return redirect()->route('students.index');
+            return redirect()->route('notices.index');
         }
     }
 
-    public function shortByClass(string $class)
-    {
-        $records = User::whereIn('status', ['active'])
-                    ->where('class', $class)
-                    ->get();
-        $classes = InstituteClassesModel::all();
-        return view('admin/students/index',compact('records','classes'));
-    }
-
-    public function exStudents()
-    {
-        $records = User::whereIn('status', ['disable','tc','exam-complete','exit'])->get();
-        return view('admin/employee/ex', compact('records'));
-    }
-
-    // public function admit_card_print(string $id)
-    // {
-    //     $record = User::find($id);
-    //     return view('admin/students/print-admit-card.',compact('record'));
-    // }
-
-    // public function seat_sticker_print(string $id)
-    // {
-    //     $record = User::find($id);
-    //     return view('admin/students/',compact('record'));
-    // }
-
-    // public function id_card_print(string $id)
-    // {
-    //     $record = User::find($id);
-    //     return view('admin/students/',compact('record'));
-    // }
 }

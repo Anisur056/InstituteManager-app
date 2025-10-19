@@ -6,15 +6,11 @@
 
     <!-- Home Gallery Carousel Start -->
     <div class="header-carousel owl-carousel">
-        <div class="header-carousel-item">
-            <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid w-100" alt="Image">
-        </div>
-        <div class="header-carousel-item">
-            <img src="{{ asset('assets/website/img/gallery/02.jpg') }}" class="img-fluid w-100" alt="Image">
-        </div>
-        <div class="header-carousel-item">
-            <img src="{{ asset('assets/website/img/gallery/03.jpg') }}" class="img-fluid w-100" alt="Image">
-        </div>
+        @foreach($gallery as $row)
+            <div class="header-carousel-item">
+                <img src="{{ asset("assets/$row->image") }}" class="img-fluid w-100" alt="Image">
+            </div>
+        @endforeach
     </div>
     <!-- Home Gallery Carousel End -->
 
@@ -29,8 +25,8 @@
     </div>
     <!-- Banner End -->
 
-    <!-- About Start -->
-    <div class="container-fluid py-5">
+    <!-- About Principal -->
+    <div class="container-fluid py-5" id="aboutPrincipal">
         <div class="container py-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.1s">
@@ -47,7 +43,7 @@
             </div>
         </div>
     </div>
-    <!-- About End -->
+    <!-- About Principal End -->
 
     <!-- Notice Board Start -->
     <div class="container-fluid training bg-light py-5">
@@ -77,7 +73,7 @@
                             <a class="btn btn-success rounded-pill text-white py-2 px-4" href="{{ route('notice.show',$row->id) }}">বিস্তারিত</a>
                         </div>
                     </div>
-                
+
                 @endforeach
             </div>
         </div>
@@ -98,52 +94,19 @@
             </div>
             <div class="training-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
 
-                <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="training-img rounded-top">
-                        <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom border border-top-0 p-4">
-                        <p class="mb-3">গ্যালারী-১</p>
-                        <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                    </div>
-                </div>
+                @foreach($gallery as $row)
 
-                <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="training-img rounded-top">
-                        <img src="{{ asset('assets/website/img/gallery/02.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                    <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="training-img rounded-top">
+                            <img src="{{ asset("assets/$row->image") }}" class="img-fluid rounded-top w-100" alt="Image">
+                        </div>
+                        <div class="rounded-bottom border border-top-0 p-4">
+                            <p class="mb-3">{{ $row->title }}</p>
+                            <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
+                        </div>
                     </div>
-                    <div class="rounded-bottom border border-top-0 p-4">
-                        <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                        <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                    </div>
-                </div>
-                <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="training-img rounded-top">
-                        <img src="{{ asset('assets/website/img/gallery/03.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom border border-top-0 p-4">
-                        <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                        <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                    </div>
-                </div>
-                <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="training-img rounded-top">
-                        <img src="{{ asset('assets/website/img/gallery/01.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom border border-top-0 p-4">
-                        <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                        <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                    </div>
-                </div>
-                <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="training-img rounded-top">
-                        <img src="{{ asset('assets/website/img/gallery/02.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom border border-top-0 p-4">
-                        <p class="mb-3">ছুটি সংক্রান্ত নোটিশ</p>
-                        <a class="btn btn-success rounded-pill text-white py-2 px-4" href="#">বিস্তারিত</a>
-                    </div>
-                </div>
+
+                @endforeach
             </div>
         </div>
     </div><!-- Gallery End -->
@@ -269,7 +232,7 @@
     </div><!-- Modal Video End -->
 
     <!-- Team Start -->
-    <div class="container-fluid team pb-5">
+    <div class="container-fluid team pb-5" id="aboutTeachers">
         <div class="container pb-5">
             <div class="pb-5">
                 <div class="row g-4 align-items-end">
@@ -279,55 +242,16 @@
                 </div>
             </div>
             <div class="team-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-img bg-secondary rounded-top">
-                        <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                @foreach($teachers as $row)
+                    <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-img bg-white rounded-top">
+                            <img src="{{ asset("assets/admin/$row->profile_pic") }}" class="img-fluid rounded-top w-100" alt="Image">
+                        </div>
+                        <div class="team-content text-center p-4">
+                            <a href="#" class="h4"><span class="bangla text-white">{{ $row->name_bn }}</span></a>
+                        </div>
                     </div>
-                    <div class="team-content text-center p-4">
-                        <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                    </div>
-                </div>
-                <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-img bg-secondary rounded-top">
-                        <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="team-content text-center p-4">
-                        <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                    </div>
-                </div>
-                <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-img bg-secondary rounded-top">
-                        <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="team-content text-center p-4">
-                        <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                    </div>
-                </div>
-                <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-img bg-secondary rounded-top">
-                        <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="team-content text-center p-4">
-                        <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                    </div>
-                </div>
-                <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-img bg-secondary rounded-top">
-                        <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="team-content text-center p-4">
-                        <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                    </div>
-                </div>
-                <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-img bg-secondary rounded-top">
-                        <img src="{{ asset('assets/website/img/principal_photo.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="team-content text-center p-4">
-                        <a href="#" class="h4"><span class="bangla text-white">শিক্ষকের নাম</span></a>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </div><!-- Team End -->

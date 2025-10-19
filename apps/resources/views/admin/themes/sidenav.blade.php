@@ -148,6 +148,9 @@
                         <li class="">
                             <a class="dropdown-item" href="{{ route('notices.index') }}">Notices</a>
                         </li>
+                        <li class="">
+                            <a class="dropdown-item" href="{{ route('gallery.index') }}">Gallery</a>
+                        </li>
                     </ul>
                 </li>
 

@@ -18,6 +18,7 @@ use App\Http\Controllers\InstituteClassesController;
 use App\Http\Controllers\InstituteSubjectController;
 
 use App\Http\Controllers\WebsiteNoticeController;
+use App\Http\Controllers\WebsiteGalleryController;
 
 use App\Http\Controllers\AttendanceDevicesController;
 
@@ -31,6 +32,9 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/notice', [HomeController::class, 'noticeIndex'])->name('notice.index');
 Route::get('/notice/{id?}', [HomeController::class, 'noticeShow'])->name('notice.show');
+
+Route::get('/gallery', [HomeController::class, 'galleryIndex'])->name('gallery.index');
+
 
 
 
@@ -46,6 +50,7 @@ Route::get('/device/log/sync',[AttendanceDevicesController::class, 'syncDeviceAt
 Route::middleware(["auth"])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'getUsersCount'])->name('dashboard');
     Route::resource('/notices', WebsiteNoticeController::class);
+    Route::resource('/gallery', WebsiteGalleryController::class);
 
     // Student Routes
     Route::resource('/students', UserStudentController::class);
