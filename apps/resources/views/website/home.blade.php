@@ -120,98 +120,30 @@
                         <h4 class="text-success sub-title fw-bold bangla">ভিডিও গ্যালারী</h4><br>
                     </div>
                     <div class="col-xl-4 text-xl-end wow fadeInUp" data-wow-delay="0.3s">
-                        <a class="btn btn-success rounded-pill text-white py-3 px-5" href="#">সকল ভিডিও</a>
+                        <a class="btn btn-success rounded-pill text-white py-3 px-5" target="_blank" href="https://www.youtube.com/@%E0%A6%9B%E0%A6%BF%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%8B%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%AB%E0%A7%87%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A8%E0%A7%82%E0%A6%B0%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%AE%E0%A6%A1%E0%A7%87%E0%A6%B2/videos">সকল ভিডিও</a>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="video h-100">
-                        <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                            data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                            style="object-fit: cover;" alt="YouTube Thumbnail">
+                @foreach($videoGallery as $row)
+                    <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="video h-100">
+                            <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
+                                data-src="{{ $row->youtube_link }}"
+                                style="object-fit: cover;" alt="YouTube Thumbnail">
 
-                        <button type="button" class="btn btn-play"
-                                data-bs-toggle="modal"
-                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                data-bs-target="#videoModal">
-                            <span></span>
-                        </button>
+                            <button type="button" class="btn btn-play"
+                                    data-bs-toggle="modal"
+                                    data-src="{{ $row->youtube_link }}"
+                                    data-bs-target="#videoModal">
+                                <span></span>
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="video h-100">
-                        <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                            data-src="https://www.youtube.com/embed/-1CVMSGU2mQ"
-                            style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                        <button type="button" class="btn btn-play"
-                                data-bs-toggle="modal"
-                                data-src="https://www.youtube.com/embed/-1CVMSGU2mQ"
-                                data-bs-target="#videoModal">
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="video h-100">
-                        <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                            data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                            style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                        <button type="button" class="btn btn-play"
-                                data-bs-toggle="modal"
-                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                data-bs-target="#videoModal">
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="video h-100">
-                        <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                            data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                            style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                        <button type="button" class="btn btn-play"
-                                data-bs-toggle="modal"
-                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                data-bs-target="#videoModal">
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="video h-100">
-                        <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                            data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                            style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                        <button type="button" class="btn btn-play"
-                                data-bs-toggle="modal"
-                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                data-bs-target="#videoModal">
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 mb-3 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="video h-100">
-                        <img class="img-fluid rounded w-100 h-100 youtube-thumbnail"
-                            data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                            style="object-fit: cover;" alt="YouTube Thumbnail">
-
-                        <button type="button" class="btn btn-play"
-                                data-bs-toggle="modal"
-                                data-src="https://www.youtube.com/embed/YTR5jkyTPBo"
-                                data-bs-target="#videoModal">
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-    </div>
+    </div><!-- Video Gallery End -->
 
     <!-- Modal Video -->
     <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

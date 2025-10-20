@@ -33,7 +33,8 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/notice', [HomeController::class, 'noticeIndex'])->name('notice.index');
 Route::get('/notice/{id?}', [HomeController::class, 'noticeShow'])->name('notice.show');
 
-Route::get('/gallery', [HomeController::class, 'galleryIndex'])->name('gallery.index');
+Route::get('/galleries', [HomeController::class, 'galleryIndex'])->name('galleries.index');
+Route::get('/video-galleries', [HomeController::class, 'videoGalleryIndex'])->name('videoGalleries.index');
 
 
 
@@ -51,6 +52,7 @@ Route::middleware(["auth"])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'getUsersCount'])->name('dashboard');
     Route::resource('/notices', WebsiteNoticeController::class);
     Route::resource('/gallery', WebsiteGalleryController::class);
+    Route::resource('/video-gallery', WebsiteVideoGalleryController::class);
 
     // Student Routes
     Route::resource('/students', UserStudentController::class);
