@@ -19,6 +19,7 @@ use App\Http\Controllers\InstituteSubjectController;
 
 use App\Http\Controllers\WebsiteNoticeController;
 use App\Http\Controllers\WebsiteGalleryController;
+use App\Http\Controllers\WebsiteVideoGalleryController;
 
 use App\Http\Controllers\AttendanceDevicesController;
 

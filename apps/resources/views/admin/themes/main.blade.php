@@ -10,7 +10,7 @@
 
     <!-- Main Style -->
     <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/admin/css/style.css?v=1.0') }}" rel="stylesheet">
     <!-- Sidebar Menu -->
     <link href="{{ asset('assets/admin/css/metisMenu.css') }}" rel="stylesheet">
 

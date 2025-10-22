@@ -18,7 +18,7 @@
     <div class="container-fluid bg-success wow zoomInDown" data-wow-delay="0.1s">
         <div class="container">
             <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center text-center p-5">
-                <h1 class="me-4 text-white"><span class="bangla"> আধুনিক শিক্ষার প্রতিষ্ঠান</span></h1>
+                <h1 class="me-4 text-white"><span class="bangla"> ধর্মীয় ও আধুনিক শিক্ষার সমন্বিত ব্যতিক্রমী শিক্ষা প্রতিষ্ঠান</span></h1>
                 {{-- <a href="#" class="text-white fw-bold fs-2"> <i class="fa fa-phone me-1"></i> 714-783-2205</a> --}}
             </div>
         </div>
@@ -37,7 +37,13 @@
                 <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.3s">
                     <h4 class="text-success sub-title fw-bold bangla">প্রিন্সিপালের বার্তা</h4><br>
                     <h5 class="text-success bangla">মোঃ রফিকুল ইসলাম (রোমান)</h5>
-                    <p class="bangla">আপনার সন্তানের ভবিষ্যৎ গড়তে আমরা আছি প্রতিশ্রুতি বদ্ধ।আপনার সন্তানের ভবিষ্যৎ গড়তে আমরা আছি প্রতিশ্রুতি বদ্ধ।আপনার সন্তানের ভবিষ্যৎ গড়তে আমরা আছি প্রতিশ্রুতি বদ্ধ।আপনার সন্তানের ভবিষ্যৎ গড়তে আমরা আছি প্রতিশ্রুতি বদ্ধ।</p>
+                    <p class="bangla text-dark mt-3" style="text-align: justify">
+আস্সালামু আলাইকুম ওয়া রাহমাতুল্লাহ, <br>
+সম্মানিত অভিভাবকবৃন্দ <br>
+চলমান বিশ্বের জটিল চ্যালেঞ্জ মোকাবেলায় ইসলামী চরিত্রের নিষ্ঠাবান অনুসারী, দেশপ্রেমিক, সৎ ও যোগ্য প্রজন্ম সৃষ্টির মহান ব্রত নিয়ে <b>"ছিরিকোটিয়া হাফেজিয়া নূরানী মডেল মাদ্রাসা"</b>  মহান প্রভুর অপার কৃপায় যাত্রা শুরু করেছে। একদল অভিজ্ঞ আলেম, শিক্ষানুরাগী, ত্যাগী ও মুখলেসিনেদের দৃঢ় হাতে নিরন্তর তত্ত্ববধানে প্রতিষ্ঠান পরিচালনার হাল ধরেছেন। একদল সুশিক্ষিত ও নিবেদিত প্রাণ শিক্ষকমন্ডলীর সমন্বিত প্রয়াসে ইতিমধ্যে আর্ন্তজাতিক হিফযুল কোরআন বিভাগের কার্যক্রম শুরু করেছে। <br><br>
+সমস্ত প্রশংসার মালিক আল্লাহ সুবাহানাহু ওয়া তা'য়ালা। বর্তমানে প্রতিষ্ঠানের প্রশস্ত ভবনের মধ্যে মর্নিং শিফ্ট-এ চলছে দ্বীনি পরিবেশে (প্লে থেকে ৫ম শ্রেণি পর্যন্ত) পূর্ণাঙ্গ মানের মাদ্রাসা, রয়েছে আন্তজার্তিক মানের হিফজুল কুরআন বিভাগ। <br><br>
+
+ইসলামিক শিক্ষা প্রদানে আমরা সর্বদাই যত্নশীল রয়েছি ও থাকবো ইন্‌শাআল্লাহ। একজন সচেতন অভিভাবক হিসেবে নৈতিক অবক্ষয়ের এই দুর্দিনে আপনার প্রিয় সন্তানের আধুনিক শিক্ষা ও সু-শিক্ষা নিশ্চিত করণে এবং চরিত্র গঠনের দায়িত্ব আমাদের উপর ন্যস্ত করে নিশ্চিত হতে পারেন। আমরা কঠিন এই দায়িত্ব গ্রহণের অঙ্গীকার করছি, ইনশা-আল্লাহ।</p>
                     <a class="btn btn-success rounded-pill text-white py-3 px-5" href="#">+880 1892-178778</a>
                 </div>
             </div>
@@ -46,7 +52,7 @@
     <!-- About Principal End -->
 
     <!-- Notice Board Start -->
-    <div class="container-fluid training bg-light py-5">
+    <div class="container-fluid training bg-light py-5" id="notice">
         <div class="container py-5">
             <div class="pb-5">
                 <div class="row g-4 align-items-end">
@@ -80,7 +86,7 @@
     </div><!-- Notice Board End -->
 
     <!-- Gallery Start -->
-    <div class="container-fluid training py-5">
+    <div class="container-fluid training py-5" id="gallery">
         <div class="container py-5">
             <div class="pb-5">
                 <div class="row g-4 align-items-end">
@@ -190,3 +196,7 @@
 
 @endsection
 
+@section('js')
+
+
+@endsection

@@ -24,73 +24,51 @@ class WebsiteVideoGalleryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
+            'youtube_link' => 'required|string|max:255',
             'enable_status' => 'required|in:on,off',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:1048',
         ]);
 
-        if($request->hasFile('image'))
-        {
-            $path = $request->file('image')->store('website/img/gallery','public');
-            $validatedData['image'] = $path;
-        }
+        $videoGallery = WebsiteVideoGalleryModel::create($validatedData);
 
-        $gallery = WebsiteVideoGalleryModel::create($validatedData);
-
-        if($gallery){
-            return redirect()->route('gallery.index');
+        if($videoGallery){
+            return redirect()->route('video-gallery.index');
         }
 
     }
 
 
-    public function show(WebsiteVideoGalleryModel $gallery)
+    public function show(WebsiteVideoGalleryModel $video_gallery)
     {
-        return view('admin/videoGallery/show', compact('gallery'));
+        return view('admin/videoGallery/show', compact('video_gallery'));
     }
 
-    public function edit(WebsiteVideoGalleryModel $gallery)
+    public function edit(WebsiteVideoGalleryModel $video_gallery)
     {
-        return view('admin/videoGallery/edit', compact('gallery'));
+        return view('admin/videoGallery/edit', compact('video_gallery'));
     }
 
-    public function update(WebsiteVideoGalleryModel $gallery, Request $request)
+    public function update(WebsiteVideoGalleryModel $video_gallery, Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
+            'youtube_link' => 'required|string|max:255',
             'enable_status' => 'required|in:on,off',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1048',
         ]);
 
-        // If Profile Pic set then upload image & Update path
-        if($request->hasFile('image'))
-        {
-            if ($gallery->image) {
-                Storage::disk('public')->delete($gallery->image);
-            }
-
-            $path = $request->file('image')->store('website/img/gallery','public');
-            $validatedData['image'] = $path;
-        }
-
         // Update Validated Data
-        $gallery->update($validatedData);
+        $video_gallery->update($validatedData);
 
-        if($gallery){
-            return redirect()->route('gallery.index');
+        if($video_gallery){
+            return redirect()->route('video-gallery.index');
         }
     }
 
-    public function destroy(WebsiteVideoGalleryModel $gallery)
+    public function destroy(WebsiteVideoGalleryModel $video_gallery)
     {
-        if ($gallery->image) {
-            Storage::disk('public')->delete($gallery->image);
-        }
 
-        $destroy = $gallery->delete();
+        $video_gallery = $video_gallery->delete();
 
-        if($destroy){
-            return redirect()->route('gallery.index');
+        if($video_gallery){
+            return redirect()->route('video-gallery.index');
         }
     }
 

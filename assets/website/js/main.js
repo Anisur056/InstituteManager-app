@@ -46,17 +46,45 @@
     $(document).ready(function () {
         var $videoSrc;
         $('.btn-play').click(function () {
-            $videoSrc = $(this).data("src");
+            // Convert YouTube URL to embed format
+            var videoUrl = $(this).data("src");
+            
+            // Handle different YouTube URL formats
+            if (videoUrl.includes('youtube.com/watch?v=')) {
+                // Convert watch URL to embed URL
+                var videoId = videoUrl.split('v=')[1];
+                var ampersandPosition = videoId.indexOf('&');
+                if (ampersandPosition !== -1) {
+                    videoId = videoId.substring(0, ampersandPosition);
+                }
+                $videoSrc = 'https://www.youtube.com/embed/' + videoId;
+            } else if (videoUrl.includes('youtu.be/')) {
+                // Convert youtu.be URL to embed URL
+                var videoId = videoUrl.split('youtu.be/')[1];
+                var ampersandPosition = videoId.indexOf('?');
+                if (ampersandPosition !== -1) {
+                    videoId = videoId.substring(0, ampersandPosition);
+                }
+                $videoSrc = 'https://www.youtube.com/embed/' + videoId;
+            } else if (videoUrl.includes('youtube.com/embed/')) {
+                // Already an embed URL
+                $videoSrc = videoUrl;
+            } else {
+                // Assume it's already an embed URL or handle other cases
+                $videoSrc = videoUrl;
+            }
         });
-        console.log($videoSrc);
 
         $('#videoModal').on('shown.bs.modal', function (e) {
-            $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
-        })
+            if ($videoSrc) {
+                $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0&amp;rel=0");
+            }
+        });
 
         $('#videoModal').on('hide.bs.modal', function (e) {
-            $("#video").attr('src', $videoSrc);
-        })
+            // Stop the video when modal is closed
+            $("#video").attr('src', '');
+        });
     });
 
 

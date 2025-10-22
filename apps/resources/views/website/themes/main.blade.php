@@ -40,10 +40,10 @@
         <link href="{{ asset('assets/website/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="{{ asset('assets/website/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/website/css/bootstrap.min.css?v=1.0') }}" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="{{ asset('assets/website/css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/website/css/style.css?v=1.0') }}" rel="stylesheet">
 
         @yield('css')
 
@@ -109,70 +109,70 @@
         @yield('page-body')
         
         <!-- Footer Start -->
-        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.1s" id="footer">
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
                             <div class="footer-item">
-                                <h4 class="text-white mb-4">JustDanc</h4>
-                                <p class="text-white mb-3">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit.</p>
+                                
+                                <img class="w-100 w-lg-100" src="{{ asset('assets/website/img/logo-banner.png') }}" alt="Logo">
+                                <p class="text-white mb-4 mt-3">ধর্মীয় ও আধুনিক শিক্ষার সমন্বিত ব্যতিক্রমী শিক্ষা প্রতিষ্ঠান</p>
+                                
                                 <div class="d-flex">
-                                    <a class="btn btn-lg-square btn-primary rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                                    <a class="btn btn-lg-square btn-light rounded-3 me-2" target="_blank" href="https://www.facebook.com/profile.php?id=100067806348409"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-lg-square btn-light rounded-3 me-2" target="_blank" href="https://www.youtube.com/@%E0%A6%9B%E0%A6%BF%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%8B%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%AB%E0%A7%87%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A8%E0%A7%82%E0%A6%B0%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%AE%E0%A6%A1%E0%A7%87%E0%A6%B2/videos"><i class="fab fa-youtube"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4">Address</h4>
+                            <h4 class="text-white mb-4 bangla">যোগাযোগ</h4>
+                            <hr>
                             <div class="d-flex align-items-center mb-3">
-                                <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fas fa-map-marker-alt"></i></a>
+                                <i class="fas fa-map-marker-alt"></i>
                                 <div class="text-white ms-2">
-                                    <p class="mb-0">0123.. Street, New York, USA</p>
+                                    <p class="mb-0">ক্যাম্পাস-১ : হাজী দরবেশ আলী চৌধুরী বাড়ী, বিশ্বাস পাড়া, উত্তর কাট্টলী, আকবরশাহ, চট্টগ্রাম।</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center mb-3">
-                                <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fa fa-phone-alt"></i></a>
+                                <i class="fas fa-map-marker-alt"></i>
                                 <div class="text-white ms-2">
-                                    <p class="mb-0">+012 345 67890</p>
-                                    <p class="mb-0">+012 345 67890</p>
+                                    <p class="mb-0">ক্যাম্পাস-2 : চৌধুরী ভিলা, পঞ্চায়েত বাড়ী, উত্তর কাট্টলী, আকবরশাহ, চট্টগ্রাম।</p>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center">
-                                <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fas fa-envelope"></i></a>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-mobile"></i>
                                 <div class="text-white ms-2">
-                                    <p class="mb-0">info@example.com</p>
-                                    <p class="mb-0">info@example.com</p>
+                                    <p class="mb-0">018 92- 17 87 78</p>
+                                    <p class="mb-0">016 21- 98 64 17</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-envelope"></i>
+                                <div class="text-white ms-2">
+                                    <p class="mb-0">sirikotiamadrasha@gmail.com</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4">Quick Links</h4>
-                            <a href="#" class="footer-link"> About Us</a>
-                            <a href="#" class="footer-link"> Classes</a>
-                            <a href="#" class="footer-link"> Privacy Policy</a>
-                            <a href="#" class="footer-link"> Terms & Conditions</a>
-                            <a href="#" class="footer-link"> Schedule</a>
-                            <a href="#" class="footer-link"> FAQ</a>
-                            <a href="#" class="footer-link"> Contact Us</a>
+                            <h4 class="text-white mb-4 bangla">গুরুত্বপূর্ণ লিংক</h4>
+                            <hr>
+                            <a target="_blank" href="https://nctb.portal.gov.bd/site/page/c57df64c-7ea0-4d93-a915-3921181dbefc" class="footer-link"> ২০২৫ শিক্ষাবর্ষের সরকারী বই</a>
+                            <a target="_blank" href="https://www.vaxepi.gov.bd/registration/tcv" class="footer-link"> টায়ফয়েড টিকা আবেদন</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
-                            <div class="footer-item">
-                                <h4 class="text-white mb-4">Newsletter</h4>
-                                <p class="text-white mb-3">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit.</p>
-                                <div class="position-relative mx-auto rounded-pill">
-                                    <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
-                                    <button type="button" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
-                                </div>
-                            </div>
+                            <h4 class="text-white mb-4 bangla">ওয়েবসাইট লিংক</h4>
+                            <hr>
+                            <a target="_blank" href="" class="footer-link"> প্রচ্ছদ</a>
+                            <a target="_blank" href="" class="footer-link"> ভর্তি আবেদন</a>
+                            <a target="_blank" href="" class="footer-link"> অভিজ্ঞ শিক্ষকমন্ডলী</a>
+                            <a target="_blank" href="" class="footer-link"> সুযোগ-সুবিধা</a>
                         </div>
                     </div>
                 </div>
@@ -185,13 +185,10 @@
             <div class="container">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-start mb-md-0">
-                        <span class="text-white"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+                        <span class="text-white"><a href="{{ route('home') }}" class="text-success"><i class="fas fa-copyright text-light me-2"></i>ছিরিকোটিয়া হাফেজিয়া নূরানী মডেল মাদ্রাসা</a>, সর্বস্বত্ব সংরক্ষিত ।</span>
                     </div>
                     <div class="col-md-6 text-center text-md-end text-white">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
+                        Developed By <a class="border-bottom text-white" href="mailto:anis14109@gmail.com">Anisur Rahman</a>
                     </div>
                 </div>
             </div>
@@ -214,7 +211,7 @@
     <script src="{{ asset('assets/website/lib/lightbox/js/lightbox.min.js') }}"></script>
 
     <!-- Template Javascript -->
-    <script src="{{ asset('assets/website/js/main.js') }}"></script>
+    <script src="{{ asset('assets/website/js/main.js?v=1.0') }}"></script>
     </body>
 
     <!-- Youtube Thumbnail Generator Javascript -->

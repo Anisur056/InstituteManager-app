@@ -24,21 +24,21 @@
                         <a href="#" class="dropdown-item"><span class="bangla">হিফজ বিভাগ</span></a>
                         <a href="#" class="dropdown-item"><span class="bangla">মক্তব বিভাগ</span></a>
                         <a href="#aboutTeachers" class="dropdown-item"><span class="bangla">শিক্ষক মন্ডলী</span></a>
-                        <a href="404.html" class="dropdown-item"><span class="bangla">সুযোগ-সুবিধা</span></a>
+                        <a href="#" class="dropdown-item"><span class="bangla">সুযোগ-সুবিধা</span></a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><span class="bangla">ভর্তি</span></a>
                     <div class="dropdown-menu m-0">
-                        <a href="classes.html" class="dropdown-item"><span class="bangla">ভর্তির নিয়মাবলী</span></a>
-                        <a href="training.html" class="dropdown-item"><span class="bangla">বেতন ও অন্যান্য ফি</span></a>
-                        <a href="team.html" class="dropdown-item"><span class="bangla">ইউনির্ফম</span></a>
-                        <a href="testimonial.html" class="dropdown-item"><span class="bangla">ভর্তি ফরম</span></a>
+                        <a href="#" class="dropdown-item"><span class="bangla">ভর্তির নিয়মাবলী</span></a>
+                        <a href="#" class="dropdown-item"><span class="bangla">বেতন ও অন্যান্য ফি</span></a>
+                        <a href="#" class="dropdown-item"><span class="bangla">ইউনির্ফম</span></a>
+                        <a href="#" class="dropdown-item"><span class="bangla">ভর্তি ফরম</span></a>
                     </div>
                 </div>
-                <a href="{{ route('notice.index') }}" class="nav-item nav-link"><span class="bangla">নোটিশ</span></a>
-                <a href="{{ route('gallery.index') }}" class="nav-item nav-link"><span class="bangla">গ্যালারী</span></a>
-                <a href="contact.html" class="nav-item nav-link"><span class="bangla">যোগাযোগ</span></a>
+                <a href="#notice" class="nav-item nav-link"><span class="bangla">নোটিশ</span></a>
+                <a href="#gallery" class="nav-item nav-link"><span class="bangla">গ্যালারী</span></a>
+                <a href="#footer" class="nav-item nav-link"><span class="bangla">যোগাযোগ</span></a>
                 <a href="{{ route('login') }}" class="nav-item nav-link"><span class="bangla">লগইন</span></a>
             </div>
 

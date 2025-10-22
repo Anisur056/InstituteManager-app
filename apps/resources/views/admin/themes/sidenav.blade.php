@@ -151,6 +151,9 @@
                         <li class="">
                             <a class="dropdown-item" href="{{ route('gallery.index') }}">Gallery</a>
                         </li>
+                        <li class="">
+                            <a class="dropdown-item" href="{{ route('video-gallery.index') }}">Video Gallery</a>
+                        </li>
                     </ul>
                 </li>
 
