@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use App\Models\User;
 use App\Models\InstituteInfoModel;
@@ -14,9 +15,9 @@ use Illuminate\Http\Request;
 use App\Services\SmsService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\UserEmployeeFormRequest; // Form Submit Request goes & Validated
+use App\Http\Requests\UserStudentFormRequest; // Form Submit Request goes & Validated
 
-class UserEmployeeController extends Controller
+class UserStudentController extends Controller
 {
 
     // For SMS Service to Work
@@ -29,30 +30,24 @@ class UserEmployeeController extends Controller
     public function index()
     {
         $records = User::where('status', 'active')
-                ->whereIn('role', ['teacher', 'accountant', 'librarian', 'security', 'guest','admin'])->get();
-
-        return view('admin/employee/index', compact('records'));
+                    ->where('class', 'Play')
+                    ->get();
+        $classes = InstituteClassesModel::all();
+        return view('admin/students/index', compact('records','classes'));
     }
 
     public function create()
     {
-        $years = InstituteAcademicYearsModel::all();
-        $institutes = InstituteInfoModel::all();
-        $shifs = InstituteShiftsModel::all();
+
         $classes = InstituteClassesModel::all();
-        $sections = InstituteSectionsModel::all();
-        $groups = InstituteGroupsModel::all();
-        return view('admin/employee/create',compact(
-            'years',
-            'institutes',
-            'shifs',
+
+        return view('admin/students/create',compact(
             'classes',
-            'sections',
-            'groups',
         ));
     }
 
-    public function store(UserEmployeeFormRequest $request)
+    public function store(UserStudentFormRequest $request)
+    // public function store(Request $request)
     {
         // Used for Mass Validation `apps/app/Http/Requests/UserRequest.php`
         $validatedData = $request->validated();
@@ -68,32 +63,30 @@ class UserEmployeeController extends Controller
             $validatedData['profile_pic'] = $path;
         }
 
-        if($request->hasFile('signature'))
-        {
-            $path = $request->file('signature')->store('img/signature','public');
-            $validatedData['signature'] = $path;
-        }
-
         $user = User::create($validatedData);
 
         if($user){
-            return redirect()->route('employee.index');
+            return redirect()->route('students.index');
         }
+
     }
+
 
     public function show(String $id)
     {
         $data = User::findOrFail($id);
-        return view('admin/employee/show',compact('data'));
+        return view('admin/students/show',compact('data'));
     }
 
     public function edit(String $id)
     {
+
         $data = User::find($id);
-        return view('admin.employee.edit', compact('data'));
+        $classes = InstituteClassesModel::all();
+        return view('admin/students/edit', compact('data','classes'));
     }
 
-    public function update(UserEmployeeFormRequest $request, String $id)
+    public function update(UserStudentFormRequest $request, String $id)
     {
         // The request is already validated by the UserRequest.php
         $validatedData = $request->validated();
@@ -118,24 +111,13 @@ class UserEmployeeController extends Controller
             $validatedData['profile_pic'] = $path;
         }
 
-        // If Signature Pic set then upload image & Update path
-        if($request->hasFile('signature'))
-        {
-            if ($user->signature) {
-                Storage::disk('public')->delete($user->signature);
-            }
-
-            $path = $request->file('signature')->store('img/signature','public');
-            $validatedData['signature'] = $path;
-        }
 
         // Update Validated Data
         $user->update($validatedData);
 
         if($user){
-            return redirect()->route('employee.index');
+            return redirect()->route('students.index');
         }
-
     }
 
     public function destroy(String $id)
@@ -143,13 +125,40 @@ class UserEmployeeController extends Controller
         $destroy = User::destroy($id);
 
         if($destroy){
-            return redirect()->route('employee.index');
+            return redirect()->route('students.index');
         }
     }
 
-    public function exEmployee()
+    public function shortByClass(string $class)
     {
-        $records = User::whereIn('status', ['disable', 'tc', 'exit'])->get();
+        $records = User::whereIn('status', ['active'])
+                    ->where('class', $class)
+                    ->get();
+        $classes = InstituteClassesModel::all();
+        return view('admin/students/index',compact('records','classes'));
+    }
+
+    public function exStudents()
+    {
+        $records = User::whereIn('status', ['disable','tc','exam-complete','exit'])->get();
         return view('admin/employee/ex', compact('records'));
     }
+
+    // public function admit_card_print(string $id)
+    // {
+    //     $record = User::find($id);
+    //     return view('admin/students/print-admit-card.',compact('record'));
+    // }
+
+    // public function seat_sticker_print(string $id)
+    // {
+    //     $record = User::find($id);
+    //     return view('admin/students/',compact('record'));
+    // }
+
+    // public function id_card_print(string $id)
+    // {
+    //     $record = User::find($id);
+    //     return view('admin/students/',compact('record'));
+    // }
 }

@@ -1,9 +1,7 @@
 <?php
 
-// important! if conterller in subfolder.
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-//
 
 use App\Models\InstituteClassesModel;
 use Illuminate\Http\Request;

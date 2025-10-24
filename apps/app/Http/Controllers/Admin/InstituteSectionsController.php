@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\InstituteExamTermsModel;
+
+use App\Models\InstituteSectionsModel;
 use Illuminate\Http\Request;
 
-class InstituteExamTermsController extends Controller
+class InstituteSectionsController extends Controller
 {
 
     public function index()
     {
-        $records = InstituteExamTermsModel::orderBy('display_order','asc')->get();
-        return view('admin/institute/exam/index',compact('records'));
+        $records = InstituteSectionsModel::orderBy('display_order','asc')->get();
+        return view('admin/institute/sections/index',compact('records'));
     }
 
     public function create()
     {
-        return view('admin/institute/exam/create');
+        return view('admin/institute/sections/create');
     }
 
     public function store(Request $request)
@@ -28,7 +28,7 @@ class InstituteExamTermsController extends Controller
             'display_order' => 'nullable|numeric',
         ]);
 
-        $data_insert = InstituteExamTermsModel::create([
+        $data_insert = InstituteSectionsModel::create([
             'name_en' => $request->name_en,
             'name_bn' => $request->name_bn,
             'display_order' => $request->display_order,
@@ -36,19 +36,19 @@ class InstituteExamTermsController extends Controller
         ]);
 
         if($data_insert){
-            return redirect()->route('exam-terms.index');
+            return redirect()->route('sections.index');
         }
     }
 
-    public function show(String $InstituteExamTermsModel)
+    public function show(String $InstituteSectionsModel)
     {
 
     }
 
     public function edit(String $id)
     {
-        $data = InstituteExamTermsModel::find($id);
-        return view('admin/institute/exam/edit',compact('data'));
+        $data = InstituteSectionsModel::find($id);
+        return view('admin/institute/sections/edit',compact('data'));
     }
 
 
@@ -60,7 +60,7 @@ class InstituteExamTermsController extends Controller
             'display_order' => 'nullable|numeric',
         ]);
 
-        $data_update = InstituteExamTermsModel::where('id',$id)
+        $data_update = InstituteSectionsModel::where('id',$id)
                 ->update([
             'name_en' => $request->name_en,
             'name_bn' => $request->name_bn,
@@ -69,16 +69,16 @@ class InstituteExamTermsController extends Controller
         ]);
 
         if($data_update){
-            return redirect()->route('exam-terms.index');
+            return redirect()->route('sections.index');
         }
     }
 
     public function destroy(String $id)
     {
-        $data_delete = InstituteExamTermsModel::destroy($id);
+        $data_delete = InstituteSectionsModel::destroy($id);
 
         if($data_delete){
-            return redirect()->route('exam-terms.index');
+            return redirect()->route('sections.index');
         }
     }
 }

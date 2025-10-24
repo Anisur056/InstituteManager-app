@@ -1,26 +1,24 @@
 <?php
 
-// important! if conterller in subfolder.
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-//
 
-use App\Models\InstituteSubjectModel;
+use App\Models\InstituteShiftsModel;
 use Illuminate\Http\Request;
 
-class InstituteSubjectController extends Controller
+class InstituteShiftsController extends Controller
 {
 
     public function index()
     {
-        $records = InstituteSubjectModel::orderBy('id','asc')->get();
-        return view('admin/institute/subject/index',compact('records'));
+        $records = InstituteShiftsModel::orderBy('id','asc')->get();
+        return view('admin/institute/shifts/index',compact('records'));
     }
 
 
     public function create()
     {
-        return view('admin/institute/subject/create');
+        return view('admin/institute/shifts/create');
     }
 
 
@@ -32,19 +30,19 @@ class InstituteSubjectController extends Controller
             'display_order' => 'numeric',
         ]);
 
-        $data_insert = InstituteSubjectModel::create([
+        $data_insert = InstituteShiftsModel::create([
             'name_en' => $request->name_en,
             'name_bn' => $request->name_bn,
             'display_order' => $request->display_order,
         ]);
 
         if($data_insert){
-            return redirect()->route('subject.index');
+            return redirect()->route('shifts.index');
         }
     }
 
 
-    public function show(String $InstituteSubjectModel)
+    public function show(String $InstituteShiftsModel)
     {
 
     }
@@ -52,8 +50,8 @@ class InstituteSubjectController extends Controller
 
     public function edit(String $id)
     {
-        $data = InstituteSubjectModel::find($id);
-        return view('admin/institute/subject/edit',compact('data'));
+        $data = InstituteShiftsModel::find($id);
+        return view('admin/institute/shifts/edit',compact('data'));
     }
 
 
@@ -65,7 +63,7 @@ class InstituteSubjectController extends Controller
             'display_order' => 'numeric',
         ]);
 
-        $data_update = InstituteSubjectModel::where('id',$id)
+        $data_update = InstituteShiftsModel::where('id',$id)
                 ->update([
             'name_en' => $request->name_en,
             'name_bn' => $request->name_bn,
@@ -73,17 +71,17 @@ class InstituteSubjectController extends Controller
         ]);
 
         if($data_update){
-            return redirect()->route('subject.index');
+            return redirect()->route('shifts.index');
         }
     }
 
 
     public function destroy(String $id)
     {
-        $data_delete = InstituteSubjectModel::destroy($id);
+        $data_delete = InstituteShiftsModel::destroy($id);
 
         if($data_delete){
-            return redirect()->route('subject.index');
+            return redirect()->route('shifts.index');
         }
     }
 }

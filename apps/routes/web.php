@@ -3,29 +3,30 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Artisan;
+
 use App\Http\Controllers\Website\HomeController;
+use App\Http\Controllers\Admin\SmsLogsController;
+use App\Http\Controllers\Admin\DashboardController;
 
-use App\Http\Controllers\SmsLogsController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\UserStudentController;
+use App\Http\Controllers\Admin\UserStudentController;
+use App\Http\Controllers\Admin\UserEmployeeController;
+use App\Http\Controllers\Admin\InstituteInfoController;
+use App\Http\Controllers\Admin\WebsiteNoticeController;
+use App\Http\Controllers\Admin\WebsiteGalleryController;
+use App\Http\Controllers\Admin\AttendanceSheetController;
+use App\Http\Controllers\Admin\InstituteGroupsController;
 
-use App\Http\Controllers\UserEmployeeController;
-use App\Http\Controllers\InstituteInfoController;
-use App\Http\Controllers\AttendanceSheetController;
-use App\Http\Controllers\InstituteGroupsController;
-use App\Http\Controllers\InstituteShiftsController;
-use App\Http\Controllers\InstituteClassesController;
-use App\Http\Controllers\InstituteSubjectController;
+use App\Http\Controllers\Admin\InstituteShiftsController;
+use App\Http\Controllers\Admin\InstituteClassesController;
+use App\Http\Controllers\Admin\InstituteSubjectController;
 
-use App\Http\Controllers\WebsiteNoticeController;
-use App\Http\Controllers\WebsiteGalleryController;
-use App\Http\Controllers\WebsiteVideoGalleryController;
+use App\Http\Controllers\Admin\AttendanceDevicesController;
 
-use App\Http\Controllers\AttendanceDevicesController;
-
-use App\Http\Controllers\InstituteSectionsController;
-use App\Http\Controllers\InstituteExamTermsController;
-use App\Http\Controllers\InstituteAcademicYearsController;
+use App\Http\Controllers\Admin\InstituteSectionsController;
+use App\Http\Controllers\Admin\InstituteExamTermsController;
+use App\Http\Controllers\Admin\WebsiteVideoGalleryController;
+use App\Http\Controllers\Admin\InstituteAcademicYearsController;
 
 Auth::routes();
 
@@ -106,6 +107,16 @@ Route::middleware(["auth"])->group(function(){
     Route::resource('/subject', InstituteSubjectController::class);
     Route::resource('/groups', InstituteGroupsController::class);
     Route::resource('/exam-terms', InstituteExamTermsController::class);
+
+
+    // Cache Clear Route
+    Route::get('/clear-cache', function() {
+        Artisan::call('cache:clear');
+        Artisan::call('route:clear');
+        Artisan::call('config:clear');
+        Artisan::call('view:clear');
+        return back()->with('message', 'All caches cleared!');
+    })->name('clear.cache');
 
 
 });

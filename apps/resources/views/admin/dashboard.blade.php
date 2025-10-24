@@ -247,3 +247,18 @@
 
 @endsection
 
+@section('js')
+    @if (session('message'))
+        <script>
+            // Use the Swal object globally defined by the CDN
+            Swal.fire({
+                icon: 'success',
+                title: 'Cache Cleared',
+                text: '{{ session('message') }}', // Get the message from the session
+                showConfirmButton: false,
+                timer: 2000 // Auto-close after 1 seconds
+            })
+        </script>
+    @endif
+@endsection
+

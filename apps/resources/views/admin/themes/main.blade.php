@@ -17,6 +17,9 @@
     <!-- Font Awsome 4 -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/font-awesome.css') }}">
 
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
     @yield('css')
 
 
@@ -58,7 +61,9 @@
                     <div class="navbar-icon">
                         <ul class="navbar-nav flex-row gap-3 align-items-center">
 
-                            <a class="btn btn-outline-success rounded" target="_blank" href="{{ route('home') }}"><i class="fa fa-globe fs-3" aria-hidden="true"></i></a>
+                            <a class="btn btn-outline-success rounded" target="_blank" href="{{ route('home') }}">Website</a>
+                            <a class="btn btn-outline-success rounded" href="{{ route('clear.cache') }}">Cache Clear</a>
+
 
                             <li class="nav-item dropdown user-menu">
                                 <a class="dropdown-toggle admin-btn me-2 me-sm-3 me-xl-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -137,6 +142,8 @@
     <script src="{{ asset('assets/admin/js/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/sidebar.js') }}"></script>
 
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Datatable -->
     <script src="{{ asset('assets/admin/js/datatable/dataTables.js') }}"></script>
