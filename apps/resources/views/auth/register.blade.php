@@ -26,6 +26,20 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="contact_sms" class="col-md-4 col-form-label text-md-end">{{ __('Contact SMS') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="contact_sms" type="text" class="form-control @error('contact_sms') is-invalid @enderror" name="contact_sms" value="{{ old('contact_sms') }}" required autocomplete="contact_sms" autofocus>
+
+                                @error('contact_sms')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">

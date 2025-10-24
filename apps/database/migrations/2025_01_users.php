@@ -12,26 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // Total 74 Column
 
-            // For Login
-            $table->string('email')->nullable();
-            $table->string('password')->nullable();
-            $table->enum('role',['admin', 'teacher', 'student','accountant', 'librarian', 'security', 'guest'])->default('guest');
-
-            // For Attendance
-            $table->string('rfid_card')->nullable();
-
-            // For Contact
-            $table->string('contact_sms');//* Contact For SMS
-            $table->string('contact_whatsapp')->nullable();
-            $table->enum('sms_status',['on','off'])->default('on');
-            $table->text('present_address')->nullable();
-            $table->text('permanent_address')->nullable();
-
-            // Personal Info
-            $table->string('name');//* Full Name
+            // Users Information- (14 column)
+            $table->string('name'); //* Full Name-required
             $table->string('name_bn')->nullable();
+            $table->string('nick_name')->nullable();
             $table->string('nid')->nullable();
             $table->string('birth_reg')->nullable();
             $table->string('date_of_birth')->nullable();
@@ -44,20 +30,32 @@ return new class extends Migration
             $table->string('nationality')->default('Bangladeshi');
             $table->string('religion')->nullable();
 
-
-            // Academic Info
+            // Academic Information- (8 column)
             $table->string('joined_at')->nullable();
-            $table->string('class')->nullable();
-            $table->string('roll')->nullable();
-
-            // Academic info
             $table->string('academic_year')->nullable();
             $table->string('institute_name')->nullable();
+            $table->string('class')->nullable();
             $table->string('shift')->nullable();
             $table->string('section')->nullable();
             $table->string('group')->nullable();
+            $table->string('roll')->nullable();
 
-            // Father Info
+            // Login Information
+            $table->string('email')->nullable();
+            $table->string('password')->nullable();
+            $table->enum('role',['admin', 'teacher', 'student','accountant', 'librarian', 'security', 'guest'])->default('guest');
+
+            // Attendance Information
+            $table->string('rfid_card')->nullable();
+
+            // Contact Information- (5 column)
+            $table->string('contact_sms'); //* Contact For SMS- Required
+            $table->string('contact_whatsapp')->nullable();
+            $table->enum('sms_status',['on','off'])->default('on');
+            $table->text('present_address')->nullable();
+            $table->text('permanent_address')->nullable();
+
+            // Father Information- (9 column)
             $table->string('father_name_en')->nullable();
             $table->string('father_name_bn')->nullable();
             $table->string('father_contact')->nullable();
@@ -66,8 +64,9 @@ return new class extends Migration
             $table->string('father_birth_reg')->nullable();
             $table->string('father_income')->nullable();
             $table->string('father_address')->nullable();
+            $table->string('father_profile_pic')->nullable();
 
-            // Mother Info
+            // Mother Information- (9 column)
             $table->string('mother_name_en')->nullable();
             $table->string('mother_name_bn')->nullable();
             $table->string('mother_contact')->nullable();
@@ -76,8 +75,9 @@ return new class extends Migration
             $table->string('mother_birth_reg')->nullable();
             $table->string('mother_income')->nullable();
             $table->string('mother_address')->nullable();
+            $table->string('mother_profile_pic')->nullable();
 
-            // Local Guardian Info
+            // Local Guardian Information- (10 column)
             $table->string('local_guardian_name_en')->nullable();
             $table->string('local_guardian_name_bn')->nullable();
             $table->string('local_guardian_contact')->nullable();
@@ -87,14 +87,15 @@ return new class extends Migration
             $table->string('local_guardian_income')->nullable();
             $table->string('local_guardian_address')->nullable();
             $table->string('local_guardian_relation')->nullable();
+            $table->string('local_guardian_profile_pic')->nullable();
 
-            // Emergency Info
+            // Emergency Information- (4 column)
             $table->string('emergency_contact_name')->nullable();
             $table->string('emergency_contact_relation')->nullable();
             $table->string('emergency_contact_contact')->nullable();
             $table->string('emergency_contact_address')->nullable();
 
-            // Previous Institute Info
+            // Previous Institute Information- (3 column)
             $table->string('previous_institute_name')->nullable();
             $table->string('previous_institute_address')->nullable();
             $table->string('previous_institute_info')->nullable();
@@ -103,7 +104,9 @@ return new class extends Migration
             $table->string('profile_pic')->nullable();
             $table->string('signature')->nullable();
 
-            $table->enum('status',['active','disable','tc','exam-complete','exit'])->default('active');
+            // Status Information
+            $table->enum('status',['active','pending','disable','tc','exam-complete','exit'])->default('active');
+            $table->string('registration_id')->nullable(); //* Registration ID- Required
             $table->rememberToken();
             $table->timestamps();
         });
