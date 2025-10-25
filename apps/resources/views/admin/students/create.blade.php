@@ -26,8 +26,8 @@
             <form action="{{ route('students.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
-                {{-- Student Form Include Blade --}}
-                @include('admin.students.form')
+                {{-- Student Form Include Blade & send all compact value to view --}}
+                @include('admin.students.form', get_defined_vars())
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-success rounded"><i class="fa fa-floppy-o pe-2"></i> Save </button>

@@ -1,6 +1,6 @@
 @extends('admin.themes.main')
 
-@section('page-title') {{ $data->name }} > Edit Information @endsection
+@section('page-title') Edit- {{ $user->name }} Information  @endsection
 
 @section('css')
     <!-- Select2 -->
@@ -15,7 +15,7 @@
     <div class="card rounded-15">
         <div class="card-header d-flex gap-3 align-items-center justify-content-between">
             <h5 class="m-0 fs-18 fw-semi-bold text-success">
-                Edit {{ $data->name }} Information
+                Edit- {{ $user->name }} Information
             </h5>
             <a href="{{ route('students.index') }}"
                 class="btn btn-success d-flex align-items-center fs-15 gap-2 px-3 py-2 rounded-3">
@@ -24,12 +24,12 @@
             </a>
         </div>
         <div class="card-body">
-            <form action="{{ route('students.update', $data->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('students.update', $user->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
-                {{-- Student Form Include Blade --}}
-                @include('admin.students.form', ['data' => $data])
+                {{-- Student Form Include Blade & send all compact value to view --}}
+                @include('admin.students.form', get_defined_vars())
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-success rounded"><i class="fa fa-floppy-o pe-2"></i> Save </button>

@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             UserFileUploadsSeeder::class,
             UserAttendanceLogsSeeder::class,
             InstituteInfoSeeder::class,
+            InstituteBranchesSeeder::class,
             InstituteAcademicYearsSeeder::class,
             InstituteClassesSeeder::class,
             InstituteShiftsSeeder::class,

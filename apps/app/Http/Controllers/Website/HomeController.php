@@ -9,6 +9,13 @@ use App\Models\WebsiteGalleryModel;
 use App\Models\WebsiteVideoGalleryModel;
 use App\Models\User;
 
+
+
+
+// Online Admission Form Model
+use App\Models\InstituteAcademicYearsModel;
+use App\Models\InstituteInfoModel;
+
 class HomeController extends Controller
 {
     public function home()
@@ -60,6 +67,13 @@ class HomeController extends Controller
 
     public function onlineAdmission()
     {
-        return view('website.onlineAdmission');
+
+        $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
+        $instituteInfo = InstituteInfoModel::all();
+
+        return view('website.onlineAdmission',compact(
+            'academicYear',
+            'instituteInfo',
+        ));
     }
 }

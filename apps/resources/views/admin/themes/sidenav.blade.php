@@ -187,6 +187,9 @@
                             <a class="dropdown-item" href="{{ route('institutes.index') }}">Institute Info's</a>
                         </li>
                         <li class="">
+                            <a class="dropdown-item" href="{{ route('branches.index') }}">Institute Branches</a>
+                        </li>
+                        <li class="">
                             <a class="dropdown-item" href="{{ route('academic-years.index') }}">Academic Year</a>
                         </li>
                         <li class="">

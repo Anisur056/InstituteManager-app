@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserStudentController;
 use App\Http\Controllers\Admin\UserEmployeeController;
 use App\Http\Controllers\Admin\InstituteInfoController;
+use App\Http\Controllers\Admin\InstituteBranchesController;
 use App\Http\Controllers\Admin\WebsiteNoticeController;
 use App\Http\Controllers\Admin\WebsiteGalleryController;
 use App\Http\Controllers\Admin\AttendanceSheetController;
@@ -106,6 +107,7 @@ Route::middleware(["auth"])->group(function(){
 
     // All Institute Settings Routes
     Route::resource('/institutes', InstituteInfoController::class);
+    Route::resource('/branches', InstituteBranchesController::class);
     Route::resource('/academic-years', InstituteAcademicYearsController::class);
     Route::resource('/class', InstituteClassesController::class);
     Route::resource('/shifts', InstituteShiftsController::class);

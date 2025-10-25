@@ -39,12 +39,17 @@ class UserStudentController extends Controller
     public function create()
     {
 
+        $user = null;
+        $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
+        $instituteInfo = InstituteInfoModel::all();
+        // $instituteBranch = InstituteBranch::all();
         $classes = InstituteClassesModel::all();
-        $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->first();
 
         return view('admin/students/create',compact(
-            'classes',
+            'user',
             'academicYear',
+            'instituteInfo',
+            'classes',
         ));
     }
 
@@ -83,9 +88,18 @@ class UserStudentController extends Controller
     public function edit(String $id)
     {
 
-        $data = User::find($id);
+        $user = User::find($id);
+        $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
+        $instituteInfo = InstituteInfoModel::all();
+        // $instituteBranch = InstituteBranch::all();
         $classes = InstituteClassesModel::all();
-        return view('admin/students/edit', compact('data','classes'));
+
+        return view('admin/students/edit',compact(
+            'user',
+            'academicYear',
+            'instituteInfo',
+            'classes',
+        ));
     }
 
     public function update(UserStudentFormRequest $request, String $id)

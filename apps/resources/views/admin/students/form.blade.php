@@ -2,13 +2,6 @@
 <div class="card p-2 mb-3 border border-success">
     <header class="card-header p-1 text-center">
         <h3>Academic Information</h3>
-
-institute_name
-class
-shift
-section
-group
-roll
     </header>
     <div class="card-body row">
 
@@ -19,7 +12,7 @@ roll
                     <input name="joined_at"
                         type="date"
                         class="form-control @error('joined_at') is-invalid @enderror"
-                        value="{{ old('joined_at') ?: ($data->joined_at ?? date('Y-m-d')) }}">
+                        value="{{ old('joined_at') ?: ($user->joined_at ?? date('Y-m-d')) }}">
 
                     <span class="text-danger"> @error('joined_at') {{$message}} @enderror </span>
                 </div>
@@ -30,9 +23,15 @@ roll
             <div class="row">
                 <label class="col-md-4 mb-2">Academic Year: </label>
                 <div class="col-md-8 ">
-                    <select name="academic_year" class="form-control select2" disabled>
-                        <option value="{{ $academicYear->year_en }}">{{ $academicYear->year_en }}</option>
+                    <select name="academic_year" class="form-control select2 @error('academic_year') is-invalid @enderror">
+                        @foreach ($academicYear as $year)
+                            <option value="{{ $year->year_en }}"
+                                {{ old('academic_year', $year->year_en ?? '') == optional($user)->academic_year ? 'selected' : '' }}>
+                                {{ $year->year_en }}
+                            </option>
+                        @endforeach
                     </select>
+                    <span class="text-danger"> @error('academic_year') {{$message}} @enderror </span>
                 </div>
             </div>
         </div>
@@ -41,9 +40,12 @@ roll
             <div class="row">
                 <label class="col-md-4 mb-2"> Institute Name: </label>
                 <div class="col-md-8 ">
-                    <select name="class" class="form-control select2">
-                        @foreach ($classes as $data)
-                            <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                    <select name="institute_name" class="form-control select2">
+                        @foreach ($instituteInfo as $info)
+                            <option value="{{ $info->name_en }}"
+                                {{ old('institute_name', $info->name_en ?? '') == optional($user)->institute_name ? 'selected' : '' }}>
+                                {{ $info->name_en }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -55,6 +57,93 @@ roll
                 <label class="col-md-4 mb-2"> Branch Name: </label>
                 <div class="col-md-8 ">
                     <select name="class" class="form-control select2">
+                        <option value="campas-1">Campas 1 | Hazi Dorbesh Ali Bari</option>
+                        <option value="campas-2">Campas 2 | Chowdhury Villa</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+</div>{{-- Academic Information --}}
+
+
+
+
+{{-- ///////////////////////////////////////Incomplete//////////////////////////////////////// --}}
+
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Branch Name: </label>
+                <div class="col-md-8 ">
+                    <select name="class" class="form-control select2">
+                        <option value="campas-1">Campas 1 | Hazi Dorbesh Ali Bari</option>
+                        <option value="campas-2">Campas 2 | Chowdhury Villa</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Class: </label>
+                <div class="col-md-8 ">
+                    <select name="class" class="form-control select2">
+                        @foreach ($classes as $data)
+                            <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Shif: </label>
+                <div class="col-md-8 ">
+                    <select name="class" class="form-control select2">
+                        @foreach ($classes as $data)
+                            <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> section: </label>
+                <div class="col-md-8 ">
+                    <select name="class" class="form-control select2">
+                        @foreach ($classes as $data)
+                            <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> group: </label>
+                <div class="col-md-8 ">
+                    <select name="class" class="form-control select2">
+                        @foreach ($classes as $data)
+                            <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> roll: </label>
+                <div class="col-md-8 ">
+                    <select name="class" class="form-control select2">
                         @foreach ($classes as $data)
                             <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
                         @endforeach
@@ -67,8 +156,6 @@ roll
 
 
 
-    </div>
-</div>{{-- Academic Information --}}
 
 
 
@@ -86,27 +173,12 @@ roll
 
 
 
-
-
+=======================================
 <div class="card p-2 mb-3 border border-success">
     <header class="card-header p-1">
         <h3>Academic Information</h3>
     </header>
     <div class="card-body row">
-
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2"> Enrollment Date:</label>
-                <div class="col-md-8 ">
-                    <input name="joined_at"
-                        type="date"
-                        class="form-control @error('joined_at') is-invalid @enderror"
-                        value="{{ old('joined_at', $data->joined_at ?? '') }}">
-
-                    <span class="text-danger"> @error('joined_at') {{$message}} @enderror </span>
-                </div>
-            </div>
-        </div>
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
@@ -147,18 +219,7 @@ roll
             </div>
         </div>
 
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2"> Class: </label>
-                <div class="col-md-8 ">
-                    <select name="class" class="form-control select2">
-                        @foreach ($classes as $data)
-                            <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-        </div>
+        
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
@@ -477,3 +538,6 @@ roll
 
     </div>
 </div>
+
+{{-- ///////////////////////////////////////Incomplete//////////////////////////////////////// --}}
+

@@ -30,15 +30,16 @@ return new class extends Migration
             $table->string('nationality')->default('Bangladeshi');
             $table->string('religion')->nullable();
 
-            // Academic Information- (8 column)
-            $table->string('joined_at')->nullable();
-            $table->string('academic_year')->nullable();
-            $table->string('institute_name')->nullable();
-            $table->string('class')->nullable();
-            $table->string('shift')->nullable();
-            $table->string('section')->nullable();
-            $table->string('group')->nullable();
-            $table->string('roll')->nullable();
+            // Academic Information- (9 column)
+            $table->text('joined_at')->nullable();
+            $table->text('academic_year')->nullable();
+            $table->text('institute_name')->nullable();
+            $table->text('branch')->nullable();
+            $table->text('class')->nullable();
+            $table->text('shift')->nullable();
+            $table->text('section')->nullable();
+            $table->text('group')->nullable();
+            $table->text('roll')->nullable();
 
             // Login Information
             $table->string('email')->nullable();
