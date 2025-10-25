@@ -58,4 +58,8 @@ class HomeController extends Controller
         return view('website.noticeIndex',compact('notices'));
     }
 
+    public function onlineAdmission()
+    {
+        return view('website.onlineAdmission');
+    }
 }

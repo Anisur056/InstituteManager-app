@@ -26,6 +26,7 @@
             <form action="{{ route('students.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
+                {{-- Student Form Include Blade --}}
                 @include('admin.students.form')
 
                 <div class="card-footer">

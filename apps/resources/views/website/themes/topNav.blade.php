@@ -42,7 +42,7 @@
                 <a href="{{ route('login') }}" class="nav-item nav-link"><span class="bangla">লগইন</span></a>
             </div>
 
-            <a href="#" class="btn btn-success rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0 d-none d-lg-block">
+            <a href="{{ route('online.admission') }}" class="btn btn-success rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0 d-none d-lg-block">
                 <span class="bangla">ভর্তি আবেদন</span>
             </a>
 

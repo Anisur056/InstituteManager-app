@@ -1,7 +1,96 @@
-{{-- Student Information --}}
+{{-- Academic Information --}}
+<div class="card p-2 mb-3 border border-success">
+    <header class="card-header p-1 text-center">
+        <h3>Academic Information</h3>
+
+institute_name
+class
+shift
+section
+group
+roll
+    </header>
+    <div class="card-body row">
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Enrollment Date:</label>
+                <div class="col-md-8 ">
+                    <input name="joined_at"
+                        type="date"
+                        class="form-control @error('joined_at') is-invalid @enderror"
+                        value="{{ old('joined_at') ?: ($data->joined_at ?? date('Y-m-d')) }}">
+
+                    <span class="text-danger"> @error('joined_at') {{$message}} @enderror </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2">Academic Year: </label>
+                <div class="col-md-8 ">
+                    <select name="academic_year" class="form-control select2" disabled>
+                        <option value="{{ $academicYear->year_en }}">{{ $academicYear->year_en }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Institute Name: </label>
+                <div class="col-md-8 ">
+                    <select name="class" class="form-control select2">
+                        @foreach ($classes as $data)
+                            <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Branch Name: </label>
+                <div class="col-md-8 ">
+                    <select name="class" class="form-control select2">
+                        @foreach ($classes as $data)
+                            <option value="{{ $data->name_en }}">{{ $data->name_en }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>{{-- Academic Information --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="card p-2 mb-3 border border-success">
     <header class="card-header p-1">
-        <h3>Student Information</h3>
+        <h3>Academic Information</h3>
     </header>
     <div class="card-body row">
 
@@ -387,4 +476,4 @@
         </div>{{-- Profile Pic & Signature Uploads --}}
 
     </div>
-</div>{{-- /Student Information --}}
+</div>

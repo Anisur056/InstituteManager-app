@@ -40,9 +40,11 @@ class UserStudentController extends Controller
     {
 
         $classes = InstituteClassesModel::all();
+        $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->first();
 
         return view('admin/students/create',compact(
             'classes',
+            'academicYear',
         ));
     }
 
@@ -141,7 +143,7 @@ class UserStudentController extends Controller
     public function exStudents()
     {
         $records = User::whereIn('status', ['disable','tc','exam-complete','exit'])->get();
-        return view('admin/employee/ex', compact('records'));
+        return view('admin/students/ex', compact('records'));
     }
 
     // public function admit_card_print(string $id)

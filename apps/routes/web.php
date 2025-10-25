@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
 use App\Http\Controllers\Website\HomeController;
+
+
+
 use App\Http\Controllers\Admin\SmsLogsController;
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -37,6 +40,9 @@ Route::get('/notice/{id?}', [HomeController::class, 'noticeShow'])->name('notice
 
 Route::get('/galleries', [HomeController::class, 'galleryIndex'])->name('galleries.index');
 Route::get('/video-galleries', [HomeController::class, 'videoGalleryIndex'])->name('videoGalleries.index');
+
+// Admission Form Route
+Route::get('/online-admission', [HomeController::class, 'onlineAdmission'])->name('online.admission');
 
 
 
