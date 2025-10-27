@@ -44,6 +44,7 @@ Route::get('/video-galleries', [HomeController::class, 'videoGalleryIndex'])->na
 
 // Admission Form Route
 Route::get('/online-admission', [HomeController::class, 'onlineAdmission'])->name('online.admission');
+Route::post('/online-admission', [HomeController::class, 'onlineAdmissionSubmit'])->name('online.admission.submit');
 
 
 

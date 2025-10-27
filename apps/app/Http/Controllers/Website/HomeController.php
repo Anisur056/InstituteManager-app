@@ -1,20 +1,23 @@
 <?php
 
 namespace App\Http\Controllers\Website;
-
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
+
+use App\Models\User;
 use App\Models\WebsiteNoticeModel;
 use App\Models\WebsiteGalleryModel;
 use App\Models\WebsiteVideoGalleryModel;
-use App\Models\User;
-
-
-
 
 // Online Admission Form Model
 use App\Models\InstituteAcademicYearsModel;
 use App\Models\InstituteInfoModel;
+use App\Models\InstituteBranchModel;
+use App\Models\InstituteClassesModel;
+use App\Models\InstituteShiftsModel;
+use App\Models\InstituteSectionsModel;
+use App\Models\InstituteGroupsModel;
 
 class HomeController extends Controller
 {
@@ -70,10 +73,43 @@ class HomeController extends Controller
 
         $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
         $instituteInfo = InstituteInfoModel::all();
+        $instituteBranch = InstituteBranchModel::all();
+        $classes = InstituteClassesModel::all();
+        $shifts = InstituteShiftsModel::all();
+        $sections = InstituteSectionsModel::all();
+        $groups = InstituteGroupsModel::all();
+
+
+        // Generate a random integer between 0 and 999999 (inclusive)
+        // $randomNumber = random_int(0, 999999);
+
+        // Pad the number with leading zeros to ensure it's always 6 digits long
+        // $sixDigitNumber = str_pad($randomNumber, 6, '0', STR_PAD_LEFT);
+
+        // return "Your 6-digit random number is: " . $sixDigitNumber;
 
         return view('website.onlineAdmission',compact(
             'academicYear',
             'instituteInfo',
+            'instituteBranch',
+            'classes',
+            'shifts',
+            'sections',
+            'groups',
         ));
     }
+
+    public function onlineAdmissionSubmit(Request $request)
+    {
+        return $request->all();
+        $request->validate([
+            'academic_year' => 'required',
+            'institute_info' => 'required',
+            'branch' => 'required',
+        ]);
+
+        // Handle the admission form submission logic here
+        return redirect()->route('online.admission')->with('success', 'Admission form submitted successfully.');
+    }
+    
 }

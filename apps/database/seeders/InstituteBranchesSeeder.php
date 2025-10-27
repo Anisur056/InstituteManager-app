@@ -24,7 +24,7 @@ class InstituteBranchesSeeder extends Seeder
             [
             'institute_info_id' => 1,
             'name_en' => 'Campas 2 | Chowdhury Villa',
-            'name_bn' => 'ক্যাম্পাস ১ | চৌধুরী ভিলা',
+            'name_bn' => 'ক্যাম্পাস ২ | চৌধুরী ভিলা',
             'display_order' => 2,
             'created_at' => now(),
             'updated_at' => now(),

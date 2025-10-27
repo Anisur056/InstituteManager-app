@@ -49,14 +49,14 @@
             </div>
         </div>
 
-
-
-        <div class="card py-4 wow fadeInLeft" data-wow-delay="0.1s">
-            <h2 class="mb-2 bangla text-center">একাডেমিক তথ্য</h2>
-            <hr>
-            <form>
+        <form action="{{ route('online.admission.submit') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            {{-- Academic Information --}}
+            <div class="card py-4 wow fadeInLeft" data-wow-delay="0.1s">
+                <h2 class="mb-2 bangla text-center">একাডেমিক তথ্য</h2>
+                <hr>
                 <div class="card-body row">
-                    
+
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <div class="row">
                             <label class="col-md-4 mb-2"> ভর্তির তারিখ:</label>
@@ -69,12 +69,13 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <div class="row">
-                            <label class="col-md-4 col-sm-12 mb-2">ভর্তি বর্ষ: </label>
+                            <label class="col-md-4 col-sm-12 mb-2">শিক্ষা বর্ষ: </label>
                             <div class="col-md-8 col-sm-12">
-                                <select name="academic_year" class="form-control select2">
+                                <select name="academic_year" class="form-control">
+                                    <option value="null">নির্বাচন করুন</option>
                                     @foreach ($academicYear as $year)
                                         <option value="{{ $year->year_en }}">{{ $year->year_bn }}</option>
                                     @endforeach
@@ -87,7 +88,8 @@
                         <div class="row">
                             <label class="col-md-4 mb-2"> প্রতিষ্ঠানের নাম: </label>
                             <div class="col-md-8 ">
-                                <select name="institute_name" class="form-control select2">
+                                <select name="institute_name" class="form-control">
+                                    <option value="null">নির্বাচন করুন</option>
                                     @foreach ($instituteInfo as $data)
                                         <option value="{{ $data->name_en }}">{{ $data->name_bn }}</option>
                                     @endforeach
@@ -100,17 +102,77 @@
                         <div class="row">
                             <label class="col-md-4 mb-2"> প্রতিষ্ঠানের শাখা: </label>
                             <div class="col-md-8 ">
-                                <select name="class" class="form-control select2">
-                                    <option value="campas-1">Campas 1 | Hazi Dorbesh Ali Bari</option>
-                                    <option value="campas-2">Campas 2 | Chowdhury Villa</option>
+                                <select name="branch" class="form-control">
+                                    <option value="null">নির্বাচন করুন</option>
+                                    @foreach ($instituteBranch as $branch)
+                                        <option value="{{ $branch->name_en }}">{{ $branch->name_bn }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                     </div>
 
+                    <div class="col-sm-12 col-lg-6 mb-3">
+                        <div class="row">
+                            <label class="col-md-4 mb-2"> শ্রেনী: </label>
+                            <div class="col-md-8 ">
+                                <select name="class" class="form-control">
+                                    <option value="null">নির্বাচন করুন</option>
+                                    @foreach ($classes as $class)
+                                        <option value="{{ $class->name_en }}">{{ $class->name_bn }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6 mb-3">
+                        <div class="row">
+                            <label class="col-md-4 mb-2"> শ্রেনী শাখা: </label>
+                            <div class="col-md-8 ">
+                                <select name="shift" class="form-control">
+                                    <option value="null">নির্বাচন করুন</option>
+                                    @foreach ($shifts as $shift)
+                                        <option value="{{ $shift->name_en }}">{{ $shift->name_bn }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6 mb-3">
+                        <div class="row">
+                            <label class="col-md-4 mb-2"> সেকশন: </label>
+                            <div class="col-md-8 ">
+                                <select name="section" class="form-control">
+                                    <option value="null">নির্বাচন করুন</option>
+                                    @foreach ($sections as $section)
+                                        <option value="{{ $section->name_en }}">{{ $section->name_en }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6 mb-3">
+                        <div class="row">
+                            <label class="col-md-4 mb-2"> গ্রুপ: </label>
+                            <div class="col-md-8 ">
+                                <select name="group" class="form-control">
+                                    <option value="null">নির্বাচন করুন</option>
+                                    @foreach ($groups as $group)
+                                        <option value="{{ $group->name_en }}">{{ $group->name_en }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
-            </form>
-        </div>
+            </div>{{-- Academic Information --}}
+
+            <button type="submit" class="btn btn-success rounded mt-4"><i class="fa fa-floppy-o"></i> আবেদন দাখিল করুন </button>
+        </form>
     </div>
 </div>
 <!-- Admission Form End -->

@@ -1,20 +1,22 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 use App\Models\User;
-use App\Models\InstituteInfoModel;
-use App\Models\InstituteAcademicYearsModel;
-use App\Models\InstituteClassesModel;
-use App\Models\InstituteShiftsModel;
-use App\Models\InstituteSectionsModel;
-use App\Models\InstituteGroupsModel;
-
-use Illuminate\Http\Request;
 use App\Services\SmsService;
+use Illuminate\Http\Request;
+use App\Models\InstituteInfoModel;
+use App\Http\Controllers\Controller;
+use App\Models\InstituteBranchModel;
+use App\Models\InstituteGroupsModel;
+use App\Models\InstituteShiftsModel;
+
 use Illuminate\Support\Facades\Hash;
+use App\Models\InstituteClassesModel;
+use App\Models\InstituteSectionsModel;
 use Illuminate\Support\Facades\Storage;
+use App\Models\InstituteAcademicYearsModel;
 use App\Http\Requests\UserStudentFormRequest; // Form Submit Request goes & Validated
 
 class UserStudentController extends Controller
@@ -42,14 +44,23 @@ class UserStudentController extends Controller
         $user = null;
         $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
         $instituteInfo = InstituteInfoModel::all();
-        // $instituteBranch = InstituteBranch::all();
+        $instituteBranch = InstituteBranchModel::all();
         $classes = InstituteClassesModel::all();
+        $shifts = InstituteShiftsModel::all();
+        $sections = InstituteSectionsModel::all();
+        $groups = InstituteGroupsModel::all();
+        $registration_id = Carbon::now()->format('ymdhis') . '-' . random_int(100000, 999999);
 
         return view('admin/students/create',compact(
             'user',
             'academicYear',
             'instituteInfo',
+            'instituteBranch',
             'classes',
+            'shifts',
+            'sections',
+            'groups',
+            'registration_id',
         ));
     }
 
@@ -91,14 +102,23 @@ class UserStudentController extends Controller
         $user = User::find($id);
         $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
         $instituteInfo = InstituteInfoModel::all();
-        // $instituteBranch = InstituteBranch::all();
+        $instituteBranch = InstituteBranchModel::all();
         $classes = InstituteClassesModel::all();
+        $shifts = InstituteShiftsModel::all();
+        $sections = InstituteSectionsModel::all();
+        $groups = InstituteGroupsModel::all();
+        $registration_id = null;
 
         return view('admin/students/edit',compact(
             'user',
             'academicYear',
             'instituteInfo',
+            'instituteBranch',
             'classes',
+            'shifts',
+            'sections',
+            'groups',
+            'registration_id',
         ));
     }
 

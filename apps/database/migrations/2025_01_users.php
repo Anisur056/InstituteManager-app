@@ -29,8 +29,9 @@ return new class extends Migration
             $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed'])->default('single');
             $table->string('nationality')->default('Bangladeshi');
             $table->string('religion')->nullable();
+            $table->string('profile_pic')->nullable();
 
-            // Academic Information- (9 column)
+            // Academic Information- (10 column)
             $table->text('joined_at')->nullable();
             $table->text('academic_year')->nullable();
             $table->text('institute_name')->nullable();
@@ -40,14 +41,9 @@ return new class extends Migration
             $table->text('section')->nullable();
             $table->text('group')->nullable();
             $table->text('roll')->nullable();
-
-            // Login Information
-            $table->string('email')->nullable();
-            $table->string('password')->nullable();
-            $table->enum('role',['admin', 'teacher', 'student','accountant', 'librarian', 'security', 'guest'])->default('guest');
-
-            // Attendance Information
             $table->string('rfid_card')->nullable();
+            $table->string('registration_id')->nullable(); // Registration ID- Auto Generated- pattern- 20251027063000866845
+            $table->enum('status',['active','pending','disable','tc','exam-complete','exit'])->default('active');
 
             // Contact Information- (5 column)
             $table->string('contact_sms'); //* Contact For SMS- Required
@@ -102,12 +98,14 @@ return new class extends Migration
             $table->string('previous_institute_info')->nullable();
 
             // Profile & Signature
-            $table->string('profile_pic')->nullable();
             $table->string('signature')->nullable();
 
-            // Status Information
-            $table->enum('status',['active','pending','disable','tc','exam-complete','exit'])->default('active');
-            $table->string('registration_id')->nullable(); //* Registration ID- Required
+            // Login Information
+            $table->string('user_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('password')->nullable();
+            $table->enum('role',['admin', 'teacher', 'student','accountant', 'librarian', 'security', 'guest'])->default('guest');
+            
             $table->rememberToken();
             $table->timestamps();
         });

@@ -5,6 +5,15 @@
 @section('css')
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/select2/select2.min.css') }}" /><!-- /Select2 -->
+
+    <!-- Dropify 0.2.2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" />
+
+    <style>
+        .dropify-wrapper .dropify-message p {
+            font-size: 15px;
+        }
+    </style>
 @endsection
 
 @section('page-body')
@@ -49,5 +58,24 @@
         });
     </script>
     <!-- /Select2 -->
+
+    <!-- Dropify 0.2.2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+
+    <script>
+        // Initialize Dropify on all elements with the class 'dropify'
+        $(document).ready(function(){
+            // Initialize all inputs with the class 'dropify'
+            $('.dropify').dropify({
+                messages: {
+                    'default': 'Drag and drop a file here or click',
+                    'replace': 'Drag and drop or click to replace',
+                    'remove':  'Remove',
+                    'error':   'Ooops, something wrong happened.'
+                }
+            });
+        });
+    </script><!-- Dropify 0.2.2 -->
+
 @endsection
 
