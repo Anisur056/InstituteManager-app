@@ -5,6 +5,15 @@
 @section('css')
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/select2/select2.min.css') }}" /><!-- /Select2 -->
+
+    <!-- Dropify 0.2.2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" />
+
+    <style>
+        .dropify-wrapper .dropify-message p {
+            font-size: 15px;
+        }
+    </style>
 @endsection
 
 @section('page-body')
@@ -51,125 +60,9 @@
 
         <form action="{{ route('online.admission.submit') }}" method="post" enctype="multipart/form-data">
             @csrf
-            {{-- Academic Information --}}
-            <div class="card py-4 wow fadeInLeft" data-wow-delay="0.1s">
-                <h2 class="mb-2 bangla text-center">একাডেমিক তথ্য</h2>
-                <hr>
-                <div class="card-body row">
 
-                    <div class="col-sm-12 col-lg-6 mb-3">
-                        <div class="row">
-                            <label class="col-md-4 mb-2"> ভর্তির তারিখ:</label>
-                            <div class="col-md-8 ">
-                                <input name="joined_at"
-                                    type="date"
-                                    class="form-control @error('joined_at') is-invalid @enderror"
-                                    value="{{ old('joined_at') ?: ($data->joined_at ?? date('Y-m-d')) }}">
-                                <span class="text-danger"> @error('joined_at') {{$message}} @enderror </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 col-lg-6 mb-3">
-                        <div class="row">
-                            <label class="col-md-4 col-sm-12 mb-2">শিক্ষা বর্ষ: </label>
-                            <div class="col-md-8 col-sm-12">
-                                <select name="academic_year" class="form-control">
-                                    <option value="null">নির্বাচন করুন</option>
-                                    @foreach ($academicYear as $year)
-                                        <option value="{{ $year->year_en }}">{{ $year->year_bn }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 col-lg-6 mb-3">
-                        <div class="row">
-                            <label class="col-md-4 mb-2"> প্রতিষ্ঠানের নাম: </label>
-                            <div class="col-md-8 ">
-                                <select name="institute_name" class="form-control">
-                                    <option value="null">নির্বাচন করুন</option>
-                                    @foreach ($instituteInfo as $data)
-                                        <option value="{{ $data->name_en }}">{{ $data->name_bn }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 col-lg-6 mb-3">
-                        <div class="row">
-                            <label class="col-md-4 mb-2"> প্রতিষ্ঠানের শাখা: </label>
-                            <div class="col-md-8 ">
-                                <select name="branch" class="form-control">
-                                    <option value="null">নির্বাচন করুন</option>
-                                    @foreach ($instituteBranch as $branch)
-                                        <option value="{{ $branch->name_en }}">{{ $branch->name_bn }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 col-lg-6 mb-3">
-                        <div class="row">
-                            <label class="col-md-4 mb-2"> শ্রেনী: </label>
-                            <div class="col-md-8 ">
-                                <select name="class" class="form-control">
-                                    <option value="null">নির্বাচন করুন</option>
-                                    @foreach ($classes as $class)
-                                        <option value="{{ $class->name_en }}">{{ $class->name_bn }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 col-lg-6 mb-3">
-                        <div class="row">
-                            <label class="col-md-4 mb-2"> শ্রেনী শাখা: </label>
-                            <div class="col-md-8 ">
-                                <select name="shift" class="form-control">
-                                    <option value="null">নির্বাচন করুন</option>
-                                    @foreach ($shifts as $shift)
-                                        <option value="{{ $shift->name_en }}">{{ $shift->name_bn }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 col-lg-6 mb-3">
-                        <div class="row">
-                            <label class="col-md-4 mb-2"> সেকশন: </label>
-                            <div class="col-md-8 ">
-                                <select name="section" class="form-control">
-                                    <option value="null">নির্বাচন করুন</option>
-                                    @foreach ($sections as $section)
-                                        <option value="{{ $section->name_en }}">{{ $section->name_en }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 col-lg-6 mb-3">
-                        <div class="row">
-                            <label class="col-md-4 mb-2"> গ্রুপ: </label>
-                            <div class="col-md-8 ">
-                                <select name="group" class="form-control">
-                                    <option value="null">নির্বাচন করুন</option>
-                                    @foreach ($groups as $group)
-                                        <option value="{{ $group->name_en }}">{{ $group->name_en }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>{{-- Academic Information --}}
+            {{-- Student Form Include Blade & send all compact value to view --}}
+            @include('admin.students.form', get_defined_vars())
 
             <button type="submit" class="btn btn-success rounded mt-4"><i class="fa fa-floppy-o"></i> আবেদন দাখিল করুন </button>
         </form>
@@ -190,6 +83,24 @@
         });
     </script>
     <!-- /Select2 -->
+
+    <!-- Dropify 0.2.2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+
+    <script>
+        // Initialize Dropify on all elements with the class 'dropify'
+        $(document).ready(function(){
+            // Initialize all inputs with the class 'dropify'
+            $('.dropify').dropify({
+                messages: {
+                    'default': 'Drag and drop a file here or click',
+                    'replace': 'Drag and drop or click to replace',
+                    'remove':  'Remove',
+                    'error':   'Ooops, something wrong happened.'
+                }
+            });
+        });
+    </script><!-- Dropify 0.2.2 -->
 @endsection
 
 

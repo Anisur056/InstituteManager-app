@@ -1,16 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Website;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-
-use App\Models\User;
+// Website Notice & Gallery Model
 use App\Models\WebsiteNoticeModel;
 use App\Models\WebsiteGalleryModel;
 use App\Models\WebsiteVideoGalleryModel;
 
 // Online Admission Form Model
+use App\Models\User;
 use App\Models\InstituteAcademicYearsModel;
 use App\Models\InstituteInfoModel;
 use App\Models\InstituteBranchModel;
@@ -71,6 +72,7 @@ class HomeController extends Controller
     public function onlineAdmission()
     {
 
+        $user = null;
         $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
         $instituteInfo = InstituteInfoModel::all();
         $instituteBranch = InstituteBranchModel::all();
@@ -78,17 +80,10 @@ class HomeController extends Controller
         $shifts = InstituteShiftsModel::all();
         $sections = InstituteSectionsModel::all();
         $groups = InstituteGroupsModel::all();
-
-
-        // Generate a random integer between 0 and 999999 (inclusive)
-        // $randomNumber = random_int(0, 999999);
-
-        // Pad the number with leading zeros to ensure it's always 6 digits long
-        // $sixDigitNumber = str_pad($randomNumber, 6, '0', STR_PAD_LEFT);
-
-        // return "Your 6-digit random number is: " . $sixDigitNumber;
+        $registration_id = Carbon::now()->format('ymdhis') . '-' . random_int(100000, 999999);
 
         return view('website.onlineAdmission',compact(
+            'user',
             'academicYear',
             'instituteInfo',
             'instituteBranch',
@@ -96,6 +91,7 @@ class HomeController extends Controller
             'shifts',
             'sections',
             'groups',
+            'registration_id',
         ));
     }
 

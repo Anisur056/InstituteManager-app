@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
-
-use App\Models\User;
 use App\Services\SmsService;
 use Illuminate\Http\Request;
-use App\Models\InstituteInfoModel;
 use App\Http\Controllers\Controller;
+
+use App\Models\User;
+use App\Models\InstituteAcademicYearsModel;
+use App\Models\InstituteInfoModel;
 use App\Models\InstituteBranchModel;
-use App\Models\InstituteGroupsModel;
+use App\Models\InstituteClassesModel;
 use App\Models\InstituteShiftsModel;
+use App\Models\InstituteSectionsModel;
+use App\Models\InstituteGroupsModel;
 
 use Illuminate\Support\Facades\Hash;
-use App\Models\InstituteClassesModel;
-use App\Models\InstituteSectionsModel;
 use Illuminate\Support\Facades\Storage;
-use App\Models\InstituteAcademicYearsModel;
 use App\Http\Requests\UserStudentFormRequest; // Form Submit Request goes & Validated
 
 class UserStudentController extends Controller
@@ -67,6 +67,7 @@ class UserStudentController extends Controller
     public function store(UserStudentFormRequest $request)
     // public function store(Request $request)
     {
+        return $request;
         // Used for Mass Validation `apps/app/Http/Requests/UserRequest.php`
         $validatedData = $request->validated();
 

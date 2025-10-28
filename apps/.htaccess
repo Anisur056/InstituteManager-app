@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    # Turn on URL rewriting
+    RewriteEngine On
+
+    # Prevent direct access to .env file
+    RewriteRule ^\.env - [F,L]
+
+    # Prevent access to vendor folder
+    RewriteRule ^vendor/ - [F,L]
+
+    # Prevent direct access to app, bootstrap, storage, etc. folders
+    RewriteRule ^(app|bootstrap|config|database|public|resources|routes|storage|tests)/ - [F,L]
+
+</IfModule>

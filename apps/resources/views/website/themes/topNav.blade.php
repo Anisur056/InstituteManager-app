@@ -5,7 +5,7 @@
             <img class="w-100 w-lg-50" src="{{ asset('assets/website/img/logo-banner.png') }}" alt="Logo">
         </a>
 
-        <a href="#" class="btn btn-success rounded-pill text-white py-1 px-3 me-2 d-block d-lg-none">
+        <a href="{{ route('online.admission') }}" class="btn btn-success rounded-pill text-white py-1 px-3 me-2 d-block d-lg-none">
             <span class="bangla">ভর্তি আবেদন</span>
         </a>
 

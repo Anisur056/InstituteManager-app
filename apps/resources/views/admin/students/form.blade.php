@@ -135,64 +135,68 @@
             </div>
         </div>
 
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2"> Roll:</label>
-                <div class="col-md-8 ">
-                    <input  value="{{ old('roll', $user->roll ?? '') }}"
-                            type="text"
-                            class="form-control @error('roll') is-invalid @enderror"
-                            placeholder="Class Roll"
-                            name="roll">
-                    <span class="text-danger"> @error('roll') {{$message}} @enderror </span>
-                </div>
-            </div>
-        </div>
+        @auth
 
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2"> RFID Card:</label>
-                <div class="col-md-8 ">
-                    <input  value="{{ old('rfid_card', $user->rfid_card ?? '') }}"
-                            type="text"
-                            class="form-control @error('rfid_card') is-invalid @enderror"
-                            placeholder="RFID Number"
-                            name="rfid_card">
-                    <span class="text-danger"> @error('rfid_card') {{$message}} @enderror </span>
+            <div class="col-sm-12 col-lg-6 mb-3">
+                <div class="row">
+                    <label class="col-md-4 mb-2"> Roll:</label>
+                    <div class="col-md-8 ">
+                        <input  value="{{ old('roll', $user->roll ?? '') }}"
+                                type="text"
+                                class="form-control @error('roll') is-invalid @enderror"
+                                placeholder="Class Roll"
+                                name="roll">
+                        <span class="text-danger"> @error('roll') {{$message}} @enderror </span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2"> Registration ID:</label>
-                <div class="col-md-8 ">
-                    <input  value="{{ old('registration_id', $user->registration_id ?? $registration_id) }}"
-                            type="text"
-                            class="form-control @error('registration_id') is-invalid @enderror"
-                            placeholder="Registration ID"
-                            name="registration_id">
-                    <span class="text-danger"> @error('registration_id') {{$message}} @enderror </span>
+            <div class="col-sm-12 col-lg-6 mb-3">
+                <div class="row">
+                    <label class="col-md-4 mb-2"> RFID Card:</label>
+                    <div class="col-md-8 ">
+                        <input  value="{{ old('rfid_card', $user->rfid_card ?? '') }}"
+                                type="text"
+                                class="form-control @error('rfid_card') is-invalid @enderror"
+                                placeholder="RFID Number"
+                                name="rfid_card">
+                        <span class="text-danger"> @error('rfid_card') {{$message}} @enderror </span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2">Student Status: </label>
-                <div class="col-md-8 ">
-                    <select name="status" class="form-control select2">
-                        <option value="active" {{ old('status', $user->status ?? '') == 'active' ? 'selected' : '' }}>Active</option>
-                        <option value="pending" {{ old('status', $user->status ?? '') == 'pending' ? 'selected' : '' }}>Pending Admission</option>
-                        <option value="disable" {{ old('status', $user->status ?? '') == 'disable' ? 'selected' : '' }}>Temporary Disable</option>
-                        <option value="tc" {{ old('status', $user->status ?? '') == 'tc' ? 'selected' : '' }}>Transfer to Another Institution</option>
-                        <option value="exam-complete" {{ old('status', $user->status ?? '') == 'exam-complete' ? 'selected' : '' }}>Board Exam Complete</option>
-                        <option value="exit" {{ old('status', $user->status ?? '') == 'exit' ? 'selected' : '' }}>Exit from Institute</option>
-                    </select>
-                    <span class="text-danger"> @error('status') {{$message}} @enderror </span>
+            <div class="col-sm-12 col-lg-6 mb-3">
+                <div class="row">
+                    <label class="col-md-4 mb-2"> Registration ID:</label>
+                    <div class="col-md-8 ">
+                        <input  value="{{ old('registration_id', $user->registration_id ?? $registration_id) }}"
+                                type="text"
+                                class="form-control @error('registration_id') is-invalid @enderror"
+                                placeholder="Registration ID"
+                                name="registration_id">
+                        <span class="text-danger"> @error('registration_id') {{$message}} @enderror </span>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class="col-sm-12 col-lg-6 mb-3">
+                <div class="row">
+                    <label class="col-md-4 mb-2">Student Status: </label>
+                    <div class="col-md-8 ">
+                        <select name="status" class="form-control select2">
+                            <option value="active" {{ old('status', $user->status ?? '') == 'active' ? 'selected' : '' }}>Active</option>
+                            <option value="pending" {{ old('status', $user->status ?? '') == 'pending' ? 'selected' : '' }}>Pending Admission</option>
+                            <option value="disable" {{ old('status', $user->status ?? '') == 'disable' ? 'selected' : '' }}>Temporary Disable</option>
+                            <option value="tc" {{ old('status', $user->status ?? '') == 'tc' ? 'selected' : '' }}>Transfer to Another Institution</option>
+                            <option value="exam-complete" {{ old('status', $user->status ?? '') == 'exam-complete' ? 'selected' : '' }}>Board Exam Complete</option>
+                            <option value="exit" {{ old('status', $user->status ?? '') == 'exit' ? 'selected' : '' }}>Exit from Institute</option>
+                        </select>
+                        <span class="text-danger"> @error('status') {{$message}} @enderror </span>
+                    </div>
+                </div>
+            </div>
+
+        @endauth
 
     </div>
 </div>{{-- Academic Information --}}
@@ -206,7 +210,7 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Name (English): <span class="text-danger">*</span> </label>
+                <label class="col-md-4 mb-2"> Name (English): <span class="text-danger">Required as per Brith Centificate</span> </label>
                 <div class="col-md-8 ">
                     <input name="name"
                         type="text"
@@ -434,7 +438,7 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Contact Number (For SMS): <span class="text-danger">*</span> </label>
+                <label class="col-md-4 mb-2"> Contact Number (For SMS): <span class="text-danger">Required</span> </label>
                 <div class="col-md-8 ">
                     <input name="contact_sms"
                         type="text"
@@ -620,27 +624,6 @@
             </div>
         </div>
 
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2"> Father Picture:</label>
-                <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="father_profile_pic" 
-                    id="father_profile_pic" 
-                    class="dropify"
-                    title="Father Picture"
-                    data-plugin="dropify"
-                    data-errors-position="outside"
-                    data-min-width="220" 
-                    data-height="220"
-                    data-default-file="{{ optional($user)->father_profile_pic ? asset('assets/admin/' . optional($user)->father_profile_pic) : '' }}"
-                    data-allowed-file-extensions="pdf jpg jpeg png"
-                    data-max-file-size="1M"
-                    accept=".pdf, .jpg, .jpeg, .png,"/>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>{{-- Father Information --}}
 
@@ -759,27 +742,6 @@
                         value="{{ old('mother_address') ?: ($user->mother_address ?? '') }}">
 
                     <span class="text-danger"> @error('mother_address') {{$message}} @enderror </span>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2"> Mother Picture:</label>
-                <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="mother_profile_pic" 
-                    id="mother_profile_pic" 
-                    class="dropify"
-                    title="Father Picture"
-                    data-plugin="dropify"
-                    data-errors-position="outside"
-                    data-min-width="220" 
-                    data-height="220"
-                    data-default-file="{{ optional($user)->mother_profile_pic ? asset('assets/admin/' . optional($user)->mother_profile_pic) : '' }}"
-                    data-allowed-file-extensions="pdf jpg jpeg png"
-                    data-max-file-size="1M"
-                    accept=".pdf, .jpg, .jpeg, .png,"/>
                 </div>
             </div>
         </div>
@@ -920,27 +882,6 @@
             </div>
         </div>
 
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2"> Local Guardian Picture:</label>
-                <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="local_guardian_profile_pic" 
-                    id="local_guardian_profile_pic" 
-                    class="dropify"
-                    title="Father Picture"
-                    data-plugin="dropify"
-                    data-errors-position="outside"
-                    data-min-width="220" 
-                    data-height="220"
-                    data-default-file="{{ optional($user)->local_guardian_profile_pic ? asset('assets/admin/' . optional($user)->local_guardian_profile_pic) : '' }}"
-                    data-allowed-file-extensions="pdf jpg jpeg png"
-                    data-max-file-size="1M"
-                    accept=".pdf, .jpg, .jpeg, .png,"/>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>{{-- Local Guardian Information --}}
 
@@ -1065,58 +1006,280 @@
     </div>
 </div>{{-- Previous Institute Information --}}
 
-{{-- Login Information --}}
+{{-- Supporting Document Upload --}}
 <div class="card p-2 mb-3 border border-success">
     <header class="card-header p-1 text-center">
-        <h3>Login Information</h3>
+        <h3>Supporting Documents Upload</h3>
     </header>
     <div class="card-body row">
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> User Name:</label>
+                <label class="col-md-4 mb-2"> Student Birth Registraion Cerfificate <br> <span class="text-danger"> (Online): </span></label>
                 <div class="col-md-8 ">
-                    <input name="user_name"
-                        type="text"
-                        class="form-control @error('user_name') is-invalid @enderror"
-                        value="{{ old('user_name') ?: ($user->user_name ?? '') }}">
-
-                    <span class="text-danger"> @error('user_name') {{$message}} @enderror </span>
+                    <input  type="file" 
+                    name="birth_certificate" 
+                    id="birth_certificate" 
+                    class="dropify"
+                    title="Father Picture"
+                    data-plugin="dropify"
+                    data-errors-position="outside"
+                    data-min-width="220" 
+                    data-height="220"
+                    data-default-file="{{ optional($user)->birth_certificate ? asset('assets/admin/' . optional($user)->birth_certificate) : '' }}"
+                    data-allowed-file-extensions="pdf jpg jpeg png"
+                    data-max-file-size="1M"
+                    accept=".pdf, .jpg, .jpeg, .png,"/>
                 </div>
             </div>
         </div>
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Email:</label>
+                <label class="col-md-4 mb-2"> Student Vaccination Card: <br> <span class="text-danger">(If birth certificate not Available)</span></label>
                 <div class="col-md-8 ">
-                    <input name="email"
-                        type="text"
-                        class="form-control @error('email') is-invalid @enderror"
-                        value="{{ old('email') ?: ($user->email ?? '') }}">
-
-                    <span class="text-danger"> @error('email') {{$message}} @enderror </span>
+                    <input  type="file" 
+                    name="vaccination_card" 
+                    id="vaccination_card" 
+                    class="dropify"
+                    title="Father Picture"
+                    data-plugin="dropify"
+                    data-errors-position="outside"
+                    data-min-width="220" 
+                    data-height="220"
+                    data-default-file="{{ optional($user)->vaccination_card ? asset('assets/admin/' . optional($user)->vaccination_card) : '' }}"
+                    data-allowed-file-extensions="pdf jpg jpeg png"
+                    data-max-file-size="1M"
+                    accept=".pdf, .jpg, .jpeg, .png,"/>
                 </div>
             </div>
         </div>
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Password: </label>
+                <label class="col-md-4 mb-2"> Father Picture:</label>
                 <div class="col-md-8 ">
-                    <input name="password"
-                        type="text"
-                        class="form-control @error('password') is-invalid @enderror"
-                        value="{{ old('password') ?: ($user->password ?? '') }}">
-
-                    <span class="text-danger"> @error('password') {{$message}} @enderror </span>
+                    <input  type="file" 
+                    name="father_profile_pic" 
+                    id="father_profile_pic" 
+                    class="dropify"
+                    title="Father Picture"
+                    data-plugin="dropify"
+                    data-errors-position="outside"
+                    data-min-width="220" 
+                    data-height="220"
+                    data-default-file="{{ optional($user)->father_profile_pic ? asset('assets/admin/' . optional($user)->father_profile_pic) : '' }}"
+                    data-allowed-file-extensions="pdf jpg jpeg png"
+                    data-max-file-size="1M"
+                    accept=".pdf, .jpg, .jpeg, .png,"/>
                 </div>
             </div>
         </div>
 
-        {{-- Delete later & use in controller --}}
-        <input name="role" type="hidden" value="student">
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Father NID/ Birth Certificate Card:</label>
+                <div class="col-md-8 ">
+                    <input  type="file" 
+                    name="father_nid_pic" 
+                    id="father_nid_pic" 
+                    class="dropify"
+                    title="Father Picture"
+                    data-plugin="dropify"
+                    data-errors-position="outside"
+                    data-min-width="220" 
+                    data-height="220"
+                    data-default-file="{{ optional($user)->father_nid_pic ? asset('assets/admin/' . optional($user)->father_nid_pic) : '' }}"
+                    data-allowed-file-extensions="pdf jpg jpeg png"
+                    data-max-file-size="1M"
+                    accept=".pdf, .jpg, .jpeg, .png,"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Mother Picture:</label>
+                <div class="col-md-8 ">
+                    <input  type="file" 
+                    name="mother_profile_pic" 
+                    id="mother_profile_pic" 
+                    class="dropify"
+                    title="Father Picture"
+                    data-plugin="dropify"
+                    data-errors-position="outside"
+                    data-min-width="220" 
+                    data-height="220"
+                    data-default-file="{{ optional($user)->mother_profile_pic ? asset('assets/admin/' . optional($user)->mother_profile_pic) : '' }}"
+                    data-allowed-file-extensions="pdf jpg jpeg png"
+                    data-max-file-size="1M"
+                    accept=".pdf, .jpg, .jpeg, .png,"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Mother NID/ Birth Certificate Card:</label>
+                <div class="col-md-8 ">
+                    <input  type="file" 
+                    name="mother_nid_pic" 
+                    id="mother_nid_pic" 
+                    class="dropify"
+                    title="Father Picture"
+                    data-plugin="dropify"
+                    data-errors-position="outside"
+                    data-min-width="220" 
+                    data-height="220"
+                    data-default-file="{{ optional($user)->mother_nid_pic ? asset('assets/admin/' . optional($user)->mother_nid_pic) : '' }}"
+                    data-allowed-file-extensions="pdf jpg jpeg png"
+                    data-max-file-size="1M"
+                    accept=".pdf, .jpg, .jpeg, .png,"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Local Guardian Picture:</label>
+                <div class="col-md-8 ">
+                    <input  type="file" 
+                    name="local_guardian_profile_pic" 
+                    id="local_guardian_profile_pic" 
+                    class="dropify"
+                    title="Father Picture"
+                    data-plugin="dropify"
+                    data-errors-position="outside"
+                    data-min-width="220" 
+                    data-height="220"
+                    data-default-file="{{ optional($user)->local_guardian_profile_pic ? asset('assets/admin/' . optional($user)->local_guardian_profile_pic) : '' }}"
+                    data-allowed-file-extensions="pdf jpg jpeg png"
+                    data-max-file-size="1M"
+                    accept=".pdf, .jpg, .jpeg, .png,"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Local Guardian NID/ Birth Certificate:</label>
+                <div class="col-md-8 ">
+                    <input  type="file" 
+                    name="local_guardian_nid_pic" 
+                    id="local_guardian_nid_pic" 
+                    class="dropify"
+                    title="Father Picture"
+                    data-plugin="dropify"
+                    data-errors-position="outside"
+                    data-min-width="220" 
+                    data-height="220"
+                    data-default-file="{{ optional($user)->local_guardian_nid_pic ? asset('assets/admin/' . optional($user)->local_guardian_nid_pic) : '' }}"
+                    data-allowed-file-extensions="pdf jpg jpeg png"
+                    data-max-file-size="1M"
+                    accept=".pdf, .jpg, .jpeg, .png,"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Previous Institute Certificate:</label>
+                <div class="col-md-8 ">
+                    <input  type="file" 
+                    name="previous_institute_certificate" 
+                    id="previous_institute_certificate" 
+                    class="dropify"
+                    title="Father Picture"
+                    data-plugin="dropify"
+                    data-errors-position="outside"
+                    data-min-width="220" 
+                    data-height="220"
+                    data-default-file="{{ optional($user)->previous_institute_certificate ? asset('assets/admin/' . optional($user)->previous_institute_certificate) : '' }}"
+                    data-allowed-file-extensions="pdf jpg jpeg png"
+                    data-max-file-size="1M"
+                    accept=".pdf, .jpg, .jpeg, .png,"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Signature:</label>
+                <div class="col-md-8 ">
+                    <input  type="file" 
+                    name="signature" 
+                    id="signature" 
+                    class="dropify"
+                    title="Father Picture"
+                    data-plugin="dropify"
+                    data-errors-position="outside"
+                    data-min-width="220" 
+                    data-height="220"
+                    data-default-file="{{ optional($user)->signature ? asset('assets/admin/' . optional($user)->signature) : '' }}"
+                    data-allowed-file-extensions="pdf jpg jpeg png"
+                    data-max-file-size="1M"
+                    accept=".pdf, .jpg, .jpeg, .png,"/>
+                </div>
+            </div>
+        </div>
 
     </div>
-</div>{{-- Login Information --}}
+</div>{{-- Supporting Document Upload --}}
+
+@auth
+    {{-- Login Information --}}
+    <div class="card p-2 mb-3 border border-success">
+        <header class="card-header p-1 text-center">
+            <h3>Login Information</h3>
+        </header>
+        <div class="card-body row">
+
+            <div class="col-sm-12 col-lg-6 mb-3">
+                <div class="row">
+                    <label class="col-md-4 mb-2"> User Name:</label>
+                    <div class="col-md-8 ">
+                        <input name="user_name"
+                            type="text"
+                            class="form-control @error('user_name') is-invalid @enderror"
+                            value="{{ old('user_name') ?: ($user->user_name ?? '') }}">
+
+                        <span class="text-danger"> @error('user_name') {{$message}} @enderror </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-6 mb-3">
+                <div class="row">
+                    <label class="col-md-4 mb-2"> Email:</label>
+                    <div class="col-md-8 ">
+                        <input name="email"
+                            type="text"
+                            class="form-control @error('email') is-invalid @enderror"
+                            value="{{ old('email') ?: ($user->email ?? '') }}">
+
+                        <span class="text-danger"> @error('email') {{$message}} @enderror </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-6 mb-3">
+                <div class="row">
+                    <label class="col-md-4 mb-2"> Password: </label>
+                    <div class="col-md-8 ">
+                        <input name="password"
+                            type="text"
+                            class="form-control @error('password') is-invalid @enderror"
+                            value="{{ old('password') ?: ($user->password ?? '') }}">
+
+                        <span class="text-danger"> @error('password') {{$message}} @enderror </span>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Delete later & use in controller --}}
+            <input name="role" type="hidden" value="student">
+
+        </div>
+    </div>{{-- Login Information --}}
+@endauth
 

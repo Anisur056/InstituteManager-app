@@ -8,6 +8,9 @@
 
 # Laravel Public Directory .htaccess File
 <IfModule mod_rewrite.c>
+    # Works Only `mod_negotiation` is active.
+    # Prevents unwanted directory listings (-Indexes)
+    # Files are only accessed through their explicit filenames. (-MultiViews)
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
@@ -32,14 +35,11 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-    # Redirect to HTTPS
+    # Redirect to https for live server, http for localhost, others
+    # Define which hostnames should be excluded from the HTTPS redirect
+    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1|192\.168\.0\.151|192\.168\.1\.151)$ [NC]
+    # Then check if HTTPS is off (this will only be evaluated if the above condition is true)
     RewriteCond %{HTTPS} off
+    # If both conditions are met, redirect to HTTPS
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
-
-
-
-
-
-
-
