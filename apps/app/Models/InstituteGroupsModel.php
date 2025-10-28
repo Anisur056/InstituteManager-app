@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class InstituteGroupsModel extends Model
 {
-    protected $table = 'Institute_groups';
+    protected $table = 'institute_groups';
     protected $guarded = [];
 }
