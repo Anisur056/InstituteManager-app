@@ -32,7 +32,10 @@ use App\Http\Controllers\Admin\InstituteExamTermsController;
 use App\Http\Controllers\Admin\WebsiteVideoGalleryController;
 use App\Http\Controllers\Admin\InstituteAcademicYearsController;
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+    'reset'    => false,
+]);
 
 // Website Frontend Route
 Route::get('/', [HomeController::class, 'home'])->name('home');
