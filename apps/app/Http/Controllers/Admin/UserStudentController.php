@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\InstituteAcademicYearsModel;
 use App\Models\InstituteInfoModel;
 use App\Models\InstituteBranchModel;
+use App\Models\InstituteDivisionModel;
 use App\Models\InstituteClassesModel;
 use App\Models\InstituteShiftsModel;
 use App\Models\InstituteSectionsModel;
@@ -45,6 +46,7 @@ class UserStudentController extends Controller
         $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
         $instituteInfo = InstituteInfoModel::all();
         $instituteBranch = InstituteBranchModel::all();
+        $instituteDivision = InstituteDivisionModel::all();
         $classes = InstituteClassesModel::all();
         $shifts = InstituteShiftsModel::all();
         $sections = InstituteSectionsModel::all();
@@ -56,6 +58,7 @@ class UserStudentController extends Controller
             'academicYear',
             'instituteInfo',
             'instituteBranch',
+            'instituteDivision',
             'classes',
             'shifts',
             'sections',
@@ -104,6 +107,7 @@ class UserStudentController extends Controller
         $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
         $instituteInfo = InstituteInfoModel::all();
         $instituteBranch = InstituteBranchModel::all();
+        $instituteDivision = InstituteDivisionModel::all();
         $classes = InstituteClassesModel::all();
         $shifts = InstituteShiftsModel::all();
         $sections = InstituteSectionsModel::all();
@@ -115,6 +119,7 @@ class UserStudentController extends Controller
             'academicYear',
             'instituteInfo',
             'instituteBranch',
+            'instituteDivision',
             'classes',
             'shifts',
             'sections',

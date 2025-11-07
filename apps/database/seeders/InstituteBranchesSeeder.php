@@ -14,22 +14,22 @@ class InstituteBranchesSeeder extends Seeder
 
         $records = collect([
             [
-            'institute_info_id' => 1,
-            'name_en' => 'Campas 1 | Hazi Dorbesh Ali Bari',
-            'name_bn' => 'ক্যাম্পাস ১ | হাজী দরবেশ আলী বাড়ি',
+            'institute_info_name' => 'Sirikotia Hafezia Nurani Model Madrasha',
+            'name_en' => 'Campas-1 | Biswas Para',
+            'name_bn' => 'ক্যাম্পাস-১ | বিশ্বাস পাড়া',
             'display_order' => 1,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'institute_info_id' => 1,
-            'name_en' => 'Campas 2 | Chowdhury Villa',
-            'name_bn' => 'ক্যাম্পাস ২ | চৌধুরী ভিলা',
+            'institute_info_name' => 'Sirikotia Hafezia Nurani Model Madrasha',
+            'name_en' => 'Campas-2 | Ponchayet Bari',
+            'name_bn' => 'ক্যাম্পাস-২ | পঞ্চায়েত বাড়ী',
             'display_order' => 2,
             'created_at' => now(),
             'updated_at' => now(),
             ]
-            
+
         ]);
 
         $records->each(function($data){

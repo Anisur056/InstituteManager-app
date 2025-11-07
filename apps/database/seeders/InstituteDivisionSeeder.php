@@ -2,42 +2,42 @@
 
 namespace Database\Seeders;
 
-use App\Models\InstituteAcademicYearsModel;
+use App\Models\InstituteDivisionModel;
 
 use Illuminate\Database\Seeder;
 
-class InstituteAcademicYearsSeeder extends Seeder
+
+class InstituteDivisionSeeder extends Seeder
 {
     public function run(): void
     {
 
         $records = collect([
             [
-            'year_en' => '2024',
-            'year_bn' => '২০২৪',
+            'name_en' => 'Nurani Division',
+            'name_bn' => 'নূরানী বিভাগ',
             'display_order' => 1,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'year_en' => '2025',
-            'year_bn' => '২০২৫',
+            'name_en' => 'Hifz Division',
+            'name_bn' => 'হিফজ বিভাগ',
             'display_order' => 2,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'year_en' => '2026',
-            'year_bn' => '২০২৬',
+            'name_en' => 'Moktob Programme',
+            'name_bn' => 'মক্তব প্রোগ্রাম',
             'display_order' => 3,
             'created_at' => now(),
             'updated_at' => now(),
             ],
-
         ]);
 
         $records->each(function($data){
-            InstituteAcademicYearsModel::insert($data);
+            InstituteDivisionModel::insert($data);
         });
 
     }

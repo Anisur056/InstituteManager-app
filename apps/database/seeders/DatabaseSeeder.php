@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\UsersSeeder;
+use Database\Seeders\UsersTeachersSeeder;
+use Database\Seeders\UsersStudentsSeeder;
 use Database\Seeders\UserFileUploadsSeeder;
 use Database\Seeders\UserAttendanceLogsSeeder;
 use Database\Seeders\InstituteInfoSeeder;
@@ -32,24 +34,31 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            UsersStudentsSeeder::class,
             UsersSeeder::class,
-            UserFileUploadsSeeder::class,
-            UserAttendanceLogsSeeder::class,
+            UsersTeachersSeeder::class,
+            UserFileUploadsSeeder::class, // No Preset Data available
+            UserAttendanceLogsSeeder::class, // No Preset Data available
+
+            InstituteAcademicYearsSeeder::class,
             InstituteInfoSeeder::class,
             InstituteBranchesSeeder::class,
-            InstituteAcademicYearsSeeder::class,
-            InstituteClassesSeeder::class,
+            InstituteDivisionSeeder::class,
             InstituteShiftsSeeder::class,
-            InstituteSectionsSeeder::class,
+            InstituteClassesSeeder::class,
+            InstituteSectionsSeeder::class, // No Preset Data available
+            InstituteGroupsSeeder::class,
             InstituteSubjectSeeder::class,
             InstituteExamTermsSeeder::class,
-            InstituteGroupsSeeder::class,
+
             InstituteWeekendsSeeder::class,
             InstituteHolidaysSeeder::class,
             InstituteLeavesSeeder::class,
+
             AttendanceDevicesSeeder::class,
             SmsSettingsSeeder::class,
             SmsLogsSeeder::class,
+
             WebsiteGallerySeeder::class,
             WebsiteNoticeSeeder::class,
             WebsiteVideoGallerySeeder::class,

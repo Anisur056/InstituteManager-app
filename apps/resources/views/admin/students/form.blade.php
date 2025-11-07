@@ -5,54 +5,58 @@
     </header>
     <div class="card-body row">
 
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2"> Enrollment Date:</label>
-                <div class="col-md-8 ">
-                    <input name="joined_at"
-                        type="date"
-                        class="form-control @error('joined_at') is-invalid @enderror"
-                        value="{{ old('joined_at') ?: ($user->joined_at ?? date('Y-m-d')) }}">
+        @auth
 
-                    <span class="text-danger"> @error('joined_at') {{$message}} @enderror </span>
+            <div class="col-sm-12 col-lg-6 mb-3">
+                <div class="row">
+                    <label class="col-md-4 mb-2"> Enrollment Date:</label>
+                    <div class="col-md-8 ">
+                        <input name="joined_at"
+                            type="date"
+                            class="form-control @error('joined_at') is-invalid @enderror"
+                            value="{{ old('joined_at') ?: ($user->joined_at ?? date('Y-m-d')) }}">
+
+                        <span class="text-danger"> @error('joined_at') {{$message}} @enderror </span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2">Academic Year: </label>
-                <div class="col-md-8 ">
-                    <select name="academic_year" class="form-control select2 @error('academic_year') is-invalid @enderror">
-                        @foreach ($academicYear as $year)
-                            <option value="{{ $year->year_en }}"
-                                {{ old('academic_year', $year->year_en ?? '') == optional($user)->academic_year ? 'selected' : '' }}>
-                                {{ $year->year_en }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <span class="text-danger"> @error('academic_year') {{$message}} @enderror </span>
+            <div class="col-sm-12 col-lg-6 mb-3">
+                <div class="row">
+                    <label class="col-md-4 mb-2">Academic Year: </label>
+                    <div class="col-md-8 ">
+                        <select name="academic_year" class="form-control select2 @error('academic_year') is-invalid @enderror">
+                            @foreach ($academicYear as $year)
+                                <option value="{{ $year->year_en }}"
+                                    {{ old('academic_year', $year->year_en ?? '') == optional($user)->academic_year ? 'selected' : '' }}>
+                                    {{ $year->year_en }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <span class="text-danger"> @error('academic_year') {{$message}} @enderror </span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-sm-12 col-lg-6 mb-3">
-            <div class="row">
-                <label class="col-md-4 mb-2"> Institute Name: </label>
-                <div class="col-md-8 ">
-                    <select name="institute_name" class="form-control select2">
-                        <option value="null">Select</option>
-                        @foreach ($instituteInfo as $info)
-                            <option value="{{ $info->name_en }}"
-                                {{ old('institute_name', $info->name_en ?? '') == optional($user)->institute_name ? 'selected' : '' }}>
-                                {{ $info->name_en }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <span class="text-danger"> @error('institute_name') {{$message}} @enderror </span>
+            <div class="col-sm-12 col-lg-6 mb-3">
+                <div class="row">
+                    <label class="col-md-4 mb-2"> Institute Name: </label>
+                    <div class="col-md-8 ">
+                        <select name="institute_name" class="form-control select2">
+                            <option value="null">Select</option>
+                            @foreach ($instituteInfo as $info)
+                                <option value="{{ $info->name_en }}"
+                                    {{ old('institute_name', $info->name_en ?? '') == optional($user)->institute_name ? 'selected' : '' }}>
+                                    {{ $info->name_en }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <span class="text-danger"> @error('institute_name') {{$message}} @enderror </span>
+                    </div>
                 </div>
             </div>
-        </div>
+
+        @endauth
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
@@ -67,6 +71,23 @@
                         @endforeach
                     </select>
                     <span class="text-danger"> @error('branch') {{$message}} @enderror </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="row">
+                <label class="col-md-4 mb-2"> Division: </label>
+                <div class="col-md-8 ">
+                    <select name="division" class="form-control select2">
+                        <option value="null">Select</option>
+                        @foreach ($instituteDivision as $division)
+                            <option value="{{ $division->name_en }}" {{ old('division', $division->name_en ?? '') == optional($user)->division ? 'selected' : '' }}>
+                                {{ $division->name_en }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <span class="text-danger"> @error('division') {{$message}} @enderror </span>
                 </div>
             </div>
         </div>
@@ -303,7 +324,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
                 <label class="col-md-4 mb-2">Blood Group: </label>
@@ -409,14 +430,14 @@
             <div class="row">
                 <label class="col-md-4 mb-2"> Student Picture:</label>
                 <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="profile_pic" 
-                    id="profile_pic" 
+                    <input  type="file"
+                    name="profile_pic"
+                    id="profile_pic"
                     class="dropify"
                     title="Student Picture"
                     data-plugin="dropify"
                     data-errors-position="outside"
-                    data-min-width="220" 
+                    data-min-width="220"
                     data-height="220"
                     data-default-file="{{ optional($user)->profile_pic ? asset('assets/admin/' . optional($user)->profile_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
@@ -496,7 +517,7 @@
                     <textarea
                         name="permanent_address"
                         class="form-control">{{ old('permanent_address') ?: ($user->permanent_address ?? '') }}</textarea>
-                        
+
                     <span class="text-danger"> @error('permanent_address') {{$message}} @enderror </span>
                 </div>
             </div>
@@ -949,7 +970,7 @@
             </div>
         </div>
 
-        
+
 
     </div>
 </div>{{-- Emergency Contact Information --}}
@@ -1017,14 +1038,14 @@
             <div class="row">
                 <label class="col-md-4 mb-2"> Student Birth Registraion Cerfificate <br> <span class="text-danger"> (Online): </span></label>
                 <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="birth_certificate" 
-                    id="birth_certificate" 
+                    <input  type="file"
+                    name="birth_certificate"
+                    id="birth_certificate"
                     class="dropify"
                     title="Father Picture"
                     data-plugin="dropify"
                     data-errors-position="outside"
-                    data-min-width="220" 
+                    data-min-width="220"
                     data-height="220"
                     data-default-file="{{ optional($user)->birth_certificate ? asset('assets/admin/' . optional($user)->birth_certificate) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
@@ -1038,14 +1059,14 @@
             <div class="row">
                 <label class="col-md-4 mb-2"> Student Vaccination Card: <br> <span class="text-danger">(If birth certificate not Available)</span></label>
                 <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="vaccination_card" 
-                    id="vaccination_card" 
+                    <input  type="file"
+                    name="vaccination_card"
+                    id="vaccination_card"
                     class="dropify"
                     title="Father Picture"
                     data-plugin="dropify"
                     data-errors-position="outside"
-                    data-min-width="220" 
+                    data-min-width="220"
                     data-height="220"
                     data-default-file="{{ optional($user)->vaccination_card ? asset('assets/admin/' . optional($user)->vaccination_card) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
@@ -1059,14 +1080,14 @@
             <div class="row">
                 <label class="col-md-4 mb-2"> Father Picture:</label>
                 <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="father_profile_pic" 
-                    id="father_profile_pic" 
+                    <input  type="file"
+                    name="father_profile_pic"
+                    id="father_profile_pic"
                     class="dropify"
                     title="Father Picture"
                     data-plugin="dropify"
                     data-errors-position="outside"
-                    data-min-width="220" 
+                    data-min-width="220"
                     data-height="220"
                     data-default-file="{{ optional($user)->father_profile_pic ? asset('assets/admin/' . optional($user)->father_profile_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
@@ -1080,14 +1101,14 @@
             <div class="row">
                 <label class="col-md-4 mb-2"> Father NID/ Birth Certificate Card:</label>
                 <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="father_nid_pic" 
-                    id="father_nid_pic" 
+                    <input  type="file"
+                    name="father_nid_pic"
+                    id="father_nid_pic"
                     class="dropify"
                     title="Father Picture"
                     data-plugin="dropify"
                     data-errors-position="outside"
-                    data-min-width="220" 
+                    data-min-width="220"
                     data-height="220"
                     data-default-file="{{ optional($user)->father_nid_pic ? asset('assets/admin/' . optional($user)->father_nid_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
@@ -1101,14 +1122,14 @@
             <div class="row">
                 <label class="col-md-4 mb-2"> Mother Picture:</label>
                 <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="mother_profile_pic" 
-                    id="mother_profile_pic" 
+                    <input  type="file"
+                    name="mother_profile_pic"
+                    id="mother_profile_pic"
                     class="dropify"
                     title="Father Picture"
                     data-plugin="dropify"
                     data-errors-position="outside"
-                    data-min-width="220" 
+                    data-min-width="220"
                     data-height="220"
                     data-default-file="{{ optional($user)->mother_profile_pic ? asset('assets/admin/' . optional($user)->mother_profile_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
@@ -1122,14 +1143,14 @@
             <div class="row">
                 <label class="col-md-4 mb-2"> Mother NID/ Birth Certificate Card:</label>
                 <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="mother_nid_pic" 
-                    id="mother_nid_pic" 
+                    <input  type="file"
+                    name="mother_nid_pic"
+                    id="mother_nid_pic"
                     class="dropify"
                     title="Father Picture"
                     data-plugin="dropify"
                     data-errors-position="outside"
-                    data-min-width="220" 
+                    data-min-width="220"
                     data-height="220"
                     data-default-file="{{ optional($user)->mother_nid_pic ? asset('assets/admin/' . optional($user)->mother_nid_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
@@ -1143,14 +1164,14 @@
             <div class="row">
                 <label class="col-md-4 mb-2"> Local Guardian Picture:</label>
                 <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="local_guardian_profile_pic" 
-                    id="local_guardian_profile_pic" 
+                    <input  type="file"
+                    name="local_guardian_profile_pic"
+                    id="local_guardian_profile_pic"
                     class="dropify"
                     title="Father Picture"
                     data-plugin="dropify"
                     data-errors-position="outside"
-                    data-min-width="220" 
+                    data-min-width="220"
                     data-height="220"
                     data-default-file="{{ optional($user)->local_guardian_profile_pic ? asset('assets/admin/' . optional($user)->local_guardian_profile_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
@@ -1164,14 +1185,14 @@
             <div class="row">
                 <label class="col-md-4 mb-2"> Local Guardian NID/ Birth Certificate:</label>
                 <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="local_guardian_nid_pic" 
-                    id="local_guardian_nid_pic" 
+                    <input  type="file"
+                    name="local_guardian_nid_pic"
+                    id="local_guardian_nid_pic"
                     class="dropify"
                     title="Father Picture"
                     data-plugin="dropify"
                     data-errors-position="outside"
-                    data-min-width="220" 
+                    data-min-width="220"
                     data-height="220"
                     data-default-file="{{ optional($user)->local_guardian_nid_pic ? asset('assets/admin/' . optional($user)->local_guardian_nid_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
@@ -1185,14 +1206,14 @@
             <div class="row">
                 <label class="col-md-4 mb-2"> Previous Institute Certificate:</label>
                 <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="previous_institute_certificate" 
-                    id="previous_institute_certificate" 
+                    <input  type="file"
+                    name="previous_institute_certificate"
+                    id="previous_institute_certificate"
                     class="dropify"
                     title="Father Picture"
                     data-plugin="dropify"
                     data-errors-position="outside"
-                    data-min-width="220" 
+                    data-min-width="220"
                     data-height="220"
                     data-default-file="{{ optional($user)->previous_institute_certificate ? asset('assets/admin/' . optional($user)->previous_institute_certificate) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
@@ -1206,14 +1227,14 @@
             <div class="row">
                 <label class="col-md-4 mb-2"> Signature:</label>
                 <div class="col-md-8 ">
-                    <input  type="file" 
-                    name="signature" 
-                    id="signature" 
+                    <input  type="file"
+                    name="signature"
+                    id="signature"
                     class="dropify"
                     title="Father Picture"
                     data-plugin="dropify"
                     data-errors-position="outside"
-                    data-min-width="220" 
+                    data-min-width="220"
                     data-height="220"
                     data-default-file="{{ optional($user)->signature ? asset('assets/admin/' . optional($user)->signature) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"

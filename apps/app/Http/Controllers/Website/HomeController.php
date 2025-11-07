@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Models\InstituteAcademicYearsModel;
 use App\Models\InstituteInfoModel;
 use App\Models\InstituteBranchModel;
+use App\Models\InstituteDivisionModel;
 use App\Models\InstituteClassesModel;
 use App\Models\InstituteShiftsModel;
 use App\Models\InstituteSectionsModel;
@@ -76,6 +77,7 @@ class HomeController extends Controller
         $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
         $instituteInfo = InstituteInfoModel::all();
         $instituteBranch = InstituteBranchModel::all();
+        $instituteDivision = InstituteDivisionModel::all();
         $classes = InstituteClassesModel::all();
         $shifts = InstituteShiftsModel::all();
         $sections = InstituteSectionsModel::all();
@@ -87,6 +89,7 @@ class HomeController extends Controller
             'academicYear',
             'instituteInfo',
             'instituteBranch',
+            'instituteDivision',
             'classes',
             'shifts',
             'sections',
@@ -107,5 +110,5 @@ class HomeController extends Controller
         // Handle the admission form submission logic here
         return redirect()->route('online.admission')->with('success', 'Admission form submitted successfully.');
     }
-    
+
 }

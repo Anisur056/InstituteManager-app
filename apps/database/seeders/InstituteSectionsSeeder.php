@@ -12,12 +12,13 @@ class InstituteSectionsSeeder extends Seeder
     public function run(): void
     {
         // $sections = [
-        //     ['name' => 'A', 'class_id' => 1],
-        //     ['name' => 'B', 'class_id' => 1],
-        //     ['name' => 'C', 'class_id' => 2],
-        //     ['name' => 'D', 'class_id' => 2],
-        //     ['name' => 'E', 'class_id' => 3],
-        //     ['name' => 'F', 'class_id' => 3],
+        //     [
+        //     'name_en' => 'Not Applicable',
+        //     'name_bn' => 'প্রযোজ্য নয়',
+        //     'display_order' => 1,
+        //     'created_at' => now(),
+        //     'updated_at' => now(),
+        //     ],
         // ];
 
         // foreach ($sections as $section) {
