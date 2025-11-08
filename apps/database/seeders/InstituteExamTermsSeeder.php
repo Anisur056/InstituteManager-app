@@ -13,6 +13,13 @@ class InstituteExamTermsSeeder extends Seeder
 
         $records = collect([
             [
+            'name_en' => 'Model Test Examination',
+            'name_bn' => 'মডেল টেষ্ট পরিক্ষা',
+            'display_order' => 4,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+            [
             'name_en' => '1st Term Examination',
             'name_bn' => 'প্রথম সাময়িক পরিক্ষা',
             'display_order' => 1,

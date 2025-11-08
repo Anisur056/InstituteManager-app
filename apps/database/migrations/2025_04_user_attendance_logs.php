@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('state'); // the authentication type, 1 for Fingerprint, 4 for RF Card etc
             $table->timestamp('timestamp'); // time of attendance
             $table->string('type'); // attendance type, like check-in, check-out, overtime-in, overtime-out, break-in & break-out etc. if attendance type is none of them, it gives  255
+            $table->enum('sms_status',['pending', 'skipped', 'delivered','failed'])->default('pending');
             $table->timestamps();
         });
     }

@@ -13,22 +13,29 @@ class InstituteGroupsSeeder extends Seeder
 
         $records = collect([
             [
-            'name_en' => 'ALIF GROUP',
-            'name_bn' => 'আলিফ গ্রুপ',
+            'name_en' => 'Nazera Group',
+            'name_bn' => 'নাজেরা গ্রুপ',
             'display_order' => 1,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'BAA GROUP',
-            'name_bn' => 'বা গ্রুপ',
+            'name_en' => 'Hifz Group',
+            'name_bn' => 'হিফজ গ্রুপ',
             'display_order' => 2,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'TAA GROUP',
-            'name_bn' => 'তা গ্রুপ',
+            'name_en' => 'Rivision Group',
+            'name_bn' => 'রিভিশন গ্রুপ',
+            'display_order' => 3,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+            [
+            'name_en' => 'Compitition Group',
+            'name_bn' => 'প্রতিযোগিতা গ্রুপ',
             'display_order' => 3,
             'created_at' => now(),
             'updated_at' => now(),

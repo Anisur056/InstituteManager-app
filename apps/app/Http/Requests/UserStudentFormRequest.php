@@ -6,119 +6,114 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserStudentFormRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         $rules = [
-            // `Users` 29 field total, 26 fillable, 4 required- (name, email, password, contact_sms)
-            'joined_at' => '',
-            'name' => 'required|string|max:255',
-            'name_bn' => '',
-            'email' => 'nullable|string|email|max:255',
-            'password' => 'nullable',
-            'role' => 'required',
+            // `Users` 83 field total, 00 fillable, 2 required- (name, contact_sms)
+
+            // Academic Information- (13 column)
+            'joined_at' => 'nullable',
+            'academic_year' => 'nullable|date_format:Y',
+            'institute_name' => 'nullable',
+            'branch' => 'nullable',
+            'division' => 'nullable',
             'class' => 'nullable',
+            'shift' => 'nullable',
+            'section' => 'nullable',
+            'group' => 'nullable',
             'roll' => 'nullable',
+            'rfid_card' => 'nullable',
+            'registration_id' => 'nullable',
+            'status' => 'nullable',
+
+            // Users Information- (15 column)
+            'name' => 'required|string|max:255',
+            'name_bn' => 'nullable',
+            'nick_name' => 'nullable',
+            'nid' => 'nullable',
+            'birth_reg' => 'nullable',
+            'date_of_birth' => 'nullable',
+            'gender' => 'nullable',
+            'blood_group' => 'nullable',
+            'health_issues' => 'nullable',
+            'height' => 'nullable',
+            'weight' => 'nullable',
+            'marital_status' => 'nullable',
+            'nationality' => 'nullable',
+            'religion' => 'nullable',
+            'profile_pic' => 'nullable',
+
+            // Contact Information- (5 column)
             'contact_sms' => 'required',
-            'contact_whatsapp' => '',
-            'sms_status' => 'nullable|in:on,off',
-            'nid' => '',
-            'birth_reg' => '',
-            'date_of_birth' => '',
-            'gender' => '',
-            'blood_group' => '',
-            'health_issues' => '',
-            'height' => '',
-            'weight' => '',
-            'marital_status' => '',
-            'nationality' => '',
-            'religion' => '',
-            'present_address' => '',
-            'permanent_address' => '',
-            'rfid_card' => 'nullable|max:10',
-            'status' => '',
-            'profile_pic' => 'nullable|file|image|mimes:jpg,jpeg,png|max:1000',
-            'signature' => 'nullable|file|image|mimes:jpg,jpeg,png|max:1000',
-            'status' => '',
-            'role' => '',
+            'contact_whatsapp' => 'nullable',
+            'sms_status' => 'nullable',
+            'present_address' => 'nullable',
+            'permanent_address' => 'nullable',
 
-            // 'name_en' => '',
-            // 'name_bn' => '',
-            // 'rfid_card' => '',
-            // 'status' => '',
-            // 'enrolled_date' => '',
-            // 'academic_year' => 'nullable|date_format:Y',
+            // Father Information- (8 column)
+            'father_name_en' => 'nullable',
+            'father_name_bn' => 'nullable',
+            'father_contact' => 'nullable',
+            'father_occupation' => 'nullable',
+            'father_nid' => 'nullable',
+            'father_birth_reg' => 'nullable',
+            'father_income' => 'nullable',
+            'father_address' => 'nullable',
 
-            // 'institute_name' => '',
-            // 'shift' => '',
-            // 'class' => '',
-            // 'section' => '',
-            // 'group' => '',
-            // 'roll' => '',
-            // 'date_of_birth' => '',
-            // 'birth_reg' => '',
-            // 'nid' => '',
-            // 'gender' => '',
-            // 'religion' => '',
-            // 'blood_group' => '',
-            // 'health_issues' => '',
-            // 'height' => '',
-            // 'weight' => '',
-            // 'nationality' => '',
+            // Father Information- (8 column)
+            'mother_name_en' => 'nullable',
+            'mother_name_bn' => 'nullable',
+            'mother_contact' => 'nullable',
+            'mother_occupation' => 'nullable',
+            'mother_nid' => 'nullable',
+            'mother_birth_reg' => 'nullable',
+            'mother_income' => 'nullable',
+            'mother_address' => 'nullable',
 
-            // 'contact_sms' => '',
-            // 'sms_status' => '',
-            // 'contact_whatsapp' => '',
-            // 'contact_email' => '',
-            // 'present_address' => '',
-            // 'permanent_address' => '',
+            // Local Guardian Information- (9 column)
+            'local_guardian_name_en' => 'nullable',
+            'local_guardian_name_bn' => 'nullable',
+            'local_guardian_contact' => 'nullable',
+            'local_guardian_occupation' => 'nullable',
+            'local_guardian_nid' => 'nullable',
+            'local_guardian_birth_reg' => 'nullable',
+            'local_guardian_income' => 'nullable',
+            'local_guardian_address' => 'nullable',
+            'local_guardian_relation' => 'nullable',
 
-            // 'father_name_en' => '',
-            // 'father_name_bn' => '',
-            // 'father_contact' => '',
-            // 'father_occupation' => '',
-            // 'father_birth_reg' => '',
-            // 'father_nid' => '',
-            // 'father_income' => '',
+            // Emergency Information- (4 column)
+            'emergency_contact_name' => 'nullable',
+            'emergency_contact_relation' => 'nullable',
+            'emergency_contact_contact' => 'nullable',
+            'emergency_contact_address' => 'nullable',
 
-            // 'mother_name_en' => '',
-            // 'mother_name_bn' => '',
-            // 'mother_contact' => '',
-            // 'mother_occupation' => '',
-            // 'mother_birth_reg' => '',
-            // 'mother_nid' => '',
-            // 'mother_income' => '',
+            // Previous Institute Information- (3 column)
+            'previous_institute_name' => 'nullable',
+            'previous_institute_address' => 'nullable',
+            'previous_institute_info' => 'nullable',
 
-            // 'local_guardian_name_en' => '',
-            // 'local_guardian_name_bn' => '',
-            // 'local_guardian_relation' => '',
-            // 'local_guardian_contact' => '',
-            // 'local_guardian_nid' => '',
-            // 'local_guardian_address' => '',
+            // Supporting Documents- (10 column)
+            'birth_certificate' => 'nullable',
+            'vaccination_card' => 'nullable',
+            'father_profile_pic' => 'nullable',
+            'father_nid_pic' => 'nullable',
+            'mother_profile_pic' => 'nullable',
+            'mother_nid_pic' => 'nullable',
+            'local_guardian_profile_pic' => 'nullable',
+            'local_guardian_nid_pic' => 'nullable',
+            'previous_institute_certificate' => 'nullable',
+            'signature' => 'nullable',
 
-            // 'emergency_contact_name' => '',
-            // 'emergency_contact_relation' => '',
-            // 'emergency_contact_contact' => '',
-            // 'emergency_contact_address' => '',
-
-            // 'previous_institute' => '',
-            // 'previous_institute_address' => '',
-            // 'previous_institute_tc_number' => '',
-            // 'previous_institute_tc_date' => '',
-
-            // 'remark' => '',
+            // Login Information- (4 column)
+            'user_name' => 'nullable',
+            'email' => 'nullable',
+            'password' => 'nullable',
+            'role' => 'nullable',
         ];
 
         // if ($this->method() === 'POST') {

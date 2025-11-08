@@ -62,6 +62,27 @@ class InstituteClassesSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
             ],
+            [
+            'name_en' => 'Ampara',
+            'name_bn' => 'আমপাড়া',
+            'display_order' => 8,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+            [
+            'name_en' => 'Kaida',
+            'name_bn' => 'কায়দা',
+            'display_order' => 9,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+            [
+            'name_en' => 'Quran',
+            'name_bn' => 'কোরআন',
+            'display_order' => 10,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
         ]);
 
         $records->each(function($data){

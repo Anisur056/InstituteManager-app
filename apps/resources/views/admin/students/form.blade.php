@@ -9,8 +9,8 @@
 
             <div class="col-sm-12 col-lg-6 mb-3">
                 <div class="row">
-                    <label class="col-md-4 mb-2"> Enrollment Date:</label>
-                    <div class="col-md-8 ">
+                    <label class="col-md-12 mb-2"> Enrollment Date:</label>
+                    <div class="col-md-12 ">
                         <input name="joined_at"
                             type="date"
                             class="form-control @error('joined_at') is-invalid @enderror"
@@ -23,8 +23,8 @@
 
             <div class="col-sm-12 col-lg-6 mb-3">
                 <div class="row">
-                    <label class="col-md-4 mb-2">Academic Year: </label>
-                    <div class="col-md-8 ">
+                    <label class="col-md-12 mb-2">Academic Year: </label>
+                    <div class="col-md-12 ">
                         <select name="academic_year" class="form-control select2 @error('academic_year') is-invalid @enderror">
                             @foreach ($academicYear as $year)
                                 <option value="{{ $year->year_en }}"
@@ -40,8 +40,8 @@
 
             <div class="col-sm-12 col-lg-6 mb-3">
                 <div class="row">
-                    <label class="col-md-4 mb-2"> Institute Name: </label>
-                    <div class="col-md-8 ">
+                    <label class="col-md-12 mb-2"> Institute Name: </label>
+                    <div class="col-md-12 ">
                         <select name="institute_name" class="form-control select2">
                             <option value="null">Select</option>
                             @foreach ($instituteInfo as $info)
@@ -60,8 +60,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Branch Name: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Branch Name: </label>
+                <div class="col-md-12 ">
                     <select name="branch" class="form-control select2">
                         <option value="null">Select</option>
                         @foreach ($instituteBranch as $branch)
@@ -77,8 +77,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Division: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Division: </label>
+                <div class="col-md-12 ">
                     <select name="division" class="form-control select2">
                         <option value="null">Select</option>
                         @foreach ($instituteDivision as $division)
@@ -94,8 +94,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Class: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Class: </label>
+                <div class="col-md-12 ">
                     <select name="class" class="form-control select2">
                         <option value="null">Select</option>
                         @foreach ($classes as $class)
@@ -110,8 +110,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Shift: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Shift: </label>
+                <div class="col-md-12 ">
                     <select name="shift" class="form-control select2">
                         <option value="null">Select</option>
                         @foreach ($shifts as $shift)
@@ -126,8 +126,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> section: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> section: </label>
+                <div class="col-md-12 ">
                     <select name="section" class="form-control select2">
                         <option value="null">Select</option>
                         @foreach ($sections as $section)
@@ -142,8 +142,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Group: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Group: </label>
+                <div class="col-md-12 ">
                     <select name="group" class="form-control select2">
                         <option value="null">Select</option>
                         @foreach ($groups as $group)
@@ -160,8 +160,8 @@
 
             <div class="col-sm-12 col-lg-6 mb-3">
                 <div class="row">
-                    <label class="col-md-4 mb-2"> Roll:</label>
-                    <div class="col-md-8 ">
+                    <label class="col-md-12 mb-2"> Roll:</label>
+                    <div class="col-md-12 ">
                         <input  value="{{ old('roll', $user->roll ?? '') }}"
                                 type="text"
                                 class="form-control @error('roll') is-invalid @enderror"
@@ -174,8 +174,8 @@
 
             <div class="col-sm-12 col-lg-6 mb-3">
                 <div class="row">
-                    <label class="col-md-4 mb-2"> RFID Card:</label>
-                    <div class="col-md-8 ">
+                    <label class="col-md-12 mb-2"> RFID Card:</label>
+                    <div class="col-md-12 ">
                         <input  value="{{ old('rfid_card', $user->rfid_card ?? '') }}"
                                 type="text"
                                 class="form-control @error('rfid_card') is-invalid @enderror"
@@ -188,8 +188,8 @@
 
             <div class="col-sm-12 col-lg-6 mb-3">
                 <div class="row">
-                    <label class="col-md-4 mb-2"> Registration ID:</label>
-                    <div class="col-md-8 ">
+                    <label class="col-md-12 mb-2"> Registration ID:</label>
+                    <div class="col-md-12 ">
                         <input  value="{{ old('registration_id', $user->registration_id ?? $registration_id) }}"
                                 type="text"
                                 class="form-control @error('registration_id') is-invalid @enderror"
@@ -202,8 +202,8 @@
 
             <div class="col-sm-12 col-lg-6 mb-3">
                 <div class="row">
-                    <label class="col-md-4 mb-2">Student Status: </label>
-                    <div class="col-md-8 ">
+                    <label class="col-md-12 mb-2">Student Status: </label>
+                    <div class="col-md-12 ">
                         <select name="status" class="form-control select2">
                             <option value="active" {{ old('status', $user->status ?? '') == 'active' ? 'selected' : '' }}>Active</option>
                             <option value="pending" {{ old('status', $user->status ?? '') == 'pending' ? 'selected' : '' }}>Pending Admission</option>
@@ -231,8 +231,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Name (English): <span class="text-danger">Required as per Brith Centificate</span> </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Name (English): <span class="text-danger">*</span> </label>
+                <div class="col-md-12 ">
                     <input name="name"
                         type="text"
                         class="form-control @error('name') is-invalid @enderror"
@@ -245,8 +245,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Name (Bangla): </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Name (Bangla): </label>
+                <div class="col-md-12 ">
                     <input name="name_bn"
                         type="text"
                         class="form-control @error('name_bn') is-invalid @enderror"
@@ -258,8 +258,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Nick Name: (Bangla) <span class="text-success">For SMS Name</span> </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Nick Name: (Bangla) <span class="text-success">For SMS Name</span> </label>
+                <div class="col-md-12 ">
                     <input name="nick_name"
                         type="text"
                         class="form-control @error('nick_name') is-invalid @enderror"
@@ -271,8 +271,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2">NID Number (If Applicable): </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2">NID Number (If Applicable): </label>
+                <div class="col-md-12 ">
                     <input name="nid"
                         type="text"
                         class="form-control @error('nid') is-invalid @enderror"
@@ -285,8 +285,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2">Birth Registration: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2">Birth Registration: </label>
+                <div class="col-md-12 ">
                     <input name="birth_reg"
                         type="text"
                         class="form-control @error('birth_reg') is-invalid @enderror"
@@ -299,8 +299,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Date Of Birth:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Date Of Birth:</label>
+                <div class="col-md-12 ">
                     <input name="date_of_birth"
                         type="date"
                         class="form-control @error('date_of_birth') is-invalid @enderror"
@@ -313,8 +313,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Gender: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Gender: </label>
+                <div class="col-md-12 ">
                     <select name="gender" class="form-control select2">
                         <option value="null">Select</option>
                         <option value="male" {{ old('gender', $user->gender ?? '') == 'male' ? 'selected' : '' }}>Male</option>
@@ -327,8 +327,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2">Blood Group: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2">Blood Group: </label>
+                <div class="col-md-12 ">
                     <select name="blood_group" class="form-control select2">
                         <option value="null">Select</option>
                         <option value="A+" {{ old('blood_group', $user->blood_group ?? '') == 'A+' ? 'selected' : '' }}>A+</option>
@@ -347,8 +347,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Health Issues/ Known Diseases: (If Available)</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Health Issues/ Known Diseases: (If Available)</label>
+                <div class="col-md-12 ">
                     <input name="health_issues"
                         type="text"
                         class="form-control @error('health_issues') is-invalid @enderror"
@@ -361,8 +361,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Height</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Height</label>
+                <div class="col-md-12 ">
                     <input name="height"
                         type="text"
                         class="form-control @error('height') is-invalid @enderror"
@@ -375,8 +375,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Weight</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Weight</label>
+                <div class="col-md-12 ">
                     <input name="weight"
                         type="text"
                         class="form-control @error('weight') is-invalid @enderror"
@@ -389,8 +389,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Marital Status</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Marital Status</label>
+                <div class="col-md-12 ">
                     <select name="marital_status" class="form-control select2">
                         <option value="single" {{ old('marital_status', $user->marital_status ?? '') == 'single' ? 'selected' : '' }}>Single</option>
                         <option value="married" {{ old('marital_status', $user->marital_status ?? '') == 'married' ? 'selected' : '' }}>Married</option>
@@ -404,8 +404,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Nationality</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Nationality</label>
+                <div class="col-md-12 ">
                     <select name="nationality" class="form-control select2">
                         <option value="bangladeshi" {{ old('nationality', $user->nationality ?? '') == 'bangladeshi' ? 'selected' : '' }}>Bangladeshi</option>
                     </select>
@@ -416,8 +416,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Religion</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Religion</label>
+                <div class="col-md-12 ">
                     <select name="religion" class="form-control select2">
                         <option value="islam" {{ old('religion', $user->religion ?? '') == 'islam' ? 'selected' : '' }}>Islam</option>
                     </select>
@@ -428,8 +428,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Student Picture:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Student Picture:</label>
+                <div class="col-md-12 ">
                     <input  type="file"
                     name="profile_pic"
                     id="profile_pic"
@@ -439,7 +439,7 @@
                     data-errors-position="outside"
                     data-min-width="220"
                     data-height="220"
-                    data-default-file="{{ optional($user)->profile_pic ? asset('assets/admin/' . optional($user)->profile_pic) : '' }}"
+                    data-default-file="{{ optional($user)->profile_pic ? asset('assets/' . optional($user)->profile_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
                     data-max-file-size="1M"
                     accept=".pdf, .jpg, .jpeg, .png,"/>
@@ -459,8 +459,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Contact Number (For SMS): <span class="text-danger">Required</span> </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Contact Number (For SMS): <span class="text-danger">*</span> </label>
+                <div class="col-md-12 ">
                     <input name="contact_sms"
                         type="text"
                         class="form-control @error('contact_sms') is-invalid @enderror"
@@ -473,8 +473,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Whatsapp Number: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Whatsapp Number: </label>
+                <div class="col-md-12 ">
                     <input name="contact_whatsapp"
                         type="text"
                         class="form-control @error('contact_whatsapp') is-invalid @enderror"
@@ -486,8 +486,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Enable SMS</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Enable SMS</label>
+                <div class="col-md-12 ">
                     <select name="sms_status" class="form-control select2">
                         <option value="on" {{ old('sms_status', $user->sms_status ?? '') == 'on' ? 'selected' : '' }}>On</option>
                         <option value="off" {{ old('sms_status', $user->sms_status ?? '') == 'off' ? 'selected' : '' }}>Off</option>
@@ -499,8 +499,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Present Address</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Present Address</label>
+                <div class="col-md-12 ">
                     <textarea
                         name="present_address"
                         class="form-control">{{ old('present_address') ?: ($user->present_address ?? '') }}</textarea>
@@ -512,8 +512,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Present Address</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Present Address</label>
+                <div class="col-md-12 ">
                     <textarea
                         name="permanent_address"
                         class="form-control">{{ old('permanent_address') ?: ($user->permanent_address ?? '') }}</textarea>
@@ -535,8 +535,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Father Name:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Father Name:</label>
+                <div class="col-md-12 ">
                     <input name="father_name_en"
                         type="text"
                         class="form-control @error('father_name_en') is-invalid @enderror"
@@ -549,8 +549,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Father Name: (Bangla) </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Father Name: (Bangla) </label>
+                <div class="col-md-12 ">
                     <input name="father_name_bn"
                         type="text"
                         class="form-control @error('father_name_bn') is-invalid @enderror"
@@ -563,8 +563,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Contact Number: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Contact Number: </label>
+                <div class="col-md-12 ">
                     <input name="father_contact"
                         type="text"
                         class="form-control @error('father_contact') is-invalid @enderror"
@@ -577,8 +577,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Father Occupation: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Father Occupation: </label>
+                <div class="col-md-12 ">
                     <input name="father_occupation"
                         type="text"
                         class="form-control @error('father_occupation') is-invalid @enderror"
@@ -591,8 +591,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> NID: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> NID: </label>
+                <div class="col-md-12 ">
                     <input name="father_nid"
                         type="text"
                         class="form-control @error('father_nid') is-invalid @enderror"
@@ -605,8 +605,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Birth Registration:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Birth Registration:</label>
+                <div class="col-md-12 ">
                     <input name="father_birth_reg"
                         type="text"
                         class="form-control @error('father_birth_reg') is-invalid @enderror"
@@ -619,8 +619,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Father Yearly Income:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Father Yearly Income:</label>
+                <div class="col-md-12 ">
                     <input name="father_income"
                         type="text"
                         class="form-control @error('father_income') is-invalid @enderror"
@@ -633,8 +633,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Father Present Address:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Father Present Address:</label>
+                <div class="col-md-12 ">
                     <input name="father_address"
                         type="text"
                         class="form-control @error('father_address') is-invalid @enderror"
@@ -657,8 +657,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Mother Name:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Mother Name:</label>
+                <div class="col-md-12 ">
                     <input name="mother_name_en"
                         type="text"
                         class="form-control @error('mother_name_en') is-invalid @enderror"
@@ -671,8 +671,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Mother Name: (Bangla) </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Mother Name: (Bangla) </label>
+                <div class="col-md-12 ">
                     <input name="mother_name_bn"
                         type="text"
                         class="form-control @error('mother_name_bn') is-invalid @enderror"
@@ -685,8 +685,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Contact Number: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Contact Number: </label>
+                <div class="col-md-12 ">
                     <input name="mother_contact"
                         type="text"
                         class="form-control @error('mother_contact') is-invalid @enderror"
@@ -699,8 +699,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Mother Occupation: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Mother Occupation: </label>
+                <div class="col-md-12 ">
                     <input name="mother_occupation"
                         type="text"
                         class="form-control @error('mother_occupation') is-invalid @enderror"
@@ -713,8 +713,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> NID: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> NID: </label>
+                <div class="col-md-12 ">
                     <input name="mother_nid"
                         type="text"
                         class="form-control @error('mother_nid') is-invalid @enderror"
@@ -727,8 +727,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Birth Registration:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Birth Registration:</label>
+                <div class="col-md-12 ">
                     <input name="mother_birth_reg"
                         type="text"
                         class="form-control @error('mother_birth_reg') is-invalid @enderror"
@@ -741,8 +741,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Mother Yearly Income:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Mother Yearly Income:</label>
+                <div class="col-md-12 ">
                     <input name="mother_income"
                         type="text"
                         class="form-control @error('mother_income') is-invalid @enderror"
@@ -755,8 +755,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Mother Present Address:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Mother Present Address:</label>
+                <div class="col-md-12 ">
                     <input name="mother_address"
                         type="text"
                         class="form-control @error('mother_address') is-invalid @enderror"
@@ -779,8 +779,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Local Guardian Name:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Local Guardian Name:</label>
+                <div class="col-md-12 ">
                     <input name="local_guardian_name_en"
                         type="text"
                         class="form-control @error('local_guardian_name_en') is-invalid @enderror"
@@ -793,8 +793,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Local Guardian Name: (Bangla) </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Local Guardian Name: (Bangla) </label>
+                <div class="col-md-12 ">
                     <input name="local_guardian_name_bn"
                         type="text"
                         class="form-control @error('local_guardian_name_bn') is-invalid @enderror"
@@ -807,8 +807,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Contact Number: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Contact Number: </label>
+                <div class="col-md-12 ">
                     <input name="local_guardian_contact"
                         type="text"
                         class="form-control @error('local_guardian_contact') is-invalid @enderror"
@@ -821,8 +821,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Local Guardian Occupation: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Local Guardian Occupation: </label>
+                <div class="col-md-12 ">
                     <input name="local_guardian_occupation"
                         type="text"
                         class="form-control @error('local_guardian_occupation') is-invalid @enderror"
@@ -835,8 +835,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> NID: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> NID: </label>
+                <div class="col-md-12 ">
                     <input name="local_guardian_nid"
                         type="text"
                         class="form-control @error('local_guardian_nid') is-invalid @enderror"
@@ -849,8 +849,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Birth Registration:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Birth Registration:</label>
+                <div class="col-md-12 ">
                     <input name="local_guardian_birth_reg"
                         type="text"
                         class="form-control @error('local_guardian_birth_reg') is-invalid @enderror"
@@ -863,8 +863,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Local Guardian Yearly Income:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Local Guardian Yearly Income:</label>
+                <div class="col-md-12 ">
                     <input name="local_guardian_income"
                         type="text"
                         class="form-control @error('local_guardian_income') is-invalid @enderror"
@@ -877,8 +877,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Local Guardian Present Address:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Local Guardian Present Address:</label>
+                <div class="col-md-12 ">
                     <input name="local_guardian_address"
                         type="text"
                         class="form-control @error('local_guardian_address') is-invalid @enderror"
@@ -891,8 +891,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Local Guardian Relation:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Local Guardian Relation:</label>
+                <div class="col-md-12 ">
                     <input name="local_guardian_relation"
                         type="text"
                         class="form-control @error('local_guardian_relation') is-invalid @enderror"
@@ -915,8 +915,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Emergency Contact Name:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Emergency Contact Name:</label>
+                <div class="col-md-12 ">
                     <input name="emergency_contact_name"
                         type="text"
                         class="form-control @error('emergency_contact_name') is-invalid @enderror"
@@ -929,8 +929,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Local Guardian Relation:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Local Guardian Relation:</label>
+                <div class="col-md-12 ">
                     <input name="emergency_contact_relation"
                         type="text"
                         class="form-control @error('emergency_contact_relation') is-invalid @enderror"
@@ -943,8 +943,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Emergency Contact Number: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Emergency Contact Number: </label>
+                <div class="col-md-12 ">
                     <input name="emergency_contact_contact"
                         type="text"
                         class="form-control @error('emergency_contact_contact') is-invalid @enderror"
@@ -958,8 +958,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Local Guardian Present Address:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Local Guardian Present Address:</label>
+                <div class="col-md-12 ">
                     <input name="emergency_contact_address"
                         type="text"
                         class="form-control @error('emergency_contact_address') is-invalid @enderror"
@@ -984,8 +984,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Previous Institute Name::</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Previous Institute Name::</label>
+                <div class="col-md-12 ">
                     <input name="previous_institute_name"
                         type="text"
                         class="form-control @error('previous_institute_name') is-invalid @enderror"
@@ -998,8 +998,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Previous Institute Address:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Previous Institute Address:</label>
+                <div class="col-md-12 ">
                     <input name="previous_institute_address"
                         type="text"
                         class="form-control @error('previous_institute_address') is-invalid @enderror"
@@ -1012,8 +1012,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Previous Institute Info: </label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Previous Institute Info: </label>
+                <div class="col-md-12 ">
                     <input name="previous_institute_info"
                         type="text"
                         class="form-control @error('previous_institute_info') is-invalid @enderror"
@@ -1036,8 +1036,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Student Birth Registraion Cerfificate <br> <span class="text-danger"> (Online): </span></label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Student Birth Registraion Cerfificate <br> <span class="text-success"> (Online): </span></label>
+                <div class="col-md-12 ">
                     <input  type="file"
                     name="birth_certificate"
                     id="birth_certificate"
@@ -1047,7 +1047,7 @@
                     data-errors-position="outside"
                     data-min-width="220"
                     data-height="220"
-                    data-default-file="{{ optional($user)->birth_certificate ? asset('assets/admin/' . optional($user)->birth_certificate) : '' }}"
+                    data-default-file="{{ optional($user)->birth_certificate ? asset('assets/' . optional($user)->birth_certificate) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
                     data-max-file-size="1M"
                     accept=".pdf, .jpg, .jpeg, .png,"/>
@@ -1057,8 +1057,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Student Vaccination Card: <br> <span class="text-danger">(If birth certificate not Available)</span></label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Student Vaccination Card: <br> <span class="text-success">(If birth certificate not Available)</span></label>
+                <div class="col-md-12 ">
                     <input  type="file"
                     name="vaccination_card"
                     id="vaccination_card"
@@ -1068,7 +1068,7 @@
                     data-errors-position="outside"
                     data-min-width="220"
                     data-height="220"
-                    data-default-file="{{ optional($user)->vaccination_card ? asset('assets/admin/' . optional($user)->vaccination_card) : '' }}"
+                    data-default-file="{{ optional($user)->vaccination_card ? asset('assets/' . optional($user)->vaccination_card) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
                     data-max-file-size="1M"
                     accept=".pdf, .jpg, .jpeg, .png,"/>
@@ -1078,8 +1078,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Father Picture:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Father Picture:</label>
+                <div class="col-md-12 ">
                     <input  type="file"
                     name="father_profile_pic"
                     id="father_profile_pic"
@@ -1089,7 +1089,7 @@
                     data-errors-position="outside"
                     data-min-width="220"
                     data-height="220"
-                    data-default-file="{{ optional($user)->father_profile_pic ? asset('assets/admin/' . optional($user)->father_profile_pic) : '' }}"
+                    data-default-file="{{ optional($user)->father_profile_pic ? asset('assets/' . optional($user)->father_profile_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
                     data-max-file-size="1M"
                     accept=".pdf, .jpg, .jpeg, .png,"/>
@@ -1099,8 +1099,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Father NID/ Birth Certificate Card:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Father NID/ Birth Certificate Card:</label>
+                <div class="col-md-12 ">
                     <input  type="file"
                     name="father_nid_pic"
                     id="father_nid_pic"
@@ -1110,7 +1110,7 @@
                     data-errors-position="outside"
                     data-min-width="220"
                     data-height="220"
-                    data-default-file="{{ optional($user)->father_nid_pic ? asset('assets/admin/' . optional($user)->father_nid_pic) : '' }}"
+                    data-default-file="{{ optional($user)->father_nid_pic ? asset('assets/' . optional($user)->father_nid_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
                     data-max-file-size="1M"
                     accept=".pdf, .jpg, .jpeg, .png,"/>
@@ -1120,8 +1120,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Mother Picture:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Mother Picture:</label>
+                <div class="col-md-12 ">
                     <input  type="file"
                     name="mother_profile_pic"
                     id="mother_profile_pic"
@@ -1131,7 +1131,7 @@
                     data-errors-position="outside"
                     data-min-width="220"
                     data-height="220"
-                    data-default-file="{{ optional($user)->mother_profile_pic ? asset('assets/admin/' . optional($user)->mother_profile_pic) : '' }}"
+                    data-default-file="{{ optional($user)->mother_profile_pic ? asset('assets/' . optional($user)->mother_profile_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
                     data-max-file-size="1M"
                     accept=".pdf, .jpg, .jpeg, .png,"/>
@@ -1141,8 +1141,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Mother NID/ Birth Certificate Card:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Mother NID/ Birth Certificate Card:</label>
+                <div class="col-md-12 ">
                     <input  type="file"
                     name="mother_nid_pic"
                     id="mother_nid_pic"
@@ -1152,7 +1152,7 @@
                     data-errors-position="outside"
                     data-min-width="220"
                     data-height="220"
-                    data-default-file="{{ optional($user)->mother_nid_pic ? asset('assets/admin/' . optional($user)->mother_nid_pic) : '' }}"
+                    data-default-file="{{ optional($user)->mother_nid_pic ? asset('assets/' . optional($user)->mother_nid_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
                     data-max-file-size="1M"
                     accept=".pdf, .jpg, .jpeg, .png,"/>
@@ -1162,8 +1162,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Local Guardian Picture:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Local Guardian Picture:</label>
+                <div class="col-md-12 ">
                     <input  type="file"
                     name="local_guardian_profile_pic"
                     id="local_guardian_profile_pic"
@@ -1173,7 +1173,7 @@
                     data-errors-position="outside"
                     data-min-width="220"
                     data-height="220"
-                    data-default-file="{{ optional($user)->local_guardian_profile_pic ? asset('assets/admin/' . optional($user)->local_guardian_profile_pic) : '' }}"
+                    data-default-file="{{ optional($user)->local_guardian_profile_pic ? asset('assets/' . optional($user)->local_guardian_profile_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
                     data-max-file-size="1M"
                     accept=".pdf, .jpg, .jpeg, .png,"/>
@@ -1183,8 +1183,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Local Guardian NID/ Birth Certificate:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Local Guardian NID/ Birth Certificate:</label>
+                <div class="col-md-12 ">
                     <input  type="file"
                     name="local_guardian_nid_pic"
                     id="local_guardian_nid_pic"
@@ -1194,7 +1194,7 @@
                     data-errors-position="outside"
                     data-min-width="220"
                     data-height="220"
-                    data-default-file="{{ optional($user)->local_guardian_nid_pic ? asset('assets/admin/' . optional($user)->local_guardian_nid_pic) : '' }}"
+                    data-default-file="{{ optional($user)->local_guardian_nid_pic ? asset('assets/' . optional($user)->local_guardian_nid_pic) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
                     data-max-file-size="1M"
                     accept=".pdf, .jpg, .jpeg, .png,"/>
@@ -1204,8 +1204,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Previous Institute Certificate:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Previous Institute Certificate:</label>
+                <div class="col-md-12 ">
                     <input  type="file"
                     name="previous_institute_certificate"
                     id="previous_institute_certificate"
@@ -1215,7 +1215,7 @@
                     data-errors-position="outside"
                     data-min-width="220"
                     data-height="220"
-                    data-default-file="{{ optional($user)->previous_institute_certificate ? asset('assets/admin/' . optional($user)->previous_institute_certificate) : '' }}"
+                    data-default-file="{{ optional($user)->previous_institute_certificate ? asset('assets/' . optional($user)->previous_institute_certificate) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
                     data-max-file-size="1M"
                     accept=".pdf, .jpg, .jpeg, .png,"/>
@@ -1225,8 +1225,8 @@
 
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="row">
-                <label class="col-md-4 mb-2"> Signature:</label>
-                <div class="col-md-8 ">
+                <label class="col-md-12 mb-2"> Signature:</label>
+                <div class="col-md-12 ">
                     <input  type="file"
                     name="signature"
                     id="signature"
@@ -1236,7 +1236,7 @@
                     data-errors-position="outside"
                     data-min-width="220"
                     data-height="220"
-                    data-default-file="{{ optional($user)->signature ? asset('assets/admin/' . optional($user)->signature) : '' }}"
+                    data-default-file="{{ optional($user)->signature ? asset('assets/' . optional($user)->signature) : '' }}"
                     data-allowed-file-extensions="pdf jpg jpeg png"
                     data-max-file-size="1M"
                     accept=".pdf, .jpg, .jpeg, .png,"/>
@@ -1257,8 +1257,8 @@
 
             <div class="col-sm-12 col-lg-6 mb-3">
                 <div class="row">
-                    <label class="col-md-4 mb-2"> User Name:</label>
-                    <div class="col-md-8 ">
+                    <label class="col-md-12 mb-2"> User Name:</label>
+                    <div class="col-md-12 ">
                         <input name="user_name"
                             type="text"
                             class="form-control @error('user_name') is-invalid @enderror"
@@ -1271,8 +1271,8 @@
 
             <div class="col-sm-12 col-lg-6 mb-3">
                 <div class="row">
-                    <label class="col-md-4 mb-2"> Email:</label>
-                    <div class="col-md-8 ">
+                    <label class="col-md-12 mb-2"> Email:</label>
+                    <div class="col-md-12 ">
                         <input name="email"
                             type="text"
                             class="form-control @error('email') is-invalid @enderror"
@@ -1286,7 +1286,7 @@
             <div class="col-sm-12 col-lg-6 mb-3">
                 <div class="row">
                     <label class="col-md-4 mb-2"> Password: </label>
-                    <div class="col-md-8 ">
+                    <div class="col-md-12 ">
                         <input name="password"
                             type="text"
                             class="form-control @error('password') is-invalid @enderror"

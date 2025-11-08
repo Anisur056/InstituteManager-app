@@ -14,23 +14,44 @@ class InstituteDivisionSeeder extends Seeder
 
         $records = collect([
             [
+            'name_en' => 'General Division',
+            'name_bn' => 'সাধারণ বিভাগ',
+            'display_order' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+            [
             'name_en' => 'Nurani Division',
             'name_bn' => 'নূরানী বিভাগ',
-            'display_order' => 1,
+            'display_order' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+            [
+            'name_en' => 'Ebtedayee Division',
+            'name_bn' => 'ইবতেদায়ি বিভাগ',
+            'display_order' => 3,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
             'name_en' => 'Hifz Division',
             'name_bn' => 'হিফজ বিভাগ',
-            'display_order' => 2,
+            'display_order' => 4,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
             'name_en' => 'Moktob Programme',
             'name_bn' => 'মক্তব প্রোগ্রাম',
-            'display_order' => 3,
+            'display_order' => 5,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+            [
+            'name_en' => 'Adult Quran Education Programme',
+            'name_bn' => 'বয়স্ক কোরআন শিক্ষা প্রোগ্রাম',
+            'display_order' => 6,
             'created_at' => now(),
             'updated_at' => now(),
             ],

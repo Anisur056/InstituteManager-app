@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            UsersStudentsSeeder::class,
+            // UsersStudentsSeeder::class,
             UsersSeeder::class,
             UsersTeachersSeeder::class,
             UserFileUploadsSeeder::class, // No Preset Data available

@@ -68,22 +68,38 @@ class UserStudentController extends Controller
     }
 
     public function store(UserStudentFormRequest $request)
-    // public function store(Request $request)
     {
-        return $request;
         // Used for Mass Validation `apps/app/Http/Requests/UserRequest.php`
         $validatedData = $request->validated();
+
+        $fileFields = [
+            'profile_pic',
+            'birth_certificate', 
+            'vaccination_card',
+            'father_profile_pic',
+            'father_nid_pic',
+            'mother_profile_pic',
+            'mother_nid_pic',
+            'local_guardian_profile_pic',
+            'local_guardian_nid_pic',
+            'previous_institute_certificate',
+            'signature'
+        ];
+
+        foreach ($fileFields as $field) {
+            if ($request->hasFile($field)) {
+                $path = $request->file($field)->store('admin/img/users', 'public');
+                $validatedData[$field] = $path;
+            }
+        }
 
         if ($request->filled('password'))
         {
             $validatedData['password'] = Hash::make($request->password);
         }
 
-        if($request->hasFile('profile_pic'))
-        {
-            $path = $request->file('profile_pic')->store('img/users','public');
-            $validatedData['profile_pic'] = $path;
-        }
+
+        $validatedData['roll'] = 'student';
 
         $user = User::create($validatedData);
 
@@ -130,27 +146,43 @@ class UserStudentController extends Controller
 
     public function update(UserStudentFormRequest $request, String $id)
     {
-        // The request is already validated by the UserRequest.php
+        // Used for Mass Validation `apps/app/Http/Requests/UserRequest.php`
         $validatedData = $request->validated();
+
+        $user = User::findOrFail($id);
+
+        $fileFields = [
+            'profile_pic',
+            'birth_certificate', 
+            'vaccination_card',
+            'father_profile_pic',
+            'father_nid_pic',
+            'mother_profile_pic',
+            'mother_nid_pic',
+            'local_guardian_profile_pic',
+            'local_guardian_nid_pic',
+            'previous_institute_certificate',
+            'signature'
+        ];
+
+        foreach ($fileFields as $field) {
+            if ($request->hasFile($field)) {
+                // Delete old file if exists
+                if ($user->$field) {
+                    Storage::disk('public')->delete($user->$field);
+                }
+                
+                // Store new file
+                $path = $request->file($field)->store('admin/img/users', 'public');
+                $validatedData[$field] = $path;
+            }
+        }
 
         // Check if password is filled, then change. Empty For Unchange
         if ($request->filled('password')) {
             $validatedData['password'] = Hash::make($request->password);
         }else{
             unset($validatedData['password']);
-        }
-
-        $user = User::findOrFail($id);
-
-        // If Profile Pic set then upload image & Update path
-        if($request->hasFile('profile_pic'))
-        {
-            if ($user->profile_pic) {
-                Storage::disk('public')->delete($user->profile_pic);
-            }
-
-            $path = $request->file('profile_pic')->store('img/users','public');
-            $validatedData['profile_pic'] = $path;
         }
 
 

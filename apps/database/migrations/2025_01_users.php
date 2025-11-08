@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id(); // Total 82 Column
+            $table->id(); // Total 83 Column
 
             // Users Information- (15 column)
             $table->string('name'); //***********/ Full Name-required
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('nid')->nullable();
             $table->string('birth_reg')->nullable();
             $table->string('date_of_birth')->nullable();
-            $table->enum('gender',['male','female'])->nullable();
+            $table->enum('gender',['null','male','female'])->nullable();
             $table->string('blood_group')->nullable();
             $table->string('health_issues')->nullable();
             $table->string('height')->nullable();
@@ -31,11 +31,12 @@ return new class extends Migration
             $table->string('religion')->nullable();
             $table->string('profile_pic')->nullable();
 
-            // Academic Information- (12 column)
+            // Academic Information- (13 column)
             $table->text('joined_at')->nullable();
             $table->text('academic_year')->nullable();
             $table->text('institute_name')->nullable();
             $table->text('branch')->nullable();
+            $table->text('division')->nullable();
             $table->text('class')->nullable();
             $table->text('shift')->nullable();
             $table->text('section')->nullable();

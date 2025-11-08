@@ -67,7 +67,7 @@
                         @foreach ($records as $data)
                             <tr>
                             <td data-label="Pic: ">
-                                <img class="rounded-3" width="100px" src="{{ asset( "assets/admin/$data->profile_pic" ) }}">
+                                <img class="rounded-3" width="100px" src="{{ asset( "assets/$data->profile_pic" ) }}">
                             </td>
                             <td data-label="Information:- " >
                                 {{$data->name}}<br>
