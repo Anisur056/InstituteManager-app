@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
-use App\Services\SmsService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -22,14 +21,6 @@ use App\Http\Requests\UserStudentFormRequest; // Form Submit Request goes & Vali
 
 class UserStudentController extends Controller
 {
-
-    // For SMS Service to Work
-    protected $smsService;
-    public function __construct(SmsService $smsService)
-    {
-        $this->smsService = $smsService;
-    }
-
     public function index()
     {
         $records = User::where('status', 'active')
@@ -74,7 +65,7 @@ class UserStudentController extends Controller
 
         $fileFields = [
             'profile_pic',
-            'birth_certificate', 
+            'birth_certificate',
             'vaccination_card',
             'father_profile_pic',
             'father_nid_pic',
@@ -153,7 +144,7 @@ class UserStudentController extends Controller
 
         $fileFields = [
             'profile_pic',
-            'birth_certificate', 
+            'birth_certificate',
             'vaccination_card',
             'father_profile_pic',
             'father_nid_pic',
@@ -171,7 +162,7 @@ class UserStudentController extends Controller
                 if ($user->$field) {
                     Storage::disk('public')->delete($user->$field);
                 }
-                
+
                 // Store new file
                 $path = $request->file($field)->store('admin/img/users', 'public');
                 $validatedData[$field] = $path;
@@ -212,6 +203,11 @@ class UserStudentController extends Controller
         return view('admin/students/index',compact('records','classes'));
     }
 
+    public function indexOnlineAdmission()
+    {
+        $records = User::whereIn('status', ['pending'])->get();
+        return view('admin/students/indexOnlineAdmission', compact('records'));
+    }
     public function exStudents()
     {
         $records = User::whereIn('status', ['disable','tc','exam-complete','exit'])->get();

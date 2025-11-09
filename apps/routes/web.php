@@ -37,39 +37,28 @@ Auth::routes([
     'reset'    => false,
 ]);
 
-// Website Frontend Route
-Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/notice', [HomeController::class, 'noticeIndex'])->name('notice.index');
-Route::get('/notice/{id?}', [HomeController::class, 'noticeShow'])->name('notice.show');
+// Website Frontend Route Start
+    Route::get('/', [HomeController::class, 'home'])->name('home');
+    Route::get('/notice', [HomeController::class, 'noticeIndex'])->name('notice.index');
+    Route::get('/notice/{id?}', [HomeController::class, 'noticeShow'])->name('notice.show');
 
-Route::get('/galleries', [HomeController::class, 'galleryIndex'])->name('galleries.index');
-Route::get('/video-galleries', [HomeController::class, 'videoGalleryIndex'])->name('videoGalleries.index');
+    Route::get('/galleries', [HomeController::class, 'galleryIndex'])->name('galleries.index');
+    Route::get('/video-galleries', [HomeController::class, 'videoGalleryIndex'])->name('videoGalleries.index');
 
-// Admission Form Route
-Route::get('/online-admission', [HomeController::class, 'onlineAdmission'])->name('online.admission');
-Route::post('/online-admission', [HomeController::class, 'onlineAdmissionSubmit'])->name('online.admission.submit');
+    // Admission Form Route
+    Route::get('/online-admission', [HomeController::class, 'onlineAdmission'])->name('online.admission');
+    Route::post('/online-admission', [HomeController::class, 'onlineAdmissionSubmit'])->name('online.admission.submit');
+// Website Frontend Route End
 
-
-
-
-
-
-
-
-
-// Auto Sync For Attendance log & Send SMS. Python Script Automate it.
-Route::get('/device/log/sync',[AttendanceDevicesController::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');
-
-// All Authenticated Route
+// Admin Backend Route Start
 Route::middleware(["auth"])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'getUsersCount'])->name('dashboard');
-    Route::resource('/notices', WebsiteNoticeController::class);
-    Route::resource('/gallery', WebsiteGalleryController::class);
-    Route::resource('/video-gallery', WebsiteVideoGalleryController::class);
 
-    // Student Routes
+    // Students Routes
     Route::resource('/students', UserStudentController::class);
+    Route::get('/online-admission', [UserStudentController::class, 'indexOnlineAdmission'])->name('online.admission');
     Route::get('/students/class/{class?}', [UserStudentController::class, 'shortByClass'])->name('class');
+
     // Route::get('/students/id-card/print/{id?}',[UserStudentController::class, 'id_card_print'])->name('id.card.print');
     // Route::get('/students/admit-card/print/{id?}',[UserStudentController::class, 'admit_card_print'])->name('admit.card.print');
     // Route::get('/students/seat-sticker/print/{id?}',[UserStudentController::class, 'seat_sticker_print'])->name('seat.sticker.print');
@@ -85,6 +74,10 @@ Route::middleware(["auth"])->group(function(){
 
     // SMS Logs Routes
     Route::get('/smslog',[SmsLogsController::class, 'showLogs'])->name('sms.logs');
+
+    Route::resource('/notices', WebsiteNoticeController::class);
+    Route::resource('/gallery', WebsiteGalleryController::class);
+    Route::resource('/video-gallery', WebsiteVideoGalleryController::class);
 
 
     // Attendance Routes
@@ -131,4 +124,9 @@ Route::middleware(["auth"])->group(function(){
     })->name('clear.cache');
 
 
-});
+});// Admin Backend Route End
+
+
+
+// Auto Sync For Attendance log & Send SMS. Python Script Automate it.
+Route::get('/device/log/sync',[AttendanceDevicesController::class, 'syncDeviceAttendanceLog'])->name('device.log.sync');
