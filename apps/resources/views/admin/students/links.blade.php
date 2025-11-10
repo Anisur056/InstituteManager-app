@@ -19,6 +19,10 @@
         <div class="nav-scroll-wrapper">
             <ul class="nav nav-tabs d-flex flex-row flex-nowrap">
                 <li class="nav-item">
+                    <a class="nav-link"
+                        href="{{ route('dashboard') }}">Home</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('students.create')) active @endif"
                         href="{{ route('students.create') }}">New Admission</a>
                 </li>

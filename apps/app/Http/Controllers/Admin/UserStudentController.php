@@ -21,58 +21,54 @@ use App\Http\Requests\UserStudentFormRequest; // Form Submit Request goes & Vali
 
 class UserStudentController extends Controller
 {
-    public function index()
+
+    private function getInstituteData()
     {
-        $records = User::where('status', 'active')
-                    ->where('class', 'Play')
+        return [
+            'academicYear'     => InstituteAcademicYearsModel::orderBy('id', 'desc')->get(),
+            'instituteInfo'     => InstituteInfoModel::all(),
+            'instituteBranch'   => InstituteBranchModel::all(),
+            'instituteDivision' => InstituteDivisionModel::all(),
+            'classes'           => InstituteClassesModel::all(),
+            'shifts'            => InstituteShiftsModel::all(),
+            'sections'          => InstituteSectionsModel::all(),
+            'groups'            => InstituteGroupsModel::all(),
+        ];
+    }
+
+    public function index(Request $request)
+    {
+
+        $name = $request->input('name', '');
+        $roll = $request->input('roll', '');
+        $institute_name = $request->input('institute_name', '');
+        $branch = $request->input('branch', '');
+        $division = $request->input('division', '');
+        $class = $request->input('class', 'Play');
+        $shift = $request->input('shift', '');
+        $section = $request->input('section', '');
+        $group = $request->input('group', '');
+
+        $users = User::where('role', 'student')
+                    ->where('institute_name', $institute_name)
+                    ->orWhere('branch', $branch)
+                    ->orWhere('division', $division)
+                    ->orWhere('class', $class)
+                    ->orWhere('shift', $shift)
+                    ->orWhere('section', $section)
+                    ->orWhere('group', $group)
                     ->get();
-        $instituteInfo = InstituteInfoModel::all();
-        $instituteBranch = InstituteBranchModel::all();
-        $instituteDivision = InstituteDivisionModel::all();
-        $classes = InstituteClassesModel::all();
-        $shifts = InstituteShiftsModel::all();
-        $sections = InstituteSectionsModel::all();
-        $groups = InstituteGroupsModel::all();
 
-
-        return view('admin/students/index',compact(
-            'records',
-            'instituteInfo',
-            'instituteBranch',
-            'instituteDivision',
-            'classes',
-            'shifts',
-            'sections',
-            'groups',
-        ));
+        $data = $this->getInstituteData();
+        return view('admin.students.index', array_merge($data, compact('users')));
     }
 
     public function create()
     {
-
         $user = null;
-        $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
-        $instituteInfo = InstituteInfoModel::all();
-        $instituteBranch = InstituteBranchModel::all();
-        $instituteDivision = InstituteDivisionModel::all();
-        $classes = InstituteClassesModel::all();
-        $shifts = InstituteShiftsModel::all();
-        $sections = InstituteSectionsModel::all();
-        $groups = InstituteGroupsModel::all();
+        $data = $this->getInstituteData();
         $registration_id = Carbon::now()->format('ymdhis') . '-' . random_int(100000, 999999);
-
-        return view('admin/students/create',compact(
-            'user',
-            'academicYear',
-            'instituteInfo',
-            'instituteBranch',
-            'instituteDivision',
-            'classes',
-            'shifts',
-            'sections',
-            'groups',
-            'registration_id',
-        ));
+        return view('admin.students.create', array_merge($data, compact('user','registration_id')));
     }
 
     public function store(UserStudentFormRequest $request)
@@ -120,35 +116,15 @@ class UserStudentController extends Controller
     public function show(String $id)
     {
         $data = User::findOrFail($id);
-        return view('admin/students/show',compact('data'));
+        return view('admin.students.show',compact('data'));
     }
 
     public function edit(String $id)
     {
-
         $user = User::find($id);
-        $academicYear = InstituteAcademicYearsModel::orderBy('id', 'desc')->get();
-        $instituteInfo = InstituteInfoModel::all();
-        $instituteBranch = InstituteBranchModel::all();
-        $instituteDivision = InstituteDivisionModel::all();
-        $classes = InstituteClassesModel::all();
-        $shifts = InstituteShiftsModel::all();
-        $sections = InstituteSectionsModel::all();
-        $groups = InstituteGroupsModel::all();
+        $data = $this->getInstituteData();
         $registration_id = null;
-
-        return view('admin/students/edit',compact(
-            'user',
-            'academicYear',
-            'instituteInfo',
-            'instituteBranch',
-            'instituteDivision',
-            'classes',
-            'shifts',
-            'sections',
-            'groups',
-            'registration_id',
-        ));
+        return view('admin.students.edit', array_merge($data, compact('user','registration_id')));
     }
 
     public function update(UserStudentFormRequest $request, String $id)
@@ -223,6 +199,8 @@ class UserStudentController extends Controller
         $user->update(['status' => 'active']);
         if($user){ return redirect()->route('students.index'); }
     }
+
+    // Ex Student List
     public function exStudents()
     {
         $records = User::whereIn('status', ['disable','tc','exam-complete','exit'])->get();
