@@ -236,6 +236,9 @@ class AttendanceDevicesController extends Controller
 
     public function syncDeviceAttendanceLog()
     {
+        // Enable or disable SMS Gateway here (true = send SMS, false = skip SMS)
+        $enable_sms_gateway = true;
+
         $device = AttendanceDevicesModel::find(1);
         $zk = new ZKTeco($device->ip, $device->port);
 
@@ -245,73 +248,71 @@ class AttendanceDevicesController extends Controller
 
             $attendance_logs = $zk->getAttendance();
 
-            // Check if there are any logs to process
             if ($attendance_logs && count($attendance_logs) > 0) {
                 $synced_count = 0;
+                $today = date('Y-m-d');
 
                 foreach ($attendance_logs as $log) {
 
-                    // Check if the log already exists in the database to prevent duplicates
+                    // Process only current date logs
+                    $logDate = date('Y-m-d', strtotime($log['timestamp']));
+                    if ($logDate !== $today) {
+                        continue; // Skip logs that are not from today
+                    }
+
+                    // Check for duplicate
                     $existing_log = UserAttendanceLogsModel::where('user_id', $log['id'])
                         ->where('timestamp', $log['timestamp'])
                         ->first();
 
                     if (!$existing_log) {
-                        // --- 5. Save Data to Database ---
-                        // Create a new record in the attendance table
+
+                        // Save new attendance record
                         UserAttendanceLogsModel::create([
-                            'uid' => $log['uid'],
-                            'user_id' => $log['id'],
-                            'state' => $log['state'],
+                            'uid'       => $log['uid'],
+                            'user_id'   => $log['id'],
+                            'state'     => $log['state'],
                             'timestamp' => $log['timestamp'],
-                            'type' => $log['type']
+                            'type'      => $log['type']
                         ]);
 
-                        // Send SMS
-                        // $this->smsService->sendLogSMS( $log['id'], $log['timestamp'] );
-
-                        // --- Determine if it's ARRIVAL or LEAVE ---
-                        $logDate = date('Y-m-d', strtotime($log['timestamp']));
-
-                        // Count how many logs already exist for this student on this date
+                        // Count logs for this user today
                         $countForDay = UserAttendanceLogsModel::where('user_id', $log['id'])
-                            ->whereDate('timestamp', $logDate)
+                            ->whereDate('timestamp', $today)
                             ->count();
 
-                        if ($countForDay == 1) {
-                            // First log of the day → Arrival
-                            $this->smsService->sendArrivalSMS($log['id'], $log['timestamp']);
-                        } elseif ($countForDay == 2) {
-                            // Second log of the day → Leave
-                            $this->smsService->sendLeaveSMS($log['id'], $log['timestamp']);
-                        } //else {
-                            // Extra punches (optional handling)
-                            // Example: multiple leaves or late entries
-                            // $this->smsService->sendLogSMS($log['id'], $log['timestamp']);
-                        // }
+                        // Send SMS only if gateway is enabled
+                        if ($enable_sms_gateway) {
+                            if ($countForDay == 1) {
+                                // First log → Arrival
+                                $this->smsService->sendArrivalSMS($log['id'], $log['timestamp']);
+                            } elseif ($countForDay == 2) {
+                                // Second log → Leave
+                                $this->smsService->sendLeaveSMS($log['id'], $log['timestamp']);
+                            }
+                            // You can add more conditions if needed for extra punches
+                        }
 
                         $synced_count++;
                     }
-
-
                 }
+
                 $zk->enableDevice();
                 $zk->disconnect();
 
-                return back()->with('message', "$synced_count attendance records synced.");
-
+                return back()->with('message', "$synced_count attendance records synced for today.");
             } else {
                 $zk->enableDevice();
                 $zk->disconnect();
 
-                return back()->with('message','No new attendance records found on the device.');
+                return back()->with('message', 'No new attendance records found on the device.');
             }
-        } else {
-            return back()->with('message', 'The ZKTeco device is not available. Please check the device power, network connection, or IP and port settings');
-            die();
-        }
 
+        } else {
+            return back()->with('message', 'The ZKTeco device is not available. Please check the device power, network connection, or IP and port settings.');
+        }
     }
+
 
     public function exportDestroyLogs()
     {

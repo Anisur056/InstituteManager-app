@@ -101,29 +101,33 @@ class SmsService
         $date = $carbonInstance->toDateString();
         $time = $carbonInstance->format('H:i:s');
 
-        $studentData = User::select('contact_sms','sms_status')->where('sms_status','on')->find($id);
-        $number = $studentData->contact_sms;
+        $studentData = User::select('role','contact_sms','sms_status')->find($id);
 
-        switch ($studentData->role) {
-            case 'student':
-                $message = "আপনার সন্তান মাদ্রাসা ত্যাগ করেছেন। তারিখ: $date, সময়: $time";
-                break;
-
-            case 'teacher':
-                $message = "আপনি মাদ্রাসা ত্যাগ হয়েছেন। তারিখ: $date, সময়: $time";
-                break;
-
-            case 'admin':
-                $message = "আপনি মাদ্রাসা ত্যাগ হয়েছেন। তারিখ: $date, সময়: $time";
-                break;
+        if ($studentData->sms_status == 'on') {
             
-            case 'security':
-                $message = "আপনি মাদ্রাসা ত্যাগ হয়েছেন। তারিখ: $date, সময়: $time";
-                break;
-        }
+            $number = $studentData->contact_sms;
 
-        // Send Message method inside this Service Class
-        $this->sendSMS($number, $message, $timestamp);
+            switch ($studentData->role) {
+                case 'student':
+                    $message = "আপনার সন্তান মাদ্রাসা ত্যাগ করেছেন। তারিখ: $date, সময়: $time";
+                    break;
+
+                case 'teacher':
+                    $message = "আপনি মাদ্রাসা ত্যাগ হয়েছেন। তারিখ: $date, সময়: $time";
+                    break;
+
+                case 'admin':
+                    $message = "আপনি মাদ্রাসা ত্যাগ হয়েছেন। তারিখ: $date, সময়: $time";
+                    break;
+                
+                case 'security':
+                    $message = "আপনি মাদ্রাসা ত্যাগ হয়েছেন। তারিখ: $date, সময়: $time";
+                    break;
+            }
+    
+            // Send Message method inside this Service Class
+            $this->sendSMS($number, $message, $timestamp);
+        }
     }
 
 }
