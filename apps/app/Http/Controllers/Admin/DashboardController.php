@@ -17,6 +17,10 @@ class DashboardController extends Controller
                 ['role','=','student'],
             ])->count();
 
+        $onlineAdmission = User::where([
+                ['status','=','pending'],
+            ])->count();
+
         $employee = User::where('status', 'active')
                 ->whereIn('role', ['teacher', 'accountant', 'librarian', 'security', 'guest','admin'])
                 ->count();
@@ -37,6 +41,7 @@ class DashboardController extends Controller
 
         return view('admin.dashboard',compact(
             'students',
+            'onlineAdmission',
             'employee',
             'smsBalance',
         ));

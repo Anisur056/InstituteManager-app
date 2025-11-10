@@ -82,16 +82,16 @@
                                     {{$data->created_at}}
                                 </td>
                                 <td data-label="Action: " >
-                                    <a target="_blank" href="" class="btn btn-outline-success btn-rounded m-1" data-toggle="tooltip" data-original-title="Print">
+                                    <a target="_blank" href="" class="btn btn-outline-success btn-rounded m-1">
                                         <i class="fa fa-print"></i>
 								    </a>
-                                    <a target="_blank" href="" class="btn btn-outline-success btn-rounded m-1" data-toggle="tooltip" data-original-title="Print">
+                                    <a target="_blank" href="" class="btn btn-outline-success btn-rounded m-1">
                                         <i class="fa fa-file-pdf-o"></i>
 								    </a>
-                                    <a target="_blank" href="" class="btn btn-success btn-rounded m-1" data-toggle="tooltip" data-original-title="Print">
+                                    <a href="{{ route('online.admission.approved', ['reg' => $data->registration_id]) }}" class="btn btn-success btn-rounded m-1">
                                         <i class="fa fa-check"></i>
 								    </a>
-                                    <a target="_blank" href="" class="btn btn-danger btn-rounded m-1" data-toggle="tooltip" data-original-title="Print">
+                                    <a target="_blank" href="" class="btn btn-danger btn-rounded m-1">
                                         <i class="fa fa-times"></i>
 								    </a>
                                 </td>

@@ -35,6 +35,20 @@
                                 </div>
                             </div>
                         </a>
+                        <a href="{{ route('online.admission'); }}" class="link-success">
+                            <div class="card justify-content-center h-100 p-4 rounded-15">
+                                <div class="d-flex gap-2 align-items-center justify-content-between">
+                                    <div>
+                                        <p class="fs-16 fw-medium mb-1">
+                                            Online Admission Applied
+                                        </p>
+                                        <h3 class="mb-0 fw-bold">
+                                            {{ $onlineAdmission }}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                         <a href="{{ route('dashboard'); }}" class="link-success">
                             <div class="card justify-content-center h-100 p-4 rounded-15">
                                 <div class="d-flex gap-2 align-items-center justify-content-between">

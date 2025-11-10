@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/dataTables.dataTables.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/buttons.dataTables.css') }}" />
     <!-- Datatable -->
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/select2/select2.min.css') }}" /><!-- /Select2 -->
 @endsection
 
 
@@ -24,16 +27,42 @@
         </div>
     @endif
 
-    <div class="row dashboard_heading mb-3">
-        <div class="card fixed-tab col-12 col-md-12">
-            <p class="fs-5 m-0 text-center border-bottom">Class List</p>
-            <ul class="nav nav-tabs">
-                @foreach ($classes as $class)
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('class', $class->name_en) }}">{{ $class->name_en }}</a>
-                    </li>
-                @endforeach
-            </ul>
+    <!-- Filter Form -->
+    <div class="card mb-3 rounded-15">
+        <div class="card-body">
+            <form action="{{ route('students.index') }}" method="GET">
+                <div class="row">
+                    <div class="col-md-auto">
+                        <label for="institute_name" class="col-form-label">Institute Name:</label>
+
+                        <select name="institute_name" class="form-control select2" onchange="this.form.submit()">
+                            <option value="null">Select</option>
+                            @foreach ($instituteInfo as $info)
+                                {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
+                                <option value="{{ $info->name_en }}" {{ (request('institute_name') == $info->name_en) ? 'selected' : '' }}>
+                                    {{ $info->name_en }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-auto">
+                        <label for="month" class="col-form-label">Month:</label>
+                        <select class="form-select" id="month" name="month">
+                            {{-- @foreach (range(1, 12) as $m)
+                                <option value="{{ $m }}" {{ $m == $currentMonth ? 'selected' : '' }}>{{ date('F', mktime(0, 0, 0, $m, 10)) }}</option>
+                            @endforeach --}}
+                        </select>
+                    </div>
+                    <div class="col-md-auto">
+                        <label for="class" class="col-form-label">Class:</label>
+                        <select class="form-select" name="class" onchange="this.form.submit()">
+                            {{-- @foreach ($tbl_classe as $c)
+                                <option value="{{ $c->name_en }}" {{ $c->name_en == $class ? 'selected' : '' }}>{{ $c->name_en }}</option>
+                            @endforeach --}}
+                        </select>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -165,5 +194,15 @@
       });
     </script>
     <!-- Datatable -->
+
+    <!-- Select2 -->
+    <script src="{{ asset('assets/admin/js/select2/select2.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+    <!-- /Select2 -->
 @endsection
 

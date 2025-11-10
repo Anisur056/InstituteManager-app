@@ -26,8 +26,25 @@ class UserStudentController extends Controller
         $records = User::where('status', 'active')
                     ->where('class', 'Play')
                     ->get();
+        $instituteInfo = InstituteInfoModel::all();
+        $instituteBranch = InstituteBranchModel::all();
+        $instituteDivision = InstituteDivisionModel::all();
         $classes = InstituteClassesModel::all();
-        return view('admin/students/index', compact('records','classes'));
+        $shifts = InstituteShiftsModel::all();
+        $sections = InstituteSectionsModel::all();
+        $groups = InstituteGroupsModel::all();
+
+
+        return view('admin/students/index',compact(
+            'records',
+            'instituteInfo',
+            'instituteBranch',
+            'instituteDivision',
+            'classes',
+            'shifts',
+            'sections',
+            'groups',
+        ));
     }
 
     public function create()
@@ -99,7 +116,6 @@ class UserStudentController extends Controller
         }
 
     }
-
 
     public function show(String $id)
     {
@@ -176,7 +192,6 @@ class UserStudentController extends Controller
             unset($validatedData['password']);
         }
 
-
         // Update Validated Data
         $user->update($validatedData);
 
@@ -194,25 +209,34 @@ class UserStudentController extends Controller
         }
     }
 
-    public function shortByClass(string $class)
-    {
-        $records = User::whereIn('status', ['active'])
-                    ->where('class', $class)
-                    ->get();
-        $classes = InstituteClassesModel::all();
-        return view('admin/students/index',compact('records','classes'));
-    }
-
+    // Index Online Admission
     public function indexOnlineAdmission()
     {
         $records = User::whereIn('status', ['pending'])->get();
         return view('admin/students/indexOnlineAdmission', compact('records'));
+    }
+
+    // Approve Online Admission
+    public function approvedOnlineAdmission(String $reg)
+    {
+        $user = User::where('registration_id', $reg)->first();
+        $user->update(['status' => 'active']);
+        if($user){ return redirect()->route('students.index'); }
     }
     public function exStudents()
     {
         $records = User::whereIn('status', ['disable','tc','exam-complete','exit'])->get();
         return view('admin/students/ex', compact('records'));
     }
+
+    // public function shortByClass(string $class)
+    // {
+    //     $records = User::whereIn('status', ['active'])
+    //                 ->where('class', $class)
+    //                 ->get();
+    //     $classes = InstituteClassesModel::all();
+    //     return view('admin/students/index',compact('records','classes'));
+    // }
 
     // public function admit_card_print(string $id)
     // {
