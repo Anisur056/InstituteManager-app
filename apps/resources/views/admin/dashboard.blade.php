@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="{{ route('online.admission'); }}" class="link-success">
+                        <a href="{{ route('online.admission.index'); }}" class="link-success">
                             <div class="card justify-content-center h-100 p-4 rounded-15">
                                 <div class="d-flex gap-2 align-items-center justify-content-between">
                                     <div>

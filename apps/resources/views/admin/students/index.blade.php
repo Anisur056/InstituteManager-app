@@ -35,7 +35,7 @@
                 </h5>
                 <div class="text-end">
                     <div class="actions">
-                        <button type="button" class="btn btn-success collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <button type="button" class="btn btn-success collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
                             <i class="fa fa-filter"></i> Filter
                         </button>
                     </div>
@@ -49,7 +49,7 @@
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <div    id="flush-collapseOne"
-                                        class="accordion-collapse bg-white collapse pb-4"
+                                        class="accordion-collapse bg-white pb-4"
                                         aria-labelledby="flush-headingOne"
                                         data-bs-parent="#accordionFlushExample">
 
@@ -58,7 +58,7 @@
                                             <div class="col-md-3">
                                                 <label for="institute_name" class="col-form-label">Institute Name:</label>
                                                 <select name="institute_name" class="form-control select2" >
-                                                    <option value="null">Select</option>
+                                                    <option value="">Select</option>
                                                     @foreach ($instituteInfo as $info)
                                                         {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
                                                         <option value="{{ $info->name_en }}" {{ (request('institute_name') == $info->name_en) ? 'selected' : '' }}>
@@ -70,7 +70,7 @@
                                             <div class="col-md-3">
                                                 <label for="branch" class="col-form-label">Branch Name:</label>
                                                 <select name="branch" class="form-control select2" >
-                                                    <option value="null">Select</option>
+                                                    <option value="">Select</option>
                                                     @foreach ($instituteBranch as $info)
                                                         {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
                                                         <option value="{{ $info->name_en }}" {{ (request('branch') == $info->name_en) ? 'selected' : '' }}>
@@ -82,7 +82,7 @@
                                             <div class="col-md-3">
                                                 <label for="class" class="col-form-label">Division:</label>
                                                 <select name="division" class="form-control select2" >
-                                                    <option value="null">Select</option>
+                                                    <option value="">Select</option>
                                                     @foreach ($instituteDivision as $info)
                                                         {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
                                                         <option value="{{ $info->name_en }}" {{ (request('division') == $info->name_en) ? 'selected' : '' }}>
@@ -94,7 +94,7 @@
                                             <div class="col-md-3">
                                                 <label for="class" class="col-form-label">Class:</label>
                                                 <select name="class" class="form-control select2" >
-                                                    <option value="null">Select</option>
+                                                    <option value="">Select</option>
                                                     @foreach ($classes as $info)
                                                         {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
                                                         <option value="{{ $info->name_en }}" {{ (request('class') == $info->name_en) ? 'selected' : '' }}>
@@ -106,7 +106,7 @@
                                             <div class="col-md-3">
                                                 <label for="class" class="col-form-label">Shift:</label>
                                                 <select name="shift" class="form-control select2" >
-                                                    <option value="null">Select</option>
+                                                    <option value="">Select</option>
                                                     @foreach ($shifts as $info)
                                                         {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
                                                         <option value="{{ $info->name_en }}" {{ (request('shift') == $info->name_en) ? 'selected' : '' }}>
@@ -118,7 +118,7 @@
                                             <div class="col-md-3">
                                                 <label for="class" class="col-form-label">Section:</label>
                                                 <select name="section" class="form-control select2" >
-                                                    <option value="null">Select</option>
+                                                    <option value="">Select</option>
                                                     @foreach ($sections as $info)
                                                         {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
                                                         <option value="{{ $info->name_en }}" {{ (request('section') == $info->name_en) ? 'selected' : '' }}>
@@ -130,7 +130,7 @@
                                             <div class="col-md-3">
                                                 <label class="col-form-label">Group:</label>
                                                 <select name="group" class="form-control select2" >
-                                                    <option value="null">Select</option>
+                                                    <option value="">Select</option>
                                                     @foreach ($groups as $info)
                                                         {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
                                                         <option value="{{ $info->name_en }}" {{ (request('group') == $info->name_en) ? 'selected' : '' }}>

@@ -36,31 +36,43 @@ class UserStudentController extends Controller
         ];
     }
 
-    public function index(Request $request)
-    {
-        $filters = [
-            'institute_name',
-            'branch',
-            'division',
-            'class',
-            'shift',
-            'section',
-            'group'
-        ];
-
-        $query = User::where('role', 'student');
-
-        foreach ($filters as $filter) {
-            if ($request->filled($filter)) {
-                $query->where($filter, $request->input($filter));
-            }
-        }
-
-        $users = $query->get();
-
-        $data = $this->getInstituteData();
-        return view('admin.students.index', array_merge($data, compact('users')));
-    }
+public function index(Request $request)
+{
+    $institute_name = $request->input('institute_name');
+    $branch = $request->input('branch');
+    $division = $request->input('division');
+    $class = $request->input('class', 'Play');
+    $shift = $request->input('shift');
+    $section = $request->input('section');
+    $group = $request->input('group');
+    
+    $users = User::where('role', 'student')
+                ->when($institute_name, function($query, $institute_name) {
+                    return $query->where('institute_name', $institute_name);
+                })
+                ->when($branch, function($query, $branch) {
+                    return $query->where('branch', $branch);
+                })
+                ->when($division, function($query, $division) {
+                    return $query->where('division', $division);
+                })
+                ->when($class, function($query, $class) {
+                    return $query->where('class', $class);
+                })
+                ->when($shift, function($query, $shift) {
+                    return $query->where('shift', $shift);
+                })
+                ->when($section, function($query, $section) {
+                    return $query->where('section', $section);
+                })
+                ->when($group, function($query, $group) {
+                    return $query->where('group', $group);
+                })
+                ->get();
+    
+    $data = $this->getInstituteData();
+    return view('admin.students.index', array_merge($data, compact('users')));
+}
 
     public function create()
     {
