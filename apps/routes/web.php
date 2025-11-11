@@ -56,7 +56,7 @@ Route::middleware(["auth"])->group(function(){
 
     // Students Routes
     Route::resource('/students', UserStudentController::class);
-    Route::get('/online-admission', [UserStudentController::class, 'indexOnlineAdmission'])->name('online.admission');
+    Route::get('/online-admission/index', [UserStudentController::class, 'indexOnlineAdmission'])->name('online.admission.index');
     Route::get('/online-admission/approved/{reg?}', [UserStudentController::class, 'approvedOnlineAdmission'])->name('online.admission.approved');
 
     Route::get('/students/class/{class?}', [UserStudentController::class, 'shortByClass'])->name('class');

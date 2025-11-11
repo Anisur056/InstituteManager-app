@@ -38,26 +38,25 @@ class UserStudentController extends Controller
 
     public function index(Request $request)
     {
+        $filters = [
+            'institute_name',
+            'branch',
+            'division',
+            'class',
+            'shift',
+            'section',
+            'group'
+        ];
 
-        $name = $request->input('name', '');
-        $roll = $request->input('roll', '');
-        $institute_name = $request->input('institute_name', '');
-        $branch = $request->input('branch', '');
-        $division = $request->input('division', '');
-        $class = $request->input('class', 'Play');
-        $shift = $request->input('shift', '');
-        $section = $request->input('section', '');
-        $group = $request->input('group', '');
+        $query = User::where('role', 'student');
 
-        $users = User::where('role', 'student')
-                    ->where('institute_name', $institute_name)
-                    ->orWhere('branch', $branch)
-                    ->orWhere('division', $division)
-                    ->orWhere('class', $class)
-                    ->orWhere('shift', $shift)
-                    ->orWhere('section', $section)
-                    ->orWhere('group', $group)
-                    ->get();
+        foreach ($filters as $filter) {
+            if ($request->filled($filter)) {
+                $query->where($filter, $request->input($filter));
+            }
+        }
+
+        $users = $query->get();
 
         $data = $this->getInstituteData();
         return view('admin.students.index', array_merge($data, compact('users')));

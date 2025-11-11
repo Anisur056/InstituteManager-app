@@ -35,8 +35,8 @@
                 </h5>
                 <div class="text-end">
                     <div class="actions">
-                        <button type="button" class="btn btn-success collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"> 
-                            <i class="fa fa-filter"></i> Search
+                        <button type="button" class="btn btn-success collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <i class="fa fa-filter"></i> Filter
                         </button>
                     </div>
                 </div>
@@ -48,21 +48,13 @@
                     <div class="col-12">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
-                                <div    id="flush-collapseOne" 
-                                        class="accordion-collapse bg-white collapse pb-4" 
-                                        aria-labelledby="flush-headingOne" 
+                                <div    id="flush-collapseOne"
+                                        class="accordion-collapse bg-white collapse pb-4"
+                                        aria-labelledby="flush-headingOne"
                                         data-bs-parent="#accordionFlushExample">
 
                                     <form action="{{ route('students.index') }}" method="GET">
                                         <div class="row">
-                                            <div class="col-md-3">
-                                                <label for="name" class="col-form-label">Student Name:</label>
-                                                <input type="text" name="name" class="form-control" >
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label for="roll" class="col-form-label">Roll:</label>
-                                                <input type="text" name="roll" class="form-control" >
-                                            </div>
                                             <div class="col-md-3">
                                                 <label for="institute_name" class="col-form-label">Institute Name:</label>
                                                 <select name="institute_name" class="form-control select2" >
@@ -124,12 +116,12 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
-                                                <label for="class" class="col-form-label">Sections:</label>
-                                                <select name="sections" class="form-control select2" >
+                                                <label for="class" class="col-form-label">Section:</label>
+                                                <select name="section" class="form-control select2" >
                                                     <option value="null">Select</option>
                                                     @foreach ($sections as $info)
                                                         {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
-                                                        <option value="{{ $info->name_en }}" {{ (request('sections') == $info->name_en) ? 'selected' : '' }}>
+                                                        <option value="{{ $info->name_en }}" {{ (request('section') == $info->name_en) ? 'selected' : '' }}>
                                                             {{ $info->name_en }}
                                                         </option>
                                                     @endforeach
@@ -137,11 +129,11 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label class="col-form-label">Group:</label>
-                                                <select name="groups" class="form-control select2" >
+                                                <select name="group" class="form-control select2" >
                                                     <option value="null">Select</option>
                                                     @foreach ($groups as $info)
                                                         {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
-                                                        <option value="{{ $info->name_en }}" {{ (request('groups') == $info->name_en) ? 'selected' : '' }}>
+                                                        <option value="{{ $info->name_en }}" {{ (request('group') == $info->name_en) ? 'selected' : '' }}>
                                                             {{ $info->name_en }}
                                                         </option>
                                                     @endforeach
@@ -163,12 +155,9 @@
                         <tr>
                             <th>Pic</th>
                             <th>Information</th>
-                            <th>RFID Card</th>
                             <th>Contact <br>(Call)</th>
                             <th>Contact <br>(Whatsapp)</th>
-                            <th>Profile</th>
-                            <th>Edit</th>
-                            <th>Send <br> SMS</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -178,19 +167,24 @@
                                 <img class="rounded-3" width="100px" src="{{ optional($data)->profile_pic ? asset('assets/' . optional($data)->profile_pic) : 'assets/admin/img/users/user.png' }}">
                             </td>
                             <td data-label="Information:- " >
-                                {{$data->name}}<br>
-                                {{$data->name_bn}} <br>
-                                Designation: {{$data->role}} <br>
+                                Name: {{$data->name}}<br>
+                                নাম: {{$data->name_bn}} <br>
+                                পিতা: {{$data->father_name}} <br>
+                                {{$data->institute_name}} <br>
+                                Branch: {{$data->branch}} <br>
+                                Division: {{$data->division}} <br>
                                 Class: {{$data->class}} <br>
+                                Shift: {{$data->shift}} <br>
+                                Sections: {{$data->section}} <br>
+                                Group: {{$data->group}} <br>
                                 Roll: {{$data->roll}} <br>
+                                Designation: {{$data->role}} <br>
+                                RFID Card: {{$data->rfid_card}} <br>
                                 @if ($data->sms_status === 'on')
                                     <span class="badge bg-success text-bg-success">SMS On</span>
                                 @else
                                     <span class="badge bg-danger text-bg-danger">SMS Off</span>
                                 @endif
-                            </td>
-                            <td data-label="RFID Card: " class="text-start">
-                                {{$data->rfid_card}}
                             </td>
                             <td data-label="Contact (Call): ">
                                 <a class="text-decoration-none text-success font-weight-bold" target="_blank" href="tel:{{$data->contact_sms}}">
@@ -202,17 +196,13 @@
                                     {{$data->contact_whatsapp}}
                                 </a>
                             </td>
-                            <td data-label="Profile: ">
+                            <td data-label="Actions: ">
                                 <a class="btn btn-primary mb-1" href="{{ route('students.show',$data->id) }}">
                                     <i class="fa fa-user me-1"></i>
                                 </a>
-                            </td>
-                            <td data-label="Update: ">
                                 <a class="btn btn-warning mb-1" href="{{ route('students.edit',$data->id) }}">
                                     <i class="fa fa-pencil-square-o  me-1"></i>
                                 </a>
-                            </td>
-                            <td data-label="Send SMS: ">
                                 <a class="btn btn-success mb-1" href="{{ route('sms.create',$data->id) }}" target=”_blank”>
                                     <i class="fa fa-comments me-1"></i>
                                 </a>

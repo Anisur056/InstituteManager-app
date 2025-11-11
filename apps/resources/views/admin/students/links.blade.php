@@ -31,14 +31,11 @@
                         href="{{ route('students.index') }}">Student List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::is('online.admission')) active @endif"
-                        href="{{ route('online.admission') }}">Online Admission</a>
+                    <a class="nav-link @if(Route::is('online.admission.index')) active @endif"
+                        href="{{ route('online.admission.index') }}">Online Admission List</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Ex Student</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('attendance.sheet.student') }}">Attendance</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Take Fees</a>
