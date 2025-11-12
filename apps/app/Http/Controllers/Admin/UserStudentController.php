@@ -36,43 +36,43 @@ class UserStudentController extends Controller
         ];
     }
 
-public function index(Request $request)
-{
-    $institute_name = $request->input('institute_name');
-    $branch = $request->input('branch');
-    $division = $request->input('division');
-    $class = $request->input('class', 'Play');
-    $shift = $request->input('shift');
-    $section = $request->input('section');
-    $group = $request->input('group');
-    
-    $users = User::where('role', 'student')
-                ->when($institute_name, function($query, $institute_name) {
-                    return $query->where('institute_name', $institute_name);
-                })
-                ->when($branch, function($query, $branch) {
-                    return $query->where('branch', $branch);
-                })
-                ->when($division, function($query, $division) {
-                    return $query->where('division', $division);
-                })
-                ->when($class, function($query, $class) {
-                    return $query->where('class', $class);
-                })
-                ->when($shift, function($query, $shift) {
-                    return $query->where('shift', $shift);
-                })
-                ->when($section, function($query, $section) {
-                    return $query->where('section', $section);
-                })
-                ->when($group, function($query, $group) {
-                    return $query->where('group', $group);
-                })
-                ->get();
-    
-    $data = $this->getInstituteData();
-    return view('admin.students.index', array_merge($data, compact('users')));
-}
+    public function index(Request $request)
+    {
+        $institute_name = $request->input('institute_name');
+        $branch = $request->input('branch');
+        $division = $request->input('division');
+        $class = $request->input('class', 'Play');
+        $shift = $request->input('shift');
+        $section = $request->input('section');
+        $group = $request->input('group');
+
+        $users = User::where('role', 'student')
+                    ->when($institute_name, function($query, $institute_name) {
+                        return $query->where('institute_name', $institute_name);
+                    })
+                    ->when($branch, function($query, $branch) {
+                        return $query->where('branch', $branch);
+                    })
+                    ->when($division, function($query, $division) {
+                        return $query->where('division', $division);
+                    })
+                    ->when($class, function($query, $class) {
+                        return $query->where('class', $class);
+                    })
+                    ->when($shift, function($query, $shift) {
+                        return $query->where('shift', $shift);
+                    })
+                    ->when($section, function($query, $section) {
+                        return $query->where('section', $section);
+                    })
+                    ->when($group, function($query, $group) {
+                        return $query->where('group', $group);
+                    })
+                    ->get();
+
+        $data = $this->getInstituteData();
+        return view('admin.students.index', array_merge($data, compact('users')));
+    }
 
     public function create()
     {
@@ -218,30 +218,71 @@ public function index(Request $request)
         return view('admin/students/ex', compact('records'));
     }
 
-    // public function shortByClass(string $class)
-    // {
-    //     $records = User::whereIn('status', ['active'])
-    //                 ->where('class', $class)
-    //                 ->get();
-    //     $classes = InstituteClassesModel::all();
-    //     return view('admin/students/index',compact('records','classes'));
-    // }
+    //
+    public function indexStudentsAdmitCard(Request $request)
+    {
+        // 1. Get all search input parameters
+        $institute_name = $request->input('institute_name');
+        $branch = $request->input('branch');
+        $division = $request->input('division');
+        $class = $request->input('class');
+        $shift = $request->input('shift');
+        $section = $request->input('section');
+        $group = $request->input('group');
 
-    // public function admit_card_print(string $id)
-    // {
-    //     $record = User::find($id);
-    //     return view('admin/students/print-admit-card.',compact('record'));
-    // }
+        // Check if ANY search parameter is provided (indicating a search was performed)
+        $has_search_parameters = $institute_name || $branch || $division || $class || $shift || $section || $group;
 
-    // public function seat_sticker_print(string $id)
-    // {
-    //     $record = User::find($id);
-    //     return view('admin/students/',compact('record'));
-    // }
+        $users = collect([]); // Default to an empty collection
 
-    // public function id_card_print(string $id)
-    // {
-    //     $record = User::find($id);
-    //     return view('admin/students/',compact('record'));
-    // }
+        if ($has_search_parameters) {
+            // Only run the query if a search has been initiated (by providing at least one parameter)
+            $users = User::where('role', 'student')
+                        ->when($institute_name, function($query, $institute_name) {
+                            return $query->where('institute_name', $institute_name);
+                        })
+                        ->when($branch, function($query, $branch) {
+                            return $query->where('branch', $branch);
+                        })
+                        ->when($division, function($query, $division) {
+                            return $query->where('division', $division);
+                        })
+                        ->when($class, function($query, $class) {
+                            return $query->where('class', $class);
+                        })
+                        ->when($shift, function($query, $shift) {
+                            return $query->where('shift', $shift);
+                        })
+                        ->when($section, function($query, $section) {
+                            return $query->where('section', $section);
+                        })
+                        ->when($group, function($query, $group) {
+                            return $query->where('group', $group);
+                        })
+                        ->get();
+        }
+
+        $data = $this->getInstituteData();
+        return view('admin.students.indexAdmitCard', array_merge($data, compact('users')));
+    }
+
+    public function printStudentsAdmitCard(Request $request)
+    {
+        $request->validate([
+            'user_ids' => 'required|array',
+            'user_ids.*' => 'exists:users,id'
+        ]);
+
+        $users = User::whereIn('id', $request->user_ids)->get();
+
+        // Split users into chunks of 8 for A4 pages
+        // $userChunks = $users->chunk(8);
+
+        // $pdf = Pdf::loadView('users.admit-card', compact('userChunks'));
+        // $pdf->setPaper('a4', 'portrait');
+
+        // return $pdf->download('admit-cards-' . date('Y-m-d') . '.pdf');
+        return view('admin.students.printAdmitCard', compact('users'));
+    }
+
 }

@@ -44,7 +44,8 @@
                     <a class="nav-link" href="">ID Card</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Admit Card</a>
+                    <a class="nav-link @if(Route::is('index.admit.card')) active @endif"
+                        href="{{ route('index.admit.card') }}">Admit Card</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Seat Sticker</a>

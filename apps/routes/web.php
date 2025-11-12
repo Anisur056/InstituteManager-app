@@ -56,10 +56,11 @@ Route::middleware(["auth"])->group(function(){
 
     // Students Routes
     Route::resource('/students', UserStudentController::class);
-    Route::get('/online-admission/index', [UserStudentController::class, 'indexOnlineAdmission'])->name('online.admission.index');
-    Route::get('/online-admission/approved/{reg?}', [UserStudentController::class, 'approvedOnlineAdmission'])->name('online.admission.approved');
+    Route::get('/students-online-admission/index', [UserStudentController::class, 'indexOnlineAdmission'])->name('online.admission.index');
+    Route::get('/students-osnline-admission/approved/{reg?}', [UserStudentController::class, 'approvedOnlineAdmission'])->name('online.admission.approved');
 
-    Route::get('/students/class/{class?}', [UserStudentController::class, 'shortByClass'])->name('class');
+    Route::get('/students-admin-card/index', [UserStudentController::class, 'indexStudentsAdmitCard'])->name('index.admit.card');
+    Route::post('/students-admin-card/print', [UserStudentController::class, 'printStudentsAdmitCard'])->name('print.admit.card');
 
     // Route::get('/students/id-card/print/{id?}',[UserStudentController::class, 'id_card_print'])->name('id.card.print');
     // Route::get('/students/admit-card/print/{id?}',[UserStudentController::class, 'admit_card_print'])->name('admit.card.print');
