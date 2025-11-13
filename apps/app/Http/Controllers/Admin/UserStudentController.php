@@ -38,37 +38,46 @@ class UserStudentController extends Controller
 
     public function index(Request $request)
     {
+        // 1. Get all search input parameters
         $institute_name = $request->input('institute_name');
         $branch = $request->input('branch');
         $division = $request->input('division');
-        $class = $request->input('class', 'Play');
+        $class = $request->input('class');
         $shift = $request->input('shift');
         $section = $request->input('section');
         $group = $request->input('group');
 
-        $users = User::where('role', 'student')
-                    ->when($institute_name, function($query, $institute_name) {
-                        return $query->where('institute_name', $institute_name);
-                    })
-                    ->when($branch, function($query, $branch) {
-                        return $query->where('branch', $branch);
-                    })
-                    ->when($division, function($query, $division) {
-                        return $query->where('division', $division);
-                    })
-                    ->when($class, function($query, $class) {
-                        return $query->where('class', $class);
-                    })
-                    ->when($shift, function($query, $shift) {
-                        return $query->where('shift', $shift);
-                    })
-                    ->when($section, function($query, $section) {
-                        return $query->where('section', $section);
-                    })
-                    ->when($group, function($query, $group) {
-                        return $query->where('group', $group);
-                    })
-                    ->get();
+        // Check if ANY search parameter is provided (indicating a search was performed)
+        $has_search_parameters = $institute_name || $branch || $division || $class || $shift || $section || $group;
+
+        $users = collect([]); // Default to an empty collection
+
+        if ($has_search_parameters) {
+            // Only run the query if a search has been initiated (by providing at least one parameter)
+            $users = User::where('role', 'student')
+                        ->when($institute_name, function($query, $institute_name) {
+                            return $query->where('institute_name', $institute_name);
+                        })
+                        ->when($branch, function($query, $branch) {
+                            return $query->where('branch', $branch);
+                        })
+                        ->when($division, function($query, $division) {
+                            return $query->where('division', $division);
+                        })
+                        ->when($class, function($query, $class) {
+                            return $query->where('class', $class);
+                        })
+                        ->when($shift, function($query, $shift) {
+                            return $query->where('shift', $shift);
+                        })
+                        ->when($section, function($query, $section) {
+                            return $query->where('section', $section);
+                        })
+                        ->when($group, function($query, $group) {
+                            return $query->where('group', $group);
+                        })
+                        ->get();
+        }
 
         $data = $this->getInstituteData();
         return view('admin.students.index', array_merge($data, compact('users')));
