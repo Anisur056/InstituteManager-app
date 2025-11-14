@@ -1,102 +1,69 @@
 <html >
 <head>
     <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
+    <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet">
     <style>
         /* --- Print and Page Setup --- */
-        @page { size: A4; margin: 0 }
+        @page { size: A4; margin: 0; }
 
-        body {
-            margin: 0;
-            background-color: #f0f0f0;
-            display: block;
-            font-family: 'Barlow';
-            font-size: 18px;
+        *{
+            font-family: 'Barlow'; font-size: 10pt; box-sizing: border-box;
+            margin: 0; padding: 0;
         }
 
-        /* --- New Styles for A4 Sheet Wrapper (Holds 3 Cards) --- */
-        .card-wrapper {
+        body {
+            background-color: #f0f0f0;
+        }
+
+        /* --- New Styles for A4 Sheet Wrapper (Holds 2 Cards) --- */
+        .a4-sheet {
             /* Defines the A4 size and sets up the layout */
             display: grid;
             grid-template-columns: 1fr;
             width: 8.268in;
-            height: 11.693in;
-            margin: 0;
+            height: auto;
             overflow: hidden;
-            page-break-after: always; /* Forces a new A4 page after every 3 cards */
-            box-sizing: border-box;
+            page-break-after: always; /* Forces a new A4 page after every 2 cards */
             padding: .3in;
+            padding-top: .2in;
             background-color: #fafafa;
         }
 
-        /* --- Modified Admit Card Styles (1/3 A4 Height) --- */
+        /* --- Modified Admit Card Styles (1/2 A4 Height) --- */
         .admit-card {
-            /* Height is 1/3 of the effective printable height of the wrapper */
-            height: 3.69in;
+            /* * Height is 1/2 of the effective printable height of the wrapper.
+             * The A4 height is 11.693in. The wrapper padding is .3in top/bottom,
+             * so printable height is 11.693 - (2 * 0.3) = 11.093in.
+             * 11.093in / 2 = ~5.546in.
+             * Using 5.5in for a slightly cleaner division.
+             */
+            height: auto; /* CHANGED from 3.69in to 5.5in */
+            border: 1px solid #222222;
+            border-radius: 15px;
             width: 100%;
-            margin: 0;
+            margin-top: 0.2in;
             overflow: hidden;
             position: relative; /* Context for absolutely positioned children */
             box-sizing: border-box;
             page-break-after: auto;
-            padding: 0;
+            padding: .1in;
             background-color: transparent;
             page-break-inside: avoid; /* Prevents a single card from splitting across pages */
         }
 
-        .admit-card img{
-            width: 100%;
-        }
-
-        /* --- Adjusted Absolute Positioning (Relative to the 3.69in card height) --- */
-
-        /* Content block */
-        .admit-card .admit-content{
-            position: absolute;
-            width: 100%;
-            top: 1.6in;
-            left: 0.3in;
-        }
-
-        .admit-content p{
-            margin: 0;
-            line-height: 20pt;
-        }
-
-        /* Roll number block */
-        .admit-card .right{
-            position: absolute;
-            top: 2.1in;
-            right: 0.55in;
-            font-size: 22pt;
-            font-weight: bold;
-        }
-
-        /* Profile picture block */
-        .admit-card .pic{
-            width: 90px;
-            position: absolute;
-            top: .8in;
-            right: 0.3in;
-        }
-
         /* QR code block */
         .admit-card .qrcode-container{
-            width: 100px;
-            height: 100px;
-            position: absolute;
-            top: 1.8in;
-            right: 1.4in;
+            width: 100px; height: 100px;
         }
 
         .admit-card .qrcode-container img{
-            width: 100px;
-            height: 100px;
+            width: 100px; height: 100px;
         }
 
         /** For screen preview **/
         @media screen {
             body { background: #e0e0e0 }
-            .card-wrapper {
+            .a4-sheet {
                 background: white;
                 box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
                 margin: 5mm auto;
@@ -114,32 +81,179 @@
 <body class="A4">
 
     @php
-        // Using `chunk(3)` assumes $users is a Laravel Collection.
-        // If it's a plain PHP array, use: $user_chunks = array_chunk($users, 3);
-        $user_chunks = $users->chunk(3);
+        // CHANGED: Use chunk(2) to group users into chunks of 2 for 2 rows per page.
+        // Using `chunk(2)` assumes $users is a Laravel Collection.
+        // If it's a plain PHP array, use: $user_chunks = array_chunk($users, 2);
+        $user_chunks = $users->chunk(1);
     @endphp
 
     @foreach($user_chunks as $chunk_index => $user_chunk)
-        <section class="card-wrapper" id="a4-page-{{ $chunk_index }}">
+        <section class="a4-sheet" id="a4-page-{{ $chunk_index }}">
 
             @foreach($user_chunk as $user)
                 <div class="admit-card" id="a4-pdf-{{ $user->roll }}">
-                    <img src="{{ asset('assets/admin/img/institutes/exam-admit-card-1.png') }}" alt="Admit Card Background">
 
-                    <div class="admit-content">
-                        <p>Name: <b>{{ $user->name }}</b></p>
-                        <p>Class: <b>{{ $user->class }}</b></p>
-                        <p>Academic Year: <b>{{ $user->academic_year }}</b></p>
+                    {{-- Logo, title-header, pic --}}
+                    <div class="row">
+                        <div class="col-3 col-md-3">
+                            <img src="{{ asset('assets/admin/img/institutes/logo-1.png') }}"
+                                    width="70px" height="auto">
+                        </div>
+                        <div class="col-6 col-md-6 text-center">
+                            <img src="{{ asset('assets/admin/img/institutes/title-header-1.png') }}"
+                                    width="300px" height="auto">
+                        </div>
+                        <div class="col-3 col-md-3 text-end">
+                            <img src="{{ asset('assets/'.$user->profile_pic) }}"
+                                    width="60px" height="auto">
+                        </div>
                     </div>
-                    <p class="right"><b>{{ $user->roll }}</b></p>
-                    <img class="pic" src="{{ asset('assets/'.$user->profile_pic) }}" alt="Profile Picture">
 
-                    <span class="qrcode-container" id="qrcode-{{ $user->roll }}"></span>
+                    {{-- Card Title --}}
+                    <div class="row">
+                        <span class="bg-success text-white text-center mt-2"><b class="fs-4">ADMIT CARD</b></span>
+                        <span class="text-dark fs-5 text-center"><b class="fs-5">FINAL YEAR EXAM-2025</b></span>
+                    </div>
+
+                    <div class="row mt-2">
+                        {{-- Examinee Details --}}
+                        <div class="col-10">
+                            <span class="d-block bg-success text-white text-center">Examinee Details</span>
+                            <table class="table table-striped table-sm table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Name: </th>
+                                        <th>{{ $user->name }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Roll: </th>
+                                        <td><b><span class="fs-5">{{ $user->roll }}</span></b></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Branch: </th>
+                                        <td>{{ $user->branch }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Division: </th>
+                                        <td>{{ $user->division }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Shift: </th>
+                                        <td>{{ $user->shift }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Class: </th>
+                                        <td>{{ $user->class }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Section: </th>
+                                        <td>{{ $user->section }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Group: </th>
+                                        <td>{{ $user->group }}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {{-- QR Code --}}
+                        <div class="col-2 d-flex flex-column align-items-center justify-content-start">
+                            <span class="qrcode-container" id="qrcode-{{ $user->roll }}"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            {{-- Exam Rutine JSON data --}}
+                            @php
+                                $jsonData = file_get_contents(resource_path('views/admin/students/printAdmitCardData.json'));
+                                $examData = json_decode($jsonData, true);
+                                $exams = $examData[$user->class] ?? [];
+                                $counter = 1;
+                            @endphp
+
+                            <span class="d-block fs-4 bg-success text-white text-center">Exam Rutine</span>
+                            <div class="col-12">
+                                <table class="table table-striped table-sm table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Exam Subject</th>
+                                            <th>Exam Date</th>
+                                            <th>Exam Time</th>
+                                        </tr>
+                                        @forelse($exams as $exam)
+                                        <tr>
+                                            <td>{{ $counter++ }}</td>
+                                            <td>{{ $exam['subject'] }}</td>
+                                            {{-- <td>{{ $exam['date']->format('M d, Y') }}</td> --}}
+                                            <td>{{ \Carbon\Carbon::parse($exam['date'])->format('d M, Y') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($exam['date'])->format('d M, Y') }}</td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="3" class="text-center">No exam routine found for your class.</td>
+                                        </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid border border-danger rounded-3 p-2 text-danger">
+                        <p class="m-0"><b>{{ $user->name }} ({{ $user->roll }})</b>- is allowed to appear in the term of <b>FINAL YEAR EXAM-2025</b> .</p>
+                        <p class="m-0"># Examinee must bring this card in the examination hall. Arrive at least 30 minutes before the exam time.</p>
+                        <p class="m-0"># Examinee must bring their own Pen(black or blue ink only allowed), Scale(plastic only allowed), Pencil, Eraser.</p>
+                        <p class="m-0"># Do not bring any unauthorised material (e.g. written notes, books, paper and sticky tape eraser).</p>
+                    </div>
+
+                    @php
+                        $classTeachers = [
+                            'Play' => 'assets/admin/img/signature/habibur-rahman.png',
+                            'Nursery' => 'assets/admin/img/signature/mohammad-sadrul-ula.png',
+                            'One' => 'assets/admin/img/signature/nasrin-akhter.png',
+                            'Two' => 'assets/admin/img/signature/rasheda-akhter.png',
+                            'Three' => 'assets/admin/img/signature/rofiqual-principal.png',
+                            'Four' => 'assets/admin/img/signature/sufia-akhter-simi.png',
+                        ];
+
+                        $signaturePath = $classTeachers[$user->class] ?? 'assets/admin/img/signature/sample.jpg';
+                    @endphp
+
+                    <div class="row mt-3">
+                        <div class="col-4 text-center d-flex flex-column align-items-center justify-content-end">
+                            <img src="{{ asset('assets/admin/img/signature/rofiqual-principal-seal.png') }}"
+                                    width="150px" height="auto">
+                        </div>
+                        <div class=" col-4 text-center d-flex flex-column align-items-center justify-content-end">
+
+                        </div>
+                        <div class="col-4 text-center d-flex flex-column align-items-center justify-content-end">
+                            <img src="{{ asset($signaturePath) }}"
+                                    width="150px" height="auto">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-center d-flex flex-column align-items-center justify-content-end">
+                            <p class="m-0">Signature of Principal</p>
+                        </div>
+                        <div class="col-4 text-center d-flex flex-column align-items-center justify-content-end">
+                            <b><p class="m-0">This card was issued on: {{ date('d-m-Y') }}</p></b>
+                        </div>
+                        <div class="col-4 text-center d-flex flex-column align-items-center justify-content-end">
+                            <p class="m-0 text-end">Signature of Class Teacher</p>
+                        </div>
+                    </div>
+
                 </div>
             @endforeach
         </section>
     @endforeach
 
+    <script src="{{ asset('assets/admin/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/qrcode.js') }}"></script>
 
     <script type="text/javascript">
