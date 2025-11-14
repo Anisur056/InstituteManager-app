@@ -13,35 +13,35 @@ class InstituteExamTermsSeeder extends Seeder
 
         $records = collect([
             [
-            'name_en' => 'Model Test Examination',
+            'name_en' => 'MODEL TEST EXAM',
             'name_bn' => 'মডেল টেষ্ট পরিক্ষা',
             'display_order' => 4,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => '1st Term Examination',
+            'name_en' => 'FIRST TERM EXAM',
             'name_bn' => 'প্রথম সাময়িক পরিক্ষা',
             'display_order' => 1,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => '2nd Term Examination',
+            'name_en' => 'SECOND TERM EXAM',
             'name_bn' => 'দ্বিতীয় সাময়িক পরিক্ষা',
             'display_order' => 2,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'Half Yearly Examination',
+            'name_en' => 'HALF YEAR EXAM',
             'name_bn' => 'অর্ধ বার্ষিক পরিক্ষা',
             'display_order' => 3,
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name_en' => 'Final Examination',
+            'name_en' => 'FINAL YEAR EXAM',
             'name_bn' => 'বার্ষিক পরিক্ষা',
             'display_order' => 4,
             'created_at' => now(),

@@ -62,9 +62,10 @@ Route::middleware(["auth"])->group(function(){
     Route::get('/students-admin-card/index', [UserStudentController::class, 'indexStudentsAdmitCard'])->name('index.admit.card');
     Route::post('/students-admin-card/print', [UserStudentController::class, 'printStudentsAdmitCard'])->name('print.admit.card');
 
+    Route::get('/students-seat-sticker/index', [UserStudentController::class, 'indexStudentsSeatSticker'])->name('index.seat.sticker');
+    Route::post('/students-seat-sticker/print', [UserStudentController::class, 'printStudentsSeatSticker'])->name('print.seat.sticker');
+
     // Route::get('/students/id-card/print/{id?}',[UserStudentController::class, 'id_card_print'])->name('id.card.print');
-    // Route::get('/students/admit-card/print/{id?}',[UserStudentController::class, 'admit_card_print'])->name('admit.card.print');
-    // Route::get('/students/seat-sticker/print/{id?}',[UserStudentController::class, 'seat_sticker_print'])->name('seat.sticker.print');
 
     // Employee Routes
     Route::resource('/employee', UserEmployeeController::class);

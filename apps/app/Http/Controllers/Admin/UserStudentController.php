@@ -14,6 +14,7 @@ use App\Models\InstituteClassesModel;
 use App\Models\InstituteShiftsModel;
 use App\Models\InstituteSectionsModel;
 use App\Models\InstituteGroupsModel;
+use App\Models\InstituteExamTermsModel;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -205,14 +206,14 @@ class UserStudentController extends Controller
         }
     }
 
-    // Index Online Admission
+    // Index Online Admission ==================================
     public function indexOnlineAdmission()
     {
         $records = User::whereIn('status', ['pending'])->get();
         return view('admin/students/indexOnlineAdmission', compact('records'));
     }
 
-    // Approve Online Admission
+    // Approve Online Admission ================================
     public function approvedOnlineAdmission(String $reg)
     {
         $user = User::where('registration_id', $reg)->first();
@@ -220,14 +221,14 @@ class UserStudentController extends Controller
         if($user){ return redirect()->route('students.index'); }
     }
 
-    // Ex Student List
-    public function exStudents()
+    // Ex Student List =========================================
+    public function indexExStudents()
     {
         $records = User::whereIn('status', ['disable','tc','exam-complete','exit'])->get();
         return view('admin/students/ex', compact('records'));
     }
 
-    //
+    // Admit Card Index ========================================
     public function indexStudentsAdmitCard(Request $request)
     {
         // 1. Get all search input parameters
@@ -272,17 +273,21 @@ class UserStudentController extends Controller
         }
 
         $data = $this->getInstituteData();
-        return view('admin.students.indexAdmitCard', array_merge($data, compact('users')));
+        $examTerm = InstituteExamTermsModel::all();
+        return view('admin.students.indexAdmitCard', array_merge($data, compact('users', 'examTerm')));
     }
 
+    // Admit Card Print ========================================
     public function printStudentsAdmitCard(Request $request)
     {
         $request->validate([
             'user_ids' => 'required|array',
-            'user_ids.*' => 'exists:users,id'
+            'user_ids.*' => 'exists:users,id',
+            'exam_terms' => 'nullable',
         ]);
 
         $users = User::whereIn('id', $request->user_ids)->get();
+        $exam_terms = $request->input('exam_terms');
 
         // Split users into chunks of 8 for A4 pages
         // $userChunks = $users->chunk(8);
@@ -291,7 +296,79 @@ class UserStudentController extends Controller
         // $pdf->setPaper('a4', 'portrait');
 
         // return $pdf->download('admit-cards-' . date('Y-m-d') . '.pdf');
-        return view('admin.students.printAdmitCard', compact('users'));
+        return view('admin.students.printAdmitCard', compact('users','exam_terms'));
     }
+
+    // Seat Sticker Index ========================================
+    public function indexStudentsSeatSticker(Request $request)
+    {
+        // 1. Get all search input parameters
+        $institute_name = $request->input('institute_name');
+        $branch = $request->input('branch');
+        $division = $request->input('division');
+        $class = $request->input('class');
+        $shift = $request->input('shift');
+        $section = $request->input('section');
+        $group = $request->input('group');
+
+        // Check if ANY search parameter is provided (indicating a search was performed)
+        $has_search_parameters = $institute_name || $branch || $division || $class || $shift || $section || $group;
+
+        $users = collect([]); // Default to an empty collection
+
+        if ($has_search_parameters) {
+            // Only run the query if a search has been initiated (by providing at least one parameter)
+            $users = User::where('role', 'student')
+                        ->when($institute_name, function($query, $institute_name) {
+                            return $query->where('institute_name', $institute_name);
+                        })
+                        ->when($branch, function($query, $branch) {
+                            return $query->where('branch', $branch);
+                        })
+                        ->when($division, function($query, $division) {
+                            return $query->where('division', $division);
+                        })
+                        ->when($class, function($query, $class) {
+                            return $query->where('class', $class);
+                        })
+                        ->when($shift, function($query, $shift) {
+                            return $query->where('shift', $shift);
+                        })
+                        ->when($section, function($query, $section) {
+                            return $query->where('section', $section);
+                        })
+                        ->when($group, function($query, $group) {
+                            return $query->where('group', $group);
+                        })
+                        ->get();
+        }
+
+        $data = $this->getInstituteData();
+        $examTerm = InstituteExamTermsModel::all();
+        return view('admin.students.indexSeatSticker', array_merge($data, compact('users', 'examTerm')));
+    }
+
+    // Seat Sticker Print =======================================
+    public function printStudentsSeatSticker(Request $request)
+    {
+        $request->validate([
+            'user_ids' => 'required|array',
+            'user_ids.*' => 'exists:users,id'
+        ]);
+
+        $users = User::whereIn('id', $request->user_ids)->get();
+        $exam_terms = $request->input('exam_terms');
+
+        // Split users into chunks of 8 for A4 pages
+        // $userChunks = $users->chunk(8);
+
+        // $pdf = Pdf::loadView('users.admit-card', compact('userChunks'));
+        // $pdf->setPaper('a4', 'portrait');
+
+        // return $pdf->download('admit-cards-' . date('Y-m-d') . '.pdf');
+        return view('admin.students.printSeatSticker', compact('users','exam_terms'));
+    }
+
+
 
 }

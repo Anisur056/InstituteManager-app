@@ -1,6 +1,6 @@
 @extends('admin.themes.main')
 
-@section('page-title') Admit Card Generate @endsection
+@section('page-title') Sead Sticker Generate @endsection
 
 @section('css')
     <!-- Datatable -->
@@ -32,7 +32,7 @@
         <div class="card h-100 rounded-15 mb-3">
             <div class="card-header d-flex gap-3 align-items-center justify-content-between">
                 <h5 class="m-0 fs-18 fw-semi-bold text-success">
-                    Admit Card |Filter Records
+                    Seat Sticker | Filter Records
                 </h5>
                 <div class="text-end">
                     <div class="actions">
@@ -52,7 +52,7 @@
                                         class="accordion-collapse collapse show bg-white pb-4"
                                         aria-labelledby="flush-headingOne"
                                         data-bs-parent="#accordionFlushExample">
-                                    <form action="{{ route('index.admit.card') }}" method="GET">
+                                    <form action="{{ route('index.seat.sticker') }}" method="GET">
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label for="exam_terms" class="col-form-label">Exam Terms:</label> <span class="text-danger">Required</span>
@@ -170,7 +170,7 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <form id="admitCardForm" action="{{ route('print.admit.card') }}" method="POST">
+                    <form id="admitCardForm" action="{{ route('print.seat.sticker') }}" method="POST">
                         @csrf
                         <input type="hidden" name="exam_terms" value="{{ request('exam_terms') }}">
                         <div class="m-2">
@@ -258,7 +258,7 @@
         @else
             <div class="card h-100 rounded-15">
                 <div class="card-body">
-                    No users found For Admit Card Generate. Please Filter Form List
+                    No users found For Seat Sticker Generate. Please Filter Form List
                 </div>
             </div>
         @endif

@@ -48,7 +48,8 @@
                         href="{{ route('index.admit.card') }}">Admit Card</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Seat Sticker</a>
+                    <a class="nav-link @if(Route::is('index.seat.sticker')) active @endif"
+                        href="{{ route('index.seat.sticker') }}">Seat Sticker</a>
                 </li>
             </ul>
         </div>

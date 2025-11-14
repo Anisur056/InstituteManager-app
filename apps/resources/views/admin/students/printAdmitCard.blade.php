@@ -112,7 +112,7 @@
                     {{-- Card Title --}}
                     <div class="row">
                         <span class="bg-success text-white text-center mt-2"><b class="fs-4">ADMIT CARD</b></span>
-                        <span class="text-dark fs-5 text-center"><b class="fs-5">FINAL YEAR EXAM-2025</b></span>
+                        <span class="text-dark fs-5 text-center"><b class="fs-5">{{ $exam_terms }}-{{ now()->year }}</b></span>
                     </div>
 
                     <div class="row mt-2">
