@@ -14,8 +14,8 @@ class InstituteDivisionSeeder extends Seeder
 
         $records = collect([
             [
-            'name_en' => 'General Division',
-            'name_bn' => 'সাধারণ বিভাগ',
+            'name_en' => 'Kindergarten Division',
+            'name_bn' => 'কিন্ডারগার্টেন বিভাগ',
             'display_order' => 1,
             'created_at' => now(),
             'updated_at' => now(),

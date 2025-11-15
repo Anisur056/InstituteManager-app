@@ -359,13 +359,7 @@ class UserStudentController extends Controller
         $users = User::whereIn('id', $request->user_ids)->get();
         $exam_terms = $request->input('exam_terms');
 
-        // Split users into chunks of 8 for A4 pages
-        // $userChunks = $users->chunk(8);
-
-        // $pdf = Pdf::loadView('users.admit-card', compact('userChunks'));
-        // $pdf->setPaper('a4', 'portrait');
-
-        // return $pdf->download('admit-cards-' . date('Y-m-d') . '.pdf');
+        
         return view('admin.students.printSeatSticker', compact('users','exam_terms'));
     }
 
