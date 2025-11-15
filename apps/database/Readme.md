@@ -1,28 +1,47 @@
 # All Migration Atrisan Command
 
-### Drops all table, Creates all table, Seeds all table
+### Displays the status of each migration
+```
+php artisan migrate:status
+```
+
+### Creates, Seeds all table
+```
+php artisan migrate --seed
+```
+
+### Drops, Creates, Seeds all table
 ```
 php artisan migrate:fresh --seed
 ```
 
-### Drop a table, Create a table by path
+### Create Single table by path
 ```
-php artisan migrate:fresh --path=/database/migrations/2025_01_users.php
+php artisan migrate --path=/database/migrations/2025_01_users.php
+```
+
+### Drop Single table by path
+```
+php artisan migrate:rollback --path=/database/migrations/2025_01_users.php
 ```
 
 ### Seed data from specific Seeder file.
 ```
-php artisan db:seed --class=YourSpecificSeeder
+php artisan db:seed --class=UsersSeeder
+php artisan db:seed --class=UsersStudentsSeeder
+```
+
+
+
+# Extra Command ===========
+### Drops all table, Create a table by path
+```
+php artisan migrate:fresh --path=/database/migrations/2025_01_users.php
 ```
 
 ### Create all tabless
 ```
 php artisan migrate
-```
-
-### Create all table, Seed all table
-```
-php artisan migrate --seed
 ```
 
 ### Delete last branch magrations Table
@@ -34,9 +53,3 @@ php artisan migrate:rollback
 ```
 php artisan migrate:rollback --step=1
 ```
-
-### Displays the status of each migration
-```
-php artisan migrate:status
-```
-

@@ -37,8 +37,8 @@ class DatabaseSeeder extends Seeder
             UsersStudentsSeeder::class,
             UsersSeeder::class,
             UsersTeachersSeeder::class,
-            UserFileUploadsSeeder::class, // No Preset Data available
-            UserAttendanceLogsSeeder::class, // No Preset Data available
+            UserFileUploadsSeeder::class, // No Data available
+            UserAttendanceLogsSeeder::class, // No Data available
 
             InstituteAcademicYearsSeeder::class,
             InstituteInfoSeeder::class,
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             InstituteDivisionSeeder::class,
             InstituteShiftsSeeder::class,
             InstituteClassesSeeder::class,
-            InstituteSectionsSeeder::class, // No Preset Data available
+            InstituteSectionsSeeder::class, // No Data available
             InstituteGroupsSeeder::class,
             InstituteSubjectSeeder::class,
             InstituteExamTermsSeeder::class,
