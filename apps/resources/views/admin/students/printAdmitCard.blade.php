@@ -115,7 +115,7 @@
                                 </div>
                                 {{-- QR Code --}}
                                 <div class="col-3 d-flex flex-column align-items-end">
-                                    <span class="qrcode-container" id="qrcode-{{ $user->roll }}"></span>
+                                    <span class="qrcode-container" id="qrcode-{{ $user->id }}"></span>
                                 </div>
                             </div>
 
@@ -348,7 +348,7 @@
             // Loop through all user data to generate a QR code for each card.
             usersData.forEach(user => {
                 // Get the unique element ID for this user's QR code container.
-                const qrcodeElement = document.getElementById(`qrcode-${user.roll}`);
+                const qrcodeElement = document.getElementById(`qrcode-${user.id}`);
 
                 // Check if the container element exists before trying to create the QR code.
                 if (qrcodeElement) {

@@ -67,12 +67,34 @@
                             {{-- Logo, Institute name --}}
                             <div class="col-12 d-flex justify-content-center align-items-center p-2">
                                 <div class="col-3 text-end pe-3">
-                                    <img src="{{ asset('assets/admin/img/institutes/logo-1.png') }}"
-                                            width="50px" height="auto">
+                                    @switch($user->institute_name)
+                                        @case('Sirikotia Hafezia Nurani Model Madrasha')
+                                            <img src="{{ asset('assets/admin/img/institutes/logo-1.png') }}"
+                                                width="50px" height="auto">
+                                            @break
+                                        @case('AMN Islamia Madrasha')
+                                            <img src="{{ asset('assets/admin/img/institutes/logo-2.png') }}"
+                                                width="50px" height="auto">
+                                            @break
+                                        @default
+
+                                    @endswitch
                                 </div>
                                 <div class="col-9">
-                                    <img src="{{ asset('assets/admin/img/institutes/title-header-1.png') }}"
-                                            width="250px" height="auto">
+                                    @switch($user->institute_name)
+                                        @case('Sirikotia Hafezia Nurani Model Madrasha')
+                                            <img src="{{ asset('assets/admin/img/institutes/title-header-1.png') }}"
+                                                width="250px" height="auto">
+                                            @break
+                                        @case('AMN Islamia Madrasha')
+                                            <img src="{{ asset('assets/admin/img/institutes/title-header-2.png') }}"
+                                                width="250px" height="auto">
+                                            @break
+                                        @default
+
+                                    @endswitch
+
+
                                 </div>
                             </div>
 
