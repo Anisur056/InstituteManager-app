@@ -84,19 +84,41 @@
                             {{-- Logo, title-header, pic --}}
                             <div class="col-12 d-flex flex-row p-3">
                                 <div class="col-3 d-flex flex-column align-items-start">
-                                    <img src="{{ asset('assets/admin/img/institutes/logo-1.png') }}"
-                                            width="100px" height="auto">
+                                    @switch($user->institute_name)
+                                        @case('Sirikotia Hafezia Nurani Model Madrasha')
+                                            <img src="{{ asset('assets/admin/img/institutes/logo-1.png') }}"
+                                                    width="100px" height="auto">
+                                            @break
+                                        @case('AMN Islamia Madrasha')
+                                            <img src="{{ asset('assets/admin/img/institutes/logo-2.png') }}"
+                                                    width="100px" height="auto">
+                                            @break
+                                        @default
+
+                                    @endswitch
                                 </div>
                                 <div class="col-6 d-flex flex-column align-items-start">
-                                    <img src="{{ asset('assets/admin/img/institutes/title-header-1.png') }}"
-                                            width="400px" height="auto">
+                                    @switch($user->institute_name)
+                                        @case('Sirikotia Hafezia Nurani Model Madrasha')
+                                            <img src="{{ asset('assets/admin/img/institutes/title-header-1.png') }}"
+                                                width="400px" height="auto">
+                                            @break
+                                        @case('AMN Islamia Madrasha')
+                                            <img src="{{ asset('assets/admin/img/institutes/title-header-2.png') }}"
+                                                    width="400px" height="auto">
+                                            @break
+                                        @default
+
+                                    @endswitch
+
+
                                 </div>
                                 {{-- QR Code --}}
                                 <div class="col-3 d-flex flex-column align-items-end">
                                     <span class="qrcode-container" id="qrcode-{{ $user->roll }}"></span>
                                 </div>
                             </div>
-                            
+
                             {{-- Admit Card Title --}}
                             <div class="col-12 d-flex flex-column">
                                 <span class="bg-success text-white text-center mt-2"><b class="fs-4">ADMIT CARD</b></span>
@@ -113,7 +135,7 @@
                                                 <th>Name: </th>
                                                 <th>{{ $user->name }}</th>
                                                 <th>Father: </th>
-                                                <th>{{ $user->father_name }}</th>
+                                                <th>{{ $user->father_name_en }}</th>
                                             </tr>
                                             <tr>
                                                 <th>Roll: </th>
@@ -137,7 +159,7 @@
                                                 <th>Group: </th>
                                                 <td>{{ $user->group }}</td>
                                             </tr>
-    
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -147,7 +169,7 @@
                                 </div>
                             </div>
 
-                            
+
 
                             {{-- Exam Rutine Table --}}
                             <div class="col-12 mt-2">
@@ -155,63 +177,84 @@
                                     $jsonData = file_get_contents(resource_path('views/admin/students/printAdmitCardData.json'));
                                     $examData = json_decode($jsonData, true);
                                     $exams = $examData[$user->class] ?? [];
-                                    
-                                    // Split the exams array into two halves
+
+                                    // Split the exams array into three parts
                                     $totalExams = count($exams);
-                                    $midpoint = ceil($totalExams / 2);
-                                    $leftExams = array_slice($exams, 0, $midpoint);
-                                    $rightExams = array_slice($exams, $midpoint);
+                                    $chunkSize = ceil($totalExams / 3);
+                                    $firstColumn = array_slice($exams, 0, $chunkSize);
+                                    $secondColumn = array_slice($exams, $chunkSize, $chunkSize);
+                                    $thirdColumn = array_slice($exams, $chunkSize * 2);
                                 @endphp
-                                
-                                <span class="ms-2"><b>Exam Rutine: </b></span>
-                                
-                                <div class="row">
-                                    <!-- Left Column -->
-                                    <div class="col-6">
+
+                                <span class="ms-2"><b>পরীক্ষার রুটিন: </b></span>
+
+                                <div class="row p-2">
+                                    <!-- First Column -->
+                                    <div class="col-4">
                                         <table class="table table-striped table-sm table-bordered">
                                             <tbody>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Exam Subject</th>
-                                                    <th>Exam Date</th>
-                                                    <th>Exam Time</th>
+                                                    <th>পরীক্ষার বিষয়</th>
+                                                    <th>পরীক্ষার তারিখ</th>
                                                 </tr>
-                                                @forelse($leftExams as $exam)
+                                                @forelse($firstColumn as $exam)
                                                     <tr>
                                                         <td>{{ $exam['id'] }}</td>
                                                         <td>{{ $exam['subject'] }}</td>
                                                         <td>{{ $exam['date'] }}</td>
-                                                        <td>09:00 AM</td>
                                                     </tr>
                                                 @empty
                                                     <tr>
-                                                        <td colspan="4" class="text-center">No exam routine found for your class.</td>
+                                                        <td colspan="3" class="text-center">No exam routine found for your class.</td>
                                                     </tr>
                                                 @endforelse
                                             </tbody>
                                         </table>
                                     </div>
-                                    
-                                    <!-- Right Column -->
-                                    <div class="col-6">
+
+                                    <!-- Second Column -->
+                                    <div class="col-4">
                                         <table class="table table-striped table-sm table-bordered">
                                             <tbody>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Exam Subject</th>
-                                                    <th>Exam Date</th>
-                                                    <th>Exam Time</th>
+                                                    <th>পরীক্ষার বিষয়</th>
+                                                    <th>পরীক্ষার তারিখ</th>
                                                 </tr>
-                                                @forelse($rightExams as $exam)
+                                                @forelse($secondColumn as $exam)
                                                     <tr>
                                                         <td>{{ $exam['id'] }}</td>
                                                         <td>{{ $exam['subject'] }}</td>
                                                         <td>{{ $exam['date'] }}</td>
-                                                        <td>09:00 AM</td>
                                                     </tr>
                                                 @empty
                                                     <tr>
-                                                        <td colspan="4" class="text-center">&nbsp;</td>
+                                                        <td colspan="3" class="text-center">&nbsp;</td>
+                                                    </tr>
+                                                @endforelse
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!-- Third Column -->
+                                    <div class="col-4">
+                                        <table class="table table-striped table-sm table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>পরীক্ষার বিষয়</th>
+                                                    <th>পরীক্ষার তারিখ</th>
+                                                </tr>
+                                                @forelse($thirdColumn as $exam)
+                                                    <tr>
+                                                        <td>{{ $exam['id'] }}</td>
+                                                        <td>{{ $exam['subject'] }}</td>
+                                                        <td>{{ $exam['date'] }}</td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="3" class="text-center">&nbsp;</td>
                                                     </tr>
                                                 @endforelse
                                             </tbody>
@@ -229,7 +272,7 @@
                                     <p><b>পরিচয়:</b> আপনার এডমিট কার্ড বা পরিচয়পত্র সাথে রাখুন</p>
                                     <p><b>ড্রেস:</b> নির্ধারিত ড্রেস রুল মেনে চলুন।</p>
                                     <p><b>নিষিদ্ধ জিনিসপত্র:</b> ব্যাগ, মোবাইল, স্মার্টওয়াচ ইত্যাদি জিনিসপত্র নিষিদ্ধ।</p>
-                                    <p><b>স্টেশনারি:</b> শুধুমাত্র কলম, পেন্সিল, স্কেল এবং ইরেজার একটি পরিষ্কার স্বচ্ছ বাক্সে আনুন।</p>   
+                                    <p><b>স্টেশনারি:</b> শুধুমাত্র কলম, পেন্সিল, স্কেল এবং ইরেজার একটি পরিষ্কার স্বচ্ছ বাক্সে আনুন।</p>
                                 </div>
                                 <div class="col-4 p-2 border border-2 border-danger rounded-2" style="text-align: justify">
                                     <span><b class="text-center d-block">পরিক্ষায় সময় করণীয়:</b></span>

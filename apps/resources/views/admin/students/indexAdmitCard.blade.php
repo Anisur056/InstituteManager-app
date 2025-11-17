@@ -210,7 +210,7 @@
                                         <td data-label="Information:- " >
                                             Name: {{$data->name}}<br>
                                             নাম: {{$data->name_bn}} <br>
-                                            পিতা: {{$data->father_name}} <br>
+                                            পিতা: {{$data->father_name_en}} <br>
                                             {{$data->institute_name}} <br>
                                             Branch: {{$data->branch}} <br>
                                             Division: {{$data->division}} <br>

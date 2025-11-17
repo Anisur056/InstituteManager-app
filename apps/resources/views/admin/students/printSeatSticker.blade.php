@@ -91,7 +91,7 @@
                                         </tr>
                                         <tr>
                                             <td>Father: </td>
-                                            <td><b>{{ $user->father_name }}</b></td>
+                                            <td><b>{{ $user->father_name_en }}</b></td>
                                         </tr>
                                         <tr>
                                             <td>Division: </td>
