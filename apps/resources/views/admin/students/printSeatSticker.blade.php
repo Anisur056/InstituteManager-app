@@ -43,11 +43,6 @@
                 .a4-sheet { box-shadow: none; border: none; }
             }
 
-            .sticker {
-                border: 1px solid #000;
-                border-radius: 8px;
-            }
-
         </style>
     </head>
     <body>
@@ -64,20 +59,20 @@
         {{-- Loop through each a4-sheet (chunk/groups of 8) --}}
         @foreach($users->chunk(8) as $page)
             <div class="a4-sheet">
-                <div class="row g-4">
+                <div class="row g-3">
                     @foreach($page as $user)
                     {{-- Each sticker occupies col-6 (2 per row) --}}
                     <div class="col-6">
-                        <div class="sticker">
+                        <div class="sticker border border-2 border-success rounded-2">
                             {{-- Logo, Institute name --}}
                             <div class="col-12 d-flex justify-content-center align-items-center p-2">
-                                <div class="col-3 text-center">
+                                <div class="col-3 text-end pe-3">
                                     <img src="{{ asset('assets/admin/img/institutes/logo-1.png') }}"
                                             width="50px" height="auto">
                                 </div>
-                                <div class="col-9 text-center">
+                                <div class="col-9">
                                     <img src="{{ asset('assets/admin/img/institutes/title-header-1.png') }}"
-                                            width="200px" height="auto">
+                                            width="250px" height="auto">
                                 </div>
                             </div>
 
@@ -123,7 +118,7 @@
                                     </div>
                                 </div>
                                 <div class="col-4 d-flex align-items-center">
-                                    <div class="col-12 text-center">
+                                    <div class="col-12 text-center border border-2 border-success rounded-2">
                                         <div class="col-12">Roll</div>
                                         <div class="col-12"><b class="fs-3">{{ $user->roll }}</b></div>
                                     </div>

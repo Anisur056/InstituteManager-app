@@ -7,6 +7,7 @@
         <link rel="shortcut icon" href="{{ asset('assets/admin/img/logo/favicon.png') }}">
 
         <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
+        <link href="https://fonts.googleapis.com/css2?family=Noto" rel="stylesheet">
         <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet">
         <style>
             *{
@@ -15,6 +16,13 @@
                 font-size: 10pt;
                 margin: 0;
                 padding: 0;
+            }
+
+            .bangla{
+                font-family: "Noto", serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
             }
 
             /* A4 page rules for print */
@@ -96,44 +104,50 @@
                             </div>
 
                             {{-- Examinee Details --}}
-                            <div class="col-12 mt-2">
-                                <span class="ms-2"><b>Examinee Details: </b></span>
-                                <table class="table table-striped table-sm table-bordered">
-                                    <tbody>
-                                        <tr>
-                                            <th>Name: </th>
-                                            <th>{{ $user->name }}</th>
-                                            <th>Father: </th>
-                                            <th>{{ $user->father_name }}</th>
-                                        </tr>
-                                        <tr>
-                                            <th>Roll: </th>
-                                            <td><b>{{ $user->roll }}</b></td>
-                                            <th>Branch: </th>
-                                            <td>{{ $user->branch }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Division: </th>
-                                            <td>{{ $user->division }}</td>
-                                            <th>Shift: </th>
-                                            <td>{{ $user->shift }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Class: </th>
-                                            <td>{{ $user->class }}</td>
-                                            <th>Section: </th>
-                                            <td>{{ $user->section }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Group: </th>
-                                            <td>{{ $user->group }}</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
+                            <div class="col-12 d-flex flex-row align-items-center mt-2">
+                                <div class="col-9">
+                                    <span class="ms-2"><b>Examinee Details: </b></span>
+                                    <table class="table table-striped table-sm table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <th>Name: </th>
+                                                <th>{{ $user->name }}</th>
+                                                <th>Father: </th>
+                                                <th>{{ $user->father_name }}</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Roll: </th>
+                                                <td><b>{{ $user->roll }}</b></td>
+                                                <th>Branch: </th>
+                                                <td>{{ $user->branch }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Division: </th>
+                                                <td>{{ $user->division }}</td>
+                                                <th>Shift: </th>
+                                                <td>{{ $user->shift }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Class: </th>
+                                                <td>{{ $user->class }}</td>
+                                                <th>Section: </th>
+                                                <td>{{ $user->section }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Group: </th>
+                                                <td>{{ $user->group }}</td>
+                                            </tr>
+    
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-3 ps-3">
+                                    <img class="rounded-3 border border-success border-2" src="{{ asset('assets/'.$user->profile_pic) }}"
+                                            width="90%" height="auto">
+                                </div>
                             </div>
 
-                            <p class="text-center"><b>{{ $user->name }}, Roll-{{ $user->roll }}</b>- is allowed to appear in the term of <b>FINAL YEAR EXAM-2025</b> .</p>
+                            
 
                             {{-- Exam Rutine Table --}}
                             <div class="col-12 mt-2">
@@ -207,10 +221,29 @@
                             </div>
 
                             {{-- Rules Exam Note --}}
-                            <div class="container-fluid p-2 text-danger">
-                                <p class="m-0"># Examinee must bring this card in the examination hall. Arrive at least 30 minutes before the exam time.</p>
-                                <p class="m-0"># Examinee must bring their own Pen(black or blue ink only allowed), Scale(plastic only allowed), Pencil, Eraser.</p>
-                                <p class="m-0"># Do not bring any unauthorised material (e.g. written notes, books, paper and sticky tape eraser).</p>
+                            <span><b class="text-danger text-center d-block">পরিক্ষায় করণীয় নির্দেশনাসমূহ:</b></span>
+                            <div class="col-12 d-flex flex-row p-2">
+                                <div class="col-4 p-2 border border-2 border-danger rounded-2" style="text-align: justify">
+                                    <span><b class="text-center d-block">পরিক্ষায় পূর্বে করণীয়:</b></span>
+                                    <p><b>সময়ানুবর্তিতা:</b>পরীক্ষা শুধুর ৩০ মিনিট আগে হলে প্রবেশ করুন এবং নিজ আসনে বসুন।</p>
+                                    <p><b>পরিচয়:</b> আপনার এডমিট কার্ড বা পরিচয়পত্র সাথে রাখুন</p>
+                                    <p><b>ড্রেস:</b> নির্ধারিত ড্রেস রুল মেনে চলুন।</p>
+                                    <p><b>নিষিদ্ধ জিনিসপত্র:</b> ব্যাগ, মোবাইল, স্মার্টওয়াচ ইত্যাদি জিনিসপত্র নিষিদ্ধ।</p>
+                                    <p><b>স্টেশনারি:</b> শুধুমাত্র কলম, পেন্সিল, স্কেল এবং ইরেজার একটি পরিষ্কার স্বচ্ছ বাক্সে আনুন।</p>   
+                                </div>
+                                <div class="col-4 p-2 border border-2 border-danger rounded-2" style="text-align: justify">
+                                    <span><b class="text-center d-block">পরিক্ষায় সময় করণীয়:</b></span>
+                                    <p><b>নিরবতা: </b>পরীক্ষার হলে নীরবতা বজায় রাখুন। </p>
+                                    <p><b>নির্দেশাবলী: </b>পরিদর্শকের সমস্ত নির্দেশাবলী মনোযোগ সহকারে অনুসরণ করুন।</p>
+                                    <p><b>ধার নেওয়া যাবে না: </b>কলম, পেন্সিল, স্কেল এবং ইরেজার, অন্যান্য শিক্ষার্থীদের কাছ থেকে ধার করবেন না।</p>
+                                    <p><b>অন্যায্য উপায়ে নয়: </b>নকল উপায় অবলম্বন বা অন্যদের কাছ থেকে দেখে লেখা নিষিদ্ধ। এতে বহিষ্কার হওয়ার সম্ভাবনা রয়েছে।</p>
+                                </div>
+                                <div class="col-4 p-2 border border-2 border-danger rounded-2" style="text-align: justify">
+                                    <span><b class="text-center d-block">পরিক্ষায় পর করণীয়:</b></span>
+                                    <p><b>লেখা বন্ধ করুন: </b>পরীক্ষা সমাপ্তি ঘোষণা করলে অবিলম্বে লেখা বন্ধ করুন।</p>
+                                    <p><b>উত্তরপত্র হস্তান্তর: </b>পরীক্ষা সমাপ্তি হলে উত্তরপত্র আপনার ডেস্কে রাখুন।</p>
+                                    <p><b>প্রস্থান: </b>পরিদর্শক হল প্রস্থান করতে বললে নিয়ম অনুসরণ করে হল প্রস্তান করুন।</p>
+                                </div>
                             </div>
 
                             {{-- Signatures --}}
