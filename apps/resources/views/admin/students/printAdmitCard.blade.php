@@ -172,7 +172,7 @@
 
 
                             {{-- Exam Rutine Table --}}
-                            <div class="col-12 mt-2">
+                            {{-- <div class="col-12 mt-2">
                                 @php
                                     $jsonData = file_get_contents(resource_path('views/admin/students/printAdmitCardData.json'));
                                     $examData = json_decode($jsonData, true);
@@ -261,31 +261,38 @@
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- Rules Exam Note --}}
-                            <span><b class="text-danger text-center d-block">পরিক্ষায় করণীয় নির্দেশনাসমূহ:</b></span>
+                            <span><b class="text-danger text-center d-block bangla">পরিক্ষায় করণীয় নির্দেশনাসমূহ:</b></span>
+                            {{-- <div class="col-12 d-flex flex-row p-2"> --}}
                             <div class="col-12 d-flex flex-row p-2">
-                                <div class="col-4 p-2 border border-2 border-danger rounded-2" style="text-align: justify">
-                                    <span><b class="text-center d-block">পরিক্ষায় পূর্বে করণীয়:</b></span>
-                                    <p><b>সময়ানুবর্তিতা:</b>পরীক্ষা শুধুর ৩০ মিনিট আগে হলে প্রবেশ করুন এবং নিজ আসনে বসুন।</p>
-                                    <p><b>পরিচয়:</b> আপনার এডমিট কার্ড বা পরিচয়পত্র সাথে রাখুন</p>
-                                    <p><b>ড্রেস:</b> নির্ধারিত ড্রেস রুল মেনে চলুন।</p>
-                                    <p><b>নিষিদ্ধ জিনিসপত্র:</b> ব্যাগ, মোবাইল, স্মার্টওয়াচ ইত্যাদি জিনিসপত্র নিষিদ্ধ।</p>
-                                    <p><b>স্টেশনারি:</b> শুধুমাত্র কলম, পেন্সিল, স্কেল এবং ইরেজার একটি পরিষ্কার স্বচ্ছ বাক্সে আনুন।</p>
+                                <div class="col-4 border border-1 border-dark rounded-2">
+                                    <span class="text-center d-block fw-bold bg-danger text-white p-1 mb-2 ">পরিক্ষার পূর্বে করণীয়:</span>
+                                    <div class="p-2">
+                                        <p><b class="text-decoration-underline">সময়ানুবর্তিতা:</b>পরীক্ষা শুধুর ৩০ মিনিট আগে হলে প্রবেশ করুন এবং নিজ আসনে বসুন।</p>
+                                        <p><b class="text-decoration-underline">পরিচয়:</b> আপনার এডমিট কার্ড বা পরিচয়পত্র সাথে রাখুন।</p>
+                                        <p><b class="text-decoration-underline">ড্রেস:</b> নির্ধারিত ড্রেস কোর্ড মেনে চলুন।</p>
+                                        <p><b class="text-decoration-underline">নিষিদ্ধ জিনিসপত্র:</b> ব্যাগ, মোবাইল, স্মার্টওয়াচ ইত্যাদি জিনিসপত্র নিষিদ্ধ।</p>
+                                        <p><b class="text-decoration-underline">স্টেশনারি:</b> শুধুমাত্র কলম, পেন্সিল, স্কেল এবং ইরেজার একটি পরিষ্কার স্বচ্ছ ফাইলে আনুন।</p>
+                                    </div>
                                 </div>
-                                <div class="col-4 p-2 border border-2 border-danger rounded-2" style="text-align: justify">
-                                    <span><b class="text-center d-block">পরিক্ষায় সময় করণীয়:</b></span>
-                                    <p><b>নিরবতা: </b>পরীক্ষার হলে নীরবতা বজায় রাখুন। </p>
-                                    <p><b>নির্দেশাবলী: </b>পরিদর্শকের সমস্ত নির্দেশাবলী মনোযোগ সহকারে অনুসরণ করুন।</p>
-                                    <p><b>ধার নেওয়া যাবে না: </b>কলম, পেন্সিল, স্কেল এবং ইরেজার, অন্যান্য শিক্ষার্থীদের কাছ থেকে ধার করবেন না।</p>
-                                    <p><b>অন্যায্য উপায়ে নয়: </b>নকল উপায় অবলম্বন বা অন্যদের কাছ থেকে দেখে লেখা নিষিদ্ধ। এতে বহিষ্কার হওয়ার সম্ভাবনা রয়েছে।</p>
+                                <div class="col-4 border border-1 border-dark rounded-2">
+                                    <span><b class="text-center d-block fw-bold bg-danger text-white p-1 mb-2">পরিক্ষার সময় করণীয়:</b></span>
+                                    <div class="p-2">
+                                        <p><b class="text-decoration-underline">নিরবতা: </b>পরীক্ষার হলে নীরবতা বজায় রাখুন। </p>
+                                        <p><b class="text-decoration-underline">নির্দেশাবলী: </b>পরীক্ষকের সমস্ত নির্দেশাবলী মনোযোগ সহকারে অনুসরণ করুন।</p>
+                                        <p><b class="text-decoration-underline">ধার নেওয়া যাবে না: </b>কলম, পেন্সিল, স্কেল এবং ইরেজার, অন্যান্য শিক্ষার্থীদের কাছ থেকে ধার করবেন না।</p>
+                                        <p><b class="text-decoration-underline">অন্যায্য উপায়ে নয়: </b>নকল উপায় অবলম্বন বা অন্যদের কাছ থেকে দেখে লেখা নিষিদ্ধ। এতে বহিষ্কার হওয়ার সম্ভাবনা রয়েছে।</p>
+                                    </div>
                                 </div>
-                                <div class="col-4 p-2 border border-2 border-danger rounded-2" style="text-align: justify">
-                                    <span><b class="text-center d-block">পরিক্ষায় পর করণীয়:</b></span>
-                                    <p><b>লেখা বন্ধ করুন: </b>পরীক্ষা সমাপ্তি ঘোষণা করলে অবিলম্বে লেখা বন্ধ করুন।</p>
-                                    <p><b>উত্তরপত্র হস্তান্তর: </b>পরীক্ষা সমাপ্তি হলে উত্তরপত্র আপনার ডেস্কে রাখুন।</p>
-                                    <p><b>প্রস্থান: </b>পরিদর্শক হল প্রস্থান করতে বললে নিয়ম অনুসরণ করে হল প্রস্তান করুন।</p>
+                                <div class="col-4 border border-1 border-dark rounded-2">
+                                    <span><b class="text-center d-block fw-bold bg-danger text-white p-1 mb-2">পরিক্ষার পর করণীয়:</b></span>
+                                    <div class="p-2">
+                                        <p><b class="text-decoration-underline">লেখা বন্ধ করুন: </b>পরীক্ষা সমাপ্তি ঘোষণা করলে অবিলম্বে লেখা বন্ধ করুন।</p>
+                                        <p><b class="text-decoration-underline">উত্তরপত্র হস্তান্তর: </b>পরীক্ষা সমাপ্তি হলে উত্তরপত্র আপনার ডেস্কে রাখুন।</p>
+                                        <p><b class="text-decoration-underline">প্রস্থান: </b>পরিদর্শক হল প্রস্থান করতে বললে নিয়ম অনুসরণ করে হল প্রস্তান করুন।</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -312,8 +319,20 @@
 
                                 </div>
                                 <div class="col-4 text-center d-flex flex-column align-items-center justify-content-end">
-                                    <img src="{{ asset($signaturePath) }}"
-                                            width="150px" height="auto">
+
+                                    @switch($user->institute_name)
+                                        @case('Sirikotia Hafezia Nurani Model Madrasha')
+                                            <img src="{{ asset($signaturePath) }}"
+                                                width="150px" height="auto">
+                                            @break
+                                        @case('AMN Islamia Madrasha')
+                                            
+                                            @break
+                                        @default
+
+                                    @endswitch
+
+                                    
                                 </div>
                             </div>
                             <div class="row">
