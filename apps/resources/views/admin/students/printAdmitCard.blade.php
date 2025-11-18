@@ -312,14 +312,25 @@
 
                             <div class="row mt-3">
                                 <div class="col-4 text-center d-flex flex-column align-items-center justify-content-end">
-                                    <img src="{{ asset('assets/admin/img/signature/rofiqual-principal-seal.png') }}"
-                                            width="150px" height="auto">
+                                    @switch($user->institute_name)
+                                        @case('Sirikotia Hafezia Nurani Model Madrasha')
+                                            <img src="{{ asset('assets/admin/img/signature/rofiqual-principal-seal-1.png') }}"
+                                                width="150px" height="auto">
+                                            @break
+                                        @case('AMN Islamia Madrasha')
+                                            <img src="{{ asset('assets/admin/img/signature/rofiqual-principal-seal-2.png') }}"
+                                                width="150px" height="auto">
+                                            @break
+                                        @default
+
+                                    @endswitch
+
+                                    
                                 </div>
                                 <div class=" col-4 text-center d-flex flex-column align-items-center justify-content-end">
 
                                 </div>
                                 <div class="col-4 text-center d-flex flex-column align-items-center justify-content-end">
-
                                     @switch($user->institute_name)
                                         @case('Sirikotia Hafezia Nurani Model Madrasha')
                                             <img src="{{ asset($signaturePath) }}"
@@ -330,9 +341,7 @@
                                             @break
                                         @default
 
-                                    @endswitch
-
-                                    
+                                    @endswitch                                    
                                 </div>
                             </div>
                             <div class="row">
