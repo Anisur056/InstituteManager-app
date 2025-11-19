@@ -119,6 +119,9 @@
                                 </div>
                             </div>
 
+                            {{-- Exam Center --}}
+                            <span class="text-center text-white d-block bg-success py-1"><b>পরীক্ষার কেন্দ্র: ক্যাম্পাস-১ : হাজী দরবেশ আলী চৌধুরী বাড়ী, বিশ্বাস পাড়া, কাট্টলী, আকবরশাহ, চট্টগ্রাম।</b></span>
+
                             {{-- Admit Card Title --}}
                             <div class="col-12 d-flex flex-column">
                                 <span class="bg-success text-white text-center mt-2"><b class="fs-4">ADMIT CARD</b></span>
@@ -172,7 +175,7 @@
 
 
                             {{-- Exam Rutine Table --}}
-                            {{-- <div class="col-12 mt-2">
+                            <div class="col-12 mt-2">
                                 @php
                                     $jsonData = file_get_contents(resource_path('views/admin/students/printAdmitCardData.json'));
                                     $examData = json_decode($jsonData, true);
@@ -186,7 +189,25 @@
                                     $thirdColumn = array_slice($exams, $chunkSize * 2);
                                 @endphp
 
-                                <span class="ms-2"><b>পরীক্ষার রুটিন: </b></span>
+                                <span class="text-center text-white d-block bangla bg-success py-1">
+
+                                    @php
+                                        $examTime = [
+                                            'Play' => '০৯:০০ থেকে ১০:৩০',
+                                            'Nursery' => '০৯:০০ থেকে ১০:৩০',
+                                            'One' => '০৯:০০ থেকে ১১:০০',
+                                            'Two' => '১১:০০ থেকে ০১:০০',
+                                            'Three' => '১১:০০ থেকে ০১:০০',
+                                            'Four' => '১১:০০ থেকে ০১:০০',
+                                        ];
+
+                                        $examTimeEcho = $examTime[$user->class] ?? 'প্রদান করা হয়নি';
+                                    @endphp
+
+
+                                    <b>পরীক্ষার রুটিন: পরীক্ষার শুরু সময়: ({{ $examTimeEcho }})  
+                                    </b>
+                                </span>
 
                                 <div class="row p-2">
                                     <!-- First Column -->
@@ -195,8 +216,8 @@
                                             <tbody>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>পরীক্ষার বিষয়</th>
-                                                    <th>পরীক্ষার তারিখ</th>
+                                                    <th>বিষয়</th>
+                                                    <th>তারিখ</th>
                                                 </tr>
                                                 @forelse($firstColumn as $exam)
                                                     <tr>
@@ -219,8 +240,8 @@
                                             <tbody>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>পরীক্ষার বিষয়</th>
-                                                    <th>পরীক্ষার তারিখ</th>
+                                                    <th>বিষয়</th>
+                                                    <th>তারিখ</th>
                                                 </tr>
                                                 @forelse($secondColumn as $exam)
                                                     <tr>
@@ -243,8 +264,8 @@
                                             <tbody>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>পরীক্ষার বিষয়</th>
-                                                    <th>পরীক্ষার তারিখ</th>
+                                                    <th>বিষয়</th>
+                                                    <th>তারিখ</th>
                                                 </tr>
                                                 @forelse($thirdColumn as $exam)
                                                     <tr>
@@ -261,7 +282,7 @@
                                         </table>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
 
                             {{-- Rules Exam Note --}}
                             <span><b class="text-danger text-center d-block bangla">পরিক্ষায় করণীয় নির্দেশনাসমূহ:</b></span>
@@ -300,10 +321,10 @@
                             @php
                                 $classTeachers = [
                                     'Play' => 'assets/admin/img/signature/habibur-rahman.png',
-                                    'Nursery' => 'assets/admin/img/signature/mohammad-sadrul-ula.png',
-                                    'One' => 'assets/admin/img/signature/nasrin-akhter.png',
-                                    'Two' => 'assets/admin/img/signature/rasheda-akhter.png',
-                                    'Three' => 'assets/admin/img/signature/rofiqual-principal.png',
+                                    'Nursery' => 'assets/admin/img/signature/rasheda-akhter.png',
+                                    'One' => 'assets/admin/img/signature/mohammad-sadrul-ula.png',
+                                    'Two' => 'assets/admin/img/signature/nasrin-akhter.png',
+                                    'Three' => 'assets/admin/img/signature/sufia-akhter-simi.png',
                                     'Four' => 'assets/admin/img/signature/sufia-akhter-simi.png',
                                 ];
 

@@ -56,6 +56,7 @@ class UserStudentController extends Controller
         if ($has_search_parameters) {
             // Only run the query if a search has been initiated (by providing at least one parameter)
             $users = User::where('role', 'student')
+                        ->where('status', 'active')
                         ->when($institute_name, function($query, $institute_name) {
                             return $query->where('institute_name', $institute_name);
                         })
@@ -248,6 +249,7 @@ class UserStudentController extends Controller
         if ($has_search_parameters) {
             // Only run the query if a search has been initiated (by providing at least one parameter)
             $users = User::where('role', 'student')
+                        ->where('status', 'active')
                         ->when($institute_name, function($query, $institute_name) {
                             return $query->where('institute_name', $institute_name);
                         })
@@ -319,6 +321,7 @@ class UserStudentController extends Controller
         if ($has_search_parameters) {
             // Only run the query if a search has been initiated (by providing at least one parameter)
             $users = User::where('role', 'student')
+                        ->where('status', 'active')
                         ->when($institute_name, function($query, $institute_name) {
                             return $query->where('institute_name', $institute_name);
                         })

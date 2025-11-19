@@ -118,7 +118,7 @@
                                         <tr>
                                             <td>Division: </td>
                                             <td><b>{{ $user->division }}</b></td>
-                                            <td>Group: </td>
+                                            <td class="ps-3">Group: </td>
                                             <td><b>{{ $user->group }}</b></td>
                                         </tr>
                                     </tbody>
