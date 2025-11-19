@@ -118,8 +118,8 @@
                                         <tr>
                                             <td>Division: </td>
                                             <td><b>{{ $user->division }}</b></td>
-                                            <td class="ps-3">Group: </td>
-                                            <td><b>{{ $user->group }}</b></td>
+                                            {{-- <td class="ps-3">Group: </td>
+                                            <td><b>{{ $user->group }}</b></td> --}}
                                         </tr>
                                     </tbody>
                                 </table>
@@ -127,19 +127,25 @@
 
                             {{-- Examinee Pic, Class, Roll --}}
                             <div class="col-12 p-2 d-flex flex-row justify-content-center">
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div class="col-12 text-start">
                                         <img src="{{ asset('assets/'.$user->profile_pic) }}"
                                             width="60px" height="auto">
                                     </div>
                                 </div>
-                                <div class="col-4 d-flex align-items-center">
+                                <div class="col-3 d-flex align-items-center">
                                     <div class="col-12 text-center">
-                                        <div class="col-12">Class</div>
-                                        <div class="col-12"><b class="fs-3">{{ $user->class }}</b></div>
+                                        <div class="col-12">Group</div>
+                                        <div class="col-12"><b class="fs-5">{{ $user->group }}</b></div>
                                     </div>
                                 </div>
-                                <div class="col-4 d-flex align-items-center">
+                                <div class="col-3 d-flex align-items-center">
+                                    <div class="col-12 text-center">
+                                        <div class="col-12">Class</div>
+                                        <div class="col-12"><b>{{ $user->class }}</b></div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center">
                                     <div class="col-12 text-center border border-2 border-success rounded-2">
                                         <div class="col-12">Roll</div>
                                         <div class="col-12"><b class="fs-3">{{ $user->roll }}</b></div>
