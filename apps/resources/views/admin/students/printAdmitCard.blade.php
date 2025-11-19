@@ -18,6 +18,10 @@
                 padding: 0;
             }
 
+            p {
+                margin-bottom: 0;
+            }
+
             .bangla{
                 font-family: "Noto", serif;
                 font-optical-sizing: auto;
@@ -32,7 +36,7 @@
             .a4-sheet {
                 width: 8.268in; /* A4 width */
                 height: 11.693in; /* A4 height */
-                padding: 0.3in;   /* internal margin (adjust) */
+                padding: 0.2in;   /* internal margin (adjust) */
                 margin: 0 auto;
                 border: 1px solid #ccc;
                 /* Visual aid for screen only; removed on print */
@@ -289,7 +293,7 @@
                             {{-- <div class="col-12 d-flex flex-row p-2"> --}}
                             <div class="col-12 d-flex flex-row p-2">
                                 <div class="col-4 border border-1 border-dark rounded-2">
-                                    <span class="text-center d-block fw-bold bg-danger text-white p-1 mb-2 ">পরিক্ষার পূর্বে করণীয়:</span>
+                                    <span class="text-center d-block fw-bold bg-danger text-white p-1 ">পরিক্ষার পূর্বে করণীয়:</span>
                                     <div class="p-2">
                                         <p><b class="text-decoration-underline">সময়ানুবর্তিতা:</b>পরীক্ষা শুধুর ৩০ মিনিট আগে হলে প্রবেশ করুন এবং নিজ আসনে বসুন।</p>
                                         <p><b class="text-decoration-underline">পরিচয়:</b> আপনার এডমিট কার্ড বা পরিচয়পত্র সাথে রাখুন।</p>
@@ -299,7 +303,7 @@
                                     </div>
                                 </div>
                                 <div class="col-4 border border-1 border-dark rounded-2">
-                                    <span><b class="text-center d-block fw-bold bg-danger text-white p-1 mb-2">পরিক্ষার সময় করণীয়:</b></span>
+                                    <span><b class="text-center d-block fw-bold bg-danger text-white p-1">পরিক্ষার সময় করণীয়:</b></span>
                                     <div class="p-2">
                                         <p><b class="text-decoration-underline">নিরবতা: </b>পরীক্ষার হলে নীরবতা বজায় রাখুন। </p>
                                         <p><b class="text-decoration-underline">নির্দেশাবলী: </b>পরীক্ষকের সমস্ত নির্দেশাবলী মনোযোগ সহকারে অনুসরণ করুন।</p>
@@ -308,7 +312,7 @@
                                     </div>
                                 </div>
                                 <div class="col-4 border border-1 border-dark rounded-2">
-                                    <span><b class="text-center d-block fw-bold bg-danger text-white p-1 mb-2">পরিক্ষার পর করণীয়:</b></span>
+                                    <span><b class="text-center d-block fw-bold bg-danger text-white p-1">পরিক্ষার পর করণীয়:</b></span>
                                     <div class="p-2">
                                         <p><b class="text-decoration-underline">লেখা বন্ধ করুন: </b>পরীক্ষা সমাপ্তি ঘোষণা করলে অবিলম্বে লেখা বন্ধ করুন।</p>
                                         <p><b class="text-decoration-underline">উত্তরপত্র হস্তান্তর: </b>পরীক্ষা সমাপ্তি হলে উত্তরপত্র আপনার ডেস্কে রাখুন।</p>
@@ -331,7 +335,7 @@
                                 $signaturePath = $classTeachers[$user->class] ?? 'assets/admin/img/signature/sample.jpg';
                             @endphp
 
-                            <div class="row mt-3">
+                            <div class="row mt-2">
                                 <div class="col-4 text-center d-flex flex-column align-items-center justify-content-end">
                                     @switch($user->institute_name)
                                         @case('Sirikotia Hafezia Nurani Model Madrasha')
