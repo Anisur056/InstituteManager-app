@@ -203,6 +203,9 @@
                                             'Two' => '১১:০০ থেকে ০১:০০',
                                             'Three' => '১১:০০ থেকে ০১:০০',
                                             'Four' => '১১:০০ থেকে ০১:০০',
+                                            'Hifz-One' => '১০:৩০ থেকে ১২:৩০',
+                                            'Hifz-Two' => '১০:৩০ থেকে ১২:৩০',
+                                            'Hifz-Three' => '১০:৩০ থেকে ১২:৩০',
                                         ];
 
                                         $examTimeEcho = $examTime[$user->class] ?? 'প্রদান করা হয়নি';
@@ -330,6 +333,9 @@
                                     'Two' => 'assets/admin/img/signature/nasrin-akhter.png',
                                     'Three' => 'assets/admin/img/signature/sufia-akhter-simi.png',
                                     'Four' => 'assets/admin/img/signature/sufia-akhter-simi.png',
+                                    'Hifz-One' => 'assets/admin/img/signature/nurun-nabi.png',
+                                    'Hifz-Two' => 'assets/admin/img/signature/nurun-nabi.png',
+                                    'Hifz-Three' => 'assets/admin/img/signature/nurun-nabi.png',
                                 ];
 
                                 $signaturePath = $classTeachers[$user->class] ?? 'assets/admin/img/signature/sample.jpg';
