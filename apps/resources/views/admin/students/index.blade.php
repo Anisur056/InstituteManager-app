@@ -34,120 +34,27 @@
                 <h5 class="m-0 fs-18 fw-semi-bold text-success">
                     Filter Records
                 </h5>
-                <div class="text-end">
-                    <div class="actions">
-                        <button type="button" class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
-                            Hide/Show
-                        </button>
-                    </div>
-                </div>
             </div>
             <div class="card-body">
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item">
-                                <div    id="flush-collapseOne"
-                                        class="accordion-collapse collapse show bg-white pb-4"
-                                        aria-labelledby="flush-headingOne"
-                                        data-bs-parent="#accordionFlushExample">
-                                    <form action="{{ route('students.index') }}" method="GET">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label for="institute_name" class="col-form-label">Institute Name:</label>
-                                                <select name="institute_name" class="form-control select2" >
-                                                    <option value="">Select</option>
-                                                    @foreach ($instituteInfo as $info)
-                                                        {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
-                                                        <option value="{{ $info->name_en }}" {{ (request('institute_name') == $info->name_en) ? 'selected' : '' }}>
-                                                            {{ $info->name_en }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label for="branch" class="col-form-label">Branch Name:</label>
-                                                <select name="branch" class="form-control select2" >
-                                                    <option value="">Select</option>
-                                                    @foreach ($instituteBranch as $info)
-                                                        {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
-                                                        <option value="{{ $info->name_en }}" {{ (request('branch') == $info->name_en) ? 'selected' : '' }}>
-                                                            {{ $info->name_en }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label for="class" class="col-form-label">Division:</label>
-                                                <select name="division" class="form-control select2" >
-                                                    <option value="">Select</option>
-                                                    @foreach ($instituteDivision as $info)
-                                                        {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
-                                                        <option value="{{ $info->name_en }}" {{ (request('division') == $info->name_en) ? 'selected' : '' }}>
-                                                            {{ $info->name_en }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label for="class" class="col-form-label">Class:</label>
-                                                <select name="class" class="form-control select2" >
-                                                    <option value="">Select</option>
-                                                    @foreach ($classes as $info)
-                                                        {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
-                                                        <option value="{{ $info->name_en }}" {{ (request('class') == $info->name_en) ? 'selected' : '' }}>
-                                                            {{ $info->name_en }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label for="class" class="col-form-label">Shift:</label>
-                                                <select name="shift" class="form-control select2" >
-                                                    <option value="">Select</option>
-                                                    @foreach ($shifts as $info)
-                                                        {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
-                                                        <option value="{{ $info->name_en }}" {{ (request('shift') == $info->name_en) ? 'selected' : '' }}>
-                                                            {{ $info->name_en }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label for="class" class="col-form-label">Section:</label>
-                                                <select name="section" class="form-control select2" >
-                                                    <option value="">Select</option>
-                                                    @foreach ($sections as $info)
-                                                        {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
-                                                        <option value="{{ $info->name_en }}" {{ (request('section') == $info->name_en) ? 'selected' : '' }}>
-                                                            {{ $info->name_en }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label class="col-form-label">Group:</label>
-                                                <select name="group" class="form-control select2" >
-                                                    <option value="">Select</option>
-                                                    @foreach ($groups as $info)
-                                                        {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
-                                                        <option value="{{ $info->name_en }}" {{ (request('group') == $info->name_en) ? 'selected' : '' }}>
-                                                            {{ $info->name_en }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <button type="submit" class="btn btn-success mt-4">Search</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                <form action="{{ route('students.index') }}" method="GET">
+                    <div class="row">
+                        <div class=" col-sm-6 col-12">
+                            <label for="class" class="col-form-label">Class:</label>
+                            <select name="class" class="form-control select2" >
+                                <option value="">Select</option>
+                                @foreach ($classes as $info)
+                                    {{-- Check if the current option's value matches the 'institute_name' parameter in the GET request --}}
+                                    <option value="{{ $info->name_en }}" {{ (request('class') == $info->name_en) ? 'selected' : '' }}>
+                                        {{ $info->name_en }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class=" col-sm-6 col-12">
+                            <button type="submit" class="btn btn-success mt-4">Search</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
@@ -194,18 +101,57 @@
                                     {{$data->rfid_card}} <br>
                                 </td>
                                 <td data-label="Contact (Call): ">
-                                    <a class="text-decoration-none text-success font-weight-bold d-inline-block" target="_blank" href="tel:{{$data->contact_sms}}">
-                                        {{$data->contact_sms}}
-                                        @php if($data->contact_sms){ echo "(sms)"; } @endphp
-                                    </a>
-                                    <a class="text-decoration-none text-success font-weight-bold d-block" target="_blank" href="tel:{{$data->father_contact}}">
-                                        {{$data->father_contact}}
-                                        @php if($data->father_contact){ echo "(father)"; } @endphp
-                                    </a>
-                                    <a class="text-decoration-none text-success font-weight-bold d-block" target="_blank" href="tel:{{$data->mother_contact}}">
-                                        {{$data->mother_contact}}
-                                        @php if($data->mother_contact){ echo "(mother)"; } @endphp
-                                    </a>
+                                    {{-- SMS Contact --}}
+                                    @if ($data->contact_sms)
+                                        <a class="text-decoration-none text-primary text-center font-weight-bold d-block">
+                                            {{$data->contact_sms}} <i class="fa fa-comments me-1"></i>
+                                        </a>
+                                    @else
+                                        <a class="text-decoration-none text-success text-center font-weight-bold d-block"><i class="fa fa-comments me-1"></i> N/A</a>
+                                    @endif
+
+                                    {{-- SMS Status --}}
+                                    @if ($data->sms_status === 'on')
+                                        <center><span class="badge bg-success text-bg-success">SMS On</span></center>
+                                    @else
+                                        <center><span class="badge bg-danger text-bg-danger">SMS Off</span></center>
+                                    @endif
+
+                                    {{-- Father Mobile Contact --}}
+                                    @if ($data->father_contact)
+                                        <a class="text-decoration-none text-success text-center font-weight-bold d-block" target="_blank" href="tel:{{$data->father_contact}}">
+                                            {{$data->father_contact}} (f) <i class="fa fa-phone" aria-hidden="true"></i>
+                                        </a>
+                                    @else
+                                        <a class="text-decoration-none text-success text-center font-weight-bold d-block">(F) <i class="fa fa-phone" aria-hidden="true"></i> N/A</a>
+                                    @endif
+
+                                    {{-- Father Whatsapp Contact --}}
+                                    @if ($data->father_contact)
+                                        <a class="text-decoration-none text-success text-center font-weight-bold d-block" target="_blank" href="https://wa.me/88{{ str_replace('-', '', $data->father_contact) }}">
+                                            {{$data->father_contact}} (f) <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                        </a>
+                                    @else
+                                        <a class="text-decoration-none text-success text-center font-weight-bold d-block">(F) <i class="fa fa-whatsapp" aria-hidden="true"></i> N/A</a>
+                                    @endif
+
+                                    {{-- Mother Mobile Contact --}}
+                                    @if ($data->mother_contact)
+                                        <a class="text-decoration-none text-success text-center font-weight-bold d-block" target="_blank" href="tel:{{$data->mother_contact}}">
+                                            {{$data->mother_contact}} (M) <i class="fa fa-phone" aria-hidden="true"></i>
+                                        </a>
+                                    @else
+                                        <a class="text-decoration-none text-success text-center font-weight-bold d-block">(M) <i class="fa fa-phone" aria-hidden="true"></i> N/A</a>
+                                    @endif
+
+                                    {{-- Mother Whatsapp Contact --}}
+                                    @if ($data->mother_contact)
+                                        <a class="text-decoration-none text-success text-center font-weight-bold d-block" target="_blank" href="https://wa.me/88{{ str_replace('-', '', $data->mother_contact) }}">
+                                            {{$data->mother_contact}} (M) <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                        </a>
+                                    @else
+                                        <a class="text-decoration-none text-success text-center font-weight-bold d-block">(M) <i class="fa fa-whatsapp" aria-hidden="true"></i> N/A</a>
+                                    @endif
                                 </td>
                                 <td data-label="Actions: ">
                                     <a class="btn btn-primary mb-1" href="{{ route('students.show',$data->id) }}">
@@ -218,11 +164,7 @@
                                         <i class="fa fa-comments me-1"></i>
                                     </a>
 
-                                    @if ($data->sms_status === 'on')
-                                        <span class="badge bg-success text-bg-success">SMS On</span>
-                                    @else
-                                        <span class="badge bg-danger text-bg-danger">SMS Off</span>
-                                    @endif
+
                                 </td>
                                 </tr>
                             @endforeach
