@@ -34,27 +34,6 @@ class InstituteInfoSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
             ],
-            [
-            'name_en' => 'AMN Islamia Madrasha',
-            'name_bn' => 'এএমএন ইসলামিয়া মাদ্রাসা',
-            'address_en' => 'Lotifpur, Akborsha, CTG',
-            'address_bn' => 'লতিফপুর, আকবরশাহ্, চট্টগ্রাম',
-            'eiin_number' => null,
-            'mobile' => '01892178778',
-            'email' => '',
-            'website' => '',
-            'logo' => 'assets/admin/img/institutes/logo-2.png',
-            'office_pad' => 'assets/admin/img/institutes/office-pad-2.jpg',
-            'id_card_front_employee' => 'id-card-front-employee-2.png',
-            'id_card_front_student' => 'assets/admin/img/institutes/id-card-front-student-2.png',
-            'id_card_back' => 'assets/admin/img/institutes/id-card-back-2.png',
-            'exam_admit_card' => 'assets/admin/img/institutes/exam-admit-card-2.png',
-            'exam_seat_sticker' => 'assets/admin/img/institutes/exam-seat-sticker-2.png',
-            'google_map' => '',
-            'display_order' => 2,
-            'created_at' => now(),
-            'updated_at' => now(),
-            ]
         ]);
 
         $records->each(function($data){

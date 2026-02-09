@@ -28,7 +28,7 @@
     @endif
 
     <div class="col-12 ">
-    
+
         <div class="card h-100 rounded-15 mb-3">
             <div class="card-header d-flex gap-3 align-items-center justify-content-between">
                 <h5 class="m-0 fs-18 fw-semi-bold text-success">
@@ -163,9 +163,12 @@
                         <thead>
                             <tr>
                                 <th>Pic</th>
-                                <th>Information</th>
-                                <th>Contact <br>(Call)</th>
-                                <th>Contact <br>(Whatsapp)</th>
+                                <th>Name</th>
+                                <th>Roll</th>
+                                <th>Class</th>
+                                <th>Father Name</th>
+                                <th>RFID</th>
+                                <th>Contact</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -173,36 +176,35 @@
                             @foreach ($users as $data)
                                 <tr>
                                 <td data-label="Pic: ">
-                                    <img class="rounded-3" width="100px" src="{{ optional($data)->profile_pic ? asset('assets/' . optional($data)->profile_pic) : 'assets/admin/img/users/user.png' }}">
+                                    <img class="rounded-3" width="64px" src="{{ optional($data)->profile_pic ? asset('assets/' . optional($data)->profile_pic) : 'assets/admin/img/users/user.png' }}">
                                 </td>
-                                <td data-label="Information:- " >
-                                    Name: {{$data->name}}<br>
-                                    নাম: {{$data->name_bn}} <br>
-                                    পিতা: {{$data->father_name}} <br>
-                                    {{$data->institute_name}} <br>
-                                    Branch: {{$data->branch}} <br>
-                                    Division: {{$data->division}} <br>
-                                    Class: {{$data->class}} <br>
-                                    Shift: {{$data->shift}} <br>
-                                    Sections: {{$data->section}} <br>
-                                    Group: {{$data->group}} <br>
-                                    Roll: {{$data->roll}} <br>
-                                    Designation: {{$data->role}} <br>
-                                    RFID Card: {{$data->rfid_card}} <br>
-                                    @if ($data->sms_status === 'on')
-                                        <span class="badge bg-success text-bg-success">SMS On</span>
-                                    @else
-                                        <span class="badge bg-danger text-bg-danger">SMS Off</span>
-                                    @endif
+                                <td data-label="নাম" >
+                                    {{$data->name_bn}} <br>
+                                </td>
+                                <td data-label="Roll" >
+                                    {{$data->roll}} <br>
+                                </td>
+                                <td data-label="Class" >
+                                    {{$data->class}} <br>
+                                </td>
+                                <td data-label="Father Name" >
+                                    {{$data->father_name_bn}} <br>
+                                </td>
+                                <td data-label="RFID" >
+                                    {{$data->rfid_card}} <br>
                                 </td>
                                 <td data-label="Contact (Call): ">
-                                    <a class="text-decoration-none text-success font-weight-bold" target="_blank" href="tel:{{$data->contact_sms}}">
+                                    <a class="text-decoration-none text-success font-weight-bold d-inline-block" target="_blank" href="tel:{{$data->contact_sms}}">
                                         {{$data->contact_sms}}
+                                        @php if($data->contact_sms){ echo "(sms)"; } @endphp
                                     </a>
-                                </td>
-                                <td data-label="Contact (Whatsapp): ">
-                                    <a class="text-decoration-none text-success font-weight-bold" target="_blank" href="https://wa.me/+88{{$data->contact_whatsapp}}">
-                                        {{$data->contact_whatsapp}}
+                                    <a class="text-decoration-none text-success font-weight-bold d-block" target="_blank" href="tel:{{$data->father_contact}}">
+                                        {{$data->father_contact}}
+                                        @php if($data->father_contact){ echo "(father)"; } @endphp
+                                    </a>
+                                    <a class="text-decoration-none text-success font-weight-bold d-block" target="_blank" href="tel:{{$data->mother_contact}}">
+                                        {{$data->mother_contact}}
+                                        @php if($data->mother_contact){ echo "(mother)"; } @endphp
                                     </a>
                                 </td>
                                 <td data-label="Actions: ">
@@ -215,6 +217,12 @@
                                     <a class="btn btn-success mb-1" href="{{ route('sms.create',$data->id) }}" target=”_blank”>
                                         <i class="fa fa-comments me-1"></i>
                                     </a>
+
+                                    @if ($data->sms_status === 'on')
+                                        <span class="badge bg-success text-bg-success">SMS On</span>
+                                    @else
+                                        <span class="badge bg-danger text-bg-danger">SMS Off</span>
+                                    @endif
                                 </td>
                                 </tr>
                             @endforeach

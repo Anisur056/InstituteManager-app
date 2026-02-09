@@ -21,12 +21,12 @@ return new class extends Migration
             $table->string('nid')->nullable();
             $table->string('birth_reg')->nullable();
             $table->string('date_of_birth')->nullable();
-            $table->enum('gender',['null','male','female'])->nullable();
+            $table->string('gender')->nullable();
             $table->string('blood_group')->nullable();
             $table->string('health_issues')->nullable();
             $table->string('height')->nullable();
             $table->string('weight')->nullable();
-            $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed'])->default('single');
+            $table->string('marital_status')->nullable();
             $table->string('nationality')->default('Bangladeshi');
             $table->string('religion')->nullable();
             $table->string('profile_pic')->nullable();
@@ -44,12 +44,12 @@ return new class extends Migration
             $table->text('roll')->nullable();
             $table->string('rfid_card')->nullable();
             $table->string('registration_id')->nullable(); // Registration ID- Auto Generated- pattern- 20251027063000866845
-            $table->enum('status',['active','pending','disable','tc','exam-complete','exit'])->default('active');
+            $table->string('status')->default('active');
 
             // Contact Information- (5 column)
             $table->string('contact_sms'); //***********/ Contact For SMS- Required
             $table->string('contact_whatsapp')->nullable();
-            $table->enum('sms_status',['on','off'])->default('on');
+            $table->string('sms_status')->nullable();
             $table->text('present_address')->nullable();
             $table->text('permanent_address')->nullable();
 
@@ -111,8 +111,8 @@ return new class extends Migration
             $table->string('user_name')->nullable();
             $table->string('email')->nullable();
             $table->string('password')->nullable();
-            $table->enum('role',['admin', 'teacher', 'student','accountant', 'librarian', 'security', 'guest'])->default('guest');
-            
+            $table->string('role')->default('student');
+
             // - (3 column)
             $table->rememberToken();
             $table->timestamps();
